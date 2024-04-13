@@ -27,8 +27,9 @@ NixOS・home-managerの設定
 
 ## `hosts`
 ホスト毎の設定
+- `mainpc` - メインデスクトップPC
 - `tp-x280` - メインノートPC(ThinkPad X280)
-- `test` - メインデスクトップPC上のNixOSテスト用VM
+- `test` - `mainpc`上のNixOSテスト用VM
 
 ## `modules`
 NixOSのシステムワイドなプログラムたち
