@@ -1,0 +1,30 @@
+{
+  cat = "bat";
+  clip = "xclip -selection clipboard";
+  flake = "nix flake";
+  g = "git";
+  ga = "git add -A";
+  gA = "git add";
+  gb = "git branch";
+  gc = "git commit";
+  gcm = "git commit -m";
+  gco = "git checkout";
+  gf = "git fetch";
+  gfu = "git fetch upstream";
+  gm = "git merge";
+  gp = "git push";
+  gpl = "git pull";
+  gpuom = "git push -u origin main";
+  grb = "git rebase";
+  grbi = "git rebase -i";
+  grep = "rg";
+  grm = "git remote";
+  grma = "git remote add";
+  grmao = "git remote add origin";
+  grmau = "git remote add upstream";
+  grs = "git reset";
+  grsh = "git reset --hard";
+  grsm = "git reset --mixed";
+  grss = "git reset --soft";
+  gs = "git status";
+}
