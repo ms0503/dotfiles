@@ -3,13 +3,14 @@
   clip = "xclip -selection clipboard";
   flake = "nix flake";
   g = "git";
-  ga = "git add -A";
   gA = "git add";
+  gD = "git diff";
+  ga = "git add -A";
   gb = "git branch";
   gc = "git commit";
   gcm = "git commit -m";
   gco = "git checkout";
-  gd = "git diff";
+  gd = "git diff HEAD";
   gf = "git fetch";
   gfu = "git fetch upstream";
   gm = "git merge";
