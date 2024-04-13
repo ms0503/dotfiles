@@ -9,6 +9,7 @@
   gc = "git commit";
   gcm = "git commit -m";
   gco = "git checkout";
+  gd = "git diff";
   gf = "git fetch";
   gfu = "git fetch upstream";
   gm = "git merge";

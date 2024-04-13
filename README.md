@@ -27,6 +27,7 @@ User-level programs
 
 ## `hosts`
 Per-host settings
+- `tp-x280` - My primary laptop PC (ThinkPad X280)
 - `test` - NixOS test VM on my primary desktop PC
 
 ## `modules`

@@ -1,13 +1,24 @@
 {pkgs, ...}: {
   gtk = {
+    cursorTheme = {
+      name = "Yaru-dark";
+      package = pkgs.yaru-theme;
+    };
     enable = true;
+    gtk3.extraConfig.Settings = ''
+      gtk-application-prefer-dark-theme=1
+    '';
+    gtk4.extraConfig.Settings = ''
+      gtk-application-prefer-dark-theme=1
+    '';
     iconTheme = {
-      name = "hicolor";
-      package = pkgs.hicolor-icon-theme;
+      name = "Yaru-dark";
+      package = pkgs.yaru-theme;
     };
     theme = {
-      name = "Yaru Dark";
+      name = "Yaru-dark";
       package = pkgs.yaru-theme;
     };
   };
+  home.sessionVariables.GTK_THEME = "Yaru-dark";
 }
