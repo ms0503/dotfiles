@@ -25,6 +25,9 @@
     bottom.enable = true;
     eza = {
       enable = true;
+      extraOptions = [
+        "--sort=Name"
+      ];
       git = true;
       icons = true;
     };
