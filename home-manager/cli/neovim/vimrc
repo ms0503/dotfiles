@@ -9,7 +9,7 @@ nmap j gj
 nmap k gk
 set autoread
 set backspace=eol,indent,start
-set clipboard=autoselect,unnamedplus
+set clipboard=unnamedplus
 set cursorcolumn
 set cursorline
 set expandtab
