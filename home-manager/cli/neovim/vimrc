@@ -1,69 +1,9 @@
-filetype off
-filetype plugin indent on
-imap <C-s> <Esc>:w<Cr>li
-nmap <C-s> :w<Cr>
-nmap <Esc><Esc> :nohlsearch<Cr><Esc>
-nmap [b :bprev<Cr>
-nmap ]b :bnext<Cr>
-nmap j gj
-nmap k gk
-set autoread
-set backspace=eol,indent,start
-set clipboard=unnamedplus
-set cursorcolumn
-set cursorline
-set expandtab
-set fenc=utf-8
-set ff=unix
-set hidden
-set hlsearch
-set ignorecase
-set incsearch
-set laststatus=2
-set listchars=eol:$,tab:>-
-set modeline
-set modelines=5
-set nobackup
-set nocompatible
-set noswapfile
-set number
-set shiftwidth=4
-set showcmd
-set smartcase
-set smartindent
-set tabstop=4
-set timeout
-set timeoutlen=1000
-set ttimeoutlen=1000
-set updatetime=1000
-set virtualedit=onemore
-set wildmode=list:longest
-set wrapscan
-syntax enable
-
-" vim-vsnip
-imap <Expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
-smap <Expr> <C-j> vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<C-j>'
-imap <Expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-smap <Expr> <C-l> vsnip#available(1) ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-imap <Expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-smap <Expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-imap <Expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-smap <Expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-nmap s <Plug>(vsnip-select-text)
-xmap s <Plug>(vsnip-select-text)
-nmap S <Plug>(vsnip-cut-text)
-xmap S <Plug>(vsnip-cut-text)
-let g:vsnip_filetypes = {}
-let g:vsnip_filetypes.javascriptreact = ['javascript']
-let g:vsnip_filetypes.typescriptreact = ['typescript']
-" NERDTree
-nmap <Silent> <C-e> :NERDTreeToggle<Cr>
-" vim-lsp
 let g:lsp_log_file = '/dev/null'
 let g:lsp_settings = {
 \   'clangd': {
-\       'cmd': ['clangd']
+\       'cmd': [
+\           'clangd'
+\       ]
 \   },
 \   'efm-langserver': {
 \       'disabled': v:false
@@ -102,32 +42,92 @@ let g:lsp_settings_filetype_typescript = [
 let g:lsp_settings_root_markers = [
 \   '.bzr',
 \   '.git',
-\   '.git/',
+\   '.idea',
 \   '.hg',
-\   '.svn'
+\   '.svn',
+\   'node_modules'
 \]
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.javascriptreact = [
+\   'javascript'
+\]
+let g:vsnip_filetypes.typescriptreact = [
+\   'typescript'
+\]
+
+filetype off
+filetype plugin indent on
+set autoread
+set backspace=eol,indent,start
+set clipboard=unnamedplus
+set cursorcolumn
+set cursorline
+set enc=utf-8
+set expandtab
+set fenc=utf-8
+set fencs=utf-8,cp932,sjis,iso-2022-jp,euc-jp
+set ff=unix
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set listchars=eol:$,tab:>-
+set modeline
+set modelines=5
+set nobackup
+set nocompatible
+set noswapfile
+set number
+set shiftwidth=4
+set showcmd
+set smartcase
+set smartindent
+set tabstop=4
+set tenc=utf-8
+set timeout
+set timeoutlen=1000
+set ttimeoutlen=1000
+set updatetime=1000
+set virtualedit=onemore
+set wildmode=list:longest
+set wrapscan
+syntax enable
+
 function! s:on_lsp_buffer_enabled() abort
+    let g:lsp_format_sync_timeout = 1000
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc')
         setlocal tagfunc=lsp#tagfunc
     endif
-    nmap gd <Plug>(lsp-definition)
-    nmap gs <Plug>(lsp-document-symbol-search)
-    nmap gS <Plug>(lsp-workspace-symbol-search)
-    nmap gr <Plug>(lsp-references)
-    nmap gi <Plug>(lsp-implementation)
-    nmap gt <Plug>(lsp-type-definition)
     nmap <Leader>rn <Plug>(lsp-rename)
+    nmap K <Plug>(lsp-hover)
     nmap [g <Plug>(lsp-previous-diagnostic)
     nmap ]g <Plug>(lsp-next-diagnostic)
-    nmap K <Plug>(lsp-hover)
-    nnoremap <Expr> <C-f> lsp#scroll(+4)
+    nmap gS <Plug>(lsp-workspace-symbol-search)
+    nmap gd <Plug>(lsp-definition)
+    nmap gi <Plug>(lsp-implementation)
+    nmap gr <Plug>(lsp-references)
+    nmap gs <Plug>(lsp-document-symbol-search)
+    nmap gt <Plug>(lsp-type-definition)
     nnoremap <Expr> <C-d> lsp#scroll(-4)
-    let g:lsp_format_sync_timeout = 1000
+    nnoremap <Expr> <C-f> lsp#scroll(+4)
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 endfunction
+
 augroup lsp_install
     au!
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+imap <C-s> <Esc>:w<Cr>li
+nmap <C-j> G
+nmap <C-k> gg
+nmap <C-s> :w<Cr>
+nmap <Silent> <C-e> :NERDTreeToggle<Cr>
+nmap <Silent> <Esc><Esc> :nohlsearch<Cr><Esc>
+nmap <Silent> [b :bprev<Cr>
+nmap <Silent> ]b :bnext<Cr>
+nmap j gj
+nmap k gk
