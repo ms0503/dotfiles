@@ -1,4 +1,4 @@
-let
+{lib, ...}: let
   xcolors = {
     bg = "#222436";
     blue = "#82aaff";
@@ -84,10 +84,29 @@ let
     Bottom=5
   '';
 in {
-  home.file = {
-    ".local/share/fcitx5/themes/my-theme/arrow.png".source = ./assets/arrow.png;
-    ".local/share/fcitx5/themes/my-theme/panel.png".source = ./assets/panel.png;
-    ".local/share/fcitx5/themes/my-theme/radio.png".source = ./assets/radio.png;
-    ".local/share/fcitx5/themes/my-theme/theme.conf".text = my-theme;
+  gtk = {
+    gtk2.extraConfig = lib.mkForce ''
+      gtk-im-module="fcitx"
+    '';
+    gtk3.extraConfig.Settings = lib.mkForce ''
+      gtk-application-prefer-dark-theme=1
+      gtk-im-module=fcitx
+    '';
+    gtk4.extraConfig.Settings = lib.mkForce ''
+      gtk-application-prefer-dark-theme=1
+      gtk-im-module=fcitx
+    '';
+  };
+  home = {
+    file = {
+      ".local/share/fcitx5/themes/my-theme/arrow.png".source = ./assets/arrow.png;
+      ".local/share/fcitx5/themes/my-theme/panel.png".source = ./assets/panel.png;
+      ".local/share/fcitx5/themes/my-theme/radio.png".source = ./assets/radio.png;
+      ".local/share/fcitx5/themes/my-theme/theme.conf".text = my-theme;
+    };
+    sessionVariables = {
+      QT_IM_MODULE = "fcitx";
+      SDL_IM_MODULE = "fcitx";
+    };
   };
 }
