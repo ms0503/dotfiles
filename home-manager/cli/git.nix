@@ -32,6 +32,10 @@ in {
       enable = true;
       extraConfig = {
         init.defaultBranch = "main";
+        pull = {
+          ff = "only";
+          rebase = true;
+        };
         push.gpgSign = "if-asked";
       };
       lfs.enable = true;
