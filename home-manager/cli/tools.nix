@@ -7,10 +7,13 @@
     fx
     imagemagick
     killall
+    lazydocker
+    lazygit
     lolcat
     neofetch
     pingu
     procs
+    silicon
     speedtest-cli
     tokei
     typos
