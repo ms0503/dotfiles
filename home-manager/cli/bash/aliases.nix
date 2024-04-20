@@ -1,6 +1,9 @@
 {
   cat = "bat";
   clip = "xclip -selection clipboard";
+  df = "duf";
+  du = "dust";
+  find = "fd";
   flake = "nix flake";
   g = "git";
   gA = "git add";
@@ -15,6 +18,7 @@
   gfu = "git fetch upstream";
   gm = "git merge";
   gp = "git push";
+  gpf = "git push -f";
   gpl = "git pull";
   gpuom = "git push -u origin main";
   grb = "git rebase";
@@ -29,4 +33,7 @@
   grsm = "git reset --mixed";
   grss = "git reset --soft";
   gs = "git status";
+  ps = "procs";
+  top = "bottom";
+  wc = "tokei";
 }
