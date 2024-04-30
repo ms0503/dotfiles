@@ -34,6 +34,11 @@
       git = true;
       icons = true;
     };
+    gpg = {
+      enable = true;
+      mutableKeys = true;
+      mutableTrust = true;
+    };
     jq.enable = true;
     ripgrep.enable = true;
   };
