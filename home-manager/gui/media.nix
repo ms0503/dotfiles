@@ -3,6 +3,7 @@
     gnome.evince
     gnome.totem
     inputs.syndicationd.packages.${pkgs.system}.default
+    vlc
   ];
   programs = {
     ncspot.enable = true;
