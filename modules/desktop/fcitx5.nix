@@ -4,17 +4,6 @@
     SDL_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
   };
-  gtk = {
-    gtk2.extraConfig.Settings = ''
-      gtk-im-module="fcitx"
-    '';
-    gtk3.extraConfig.Settings = ''
-      gtk-im-module=fcitx
-    '';
-    gtk4.extraConfig.Settings = ''
-      gtk-im-module=fcitx
-    '';
-  };
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5 = {
