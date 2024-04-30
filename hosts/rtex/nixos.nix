@@ -8,8 +8,29 @@
   };
   console.keyMap = "jp106";
   hardware = {
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-    opengl.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+      nvidiaSettings = true;
+      open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      powerManagement = {
+        enable = false;
+        finegrained = false;
+      };
+      prime = {
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+      };
+    };
+    opengl = {
+      driSupport = true;
+      driSupport32Bit = true;
+      enable = true;
+    };
   };
   imports = [
     ./hardware-configuration.nix
@@ -25,6 +46,7 @@
     ../../modules/programs/xserver.nix
   ] ++ (with inputs.nixos-hardware.nixosModules; [
     common-cpu-intel
+    common-gpu-nvidia
     common-pc-ssd
   ]);
   services = {
