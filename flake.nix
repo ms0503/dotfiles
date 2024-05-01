@@ -30,11 +30,11 @@
       };
       scripts = with pkgs; [
         (writeScriptBin "switch-home" ''
-	  home-manager switch --flake ".#$@"
-	'')
-	(writeScriptBin "switch-nixos" ''
-	  sudo nixos-rebuild switch --flake ".#$@"
-	'')
+          home-manager switch --flake ".#$@"
+        '')
+        (writeScriptBin "switch-nixos" ''
+          sudo nixos-rebuild switch --flake ".#$@"
+        '')
       ];
     in {
       default = pkgs.mkShell {

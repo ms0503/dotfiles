@@ -33,9 +33,9 @@
       ];
       resolutions = [
         {
-	  x = 1920;
-	  y = 1200;
-	}
+          x = 1920;
+          y = 1200;
+        }
       ];
       xkb = {
         layout = "jp";

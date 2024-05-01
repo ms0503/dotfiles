@@ -59,9 +59,9 @@
       ];
       resolutions = [
         {
-	  x = 3840;
-	  y = 2400;
-	}
+          x = 3840;
+          y = 2400;
+        }
       ];
       videoDrivers = [
         "nvidia"
