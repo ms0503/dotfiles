@@ -4,6 +4,7 @@
     gnome.file-roller
     gnome.gnome-terminal
     gnome.nautilus
+    jetbrains-toolbox
     remmina
     slack
     vscode
