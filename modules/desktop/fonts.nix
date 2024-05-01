@@ -1,38 +1,56 @@
-{inputs, pkgs, ...}: let
-  myPackages = inputs.self.outputs.packages.${pkgs.system};
-in {
+{pkgs, ...}: {
   fonts = {
     fontDir.enable = true;
-    fontconfig.defaultFonts = {
-      emoji = [
-        "Noto Color Emoji"
-      ];
-      monospace = [
-        "SauceCodePro Nerd Font"
-        "Source Han Code JP"
-        "Noto Color Emoji"
-      ];
-      sansSerif = [
-        "Noto Sans CJK JP"
-        "Noto Color Emoji"
-      ];
-      serif = [
-        "Noto Serif CJK JP"
-        "Noto Color Emoji"
-      ];
+    fontconfig = {
+      defaultFonts = {
+        emoji = [
+          "Noto Color Emoji"
+        ];
+        monospace = [
+          "SauceCodePro Nerd Font"
+          "Source Han Code JP"
+          "Noto Color Emoji"
+        ];
+        sansSerif = [
+          "Noto Sans CJK JP"
+          "Noto Color Emoji"
+        ];
+        serif = [
+          "Noto Serif CJK JP"
+          "Noto Color Emoji"
+        ];
+      };
+      localConf = ''
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+        <fontconfig>
+            <description>Change default fonts for Steam client</description>
+            <match>
+                <test name="prgname">
+                    <string>steamwebhelper</string>
+                </test>
+                <test name="family" qual="any">
+                    <string>sans-serif</string>
+                </test>
+                <edit mode="prepend" name="family">
+                    <string>Migu 1P</string>
+                </edit>
+            </match>
+        </fontconfig>
+      '';
     };
-    packages = (with pkgs; [
+    packages = with pkgs; [
+      migu
       (nerdfonts.override {
         fonts = [
           "SourceCodePro"
         ];
       })
-      noto-fonts-emoji
-      source-han-code-jp
-    ]) ++ (with myPackages; [
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-    ]);
+      noto-fonts-emoji
+      source-han-code-jp
+    ];
   };
 }

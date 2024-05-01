@@ -12,7 +12,4 @@ if type brew &>/dev/null; then
         fi
     fi
 fi
-command -v discordcanary && discordcanary &
 command -v jetbrains-toolbox && jetbrains-toolbox &
-command -v slack && slack &
-command -v unityhub && unityhub &

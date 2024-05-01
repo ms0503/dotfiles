@@ -44,6 +44,5 @@
     formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.nixfmt);
     homeConfigurations = hosts.home-manager;
     nixosConfigurations = hosts.nixos;
-    packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
   };
 }
