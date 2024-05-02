@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    aseprite
     gnome.dconf-editor
     gnome.file-roller
     gnome.gnome-terminal
