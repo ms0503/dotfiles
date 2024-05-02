@@ -26,6 +26,7 @@
         };
       };
     };
+    nvidia-container-toolkit.enable = true;
     opengl = {
       driSupport = true;
       driSupport32Bit = true;
@@ -73,7 +74,7 @@
       };
     };
   };
-  system.stateVersion = "23.11";
+  system.stateVersion = "unstable";
   users.users."${username}" = {
     extraGroups = [
       "audio"
