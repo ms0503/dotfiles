@@ -22,7 +22,6 @@ in {
     ocaml
     protobuf
     python312
-    rust-bin.nightly.latest.default
     stack-wrapped
     supabase-cli
     zig

@@ -39,7 +39,6 @@ in {
         ./mainpc/home-manager.nix
       ];
       overlays = [
-        inputs.rust-overlay.overlays.default
       ];
       system = "x86_64-linux";
       username = "ms0503";
