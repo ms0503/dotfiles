@@ -6,7 +6,6 @@
     ./gtk.nix
     ./media.nix
     ./tools.nix
-    ./unityhub.nix
     ./xdg.nix
   ];
 }

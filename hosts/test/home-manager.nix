@@ -5,6 +5,7 @@
   imports = [
     ../../home-manager/cli
     ../../home-manager/gui
+    ../../home-manager/gui/unityhub.nix
     ../../home-manager/desktop/gnome
   ];
 }
