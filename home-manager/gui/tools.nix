@@ -9,6 +9,5 @@
     remmina
     slack
     vscode
-    zoom-us
   ];
 }
