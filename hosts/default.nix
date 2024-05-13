@@ -75,14 +75,6 @@ in {
     };
   };
   nixos = {
-    rtex = mkNixosSystem {
-      hostname = "rtex";
-      modules = [
-        ./rtex/nixos.nix
-      ];
-      system = "x86_64-linux";
-      username = "ms0503";
-    };
     test = mkNixosSystem {
       hostname = "test";
       modules = [
