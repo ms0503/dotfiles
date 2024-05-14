@@ -11,5 +11,5 @@ in {
   ];
   programs.bash.profileExtra = (builtins.readFile ../../home-manager/cli/bash/.profile) + ''
     export DOTNET_ROOT=${dotnet}
-  '';
+  '' + (builtins.readFile ./.profile);
 }
