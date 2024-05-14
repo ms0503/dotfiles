@@ -19,7 +19,7 @@
     typos
     unar
     unrar
-    unzip
+    #unzip  # not work. why?
     wget
     zip
   ];
