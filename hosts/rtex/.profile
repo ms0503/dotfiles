@@ -7,3 +7,4 @@ fi
 [[ -d /usr/local/cuda/extras/CUPTI/lib64 ]] && export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}/usr/local/cuda/extras/CUPTI/lib64
 [[ -d ${HOME}/.local/bin ]] && export PATH=${HOME}/.local/bin${PATH:+:}${PATH}
 [[ -d ${HOME}/bin ]] && export PATH=${HOME}/bin${PATH:+:}${PATH}
+[[ -r "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
