@@ -10,22 +10,21 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
     syndicationd.url = "github:ymgyt/syndicationd";
     xremap.url = "github:xremap/nix-flake";
   };
-  outputs = inputs: let
+  outputs = inputs@{nixpkgs, ...}: let
     allSystems = [
       "aarch64-darwin"
       "aarch64-linux"
       "x86_64-darwin"
       "x86_64-linux"
     ];
-    forAllSystems = inputs.nixpkgs.lib.genAttrs allSystems;
+    forAllSystems = nixpkgs.lib.genAttrs allSystems;
     hosts = import ./hosts inputs;
   in {
     devShells = forAllSystems (system: let
-      pkgs = import inputs.nixpkgs {
+      pkgs = import nixpkgs {
         inherit system;
       };
       scripts = with pkgs; [
@@ -41,7 +40,7 @@
         packages = scripts;
       };
     });
-    formatter = forAllSystems (system: inputs.nixpkgs.legacyPackages.${system}.nixfmt);
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
     homeConfigurations = hosts.home-manager;
     nixosConfigurations = hosts.nixos;
   };

@@ -5,7 +5,6 @@
         "SourceCodePro"
       ];
     })
-    rust-bin.nightly.latest.default
   ];
   imports = [
     ../../home-manager/cli

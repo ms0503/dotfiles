@@ -1,5 +1,5 @@
-inputs: let
-  mkHomeManagerConfiguration = {modules, overlays, system, username}: inputs.home-manager.lib.homeManagerConfiguration {
+inputs@{home-manager, nixpkgs, ...}: let
+  mkHomeManagerConfiguration = {modules, overlays, system, username}: home-manager.lib.homeManagerConfiguration {
     extraSpecialArgs = {
       inherit inputs username;
     };
@@ -16,7 +16,7 @@ inputs: let
         };
       }
     ];
-    pkgs = import inputs.nixpkgs {
+    pkgs = import nixpkgs {
       config = {
         allowUnfree = true;
         permittedInsecurePackages = [
@@ -26,7 +26,7 @@ inputs: let
       inherit overlays system;
     };
   };
-  mkNixosSystem = {hostname, modules, system, username}: inputs.nixpkgs.lib.nixosSystem {
+  mkNixosSystem = {hostname, modules, system, username}: nixpkgs.lib.nixosSystem {
     inherit modules system;
     specialArgs = {
       inherit hostname inputs username;
@@ -48,7 +48,6 @@ in {
         ./rtex/home-manager.nix
       ];
       overlays = [
-        inputs.rust-overlay.overlays.default
       ];
       system = "x86_64-linux";
       username = "ms0503";
@@ -58,7 +57,6 @@ in {
         ./tp-x280/home-manager.nix
       ];
       overlays = [
-        inputs.rust-overlay.overlays.default
       ];
       system = "x86_64-linux";
       username = "ms0503";
@@ -68,7 +66,6 @@ in {
         ./test/home-manager.nix
       ];
       overlays = [
-        inputs.rust-overlay.overlays.default
       ];
       system = "x86_64-linux";
       username = "ms0503";
