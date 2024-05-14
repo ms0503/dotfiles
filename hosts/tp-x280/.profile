@@ -5,3 +5,6 @@ if [[ -d $HOME/.pyenv ]]; then
     export PATH PYENV_ROOT
     command -v pyenv &>/dev/null && eval "$(pyenv init -)"
 fi
+[[ -d ${HOME}/.local/bin ]] && export PATH=${HOME}/.local/bin${PATH:+:}${PATH}
+[[ -d ${HOME}/bin ]] && export PATH=${HOME}/bin${PATH:+:}${PATH}
+[[ -r "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
