@@ -44,7 +44,7 @@ in {
         signByDefault = true;
       };
       userEmail = "ms0503@outlook.com";
-      userName = "ms0503";
+      userName = "Sora Tonami";
     };
   };
 }
