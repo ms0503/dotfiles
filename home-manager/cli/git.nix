@@ -31,6 +31,7 @@ in {
       delta.enable = true;
       enable = true;
       extraConfig = {
+        core.autocrlf = "input";
         init.defaultBranch = "main";
         pull = {
           ff = "only";
