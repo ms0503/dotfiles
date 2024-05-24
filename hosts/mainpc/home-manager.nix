@@ -1,15 +1,10 @@
-{pkgs, ...}: let
-  dotnet = pkgs.dotnet-sdk_8;
-in {
+{pkgs, ...}: {
   home.packages = [
-    dotnet
   ];
   imports = [
     ../../home-manager/cli
     ../../home-manager/gui
     ../../home-manager/desktop/gnome
   ];
-  programs.bash.profileExtra = (builtins.readFile ../../home-manager/cli/bash/.profile) + ''
-    export DOTNET_ROOT=${dotnet}
-  '' + (builtins.readFile ./.profile);
+  programs.bash.profileExtra = (builtins.readFile ../../home-manager/cli/bash/.profile) + (builtins.readFile ./.profile);
 }

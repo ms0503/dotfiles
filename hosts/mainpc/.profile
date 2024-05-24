@@ -9,3 +9,4 @@ fi
 [[ -d ${HOME}/.local/bin ]] && export PATH=${HOME}/.local/bin${PATH:+:}${PATH}
 [[ -d ${HOME}/bin ]] && export PATH=${HOME}/bin${PATH:+:}${PATH}
 [[ -r "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
+export DOTNET_ROOT=/usr/lib/dotnet
