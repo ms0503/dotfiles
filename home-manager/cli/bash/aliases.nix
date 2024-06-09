@@ -19,7 +19,7 @@
   gd = "git diff HEAD";
   gf = "git fetch";
   gfu = "git fetch upstream";
-  gl = "git log";
+  gl = "git log --oneline --graph --decorate --all";
   gm = "git merge";
   gp = "git push";
   gpf = "git push -f";
@@ -42,6 +42,8 @@
   grsm = "git reset --mixed HEAD^";
   grss = "git reset --soft HEAD^";
   gs = "git status";
+  gt = "git tag";
+  gtm = "git tag -m";
   ps = "procs";
   top = "bottom";
   wc = "tokei";
