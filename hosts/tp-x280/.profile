@@ -8,3 +8,4 @@ fi
 [[ -d ${HOME}/.local/bin ]] && export PATH=${HOME}/.local/bin${PATH:+:}${PATH}
 [[ -d ${HOME}/bin ]] && export PATH=${HOME}/bin${PATH:+:}${PATH}
 [[ -r "${HOME}/.cargo/env" ]] && . "${HOME}/.cargo/env"
+[[ -r /opt/ros/jazzy/setup.bash ]] && . /opt/ros/jazzy/setup.bash
