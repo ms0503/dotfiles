@@ -6,5 +6,8 @@
     ../../home-manager/gui
     ../../home-manager/desktop/gnome
   ];
-  programs.bash.profileExtra = (builtins.readFile ../../home-manager/cli/bash/.profile) + (builtins.readFile ./.profile);
+  programs.bash = {
+    bashrcExtra = builtins.readFile ./.bashrc;
+    profileExtra = (builtins.readFile ../../home-manager/cli/bash/.profile) + (builtins.readFile ./.profile);
+  };
 }
