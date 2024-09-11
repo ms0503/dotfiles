@@ -48,6 +48,7 @@
               generatehex
               getcodepoint
               getemoji
+              matrics
             ];
             stateVersion = "22.11";
             username = "ms0503";
