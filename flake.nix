@@ -45,6 +45,7 @@
             homeDirectory = "/home/ms0503";
             packages = with self.outputs.packages.${system}; [
               colortool
+              generatehex
               getcodepoint
             ];
             stateVersion = "22.11";

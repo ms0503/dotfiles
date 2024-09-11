@@ -1,0 +1,11 @@
+[dependencies]
+rand = "0.8"
+
+[package]
+authors = [
+    "Sora Tonami <ms0503@outlook.com>"
+]
+edition = "2021"
+name = "generatehex"
+resolver = "2"
+version = "0.1.0"
