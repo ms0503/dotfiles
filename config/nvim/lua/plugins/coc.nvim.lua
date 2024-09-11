@@ -90,5 +90,8 @@ return {
         cmd('Format', 'call CocAction("format")', {})
         cmd('OR', 'call CocActionAsync("runCommand", "editor.action.organizeImport")', {})
         vim.opt.statusline:prepend('%{coc#status()}%{get(b:, "coc_current_function", "")}')
+        vim.g.coc_global_extensions = {
+            'coc-rust-analyzer'
+        }
     end
 }
