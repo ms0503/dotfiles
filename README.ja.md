@@ -13,6 +13,5 @@ home-managerで管理している設定集。
 
 ## コマンド
 ```shell
-$ nix develop
-$ sync-home
+$ nix develop --command sync-home
 ```

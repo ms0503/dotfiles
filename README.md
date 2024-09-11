@@ -13,6 +13,5 @@ My configurations managed by home-manager.
 
 ## Commands
 ```shell
-$ nix develop
-$ sync-home
+$ nix develop --command sync-home
 ```
