@@ -5,8 +5,12 @@
       url = "github:nix-community/home-manager";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    rust-overlay = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:oxalica/rust-overlay";
+    };
   };
-  outputs = inputs@{home-manager, nixpkgs, ...}: let
+  outputs = inputs@{home-manager, nixpkgs, rust-overlay, self, ...}: let
     allSystems = [
       "aarch64-darwin"
       "aarch64-linux"
@@ -39,6 +43,9 @@
         {
           home = {
             homeDirectory = "/home/ms0503";
+            packages = with self.outputs.packages.${system}; [
+              getcodepoint
+            ];
             stateVersion = "22.11";
             username = "ms0503";
           };
@@ -52,6 +59,14 @@
 			  inherit system;
 			};
     });
+    packages = forAllSystems (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          rust-overlay.overlays.default
+        ];
+      };
+    in import ./bin pkgs);
   };
 }
 /* vim: set sts=2 sw=2 ts=2 : */
