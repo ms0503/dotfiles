@@ -44,6 +44,7 @@
           home = {
             homeDirectory = "/home/ms0503";
             packages = with self.outputs.packages.${system}; [
+              colortool
               getcodepoint
             ];
             stateVersion = "22.11";
