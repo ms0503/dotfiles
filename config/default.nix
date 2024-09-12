@@ -3,6 +3,7 @@
     ./bash.nix
     ./cspell.nix
     ./git.nix
+    ./gtk.nix
     ./nvim.nix
     ./starship.nix
   ];
