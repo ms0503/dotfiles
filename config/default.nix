@@ -1,6 +1,7 @@
 {
   imports = [
     ./bash.nix
+    ./cspell.nix
     ./git.nix
     ./nvim.nix
     ./starship.nix

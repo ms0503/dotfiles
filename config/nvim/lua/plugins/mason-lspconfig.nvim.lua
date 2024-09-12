@@ -21,8 +21,11 @@ return {
                         map('n', 'rn', vim.lsp.buf.rename)
                     end
                 })
+            end,
+            ['rust_analyzer'] = function()
             end
         })
+        vim.opt.completeopt = 'menu,menuone,noselect'
     end,
     opts = {}
 }

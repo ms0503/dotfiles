@@ -25,9 +25,9 @@ return {
         self.setup(opts)
         self.setup.filetype('gitcommit', {
             sources = self.config.sources({
-                { name = 'git' }
-            }, {
                 { name = 'buffer' }
+            }, {
+                { name = 'git' }
             })
         })
         self.setup.cmdline({ '/', '?' }, {
@@ -42,9 +42,9 @@ return {
                 disallow_symbol_nonprefix_matching = false
             },
             sources = self.config.sources({
-                { name = 'path' }
-            }, {
                 { name = 'cmdline' }
+            }, {
+                { name = 'path' }
             })
         })
     end,
