@@ -32,3 +32,8 @@ fi
 [[ -d $HOME/bin ]] && export PATH=$HOME/bin${PATH:+:}$PATH
 [[ -r $HOME/.cargo/env ]] && . "$HOME/.cargo/env"
 [[ -d /usr/lib/dotnet ]] && export DOTNET_ROOT=/usr/lib/dotnet
+export GLFW_IM_MODULE=ibus
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export SDL_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
