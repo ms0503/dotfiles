@@ -34,7 +34,11 @@
       };
     });
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
-    homeConfigurations = forAllSystems (system: home-manager.lib.homeManagerConfiguration {
+    homeConfigurations = forAllSystems (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+      };
+    in home-manager.lib.homeManagerConfiguration {
       extraSpecialArgs = {
         inherit inputs;
         username = "ms0503";
@@ -43,7 +47,11 @@
         {
           home = {
             homeDirectory = "/home/ms0503";
-            packages = with self.outputs.packages.${system}; [
+            packages = (with pkgs; [
+              (writeScriptBin "sync-home" ''
+                nix develop "/home/ms0503/.dotfiles" --command sync-home
+              '')
+            ]) ++ (with self.outputs.packages.${system}; [
               colortool
               generatehex
               getcodepoint
@@ -51,7 +59,7 @@
               matrics
               unicodeescape
               urlencode
-            ];
+            ]);
             stateVersion = "22.11";
             username = "ms0503";
           };

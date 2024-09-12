@@ -13,5 +13,8 @@ My configurations managed by home-manager.
 
 ## Commands
 ```shell
+$ # On first time
 $ nix develop --command sync-home
+$ # Otherwise
+$ sync-home
 ```

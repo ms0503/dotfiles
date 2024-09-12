@@ -13,5 +13,8 @@ home-managerで管理している設定集。
 
 ## コマンド
 ```shell
+$ # 初回のみ
 $ nix develop --command sync-home
+$ # 以降
+$ sync-home
 ```
