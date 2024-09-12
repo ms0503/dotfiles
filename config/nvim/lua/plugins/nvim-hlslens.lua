@@ -1,19 +1,7 @@
 return {
     'kevinhwang91/nvim-hlslens',
-    dependencies = {
-        {
-            'kevinhwang91/nvim-ufo',
-            dependencies = {
-                'kevinhwang91/promise-async'
-            },
-            init = function()
-                local map = vim.keymap.set
-                map('n', 'zM', require('ufo').closeAllFolds)
-                map('n', 'zR', require('ufo').openAllFolds)
-            end
-        }
-    },
-    init = function()
+    config = function()
+        require('hlslens').setup()
         local map = vim.api.nvim_set_keymap
         local opts = {
             noremap = true,

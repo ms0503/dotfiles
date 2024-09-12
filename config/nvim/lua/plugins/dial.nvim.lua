@@ -1,6 +1,6 @@
 return {
     'monaqa/dial.nvim',
-    init = function()
+    config = function()
         local map = vim.keymap.set
         map('n', '<C-a>', function() require('dial.map').manipulate('increment', 'normal') end)
         map('n', '<C-x>', function() require('dial.map').manipulate('decrement', 'normal') end)

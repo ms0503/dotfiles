@@ -1,6 +1,7 @@
 return {
     'nvim-neo-tree/neo-tree.nvim',
-    config = function()
+    config = function(PluginSpec, opts)
+        require('neo-tree').setup(opts)
         local map = vim.api.nvim_set_keymap
         local sign = vim.fn.sign_define
         sign('DiagnosticSignError', {
@@ -21,40 +22,8 @@ return {
         })
         map('n', '\\', ':Neotree reveal<Cr>', { noremap = true })
     end,
-    dependencies = {
-        "3rd/image.nvim",
-        "MunifTanjim/nui.nvim",
-        "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons",
-        {
-            's1n7ax/nvim-window-picker',
-            opts = {
-                filter_rules = {
-                    autoselect_one = true,
-                    bo = {
-                        buftype = {
-                            'quickfix',
-                            'terminal'
-                        },
-                        filetype = {
-                            'neo-tree',
-                            'neo-tree-popup',
-                            'notify'
-                        }
-                    },
-                    include_current_win = false
-                }
-            }
-        }
-    },
     keys = {
-        {
-            '<C-e>',
-            '<Cmd>Neotree<Cr>',
-            mode = {
-                'n'
-            }
-        }
+        { '<C-e>', '<Cmd>Neotree<Cr>', mode = { 'n' } }
     },
     opts = {
         buffers = {

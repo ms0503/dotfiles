@@ -1,6 +1,6 @@
 return {
     'mfussenegger/nvim-lint',
-    init = function()
+    config = function()
         local autocmd = vim.api.nvim_create_autocmd
         autocmd('BufWritePost', {
             callback = function()

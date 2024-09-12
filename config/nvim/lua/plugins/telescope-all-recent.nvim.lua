@@ -1,11 +1,7 @@
 return {
     'prochri/telescope-all-recent.nvim',
-    dependencies = {
-        'kkharji/sqlite.lua',
-        'nvim-telescope/telescope.nvim',
-        'stevearc/dressing.nvim'
-    },
-    init = function()
+    config = function(PluginSpec, opts)
+        require('telescope-all-recent').setup(opts)
         local map = vim.keymap.set
         map('n', '<Leader>f', function() require('telescope').builtins.find_files() end)
     end,

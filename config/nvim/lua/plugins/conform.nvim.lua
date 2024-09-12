@@ -1,6 +1,7 @@
 return {
     'stevearc/conform.nvim',
-    init = function()
+    config = function(PluginSpec, opts)
+        require('conform').setup(opts)
         local autocmd = vim.api.nvim_create_autocmd
         autocmd('BufWritePre', {
             callback = function(args)

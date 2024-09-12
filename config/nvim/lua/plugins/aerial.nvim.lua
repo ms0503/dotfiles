@@ -1,18 +1,7 @@
 return {
     'stevearc/aerial.nvim',
-    dependencies = {
-        'neovim/nvim-lspconfig',
-        'nvim-tree/nvim-web-devicons',
-        'nvim-treesitter/nvim-treesitter'
-    },
     keys = {
-        {
-            '<Leader>a',
-            '<Cmd>AerialToggle!<Cr>',
-            mode = {
-                'n'
-            }
-        }
+        { '<Leader>a', '<Cmd>AerialToggle!<Cr>', mode = { 'n' } }
     },
     opts = {
         on_attach = function(bufnr)

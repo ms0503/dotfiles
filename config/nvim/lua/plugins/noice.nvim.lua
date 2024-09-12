@@ -1,10 +1,5 @@
 return {
     'folke/noice.nvim',
-    dependencies = {
-        'MunifTanjim/nui.nvim',
-        'nvim-treesitter/nvim-treesitter',
-        'rcarriga/nvim-notify'
-    },
     event = 'VeryLazy',
     opts = {
         lsp = {
