@@ -30,7 +30,11 @@ fi
 [[ -d /usr/local/cuda/extras/CUPTI/lib64 ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH${LD_LIBRARY_PATH:+:}/usr/local/cuda/extras/CUPTI/lib64
 [[ -d $HOME/.local/bin ]] && export PATH=$HOME/.local/bin${PATH:+:}$PATH
 [[ -d $HOME/bin ]] && export PATH=$HOME/bin${PATH:+:}$PATH
-[[ -r $HOME/.cargo/env ]] && . "$HOME/.cargo/env"
+if [[ -r $HOME/.cargo/env ]]; then
+    . "$HOME/.cargo/env"
+elif [[ -d $HOME/.cargo/bin ]]; then
+    export PATH=$HOME/.cargo/bin${PATH:+:}$PATH
+fi
 [[ -d /usr/lib/dotnet ]] && export DOTNET_ROOT=/usr/lib/dotnet
 export GLFW_IM_MODULE=ibus
 export GTK_IM_MODULE=fcitx
