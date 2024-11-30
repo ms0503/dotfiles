@@ -56,6 +56,7 @@ return {
         },
         sources = {
             { name = 'buffer' },
+            { group_index = 0, name = 'lazydev' },
             { name = 'nvim_lsp' },
             { name = 'path' },
             { name = 'vsnip' }
