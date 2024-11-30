@@ -1,13 +1,4 @@
 [[ -r $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]] && . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-function set_win_title() {
-    local DIR=$PWD
-    if [[ $DIR =~ $HOME ]]; then
-        DIR=${DIR#$HOME}
-        DIR=~${DIR:+/}$DIR
-    fi
-    printf "]0; $USER@$HOSTNAME:$DIR "
-}
-starship_precmd_user_func=set_win_title
 
 if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
