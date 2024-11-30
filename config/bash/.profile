@@ -22,12 +22,6 @@ if [[ -d $HOME/.pyenv ]]; then
     command -v pyenv &>/dev/null && eval "$(pyenv init -)"
 fi
 
-[[ -d ${XDG_DATA_HOME:-$HOME/.local/share}/JetBrains/Toolbox/scripts ]] && export PATH=${XDG_DATA_HOME:-$HOME/.local/share}/JetBrains/Toolbox/scripts${PATH:+:}$PATH
-[[ -d /usr/local/cuda/extras/CUPTI/lib64 ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH${LD_LIBRARY_PATH:+:}/usr/local/cuda/extras/CUPTI/lib64
-[[ -d $HOME/.local/share/gem/ruby/3.3.0/bin ]] && export PATH=$HOME/.local/share/gem/ruby/3.3.0/bin${PATH:+:}$PATH
-[[ -d $HOME/.local/bin ]] && export PATH=$HOME/.local/bin${PATH:+:}$PATH
-[[ -d $HOME/bin ]] && export PATH=$HOME/bin${PATH:+:}$PATH
-
 if [[ -r $HOME/.cargo/env ]]; then
     . "$HOME/.cargo/env"
 elif [[ -d $HOME/.cargo/bin ]]; then
@@ -35,6 +29,13 @@ elif [[ -d $HOME/.cargo/bin ]]; then
 fi
 
 [[ -d /usr/lib/dotnet ]] && export DOTNET_ROOT=/usr/lib/dotnet
+
+[[ -d ${XDG_DATA_HOME:-$HOME/.local/share}/JetBrains/Toolbox/scripts ]] && export PATH=${XDG_DATA_HOME:-$HOME/.local/share}/JetBrains/Toolbox/scripts${PATH:+:}$PATH
+[[ -d /usr/local/cuda/extras/CUPTI/lib64 ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH${LD_LIBRARY_PATH:+:}/usr/local/cuda/extras/CUPTI/lib64
+[[ -d $HOME/.local/share/gem/ruby/3.3.0/bin ]] && export PATH=$HOME/.local/share/gem/ruby/3.3.0/bin${PATH:+:}$PATH
+[[ -d $HOME/go/bin ]] && export PATH=$HOME/go/bin${PATH:+:}$PATH
+[[ -d $HOME/.local/bin ]] && export PATH=$HOME/.local/bin${PATH:+:}$PATH
+[[ -d $HOME/bin ]] && export PATH=$HOME/bin${PATH:+:}$PATH
 
 export GLFW_IM_MODULE=ibus
 export GTK_IM_MODULE=fcitx
