@@ -16,4 +16,4 @@ in rustPlatform.buildRustPackage {
   src = ./.;
   version = "0.1.0";
 }
-/* vim: set sts=2 sw=2 ts=2 : */
+/* vim: set et sts=2 sw=2 ts=2 : */

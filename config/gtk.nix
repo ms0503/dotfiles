@@ -5,4 +5,4 @@
     "${config.xdg.configHome}/gtk-4.0/settings.ini".source = ./gtk/settings4.ini;
   };
 }
-/* vim: set sts=2 sw=2 ts=2 : */
+/* vim: set et sts=2 sw=2 ts=2 : */
