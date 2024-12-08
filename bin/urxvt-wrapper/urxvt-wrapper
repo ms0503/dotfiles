@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+urxvtc "$@"
+if [[ $? = 2 ]]; then
+    urxvtd -q -o -f
+    urxvtc "$@"
+fi

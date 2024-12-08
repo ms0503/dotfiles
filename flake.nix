@@ -59,6 +59,7 @@
               matrics
               unicodeescape
               urlencode
+              urxvt-wrapper
             ]);
             stateVersion = "22.11";
             username = "ms0503";
