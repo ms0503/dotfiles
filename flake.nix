@@ -81,7 +81,7 @@
           rust-overlay.overlays.default
         ];
       };
-    in import ./bin pkgs);
+    in import ./pkg pkgs);
   };
 }
 /* vim: set et sts=2 sw=2 ts=2 : */
