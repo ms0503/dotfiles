@@ -5,4 +5,4 @@
     source = ./cspell;
   };
 }
-# vim: set et sts=2 sw=2 ts=2 :
+# vim: et sts=2 sw=2 ts=2

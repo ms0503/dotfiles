@@ -1,20 +1,35 @@
 {
   inputs = {
+    fenix = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/fenix";
+    };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    rust-overlay = {
+    hyprland = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:oxalica/rust-overlay";
+      url = "github:hyprwm/Hyprland";
     };
+    hyprsome = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:sopa0/hyprsome";
+    };
+    neovim-custom = {
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = "nixpkgs-stable";
+      };
+      url = "github:ms0503/neovim-custom";
+    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11";
   };
   outputs =
     inputs@{
-      home-manager,
+      fenix,
       nixpkgs,
-      rust-overlay,
       self,
       ...
     }:
@@ -43,56 +58,21 @@
         }
       );
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
-      homeConfigurations = forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs { inherit system; };
-        in
-        home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = {
-            inherit inputs;
-            username = "ms0503";
-          };
-          modules = [
-            {
-              home = {
-                homeDirectory = "/home/ms0503";
-                packages =
-                  (with pkgs; [
-                    (writeScriptBin "sync-home" ''
-                      nix develop "/home/ms0503/.dotfiles" --command sync-home
-                    '')
-                  ])
-                  ++ (with self.outputs.packages.${system}; [
-                    colortool
-                    generatehex
-                    getcodepoint
-                    getemoji
-                    matrics
-                    unicodeescape
-                    urlencode
-                    urxvt-wrapper
-                  ]);
-                stateVersion = "22.11";
-                username = "ms0503";
-              };
-              imports = [ ./config ];
-              programs.home-manager.enable = true;
-            }
-          ];
-          pkgs = import nixpkgs { inherit system; };
-        }
-      );
+      homeConfigurations = (import ./machines inputs).home-manager;
+      nixosConfigurations = (import ./machines inputs).nixos;
       packages = forAllSystems (
         system:
         let
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ rust-overlay.overlays.default ];
+            overlays = [
+              fenix.overlays.default
+            ];
           };
+          myPkgs = self.outputs.packages.${system};
         in
         import ./pkg pkgs
       );
     };
 }
-# vim: set et sts=2 sw=2 ts=2 :
+# vim: et sts=2 sw=2 ts=2

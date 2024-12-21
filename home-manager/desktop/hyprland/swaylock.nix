@@ -1,0 +1,48 @@
+{
+  config,
+  pkgs,
+  theme,
+  ...
+}:
+{
+  home = {
+    file."${config.xdg.configHome}/swaylock/config".text = with theme.colors; ''
+      bs-hl-color=${cyan}
+      clock
+      datestr=%a, %b %d
+      effect-blur=5x5
+      font-size=52
+      font=Noto Sans CJK JP
+      ignore-empty-password
+      indicator-idle-visible
+      indicator-radius=150
+      indicator-thickness=15
+      inside-clear-color=00000000
+      inside-color=00000000
+      inside-ver-color=00000000
+      inside-wrong-color=00000000
+      key-hl-color=${white}
+      layout-bg-color=00000000
+      layout-border-color=00000000
+      layout-text-color=${fg}
+      line-clear-color=00000000
+      line-color=00000000
+      line-ver-color=00000000
+      line-wrong-color=00000000
+      ring-clear-color=${cyan}
+      ring-color=${fg}
+      ring-ver-color=${white}
+      ring-wrong-color=${red}
+      separator-color=00000000
+      text-clear-color=${cyan}
+      text-color=${fg}
+      text-ver-color=${fg}
+      text-wrong-color=${red}
+      timestr=%H:%M:%S
+    '';
+    packages = with pkgs; [
+      swaylock-effects
+    ];
+  };
+}
+# vim: et sts=2 sw=2 ts=2
