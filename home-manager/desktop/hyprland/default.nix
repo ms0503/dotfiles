@@ -4,6 +4,7 @@
     (with pkgs; [
       brightnessctl
       grimblast
+      hyprcursor
       hyprpicker
       pamixer
       playerctl
@@ -11,6 +12,7 @@
       wev
       wf-recorder
       wl-clipboard
+      wlogout
     ])
     ++ [
       inputs.hyprsome.packages.${pkgs.system}.default
@@ -21,7 +23,6 @@
     ./settings.nix
     ./swaylock.nix
     ./waybar.nix
-    ./wlogout.nix
     ./wofi.nix
   ];
   wayland.windowManager.hyprland.enable = true;
