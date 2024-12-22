@@ -1,5 +1,6 @@
 {
   imports = [
+    ./browser.nix
     ./gtk.nix
     ./media.nix
     ./utils.nix
