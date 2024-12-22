@@ -55,13 +55,18 @@ in
       resize_on_border = true;
     };
     input = {
+      accel_profile = "adaptive";
       follow_mouse = 1;
+      kb_layout = "jp";
+      kb_model = "pc105";
+      kb_options = "caps:none";
+      kb_variant = "OADG109A";
+      numlock_by_default = false;
       repeat_delay = 300;
       repeat_rate = 30;
-      sensitivity = lib.mkDefault 0.0;
       touchpad = {
         natural_scroll = true;
-        scroll_factor = lib.mkDefault 0.25;
+        scroll_factor = lib.mkDefault 0.1;
       };
     };
     master.new_status = "slave";
