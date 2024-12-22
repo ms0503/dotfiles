@@ -116,7 +116,7 @@
           };
           myPkgs = self.outputs.packages.${system};
         in
-        import ./pkg pkgs
+        import ./pkgs pkgs
       );
     };
 }
