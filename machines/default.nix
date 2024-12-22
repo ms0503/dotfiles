@@ -16,13 +16,16 @@ let
     }:
     let
       pkgs = import nixpkgs {
-        inherit overlays system;
+        inherit system;
         config = {
           allowUnfree = true;
           permittedInsecurePackages = [
             "electron-25.9.0"
           ];
         };
+        overlays = overlays ++ [
+          self.outputs.overlays.fonts
+        ];
       };
     in
     home-manager.lib.homeManagerConfiguration {
@@ -69,7 +72,14 @@ let
       username,
     }:
     nixpkgs.lib.nixosSystem {
-      inherit modules system;
+      inherit system;
+      modules = modules ++ [
+        {
+          nixpkgs.overlays = [
+            self.outputs.overlays.fonts
+          ];
+        }
+      ];
       specialArgs = {
         inherit hostname inputs username;
       };

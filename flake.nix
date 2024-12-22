@@ -98,6 +98,7 @@
       );
       homeConfigurations = (import ./machines inputs).home-manager;
       nixosConfigurations = (import ./machines inputs).nixos;
+      overlays = import ./overlays;
       packages = forAllSystems (
         system:
         let

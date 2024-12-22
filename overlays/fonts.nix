@@ -11,8 +11,9 @@ let
     inherit (old) meta version;
     installPhase = ''
       local out_dir=$out/share/fonts/opentype/noto-cjk
-      install -Dm444 -t "$out_dir" ${typeface}/Mono/*.otf
-      install -Dm444 -t "$out_dir" ${typeface}/OTC/*.ttc
+      install -Dm444 -t "$out_dir" \
+        "$src/${typeface}/Mono/"*.otf \
+        "$src/${typeface}/OTC/"*.ttc
     '';
     passthru.tests.noto-fonts = nixosTests.noto-fonts;
     phases = [
@@ -25,7 +26,7 @@ let
     owner = "notofonts";
     repo = "noto-cjk";
     rev = "f8d157532fbfaeda587e826d4cd5b21a49186f7c";
-    sha256 = "";
+    sha256 = "GMoqBeDNngsALyDrA1Dp8LZ4ul6vMGa52IXrfIxBKp8=";
     sparseCheckout = [
       "Sans/Mono"
       "Sans/OTC"
@@ -36,7 +37,13 @@ let
     owner = "notofonts";
     repo = "notofonts.github.io";
     rev = "2fa93b7aa9c2e4db0f9412e047e2481dfb1ef1b6";
-    sha256 = "";
+    sha256 = "e3a9yk+VASYdp+/3oqFJ597fS7cDfH8IfpjW/WcxjCk=";
+    sparseCheckout = [
+      "fonts/NotoSans/hinted"
+      "fonts/NotoSans/unhinted"
+      "fonts/NotoSerif/hinted"
+      "fonts/NotoSerif/unhinted"
+    ];
   };
 in
 {
@@ -48,10 +55,10 @@ in
       inherit (prev.noto-fonts) meta version;
       installPhase = ''
         local out_dir=$out/share/fonts/truetype/noto
-        install -Dm444 -t "$out_dir" fonts/NotoSans/unhinted/*/*-${weights}.ttf
-        install -Dm444 -t "$out_dir" fonts/NotoSerif/unhinted/*/*-${weights}.ttf
-        install -Dm444 -t "$out_dir" fonts/NotoSans/hinted/*/*-${weights}.ttf
-        install -Dm444 -t "$out_dir" fonts/NotoSerif/hinted/*/*-${weights}.ttf
+        install -Dm444 -t "$out_dir" "$src/fonts/NotoSans/unhinted/"*/*-${weights}.ttf
+        install -Dm444 -t "$out_dir" "$src/fonts/NotoSerif/unhinted/"*/*-${weights}.ttf
+        install -Dm444 -t "$out_dir" "$src/fonts/NotoSans/hinted/"*/*-${weights}.ttf
+        install -Dm444 -t "$out_dir" "$src/fonts/NotoSerif/hinted/"*/*-${weights}.ttf
       '';
       phases = [
         "installPhase"
