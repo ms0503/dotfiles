@@ -3,6 +3,7 @@
     ./gtk.nix
     ./media.nix
     ./utils.nix
+    ./wezterm
     ./xdg.nix
   ];
 }

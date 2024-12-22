@@ -20,6 +20,8 @@
     ./key-binds.nix
     ./settings.nix
     ./swaylock.nix
+    ./waybar.nix
+    ./wlogout.nix
     ./wofi.nix
   ];
   wayland.windowManager.hyprland.enable = true;

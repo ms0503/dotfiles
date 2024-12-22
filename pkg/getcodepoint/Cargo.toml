@@ -1,7 +1,5 @@
 [package]
-authors = [
-    "Sora Tonami <ms0503@outlook.com>"
-]
+authors = ["Sora Tonami <ms0503@outlook.com>"]
 edition = "2021"
 name = "getcodepoint"
 resolver = "2"

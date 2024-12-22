@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 let
   better-movefocus = pkgs.writeScriptBin "better-movefocus" ''
     if [[ "$(hyprctl activewindow -j | jq .fullscreen)" = "true" ]]; then
@@ -18,11 +18,10 @@ let
       hyprctl dispatch fullscreen
     fi
   '';
-  myPkgs = inputs.self.outputs.packages.${pkgs.system};
   open-terminal = pkgs.writeScriptBin "open-terminal" ''
     window_count=$(hyprctl activeworkspace -j | jq .windows)
     is_fullscreen=$(hyprctl activeworkspace -j | jq .hasfullscreen)
-    hyprctl dispatch exec ${urxvt-wrapper}/bin/urxvt-wrapper
+    hyprctl dispatch exec wezterm
     if (( window_count == 0 )) && [[ $is_fullscreen = "false" ]]; then
       sleep 0.1
       hyprctl dispatch fullscreen
@@ -44,7 +43,6 @@ let
   toggle-monitor = pkgs.writeScriptBin "toggle-monitor" ''
     hyprctl monitors -j | jq 'map(select(.focused | not).activeWorkspace.id)[0]' | xargs hyprctl dispatch workspace
   '';
-  urxvt-wrapper = myPkgs.urxvt-wrapper;
   ws-move = pkgs.writeScriptBin "ws-move" ''
     monitor=$(hyprctl activeworkspace -j | jq .monitorID)
     hyprctl dispatch movetoworkspace $((monitor * 10 + $1))
@@ -58,7 +56,7 @@ in
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     "$subMod" = "ALT";
-    "$term" = "${urxvt-wrapper}/bin/urxvt-wrapper";
+    "$term" = "wezterm";
     bind = [
       "$mainMod CTRL, left, workspace, m-1"
       "$mainMod CTRL, right, workspace, m+1"

@@ -48,7 +48,7 @@ fn main() {
             "-h" | "--help" => opts.help = true,
             "hsl2rgb" => opts.cmd = Some(Cmd::Hsl2Rgb),
             "rgb2hsl" => opts.cmd = Some(Cmd::Rgb2Hsl),
-            _ => opts.args.push(arg)
+            _ => opts.args.push(arg),
         }
     }
     let opts = opts;
@@ -132,34 +132,34 @@ fn hsl2rgb(hsl: Hsl) -> Rgb {
         0..60 => Rgb {
             r: max as u8,
             g: ((hsl.h as f32 / 60f32) * (max - min) + min) as u8,
-            b: min as u8
+            b: min as u8,
         },
         60..120 => Rgb {
             r: (((120i16 - hsl.h) as f32 / 60f32) * (max - min) + min) as u8,
             g: max as u8,
-            b: min as u8
+            b: min as u8,
         },
         120..180 => Rgb {
             r: min as u8,
             g: max as u8,
-            b: (((hsl.h - 120i16) as f32 / 60f32) * (max - min) + min) as u8
+            b: (((hsl.h - 120i16) as f32 / 60f32) * (max - min) + min) as u8,
         },
         180..240 => Rgb {
             r: min as u8,
             g: (((240i16 - hsl.h) as f32 / 60f32) * (max - min) + min) as u8,
-            b: max as u8
+            b: max as u8,
         },
         240..300 => Rgb {
             r: (((hsl.h - 240i16) as f32 / 60f32) * (max - min) + min) as u8,
             g: min as u8,
-            b: max as u8
+            b: max as u8,
         },
         300..360 => Rgb {
             r: max as u8,
             g: min as u8,
-            b: (((360i16 - hsl.h) as f32 / 60f32) * (max - min) + min) as u8
+            b: (((360i16 - hsl.h) as f32 / 60f32) * (max - min) + min) as u8,
         },
-        _ => unreachable!()
+        _ => unreachable!(),
     };
 }
 
@@ -172,9 +172,13 @@ fn rgb2hsl(rgb: Rgb) -> Hsl {
         } else {
             let mut h = match max {
                 _ if max == rgb.r => (60f32 * (rgb.g - rgb.b) as f32 / (max - min) as f32) as i16,
-                _ if max == rgb.g => (60f32 * (rgb.b - rgb.r) as f32 / (max - min) as f32 + 120f32) as i16,
-                _ if max == rgb.b => (60f32 * (rgb.r - rgb.g) as f32 / (max - min) as f32 + 240f32) as i16,
-                _ => unreachable!()
+                _ if max == rgb.g => {
+                    (60f32 * (rgb.b - rgb.r) as f32 / (max - min) as f32 + 120f32) as i16
+                }
+                _ if max == rgb.b => {
+                    (60f32 * (rgb.r - rgb.g) as f32 / (max - min) as f32 + 240f32) as i16
+                }
+                _ => unreachable!(),
             };
             if h < 0i16 {
                 h += 360i16;
@@ -186,33 +190,33 @@ fn rgb2hsl(rgb: Rgb) -> Hsl {
         } else {
             ((max - min) as f32 / (510u16 - max as u16 - min as u16) as f32 * 100f32) as u8
         },
-        l: ((max + min) as f32 / 2f32 / 255f32 * 100f32) as u8
+        l: ((max + min) as f32 / 2f32 / 255f32 * 100f32) as u8,
     };
 }
 
 #[derive(Clone, Copy, Debug, Eq, Ord, PartialEq, PartialOrd)]
 enum Cmd {
     Hsl2Rgb,
-    Rgb2Hsl
+    Rgb2Hsl,
 }
 
 #[derive(Clone, Debug, Default, Eq, Ord, PartialEq, PartialOrd)]
 struct Opts {
     pub cmd: Option<Cmd>,
     pub help: bool,
-    pub args: Vec<String>
+    pub args: Vec<String>,
 }
 
 #[derive(Clone, Copy, Debug, Default, Eq, Ord, PartialEq, PartialOrd)]
 struct Rgb {
     pub r: u8,
     pub g: u8,
-    pub b: u8
+    pub b: u8,
 }
 
 #[derive(Clone, Copy, Debug, Default, Eq, Ord, PartialEq, PartialOrd)]
 struct Hsl {
     pub h: i16,
     pub s: u8,
-    pub l: u8
+    pub l: u8,
 }

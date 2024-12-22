@@ -1,8 +1,8 @@
 inputs@{
   fenix,
   home-manager,
+  nix-ros-overlay,
   nixpkgs,
-  nixpkgs-stable,
   self,
   ...
 }:
@@ -29,10 +29,6 @@ let
       inherit pkgs;
       extraSpecialArgs = {
         inherit inputs username;
-        pkgs-stable = import nixpkgs-stable {
-          inherit overlays system;
-          config.allowUnfree = true;
-        };
         theme = (import ../themes) "tokyonight-night";
       };
       modules = modules ++ [
@@ -81,7 +77,18 @@ let
 in
 {
   home-manager = {
-    mainpc = mkHomeManagerConfiguration {
+    "ms0503@a15" = mkHomeManagerConfiguration {
+      modules = [
+        ./a15/home-manager.nix
+      ];
+      overlays = [
+        fenix.overlays.default
+        nix-ros-overlay.overlays.default
+      ];
+      system = "x86_64-linux";
+      username = "ms0503";
+    };
+    "ms0503@mainpc" = mkHomeManagerConfiguration {
       modules = [
         ./mainpc/home-manager.nix
       ];
@@ -92,6 +99,15 @@ in
       username = "ms0503";
     };
   };
-  nixos = { };
+  nixos = {
+    a15 = mkNixosSystem {
+      hostname = "a15";
+      modules = [
+        ./a15/nixos.nix
+      ];
+      system = "x86_64-linux";
+      username = "ms0503";
+    };
+  };
 }
 # vim: et sts=2 sw=2 ts=2

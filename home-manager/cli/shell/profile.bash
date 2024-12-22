@@ -1,31 +1,3 @@
-[[ -d /usr/share/gem/ruby/3.3.0/bin ]] && export PATH=/usr/share/gem/ruby/3.3.0/bin${PATH:+:}$PATH
-
-if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    HOMEBREW_PREFIX=$(brew --prefix)
-    if [[ -t 1 ]]; then
-        if [[ -r $HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh ]]; then
-            . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
-        else
-            for COMPLETION in "$HOMEBREW_PREFIX/etc/bash_completion.d/"*; do
-                [[ -r $COMPLETION ]] && . "$COMPLETION"
-            done
-        fi
-    fi
-fi
-
-if [[ -d $HOME/.pyenv ]]; then
-    export PYENV_ROOT=$HOME/.pyenv
-    export PATH=$PYENV_ROOT/bin${PATH:+:}$PATH
-    command -v pyenv &>/dev/null && eval "$(pyenv init -)"
-fi
-
-if [[ -r $HOME/.cargo/env ]]; then
-    . "$HOME/.cargo/env"
-elif [[ -d $HOME/.cargo/bin ]]; then
-    export PATH=$HOME/.cargo/bin${PATH:+:}$PATH
-fi
-
 [[ -d /usr/lib/dotnet ]] && export DOTNET_ROOT=/usr/lib/dotnet
 
 [[ ! -d $GOBIN && -d $HOME/go/bin ]] && export GOBIN=$HOME/go/bin

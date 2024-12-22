@@ -34,13 +34,14 @@ in
         fenix.targets.i686-unknown-linux-gnu.latest.rust-std
         fenix.targets.i686-unknown-linux-gnu.stable.rust-std
       ])
+      (lib.hiPrio nodejs-slim)
+      (lib.hiPrio python312)
+      (lib.hiPrio rust-analyzer-nightly)
       deno
       gcc
       ghc
       jdk17-wrapped
       jdk8-wrapped
-      nodejs
-      python312
       zig
     ])
     ++ (with pkgs.nodePackages; [

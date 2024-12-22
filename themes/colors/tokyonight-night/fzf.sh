@@ -1,3 +1,4 @@
+# shellcheck disable=SC2148
 export FZF_DEFAULT_OPTS="\
     $FZF_DEFAULT_OPTS \
     --ansi \

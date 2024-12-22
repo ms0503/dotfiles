@@ -1,7 +1,7 @@
 {
   rustPlatform,
   openssl,
-  pkg-config
+  pkg-config,
 }:
 rustPlatform.buildRustPackage {
   buildInputs = [ openssl ];

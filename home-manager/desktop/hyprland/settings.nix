@@ -31,7 +31,6 @@ in
     };
     env = [
       "ELECTRON_OZONE_PLATFORM_HINT,auto"
-      "GTK_IM_MODULE,fcitx"
       "LIBVA_DRIVER_NAME,nvidia"
       "NVD_BACKEND,direct"
       "QT_IM_MODULE,fcitx"
@@ -39,6 +38,9 @@ in
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
     ];
     exec-once = [
+      "blueman-applet"
+      "nm-applet"
+      "waybar"
       "swww init && swww img ~/.config/hypr/wallpaper/bg.jpg"
       "fcitx5 -D"
       "discord-canary --start-minimized"
@@ -56,7 +58,11 @@ in
       follow_mouse = 1;
       repeat_delay = 300;
       repeat_rate = 30;
-      sensitivity = lib.mkDefault (-1.0);
+      sensitivity = lib.mkDefault 0.0;
+      touchpad = {
+        natural_scroll = true;
+        scroll_factor = lib.mkDefault 0.25;
+      };
     };
     master.new_status = "slave";
     misc.disable_hyprland_logo = true;

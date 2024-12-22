@@ -6,7 +6,7 @@
     };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
     };
     hyprland = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,21 +16,49 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:sopa0/hyprsome";
     };
+    lanzaboote = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/lanzaboote";
+    };
     neovim-custom = {
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "nixpkgs-stable";
+        nixpkgs-stable.follows = "nixpkgs";
       };
       url = "github:ms0503/neovim-custom";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/release-24.11";
+    nix-ros-overlay = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:lopsided98/nix-ros-overlay";
+    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    treefmt-nix = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:numtide/treefmt-nix";
+    };
+    wezterm = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:wez/wezterm?dir=nix";
+    };
+    xremap = {
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        xremap.follows = "xremap-src";
+      };
+      url = "github:xremap/nix-flake";
+    };
+    xremap-src = {
+      flake = false;
+      url = "github:wistoft/xremap/allow-keymap-actions-with-no-action";
+    };
   };
   outputs =
     inputs@{
       fenix,
       nixpkgs,
       self,
+      treefmt-nix,
       ...
     }:
     let
@@ -43,6 +71,16 @@
       forAllSystems = nixpkgs.lib.genAttrs allSystems;
     in
     {
+      checks = forAllSystems (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+          treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+        in
+        {
+          formatting = treefmtEval.config.build.check self;
+        }
+      );
       devShells = forAllSystems (
         system:
         let
@@ -57,7 +95,14 @@
           default = pkgs.mkShell { packages = scripts; };
         }
       );
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = forAllSystems (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+          treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+        in
+        treefmtEval.config.build.wrapper
+      );
       homeConfigurations = (import ./machines inputs).home-manager;
       nixosConfigurations = (import ./machines inputs).nixos;
       packages = forAllSystems (

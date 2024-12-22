@@ -5,20 +5,13 @@
     font = {
       name = "Noto Sans CJK JP";
       package = pkgs.noto-fonts-cjk-sans;
-      size = 11;
+      size = 10;
     };
     gtk2.extraConfig = ''
       gtk-application-prefer-dark-theme=true
-      gtk-im-module="fcitx"
     '';
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-      gtk-im-module = "fcitx";
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-      gtk-im-module = "fcitx";
-    };
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
     iconTheme = {
       name = "Yaru-dark";
       package = pkgs.yaru-theme;
