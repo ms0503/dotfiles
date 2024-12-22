@@ -42,15 +42,8 @@
       url = "github:wez/wezterm?dir=nix";
     };
     xremap = {
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        xremap.follows = "xremap-src";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:xremap/nix-flake";
-    };
-    xremap-src = {
-      flake = false;
-      url = "github:wistoft/xremap/allow-keymap-actions-with-no-action";
     };
   };
   outputs =

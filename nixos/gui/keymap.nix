@@ -11,12 +11,7 @@
   services.xremap = {
     config = {
       keymap = [ ];
-      modmap = [
-        {
-          name = "CapsLock? I don't know. Did they move here recently?";
-          remap.CapsLock = [ ];
-        }
-      ];
+      modmap = [ ];
     };
     serviceMode = "user";
     userName = username;
