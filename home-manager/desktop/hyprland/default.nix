@@ -25,6 +25,10 @@
     ./waybar.nix
     ./wofi.nix
   ];
-  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemd.enable = true;
+    xwayland.enable = true;
+  };
 }
 # vim: et sts=2 sw=2 ts=2
