@@ -192,6 +192,7 @@ stdenv.mkDerivation (finalAttrs: {
       --set CHROME_WRAPPER "microsoft-edge-$dist" \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}" \
       --add-flags "--simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT'" \
+      --add-flags "\''${WAYLAND_DISPLAY:+--enable-wayland-ime}" \
       --add-flags ${lib.escapeShellArg commandLineArgs}
 
     # Make sure that libGL and libvulkan are found by ANGLE libGLESv2.so
