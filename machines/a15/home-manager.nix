@@ -22,7 +22,7 @@ in
   wayland.windowManager.hyprland.settings = {
     input.kb_layout = "jp";
     monitor = [
-      "DP-1, 1920x1080@144, 0x0, 1"
+      "desc:Chimei Innolux Corporation 0x1521, 1920x1080@144, 0x0, 1"
     ];
     workspace = [
       "1,monitor:DP-1"
