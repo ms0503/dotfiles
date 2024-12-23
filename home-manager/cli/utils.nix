@@ -1,5 +1,6 @@
 { inputs, pkgs, ... }:
 let
+  myPkgs = inputs.self.outputs.packages.${pkgs.system};
   tokyo-night-yazi = pkgs.stdenvNoCC.mkDerivation {
     installPhase = ''
       cd "$src"
@@ -25,7 +26,7 @@ let
   };
 in
 {
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     du-dust
     duf
     fx
@@ -44,7 +45,9 @@ in
     unrar
     unzip
     zip
-  ];
+  ]) ++ (with myPkgs; [
+    zifu
+  ]);
   programs = {
     bat = {
       enable = true;
