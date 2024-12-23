@@ -1,7 +1,18 @@
 { pkgs, ... }:
+let
+  discord-canary-wayland = pkgs.discord-canary.overrideAttrs (
+    _: _: {
+      preInstall = ''
+        gappsWrapperArgs+=(
+          --add-flags "--enable-wayland-ime"
+        )
+      '';
+    }
+  );
+in
 {
   home.packages = with pkgs; [
-    discord-canary
+    discord-canary-wayland
     networkmanagerapplet
     slack
     zoom-us
