@@ -2,5 +2,5 @@ This directory contains external dependencies that cannot be provided by Nix alo
 
 # File List
 
-- [Milk\_Cursor.zip](https://466.booth.pm/items/4046750) (require pixiv account)
-- [Milk\_Cursor\_追加用.zip](https://466.booth.pm/items/4046750) (require pixiv account)
+- [Milk_Cursor.zip](https://466.booth.pm/items/4046750) (require pixiv account)
+- [Milk_Cursor_追加用.zip](https://466.booth.pm/items/4046750) (require pixiv account)

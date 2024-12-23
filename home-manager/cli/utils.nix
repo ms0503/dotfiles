@@ -26,28 +26,30 @@ let
   };
 in
 {
-  home.packages = (with pkgs; [
-    du-dust
-    duf
-    fx
-    ghq
-    imagemagick
-    killall
-    lazydocker
-    nh
-    nurl
-    procs
-    silicon
-    sl
-    tokei
-    typos
-    unar
-    unrar
-    unzip
-    zip
-  ]) ++ (with myPkgs; [
-    zifu
-  ]);
+  home.packages =
+    (with pkgs; [
+      du-dust
+      duf
+      fx
+      ghq
+      imagemagick
+      killall
+      lazydocker
+      nh
+      nurl
+      procs
+      silicon
+      sl
+      tokei
+      typos
+      unar
+      unrar
+      unzip
+      zip
+    ])
+    ++ (with myPkgs; [
+      zifu
+    ]);
   programs = {
     bat = {
       enable = true;
