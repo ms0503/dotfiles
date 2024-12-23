@@ -2,21 +2,26 @@
 
 - [English](README.md)
 
-home-managerで管理している設定集。
+Nix flakesで管理している環境設定。
 
 # 使い方
 
-## 要件
+## 必要なもの
 
-- Nix (下記のextra-experimental-feturesが有効であること)
-- `nix-command`
-- `flakes`
+- Nix (下記のexperimental-featuresが必要)
+  - `nix-command`
+  - `flakes`
+- `nh`
 
 ## コマンド
 
 ```shell
-$ # 初回のみ
-$ nix develop --command sync-home
-$ # 以降
-$ sync-home
+$ # OSの同期(NixOSのみ)
+$ nh os switch .
+$ # ホームの同期
+$ nh home switch .
 ```
+
+# 関連ページ
+
+- [asa1984/dotfiles](https://github.com/asa1984/dotfiles) (~~パクっ...~~参考元)
