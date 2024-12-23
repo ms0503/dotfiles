@@ -37,15 +37,7 @@ in
       "XMODIFIERS,@im=fcitx"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
     ];
-    exec-once = [
-      "blueman-applet"
-      "nm-applet"
-      "waybar"
-      "swww init && swww img ~/.config/hypr/wallpaper/bg.jpg"
-      "fcitx5 -D"
-      "discord-canary --start-minimized"
-      "steam -silent"
-    ];
+    exec-once = import ./autostart.nix;
     general = {
       "col.active_border" = "rgb(${colors.blue})";
       "col.inactive_border" = "rgb(${colors.bg})";
