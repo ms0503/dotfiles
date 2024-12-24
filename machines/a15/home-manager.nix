@@ -41,16 +41,16 @@ in
       "desc:Chimei Innolux Corporation 0x1521, 1920x1080@144, 0x0, 1"
     ];
     workspace = [
-      "1,monitor:DP-1"
-      "2,monitor:DP-1"
-      "3,monitor:DP-1"
-      "4,monitor:DP-1"
-      "6,monitor:DP-1"
-      "6,monitor:DP-1"
-      "7,monitor:DP-1"
-      "8,monitor:DP-1"
-      "9,monitor:DP-1"
-      "10,monitor:DP-1"
+      "1,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "2,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "3,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "4,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "6,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "6,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "7,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "8,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "9,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "10,monitor:desc:Chimei Innolux Corporation 0x1521"
     ];
   };
 }
