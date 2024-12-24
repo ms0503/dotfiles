@@ -42,12 +42,18 @@ in
       ghc
       jdk17-wrapped
       jdk8-wrapped
+      openssl
       zig
     ])
     ++ (with pkgs.nodePackages; [
       npm
       pnpm
       yarn
+    ])
+    ++ (with pkgs.python312Packages; [
+      build
+      setuptools
+      wheel
     ]);
   programs = {
     bun.enable = true;
