@@ -3,9 +3,25 @@
   home.packages = with pkgs; [ ];
   imports = [
     ../../home-manager/cli
-    ../../home-manager/gui
     ../../home-manager/desktop/hyprland
+    ../../home-manager/gui
   ];
+  programs.ssh.extraConfig = ''
+    Host aur aur.archlinux.org
+      HostName aur.archlinux.org
+      IdentityFile ~/.ssh/aur
+      User aur
+
+    Host github github.com
+      HostName github.com
+      IdentityFile ~/.ssh/github
+      User git
+
+    Host a15
+      HostName 192.168.68.60
+      IdentityFile ~/.ssh/a15
+      User ms0503
+  '';
   wayland.windowManager.hyprland.settings = {
     input.kb_layout = "jp";
     monitor = [

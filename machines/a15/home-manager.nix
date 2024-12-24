@@ -19,24 +19,22 @@ in
     ../../home-manager/desktop/hyprland
     ../../home-manager/gui
   ];
-  programs.ssh = {
-    extraConfig = ''
-      Host aur aur.archlinux.org
-        HostName aur.archlinux.org
-        IdentityFile ~/.ssh/aur
-        User aur
+  programs.ssh.extraConfig = ''
+    Host aur aur.archlinux.org
+      HostName aur.archlinux.org
+      IdentityFile ~/.ssh/aur
+      User aur
 
-      Host github github.com
-        HostName github.com
-        IdentityFile ~/.ssh/github
-        User git
+    Host github github.com
+      HostName github.com
+      IdentityFile ~/.ssh/github
+      User git
 
-      Host mainpc
-        HostName 192.168.68.55
-        IdentityFile ~/.ssh/mainpc
-        User ms0503
-    '';
-  };
+    Host mainpc
+      HostName 192.168.68.55
+      IdentityFile ~/.ssh/mainpc
+      User ms0503
+  '';
   wayland.windowManager.hyprland.settings = {
     input.kb_layout = "jp";
     monitor = [
