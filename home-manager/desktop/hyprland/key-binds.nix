@@ -92,7 +92,7 @@ in
       "$mainMod, Return, exec, ${open-terminal}/bin/open-terminal"
       "$mainMod, Tab, exec, ${toggle-monitor}/bin/toggle-monitor"
       "$mainMod, down, exec, ${better-movefocus}/bin/better-movefocus d"
-      "$mainMod, l, exec, swaylock --image ~/.config/hypr/wallpaper/lock.jpg"
+      "$mainMod, l, exec, swaylock-fancy -d"
       "$mainMod, left, exec, ${better-movefocus}/bin/better-movefocus l"
       "$mainMod, mouse_down, workspace, m+1"
       "$mainMod, mouse_up, workspace, m-1"
@@ -110,6 +110,7 @@ in
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioPrev, exec, playerctl previous"
+      ", switch:on:Lid Switch, exec, swaylock-fancy -d"
     ];
     bindle = [
       ", XF86AudioLowerVolume, exec, pamixer -d 10"

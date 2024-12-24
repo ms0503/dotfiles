@@ -1,6 +1,7 @@
 {
   imports = [
     ./i18n.nix
+    ./logind.nix
     ./network.nix
     ./nix.nix
     ./security.nix

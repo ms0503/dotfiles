@@ -6,16 +6,30 @@
 }:
 {
   boot = {
+    extraModprobeConfig = ''
+      options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp
+    '';
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader.efi.canTouchEfiVariables = true;
   };
-  hardware.nvidia = {
-    modesetting.enable = true;
-    nvidiaSettings = true;
-    open = false;
-    prime = {
-      amdgpuBusId = "PCI:54:0:0";
-      nvidiaBusId = "PCI:1:0:0";
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        nvidia-vaapi-driver
+        vaapiVdpau
+      ];
+    };
+    nvidia = {
+      modesetting.enable = true;
+      nvidiaSettings = true;
+      open = false;
+      powerManagement.enable = true;
+      prime = {
+        amdgpuBusId = "PCI:54:0:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
   };
   imports =
@@ -37,7 +51,8 @@
       common-cpu-amd
       common-cpu-amd-pstate
       common-cpu-amd-raphael-igpu
-      common-gpu-nvidia
+      common-cpu-amd-zenpower
+      common-gpu-nvidia-sync
       common-hidpi
       common-pc-laptop
       common-pc-ssd

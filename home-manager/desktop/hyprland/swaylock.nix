@@ -41,7 +41,7 @@
       timestr=%H:%M:%S
     '';
     packages = with pkgs; [
-      swaylock-effects
+      swaylock-fancy
     ];
   };
 }

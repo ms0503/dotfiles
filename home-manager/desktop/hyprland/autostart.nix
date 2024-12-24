@@ -1,4 +1,11 @@
+{ writeScriptBin, ... }:
+let
+  sleep = writeScriptBin "sleep.sh" ''
+    swayidle -w before-sleep 'swaylock -f -c 000000' &
+  '';
+in
 [
+  "${sleep}/bin/sleep.sh"
   "blueman-applet"
   "nm-applet"
   "waybar"
