@@ -5,6 +5,7 @@
     ./network.nix
     ./nix.nix
     ./security.nix
+    ./ssh.nix
     ./udisks2.nix
     ./virt.nix
   ];
