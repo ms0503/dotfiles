@@ -1,7 +1,8 @@
+{ lib, ... }:
 {
   programs.ssh = {
     enable = true;
-    extraConfig = builtins.readFile ./config;
+    extraConfig = lib.mkDefault "";
     serverAliveCountMax = 5;
     serverAliveInterval = 60;
   };

@@ -5,7 +5,7 @@
     ./nix.nix
     ./nvim.nix
     ./shell
-    ./ssh
+    ./ssh.nix
     ./utils.nix
     ./vcs.nix
   ];
