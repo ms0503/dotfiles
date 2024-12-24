@@ -25,7 +25,7 @@
   wayland.windowManager.hyprland.settings = {
     input.kb_layout = "jp";
     monitor = [
-      "desc:Hewlett Packard HP ZR2440w CN42260H0R, 1920x1200@60, 1920x0, 1"
+      "desc:Hewlett Packard HP ZR2440w CN42260H0R, 1920x1200@60, 1920x-120, 1"
       "desc:I-O Data Device Inc LCD-MF224ED GGF504807255, 1920x1080@60, 0x0, 1"
     ];
     workspace = [
