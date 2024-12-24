@@ -12,6 +12,9 @@
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader.efi.canTouchEfiVariables = true;
   };
+  environment.systemPackages = with pkgs; [
+    openrgb-with-all-plugins
+  ];
   hardware = {
     graphics = {
       enable = true;
@@ -71,6 +74,7 @@
         user = username;
       };
     };
+    hardware.openrgb.enable = true;
     power-profiles-daemon.enable = true;
   };
   system.stateVersion = "24.11";
