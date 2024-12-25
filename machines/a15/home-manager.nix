@@ -53,6 +53,9 @@ in
       ", switch:off:Lid Switch, exec, ${lid-switch-handler}/bin/lid-switch-handler off"
       ", switch:on:Lid Switch, exec, ${lid-switch-handler}/bin/lid-switch-handler on"
     ];
+    exec-once = [
+      "openrgb"
+    ];
     input.kb_layout = "jp";
     monitor = [
       "desc:Chimei Innolux Corporation 0x1521, 1920x1080@144, 0x0, 1"
