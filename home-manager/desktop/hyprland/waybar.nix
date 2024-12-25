@@ -1,7 +1,4 @@
 { theme, ... }:
-let
-  colors = theme.colors;
-in
 {
   programs.waybar = {
     enable = true;
@@ -122,26 +119,26 @@ in
         tray.icon-size = 20;
       };
     };
-    style = ''
+    style = with theme.xcolors; ''
       * {
         font-family: monospace;
         font-size: 12px;
       }
 
       window#waybar {
-        background: #${colors.bg};
-        color: #${colors.fg};
+        background: ${bg};
+        color: ${fg};
       }
 
       #custom-left-arrow-dark,
       #custom-right-arrow-dark {
-        color: #${colors.black};
+        color: ${black};
       }
 
       #custom-left-arrow-light,
       #custom-right-arrow-light {
-        background: #${colors.black};
-        color: #${colors.bg};
+        background: ${black};
+        color: ${bg};
       }
 
       #battery,
@@ -154,41 +151,41 @@ in
       #pulseaudio,
       #tray,
       #workspaces {
-        background: #${colors.black};
+        background: ${black};
       }
 
       #battery {
-        color: #${colors.green};
+        color: ${green};
       }
 
       #cpu {
-        color: #${colors.purple};
+        color: ${purple};
       }
 
       #disk {
-        color: #${colors.magenta};
+        color: ${magenta};
       }
 
       #memory {
-        color: #${colors.teal};
+        color: ${teal};
       }
 
       #pulseaudio {
-        color: #${colors.blue};
+        color: ${blue};
       }
 
       #workspaces button {
-        color: #${colors.fg};
+        color: ${fg};
         padding: 0 4px;
       }
 
       #workspaces button.focused {
-        color: #${colors.blue};
+        color: ${blue};
       }
 
       #workspaces button:hover {
-        background: #${colors.black};
-        border: #${colors.black};
+        background: ${black};
+        border: ${black};
         box-shadow: inherit;
         padding: 0 4px;
         text-shadow: inherit;

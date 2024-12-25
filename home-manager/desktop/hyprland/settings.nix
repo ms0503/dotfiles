@@ -4,10 +4,7 @@
   theme,
   ...
 }:
-let
-  colors = theme.colors;
-in
-{
+with theme; {
   wayland.windowManager.hyprland.settings = {
     animations = {
       animation = [
@@ -42,7 +39,7 @@ in
       "XMODIFIERS,@im=fcitx"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
     ];
-    exec-once = import ./autostart.nix pkgs;
+    exec-once = import ./autostart.nix pkgs theme;
     general = {
       "col.active_border" = "rgb(${colors.blue})";
       "col.inactive_border" = "rgb(${colors.bg})";

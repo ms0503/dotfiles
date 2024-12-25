@@ -1,10 +1,12 @@
-{ writeScriptBin, ... }:
+{ writeScriptBin, ... }: { colors, ... }:
 let
   sleep = writeScriptBin "sleep.sh" ''
-    swayidle -w before-sleep 'swaylock -f -c 000000' &
+    swayidle -w before-sleep 'swaylock -f -c ${colors.bg}' &
   '';
 in
 [
+  "dbus-update-activation-environment --systemd --all"
+  "systemctl --user start hyprland-session.target"
   "${sleep}/bin/sleep.sh"
   "blueman-applet"
   "nm-applet"

@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  theme,
+  ...
+}:
 let
   better-movefocus = pkgs.writeScriptBin "better-movefocus" ''
     if [[ "$(hyprctl activewindow -j | jq .fullscreen)" = "true" ]]; then
@@ -92,7 +96,7 @@ in
       "$mainMod, Return, exec, ${open-terminal}/bin/open-terminal"
       "$mainMod, Tab, exec, ${toggle-monitor}/bin/toggle-monitor"
       "$mainMod, down, exec, ${better-movefocus}/bin/better-movefocus d"
-      "$mainMod, l, exec, swaylock-fancy -d"
+      "$mainMod, l, exec, swaylock -f -c ${theme.colors.bg}"
       "$mainMod, left, exec, ${better-movefocus}/bin/better-movefocus l"
       "$mainMod, mouse_down, workspace, m+1"
       "$mainMod, mouse_up, workspace, m-1"

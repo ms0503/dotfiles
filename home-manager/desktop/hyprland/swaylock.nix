@@ -4,9 +4,9 @@
   theme,
   ...
 }:
-{
+with theme; {
   home = {
-    file."${config.xdg.configHome}/swaylock/config".text = with theme.colors; ''
+    file."${config.xdg.configHome}/swaylock/config".text = with colors; ''
       bs-hl-color=${cyan}
       clock
       datestr=%a, %b %d
@@ -41,8 +41,18 @@
       timestr=%H:%M:%S
     '';
     packages = with pkgs; [
-      swaylock-fancy
+      swaylock
     ];
+  };
+  systemd.user.services.lock-on-suspend = {
+    Install.WantedBy = [
+      "pre-sleep.target"
+    ];
+    Service = {
+      ExecStart = "swaylock -f -c ${colors.bg}";
+      Type = "oneshot";
+    };
+    Unit.Description = "lock on suspend";
   };
 }
 # vim: et sts=2 sw=2 ts=2
