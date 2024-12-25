@@ -57,6 +57,7 @@
       common-pc-laptop
       common-pc-ssd
     ]);
+  security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
     asusd = {
       enable = true;
