@@ -110,7 +110,6 @@ in
       ", XF86AudioNext, exec, playerctl next"
       ", XF86AudioPlay, exec, playerctl play-pause"
       ", XF86AudioPrev, exec, playerctl previous"
-      ", switch:on:Lid Switch, exec, swaylock-fancy -d"
     ];
     bindle = [
       ", XF86AudioLowerVolume, exec, pamixer -d 10"

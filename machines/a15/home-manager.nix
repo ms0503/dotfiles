@@ -1,5 +1,18 @@
 { pkgs, ... }:
 let
+  lid-switch-handler = pkgs.writeScriptBin "lid-switch-handler" ''
+    case "$1" in
+      off)
+        hyprctl dispatch dpms on
+        ;;
+      on)
+        hyprctl dispatch dpms off
+        systemctl suspend
+        ;;
+      *)
+        ;;
+    esac
+  '';
   rosCodename = "humble";
 in
 {
@@ -36,6 +49,10 @@ in
       User ms0503
   '';
   wayland.windowManager.hyprland.settings = {
+    bindl = [
+      ", switch:off:Lid Switch, exec, ${lid-switch-handler}/bin/lid-switch-handler off"
+      ", switch:on:Lid Switch, exec, ${lid-switch-handler}/bin/lid-switch-handler on"
+    ];
     input.kb_layout = "jp";
     monitor = [
       "desc:Chimei Innolux Corporation 0x1521, 1920x1080@144, 0x0, 1"
