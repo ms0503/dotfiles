@@ -11,6 +11,7 @@
     '';
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader.efi.canTouchEfiVariables = true;
+    resumeDevice = "/dev/disk/by-uuid/0a943e07-390e-4810-a528-d1845c862246";
   };
   environment.systemPackages = with pkgs; [
     openrgb-with-all-plugins
@@ -28,11 +29,7 @@
       modesetting.enable = true;
       nvidiaSettings = true;
       open = false;
-      powerManagement.enable = true;
-      prime = {
-        amdgpuBusId = "PCI:54:0:0";
-        nvidiaBusId = "PCI:1:0:0";
-      };
+      powerManagement.enable = false;
     };
   };
   imports =
@@ -55,7 +52,7 @@
       common-cpu-amd-pstate
       common-cpu-amd-raphael-igpu
       common-cpu-amd-zenpower
-      common-gpu-nvidia-sync
+      common-gpu-nvidia-nonprime
       common-hidpi
       common-pc-laptop
       common-pc-ssd
@@ -77,6 +74,11 @@
     hardware.openrgb.enable = true;
     power-profiles-daemon.enable = true;
   };
+  swapDevices = [
+    {
+      device = "/dev/disk/by-uuid/0a943e07-390e-4810-a528-d1845c862246";
+    }
+  ];
   system.stateVersion = "24.11";
   users.users."${username}" = {
     extraGroups = [
