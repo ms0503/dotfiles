@@ -2,6 +2,7 @@
   imports = [
     ./devel.nix
     ./direnv.nix
+    ./lib.nix
     ./nix.nix
     ./nvim.nix
     ./shell

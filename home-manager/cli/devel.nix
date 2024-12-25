@@ -42,7 +42,6 @@ in
       ghc
       jdk17-wrapped
       jdk8-wrapped
-      openssl
       zig
     ])
     ++ (with pkgs.nodePackages; [
