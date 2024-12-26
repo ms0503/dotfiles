@@ -19,6 +19,7 @@
     ];
   imports = [
     ./dunst.nix
+    ./gestures.nix
     ./key-binds.nix
     ./settings.nix
     ./swaylock.nix

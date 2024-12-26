@@ -1,6 +1,7 @@
 {
   imports = [
     ./fwupd.nix
+    ./gestures.nix
     ./i18n.nix
     ./network.nix
     ./nix.nix

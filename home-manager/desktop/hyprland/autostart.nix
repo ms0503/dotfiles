@@ -1,7 +1,11 @@
 { writeScriptBin, ... }: { colors, ... }:
 let
   sleep = writeScriptBin "sleep.sh" ''
-    swayidle -w before-sleep 'swaylock -f -c ${colors.bg}' &
+    swayidle -w \
+      after-resume 'systemctl --user start libinput-gestures' \
+      before-sleep 'systemctl --user stop libinput-gestures' \
+      before-sleep 'swaylock -f -c ${colors.bg}' \
+      &
   '';
 in
 [
