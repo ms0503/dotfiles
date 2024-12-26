@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    libfido2
+  ];
   programs.gnupg = {
     agent = {
       enable = true;
