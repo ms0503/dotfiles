@@ -35,8 +35,6 @@ with theme; {
       "ELECTRON_OZONE_PLATFORM_HINT,auto"
       "LIBVA_DRIVER_NAME,nvidia"
       "NVD_BACKEND,direct"
-      "QT_IM_MODULE,fcitx"
-      "XMODIFIERS,@im=fcitx"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
     ];
     exec-once = import ./autostart.nix pkgs theme;

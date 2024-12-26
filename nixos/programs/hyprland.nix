@@ -1,5 +1,6 @@
 {
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  i18n.inputMethod.fcitx5.waylandFrontend = true;
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
