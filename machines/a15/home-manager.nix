@@ -53,7 +53,7 @@ in
       ", switch:on:Lid Switch, exec, ${lid-switch-handler}/bin/lid-switch-handler on"
     ];
     exec-once = [
-      "openrgb"
+      "openrgb --startminimized"
     ];
     input.kb_layout = "jp";
     monitor = [
