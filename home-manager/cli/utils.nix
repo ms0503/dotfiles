@@ -45,6 +45,7 @@ in
       unar
       unrar
       unzip
+      zenn-cli
       zip
     ])
     ++ (with myPkgs; [
