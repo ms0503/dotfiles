@@ -28,6 +28,8 @@ in
 {
   home.packages =
     (with pkgs; [
+      aria2
+      curl
       du-dust
       duf
       fx
@@ -45,6 +47,7 @@ in
       unar
       unrar
       unzip
+      wget
       zenn-cli
       zip
     ])
