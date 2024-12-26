@@ -85,7 +85,7 @@
       devShells = forAllSystems (
         system:
         let
-          packages = with pkgs; [];
+          packages = with pkgs; [ ];
           pkgs = import nixpkgs { inherit system; };
         in
         {

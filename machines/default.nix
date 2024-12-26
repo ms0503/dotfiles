@@ -42,15 +42,18 @@ let
           home = {
             inherit username;
             homeDirectory = "/home/${username}";
-            packages = (with misc-tools.packages.${system}; [
-              colortool
-              generatehex
-              getcodepoint
-              getemoji
-              matrics
-              unicodeescape
-              urlencode
-            ]);
+            packages = (
+              with misc-tools.packages.${system};
+              [
+                colortool
+                generatehex
+                getcodepoint
+                getemoji
+                matrics
+                unicodeescape
+                urlencode
+              ]
+            );
             stateVersion = "24.11";
           };
           programs = {

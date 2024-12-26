@@ -4,7 +4,8 @@
   theme,
   ...
 }:
-with theme; {
+with theme;
+{
   wayland.windowManager.hyprland.settings = {
     animations = {
       animation = [

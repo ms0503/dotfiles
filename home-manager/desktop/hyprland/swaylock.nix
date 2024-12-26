@@ -4,7 +4,8 @@
   theme,
   ...
 }:
-with theme; {
+with theme;
+{
   home = {
     file."${config.xdg.configHome}/swaylock/config".text = with colors; ''
       bs-hl-color=${cyan}

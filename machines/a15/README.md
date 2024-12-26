@@ -1,5 +1,4 @@
-ASUS TUF GAMING A15
-===================
+# ASUS TUF GAMING A15
 
 - Model: FA506NCR-R7R3050T
 - CPU:

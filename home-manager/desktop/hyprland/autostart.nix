@@ -1,4 +1,5 @@
-{ writeScriptBin, ... }: { colors, ... }:
+{ writeScriptBin, ... }:
+{ colors, ... }:
 let
   sleep = writeScriptBin "sleep.sh" ''
     swayidle -w \
