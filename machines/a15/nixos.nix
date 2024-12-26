@@ -38,14 +38,6 @@
     [
       ../../nixos/core
       ../../nixos/gui
-      ../../nixos/programs/bt.nix
-      ../../nixos/programs/hyprland.nix
-      ../../nixos/programs/media.nix
-      ../../nixos/programs/nh.nix
-      ../../nixos/programs/nix-ld.nix
-      ../../nixos/programs/secureboot.nix
-      ../../nixos/programs/shell.nix
-      ../../nixos/programs/steam.nix
       ./hardware-configuration.nix
     ]
     ++ (with inputs.nixos-hardware.nixosModules; [

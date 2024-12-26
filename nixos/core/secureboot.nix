@@ -1,10 +1,11 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
   ...
 }:
-{
+lib.mkIf config.ms0503.secureboot.enable {
   boot = {
     lanzaboote = {
       enable = true;
@@ -14,9 +15,6 @@
   };
   environment.systemPackages = with pkgs; [
     sbctl
-  ];
-  imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
   ];
 }
 # vim: et sts=2 sw=2 ts=2

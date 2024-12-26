@@ -1,6 +1,7 @@
 inputs@{
   fenix,
   home-manager,
+  lanzaboote,
   nix-ros-overlay,
   nixpkgs,
   self,
@@ -34,27 +35,21 @@ let
         inherit inputs username;
         theme = (import ../themes) "tokyonight-night";
       };
-      modules = modules ++ [
+      modules = [
+        (import ../options.nix)
         {
           home = {
-            homeDirectory = "/home/${username}";
             inherit username;
-            packages =
-              (with pkgs; [
-                (writeScriptBin "sync-home" ''
-                  nix develop "/home/${username}/.dotfiles" --command sync-home
-                '')
-              ])
-              ++ (with self.outputs.packages.${system}; [
-                colortool
-                generatehex
-                getcodepoint
-                getemoji
-                matrics
-                unicodeescape
-                urlencode
-                urxvt-wrapper
-              ]);
+            homeDirectory = "/home/${username}";
+            packages = (with self.outputs.packages.${system}; [
+              colortool
+              generatehex
+              getcodepoint
+              getemoji
+              matrics
+              unicodeescape
+              urlencode
+            ]);
             stateVersion = "24.11";
           };
           programs = {
@@ -62,7 +57,8 @@ let
             git.enable = true;
           };
         }
-      ];
+        ../home-manager/cli
+      ] ++ modules;
     };
   mkNixosSystem =
     {
@@ -73,13 +69,15 @@ let
     }:
     nixpkgs.lib.nixosSystem {
       inherit system;
-      modules = modules ++ [
+      modules = [
+        lanzaboote.nixosModules.lanzaboote
+        (import ../options.nix)
         {
           nixpkgs.overlays = [
             self.outputs.overlays.fonts
           ];
         }
-      ];
+      ] ++ modules;
       specialArgs = {
         inherit hostname inputs username;
       };
@@ -89,6 +87,7 @@ in
   home-manager = {
     "ms0503@a15" = mkHomeManagerConfiguration {
       modules = [
+        ./a15/config.nix
         ./a15/home-manager.nix
       ];
       overlays = [
@@ -113,6 +112,7 @@ in
     a15 = mkNixosSystem {
       hostname = "a15";
       modules = [
+        ./a15/config.nix
         ./a15/nixos.nix
       ];
       system = "x86_64-linux";

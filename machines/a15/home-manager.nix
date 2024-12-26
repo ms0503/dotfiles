@@ -28,7 +28,6 @@ in
     )
   ];
   imports = [
-    ../../home-manager/cli
     ../../home-manager/desktop/hyprland
     ../../home-manager/gui
   ];
