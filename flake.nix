@@ -20,6 +20,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/lanzaboote";
     };
+    misc-tools = {
+      inputs = {
+        fenix.follows = "fenix";
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+      url = "github:ms0503/misc-tools";
+    };
     neovim-custom = {
       inputs = {
         nixpkgs.follows = "nixpkgs";
@@ -77,15 +85,11 @@
       devShells = forAllSystems (
         system:
         let
+          packages = with pkgs; [];
           pkgs = import nixpkgs { inherit system; };
-          scripts = with pkgs; [
-            (writeScriptBin "sync-home" ''
-              home-manager switch --flake ".#${system}"
-            '')
-          ];
         in
         {
-          default = pkgs.mkShell { packages = scripts; };
+          default = pkgs.mkShell { inherit packages; };
         }
       );
       formatter = forAllSystems (

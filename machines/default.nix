@@ -2,6 +2,7 @@ inputs@{
   fenix,
   home-manager,
   lanzaboote,
+  misc-tools,
   nix-ros-overlay,
   nixpkgs,
   self,
@@ -41,7 +42,7 @@ let
           home = {
             inherit username;
             homeDirectory = "/home/${username}";
-            packages = (with self.outputs.packages.${system}; [
+            packages = (with misc-tools.packages.${system}; [
               colortool
               generatehex
               getcodepoint
