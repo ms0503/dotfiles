@@ -136,8 +136,8 @@ let
     ++ lib.optional libvaSupport libva;
   dist = "dev";
   opusWithCustomModes = libopus.override { withCustomModes = true; };
-  sha256 = "n1EDtxdpetxOKfPiRqQEaHyIUOVVRqxwfs80k4nO6C8=";
-  version = "133.0.3000.0";
+  sha256 = "Zb0pHUU9aqU+UJhSuJ4stgmAxIP+327t06d8Q+3aQs8=";
+  version = "133.0.3014.0";
 in
 stdenv.mkDerivation (finalAttrs: {
   inherit dist version;

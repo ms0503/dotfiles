@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   microsoft-edge-dev-wayland = myPkgs.microsoft-edge-dev.override (_: {
     commandLineArgs = "--disable-gpu-compositing";
