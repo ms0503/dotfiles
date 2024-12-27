@@ -32,6 +32,7 @@ in
       curl
       du-dust
       duf
+      file
       fx
       ghq
       imagemagick

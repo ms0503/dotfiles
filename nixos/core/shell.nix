@@ -10,6 +10,7 @@
     duf
     eza
     fd
+    file
     fzf
     jq
     lsof
