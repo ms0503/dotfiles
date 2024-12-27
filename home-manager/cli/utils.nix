@@ -40,14 +40,15 @@ in
       lazydocker
       nh
       nurl
+      p7zip
       procs
+      ripunzip
       silicon
       sl
       tokei
       typos
       unar
       unrar
-      unzip
       wget
       zenn-cli
       zip
