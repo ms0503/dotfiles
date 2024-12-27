@@ -5,6 +5,7 @@
     ./media.nix
     ./utils.nix
     ./wezterm
+    ./wine.nix
     ./xdg.nix
   ];
 }
