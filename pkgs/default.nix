@@ -1,7 +1,7 @@
 { callPackage, ... }:
-{
+rec {
   microsoft-edge-dev = callPackage ./microsoft-edge-dev { };
-  milk-cursor-themes = callPackage ./milk-cursor-themes { };
+  milk-cursor-themes = callPackage ./milk-cursor-themes { inherit zifu; };
   urxvt-wrapper = callPackage ./urxvt-wrapper { };
   zifu = callPackage ./zifu { };
 }

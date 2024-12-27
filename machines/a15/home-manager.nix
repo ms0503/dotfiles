@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   lid-switch-handler = pkgs.writeScriptBin "lid-switch-handler" ''
     case "$1" in
@@ -13,20 +13,34 @@ let
         ;;
     esac
   '';
+  myPkgs = inputs.self.outputs.packages.${pkgs.system};
   rosCodename = "humble";
 in
 {
-  home.packages = with pkgs; [
-    colcon
-    (
-      with rosPackages.${rosCodename};
-      buildEnv {
-        paths = [
-          ros-core
-        ];
-      }
-    )
-  ];
+  home = {
+    packages = with pkgs; [
+      colcon
+      (
+        with rosPackages.${rosCodename};
+        buildEnv {
+          paths = [
+            ros-core
+          ];
+        }
+      )
+    ];
+    pointerCursor = {
+      gtk.enable = true;
+      name = "Milk1";
+      package = myPkgs.milk-cursor-themes;
+      size = 32;
+      x11.enable = true;
+    };
+    sessionVariables = {
+      HYPRCURSOR_SIZE = "32";
+      HYPRCURSOR_THEME = "Milk1";
+    };
+  };
   imports = [
     ../../home-manager/desktop/hyprland
     ../../home-manager/gui
