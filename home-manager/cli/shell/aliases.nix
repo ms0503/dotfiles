@@ -56,9 +56,9 @@
   gt = "git tag";
   gtd = "git tag -d";
   gtm = "git tag -m";
-  la = "eza -a";
+  la = "eza -aa";
   ll = "eza -gl";
-  lla = "eza -agl";
+  lla = "eza -aagl";
   ls = "eza";
   open = "xdg-open";
   ps = "procs";
