@@ -15,6 +15,7 @@ in
     media.enable = lib.mkEnableOption "media applications";
     secureboot.enable = lib.mkEnableOption "a secureboot";
     steam.enable = lib.mkEnableOption "a steam";
+    unity.enable = lib.mkEnableOption "Unity and some applications";
     wayland.enable = lib.mkEnableOption "a wayland";
   };
 }

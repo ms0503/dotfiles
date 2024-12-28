@@ -7,6 +7,7 @@
     media.enable = true;
     secureboot.enable = true;
     steam.enable = true;
+    unity.enable = true;
     wayland.enable = true;
   };
 }
