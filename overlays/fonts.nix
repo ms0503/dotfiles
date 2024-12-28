@@ -1,8 +1,11 @@
 self:
-prev@{
+{
   fetchFromGitHub,
   lib,
   nixosTests,
+  noto-fonts,
+  noto-fonts-cjk-sans,
+  noto-fonts-cjk-serif,
   stdenvNoCC,
   ...
 }:
@@ -52,7 +55,7 @@ in
       weights = "{Bold,BoldItalic,Italic,Light,LightItalic,Regular}";
     in
     stdenvNoCC.mkDerivation {
-      inherit (prev.noto-fonts) meta version;
+      inherit (noto-fonts) meta version;
       installPhase = ''
         local out_dir=$out/share/fonts/truetype/noto
         install -Dm444 -t "$out_dir" "$src/fonts/NotoSans/unhinted/"*/*-${weights}.ttf
@@ -66,7 +69,7 @@ in
       pname = "noto-fonts";
       src = fetchFromGitHub noto-fonts-repo;
     };
-  noto-fonts-cjk-sans = stdenvNoCC.mkDerivation (noto-cjk-pkgbase "Sans" prev.noto-fonts-cjk-sans);
-  noto-fonts-cjk-serif = stdenvNoCC.mkDerivation (noto-cjk-pkgbase "Serif" prev.noto-fonts-cjk-serif);
+  noto-fonts-cjk-sans = stdenvNoCC.mkDerivation (noto-cjk-pkgbase "Sans" noto-fonts-cjk-sans);
+  noto-fonts-cjk-serif = stdenvNoCC.mkDerivation (noto-cjk-pkgbase "Serif" noto-fonts-cjk-serif);
 }
 # vim: et sts=2 sw=2 ts=2

@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
+let
+  myPkgs = inputs.self.outputs.packages.${pkgs.system};
+in
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     acpi
     bash
     bat
@@ -22,9 +25,10 @@
     tokei
     unar
     unrar
-    unzip
     zip
-  ];
+  ]) ++ (with myPkgs; [
+    unzip-unicode
+  ]);
   programs = {
     git.enable = true;
     htop.enable = true;

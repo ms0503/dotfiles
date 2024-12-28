@@ -54,6 +54,7 @@ in
       zip
     ])
     ++ (with myPkgs; [
+      unzip-unicode
       zifu
     ]);
   programs = {
