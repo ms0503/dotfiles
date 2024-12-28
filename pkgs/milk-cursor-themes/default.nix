@@ -3,11 +3,10 @@
   hyprcursor,
   lib,
   progressStyle ? 1,
-  ripunzip,
   stdenvNoCC,
+  unar,
   win2xcur,
-  xcur2png,
-  zifu
+  xcur2png
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   buildInputs = [
@@ -88,10 +87,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   };
   nativeBuildInputs = [
     hyprcursor
-    ripunzip
+    unar
     win2xcur
     xcur2png
-    zifu
   ];
   patchPhase = ''
     runHook prePatch
@@ -120,12 +118,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   };
   unpackPhase = ''
     runHook preUnpack
-    zifu -e Shift_JIS -q -y "$src/Milk_Cursor.zip" Milk_Cursor_utf8.zip
-    zifu -e Shift_JIS -q -y "$src/Milk_Cursor_追加用.zip" Milk_Cursor_追加用_utf8.zip
-    ripunzip unzip-file Milk_Cursor_utf8.zip
-    ripunzip unzip-file Milk_Cursor_追加用_utf8.zip
+    unar "$src/Milk_Cursor.zip"
+    unar "$src/Milk_Cursor_追加用.zip"
     runHook postUnpack
   '';
-  version = "1.0.0";
+  version = "1.0.1";
 })
 # vim: et sts=2 sw=2 ts=2
