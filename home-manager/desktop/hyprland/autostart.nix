@@ -18,7 +18,9 @@ in
   "waybar"
   "swww init && swww img ~/.config/hypr/wallpaper/bg.jpg"
   "fcitx5 -D"
-  "discordcanary --start-minimized"
   "steam -silent"
+  "[workspace 1 silent] microsoft-edge-dev"
+  "[workspace 2 silent] wezterm"
+  "[workspace 3 silent] discordcanary"
 ]
 # vim: et sts=2 sw=2 ts=2
