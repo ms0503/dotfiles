@@ -1,0 +1,13 @@
+--- a/vrc-get-vpm/src/unity_hub.rs
++++ b/vrc-get-vpm/src/unity_hub.rs
+@@ -9,9 +9,7 @@
+ async fn headless_unity_hub(unity_hub_path: &OsStr, args: &[&OsStr]) -> io::Result<Output> {
+     let args = {
+         let mut vec = Vec::with_capacity(args.len() + 2);
+-        if !cfg!(target_os = "linux") {
+-            vec.push("--".as_ref());
+-        }
++        vec.push("--".as_ref());
+         vec.push("--headless".as_ref());
+         vec.extend_from_slice(args);
+         vec

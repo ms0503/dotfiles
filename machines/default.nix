@@ -25,9 +25,11 @@ let
             "electron-25.9.0"
           ];
         };
-        overlays = overlays ++ (with self.outputs.overlays; [
-          fonts
-        ]);
+        overlays =
+          overlays
+          ++ (with self.outputs.overlays; [
+            fonts
+          ]);
       };
     in
     home-manager.lib.homeManagerConfiguration {

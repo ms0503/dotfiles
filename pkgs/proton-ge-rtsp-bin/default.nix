@@ -2,7 +2,7 @@
   fetchzip,
   lib,
   stdenvNoCC,
-  writeScript
+  writeScript,
 }:
 let
   sha256 = "iq7oiDW5+51wzqYwASOGSV922c/pg1k29MdkIXlT34k=";
@@ -16,7 +16,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     # Make it impossible to add to an environment. You should use the appropriate NixOS option.
     # Also leave some breadcrumbs in the file.
     echo "${finalAttrs.pname} should not be installed into environments. Please use programs.steam.extraCompatPackages instead." > $out
-    
+
     mkdir $steamcompattool
     ln -s $src/* $steamcompattool
     rm $steamcompattool/{compatibilitytool.vdf,proton,version}

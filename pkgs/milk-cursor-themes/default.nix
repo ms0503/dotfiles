@@ -6,7 +6,7 @@
   stdenvNoCC,
   unar,
   win2xcur,
-  xcur2png
+  xcur2png,
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   buildInputs = [
