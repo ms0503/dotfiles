@@ -44,6 +44,17 @@ in
       jdk8-wrapped
       zig
     ])
+    ++ (with pkgs.jetbrains; [
+      clion
+      gateway
+      idea-ultimate
+      phpstorm
+      pycharm-professional
+      rider
+      rust-rover
+      webstorm
+      writerside
+    ])
     ++ (with pkgs.nodePackages; [
       npm
       pnpm
