@@ -14,6 +14,7 @@ let
       modules,
       overlays,
       system,
+      theme,
       username,
     }:
     let
@@ -36,7 +37,7 @@ let
       inherit pkgs;
       extraSpecialArgs = {
         inherit inputs username;
-        theme = (import ../themes) "tokyonight-night";
+        theme = (import ../themes) theme;
       };
       modules = [
         (import ../options.nix)
@@ -101,6 +102,7 @@ in
         nix-ros-overlay.overlays.default
       ];
       system = "x86_64-linux";
+      theme = "onedark-warmer";
       username = "ms0503";
     };
     "ms0503@mainpc" = mkHomeManagerConfiguration {
@@ -111,6 +113,7 @@ in
         fenix.overlays.default
       ];
       system = "x86_64-linux";
+      theme = "onedark-warmer";
       username = "ms0503";
     };
   };

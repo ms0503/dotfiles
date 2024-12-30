@@ -1,0 +1,57 @@
+[colors]
+ansi = [
+  "#101012",
+  "#833b3b",
+  "#8fb573",
+  "#bdd671",
+  "#57a5e5",
+  "#79428a",
+  "#2b5d63",
+  "#818387",
+]
+background = "#232326"
+brights = [
+  "#5a5b5e",
+  "#de5d68",
+  "#8fb573",
+  "#e2c792",
+  "#68aee8",
+  "#bb70d2",
+  "#51a8b3",
+  "#a7aab0",
+]
+cursor_bg = "#a7aab0"
+cursor_border = "#a7aab0"
+cursor_fg = "#232326"
+foreground = "#a7aab0"
+selection_bg = "#2c2d31"
+selection_fg = "#a7aab0"
+
+[colors.tab_bar]
+background = "#101012"
+inactive_tab_edge = "#1b1c1e"
+
+[colors.tab_bar.active_tab]
+bg_color = "#232326"
+fg_color = "#57a5e5"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#1b1c1e"
+fg_color = "#5a5b5e"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#1b1c1e"
+fg_color = "#57a5e5"
+
+[colors.tab_bar.new_tab]
+bg_color = "#101012"
+fg_color = "#57a5e5"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#57a5e5"
+fg_color = "#1b1c1e"
+
+[metadata]
+aliases = []
+author = "navarasu"
+name = "myTheme"

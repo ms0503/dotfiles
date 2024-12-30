@@ -3,7 +3,7 @@ local wezterm = require("wezterm")
 return {
 	audible_bell = "Disabled",
 	check_for_updates = false,
-	color_scheme = "tokyonight_night",
+	color_scheme = "myTheme",
 	font = wezterm.font_with_fallback({
 		{
 			family = "SauceCodePro Nerd Font",

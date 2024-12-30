@@ -11,7 +11,7 @@
       set preview_images true
       set preview_images_method iterm2
     '';
-    "${config.xdg.configHome}/wezterm/colors/tokyonight_night.toml".text = theme.wezterm;
+    "${config.xdg.configHome}/wezterm/colors/myTheme.toml".text = theme.wezterm;
   };
   programs.wezterm = {
     enable = true;

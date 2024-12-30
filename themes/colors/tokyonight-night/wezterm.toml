@@ -1,15 +1,4 @@
 [colors]
-foreground = "#c0caf5"
-background = "#1a1b26"
-cursor_bg = "#c0caf5"
-cursor_border = "#c0caf5"
-cursor_fg = "#1a1b26"
-selection_bg = "#283457"
-selection_fg = "#c0caf5"
-split = "#7aa2f7"
-compose_cursor = "#ff9e64"
-scrollbar_thumb = "#292e42"
-
 ansi = [
   "#15161e",
   "#f7768e",
@@ -20,6 +9,7 @@ ansi = [
   "#7dcfff",
   "#a9b1d6",
 ]
+background = "#1a1b26"
 brights = [
   "#414868",
   "#ff899d",
@@ -30,34 +20,42 @@ brights = [
   "#a4daff",
   "#c0caf5",
 ]
+compose_cursor = "#ff9e64"
+cursor_bg = "#c0caf5"
+cursor_border = "#c0caf5"
+cursor_fg = "#1a1b26"
+foreground = "#c0caf5"
+scrollbar_thumb = "#292e42"
+selection_bg = "#283457"
+selection_fg = "#c0caf5"
+split = "#7aa2f7"
 
 [colors.tab_bar]
-inactive_tab_edge = "#16161e"
 background = "#1a1b26"
+inactive_tab_edge = "#16161e"
 
 [colors.tab_bar.active_tab]
-fg_color = "#16161e"
 bg_color = "#7aa2f7"
+fg_color = "#16161e"
 
 [colors.tab_bar.inactive_tab]
-fg_color = "#545c7e"
 bg_color = "#292e42"
+fg_color = "#545c7e"
 
 [colors.tab_bar.inactive_tab_hover]
-fg_color = "#7aa2f7"
 bg_color = "#292e42"
-# intensity = "Bold"
-
-[colors.tab_bar.new_tab_hover]
 fg_color = "#7aa2f7"
-bg_color = "#1a1b26"
-intensity = "Bold"
 
 [colors.tab_bar.new_tab]
-fg_color = "#7aa2f7"
 bg_color = "#1a1b26"
+fg_color = "#7aa2f7"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#1a1b26"
+fg_color = "#7aa2f7"
+intensity = "Bold"
 
 [metadata]
 aliases = []
 author = "folke"
-name = "tokyonight_night"
+name = "myTheme"
