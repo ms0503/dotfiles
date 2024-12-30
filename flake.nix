@@ -81,6 +81,7 @@
         in
         {
           formatting = treefmtEval.config.build.check self;
+          pre-commit-check = treefmtEval.config.build.wrapper;
         }
       );
       devShells = forAllSystems (
