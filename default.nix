@@ -10,4 +10,3 @@
         or "https://github.com/edolstra/flake-compat/archive/${lock.nodes.${nodeName}.locked.rev}.tar.gz";
   }
 ) { src = ./.; }).defaultNix
-# vim: et sts=2 sw=2 ts=2

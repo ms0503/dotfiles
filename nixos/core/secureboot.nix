@@ -17,4 +17,3 @@ lib.mkIf config.ms0503.secureboot.enable {
     sbctl
   ];
 }
-# vim: et sts=2 sw=2 ts=2

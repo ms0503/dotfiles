@@ -72,4 +72,3 @@ in
   noto-fonts-cjk-sans = stdenvNoCC.mkDerivation (noto-cjk-pkgbase "Sans" noto-fonts-cjk-sans);
   noto-fonts-cjk-serif = stdenvNoCC.mkDerivation (noto-cjk-pkgbase "Serif" noto-fonts-cjk-serif);
 }
-# vim: et sts=2 sw=2 ts=2

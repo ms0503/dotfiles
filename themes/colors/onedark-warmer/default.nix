@@ -13,4 +13,3 @@
   white = "#a7aab0";
   yellow = "#dbb671";
 }
-# vim: et sts=2 sw=2 ts=2

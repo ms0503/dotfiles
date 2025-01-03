@@ -25,4 +25,3 @@
   };
   systemd.services.NetworkManager-wait-online.enable = false;
 }
-# vim: et sts=2 sw=2 ts=2

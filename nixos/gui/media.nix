@@ -5,4 +5,3 @@ lib.mkIf config.ms0503.media.enable {
     noisetorch.enable = true;
   };
 }
-# vim: et sts=2 sw=2 ts=2

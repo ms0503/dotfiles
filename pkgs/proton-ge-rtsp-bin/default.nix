@@ -59,4 +59,3 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     url = "https://github.com/SpookySkeletons/proton-ge-rtsp/releases/download/${finalAttrs.version}/${finalAttrs.version}.tar.gz";
   };
 })
-# vim: et sts=2 sw=2 ts=2

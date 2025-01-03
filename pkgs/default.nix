@@ -8,4 +8,3 @@
   urxvt-wrapper = callPackage ./urxvt-wrapper { };
   zifu = callPackage ./zifu { };
 }
-# vim: et sts=2 sw=2 ts=2

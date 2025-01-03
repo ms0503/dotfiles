@@ -8,4 +8,3 @@ rec {
   wezterm = builtins.readFile ./colors/${theme}/wezterm.toml;
   xcolors = import ./colors/${theme};
 }
-# vim: et sts=2 sw=2 ts=2

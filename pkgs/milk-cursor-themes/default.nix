@@ -124,4 +124,3 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
   version = "1.0.1";
 })
-# vim: et sts=2 sw=2 ts=2
