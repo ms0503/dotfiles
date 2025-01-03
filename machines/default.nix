@@ -21,6 +21,7 @@ let
       pkgs = import nixpkgs {
         inherit system;
         config = {
+          allowBroken = true;
           allowUnfree = true;
           permittedInsecurePackages = [
             "electron-25.9.0"
