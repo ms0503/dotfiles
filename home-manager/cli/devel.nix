@@ -67,7 +67,10 @@ in
     ]);
   programs = {
     bun.enable = true;
-    go.enable = true;
+    go = {
+      enable = true;
+      goBin = ".local/bin";
+    };
     java = {
       enable = true;
       package = pkgs.jdk23;
