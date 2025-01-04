@@ -5,6 +5,13 @@
       url = "github:nix-community/fenix";
     };
     flake-compat.url = "github:edolstra/flake-compat";
+    git-hooks = {
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:cachix/git-hooks.nix";
+    };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-24.11";
@@ -66,6 +73,7 @@
   outputs =
     inputs@{
       fenix,
+      git-hooks,
       nixpkgs,
       self,
       treefmt-nix,
@@ -89,17 +97,45 @@
         in
         {
           formatting = treefmtEval.config.build.check self;
-          pre-commit-check = treefmtEval.config.build.wrapper;
+          pre-commit-check = git-hooks.lib.${system}.run {
+            hooks = {
+              actionlint.enable = true;
+              check-json.enable = true;
+              check-toml.enable = true;
+              editorconfig-checker = {
+                enable = true;
+                excludes = [
+                  "flake.lock"
+                  "themes/.*/wezterm.toml"
+                ];
+              };
+              luacheck.enable = true;
+              markdownlint.enable = true;
+              treefmt = {
+                enable = true;
+                package = treefmtEval.config.build.wrapper;
+              };
+              yamlfmt.enable = true;
+              yamllint.enable = true;
+            };
+            src = ./.;
+          };
         }
       );
       devShells = forAllSystems (
         system:
         let
-          packages = with pkgs; [ ];
+          packages = preCommitCheck.enabledPackages
+          #++ with pkgs; []
+          ;
           pkgs = import nixpkgs { inherit system; };
+          preCommitCheck = self.checks.${system}.pre-commit-check;
         in
         {
-          default = pkgs.mkShell { inherit packages; };
+          default = pkgs.mkShell {
+            inherit packages;
+            inherit (preCommitCheck) shellHook;
+          };
         }
       );
       formatter = forAllSystems (

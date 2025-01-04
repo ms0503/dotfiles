@@ -1,3 +1,3 @@
 {
-  fonts = import ./fonts.nix;
+  fonts = final: prev: import ./fonts.nix final prev;
 }

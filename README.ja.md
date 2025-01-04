@@ -4,24 +4,25 @@
 
 Nix flakesで管理している環境設定。
 
-# 使い方
+## 使い方
 
-## 必要なもの
+### 必要なもの
 
 - Nix (下記のexperimental-featuresが必要)
   - `nix-command`
   - `flakes`
 - `nh`
 
-## コマンド
+### コマンド
 
 ```shell
-$ # OSの同期(NixOSのみ)
-$ nh os switch .
-$ # ホームの同期
-$ nh home switch .
+# OSの同期(NixOSのみ)
+nh os switch .
+# ホームの同期
+nh home switch .
 ```
 
-# 関連ページ
+## 関連ページ
 
-- [asa1984/dotfiles](https://github.com/asa1984/dotfiles) (~~パクっ...~~参考元)
+- [asa1984/dotfiles](https://github.com/asa1984/dotfiles)
+  (~~パクっ...~~参考元)
