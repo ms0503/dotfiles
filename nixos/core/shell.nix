@@ -1,7 +1,4 @@
-{ inputs, pkgs, ... }:
-let
-  myPkgs = inputs.self.outputs.packages.${pkgs.system};
-in
+{ myPkgs, pkgs, ... }:
 {
   environment.systemPackages =
     (with pkgs; [

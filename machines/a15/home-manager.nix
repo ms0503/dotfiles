@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ myPkgs, pkgs, ... }:
 let
   lid-switch-handler = pkgs.writeScriptBin "lid-switch-handler" ''
     case "$1" in
@@ -13,7 +13,6 @@ let
         ;;
     esac
   '';
-  myPkgs = inputs.self.outputs.packages.${pkgs.system};
   rosCodename = "humble";
 in
 {

@@ -1,13 +1,10 @@
 {
   config,
-  inputs,
   lib,
+  myPkgs,
   pkgs,
   ...
 }:
-let
-  myPkgs = inputs.self.outputs.packages.${pkgs.system};
-in
 lib.mkIf config.ms0503.steam.enable {
   programs.steam = {
     dedicatedServer.openFirewall = true;

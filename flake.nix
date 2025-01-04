@@ -29,6 +29,14 @@
       };
       url = "github:ms0503/misc-tools";
     };
+    ms0503-pkgs = {
+      inputs = {
+        fenix.follows = "fenix";
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+      url = "github:ms0503/pkgs.nix";
+    };
     neovim-custom = {
       inputs = {
         nixpkgs.follows = "nixpkgs";
@@ -115,7 +123,6 @@
               fenix.overlays.default
             ];
           };
-          myPkgs = self.outputs.packages.${system};
         in
         import ./pkgs pkgs
       );

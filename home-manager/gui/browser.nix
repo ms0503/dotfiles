@@ -1,6 +1,6 @@
 {
   config,
-  inputs,
+  myPkgs,
   pkgs,
   ...
 }:
@@ -8,7 +8,6 @@ let
   microsoft-edge-dev-wayland = myPkgs.microsoft-edge-dev.override (_: {
     commandLineArgs = "--disable-gpu-compositing";
   });
-  myPkgs = inputs.self.outputs.packages.${pkgs.system};
 in
 {
   home.packages = with myPkgs; [

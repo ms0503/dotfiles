@@ -1177,6 +1177,32 @@
         "type": "github"
       }
     },
+    "ms0503-pkgs": {
+      "inputs": {
+        "fenix": [
+          "fenix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735906071,
+        "narHash": "sha256-2wfwguP6b12tN6jqPu6bWpkwB7LlwFWFrHoICF/Hws4=",
+        "owner": "ms0503",
+        "repo": "pkgs.nix",
+        "rev": "89e9d54da52d3bf76d66bc14d9650f6ba2a393aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ms0503",
+        "repo": "pkgs.nix",
+        "type": "github"
+      }
+    },
     "neovim-custom": {
       "inputs": {
         "flake-compat": "flake-compat_5",
@@ -1513,6 +1539,7 @@
         "hyprsome": "hyprsome",
         "lanzaboote": "lanzaboote",
         "misc-tools": "misc-tools",
+        "ms0503-pkgs": "ms0503-pkgs",
         "neovim-custom": "neovim-custom",
         "nix-ros-overlay": "nix-ros-overlay",
         "nixos-hardware": "nixos-hardware",

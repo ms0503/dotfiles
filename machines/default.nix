@@ -18,6 +18,7 @@ let
       username,
     }:
     let
+      myPkgs = inputs.ms0503-pkgs.packages.${system} // inputs.self.outputs.packages.${system};
       pkgs = import nixpkgs {
         inherit system;
         config = {
@@ -37,7 +38,7 @@ let
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = {
-        inherit inputs username;
+        inherit inputs myPkgs username;
         theme = (import ../themes) theme;
       };
       modules = [
@@ -75,6 +76,9 @@ let
       system,
       username,
     }:
+    let
+      myPkgs = inputs.ms0503-pkgs.packages.${system} // inputs.self.outputs.packages.${system};
+    in
     nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
@@ -87,7 +91,12 @@ let
         }
       ] ++ modules;
       specialArgs = {
-        inherit hostname inputs username;
+        inherit
+          hostname
+          inputs
+          myPkgs
+          username
+          ;
       };
     };
 in
