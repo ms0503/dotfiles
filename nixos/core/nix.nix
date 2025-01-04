@@ -1,5 +1,8 @@
 {
   nix = {
+    extraOptions = ''
+      !include nix-secret.conf
+    '';
     gc = {
       automatic = true;
       dates = "weekly";
