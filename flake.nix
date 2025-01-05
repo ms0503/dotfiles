@@ -39,6 +39,8 @@
     ms0503-pkgs = {
       inputs = {
         fenix.follows = "fenix";
+        flake-compat.follows = "flake-compat";
+        git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
         treefmt-nix.follows = "treefmt-nix";
       };
