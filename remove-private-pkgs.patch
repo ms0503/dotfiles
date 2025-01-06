@@ -1,0 +1,61 @@
+--- a/flake.nix
++++ b/flake.nix
+@@ -93,7 +93,7 @@
+     };
+   };
+   outputs =
+-    prevInputs@{
++    inputs@{
+       fenix,
+       flake-parts,
+       git-hooks,
+@@ -102,11 +102,6 @@
+       treefmt-nix,
+       ...
+     }:
+-    let
+-      inputs = prevInputs // {
+-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/0af54ac840a27addfdf7f3475e65cee7692595d0";
+-      };
+-    in
+     flake-parts.lib.mkFlake { inherit inputs; } {
+       flake = {
+         homeConfigurations = (import ./machines inputs).home-manager;
+--- a/machines/a15/home-manager.nix
++++ b/machines/a15/home-manager.nix
+@@ -31,17 +31,6 @@
+       openocd
+       stm32cubemx
+     ];
+-    pointerCursor = {
+-      gtk.enable = true;
+-      name = "Milk1";
+-      package = pkgs.milk-cursor-themes;
+-      size = 32;
+-      x11.enable = true;
+-    };
+-    sessionVariables = {
+-      HYPRCURSOR_SIZE = "32";
+-      HYPRCURSOR_THEME = "Milk1";
+-    };
+   };
+   imports = [
+     ../../home-manager/desktop/hyprland
+--- a/machines/default.nix
++++ b/machines/default.nix
+@@ -5,7 +5,6 @@
+   misc-tools,
+   nix-ros-overlay,
+   nixpkgs,
+-  private-pkgs,
+   self,
+   ...
+ }:
+@@ -111,7 +110,6 @@
+       overlays = [
+         fenix.overlays.default
+         nix-ros-overlay.overlays.default
+-        private-pkgs.overlays.default
+       ];
+       system = "x86_64-linux";
+       theme = "onedark-warmer";

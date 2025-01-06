@@ -16,6 +16,8 @@ Nix flakesで管理している環境設定。
 ### コマンド
 
 ```shell
+# ms0503/private-pkgs.nixの削除(ユーザー向け)
+patch -p1 <remove-private-pkgs.patch
 # OSの同期(NixOSのみ)
 nh os switch .
 # ホームの同期

@@ -16,6 +16,8 @@ My configurations managed by nix flakes.
 ### Commands
 
 ```shell
+# Remove ms0503/private-pkgs.nix, for user
+patch -p1 <remove-private-pkgs.patch
 # Sync OS (NixOS only)
 nh os switch .
 # Sync Home
