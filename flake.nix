@@ -34,6 +34,7 @@
     lanzaboote = {
       inputs = {
         flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         pre-commit-hooks-nix.follows = "";
       };
@@ -84,10 +85,11 @@
     };
     xremap = {
       inputs = {
+        flake-parts.follows = "flake-parts";
         home-manager.follows = "home-manager";
         hyprland.follows = "hyprland";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "";
+        treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:xremap/nix-flake";
     };
