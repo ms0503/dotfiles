@@ -116,13 +116,13 @@
           on-click-right = "pavucontrol";
           scroll-step = 5;
         };
-        tray.icon-size = 20;
+        tray.icon-size = 14;
       };
     };
     style = with theme.xcolors; ''
       * {
         font-family: monospace;
-        font-size: 12px;
+        font-size: 14px;
       }
 
       window#waybar {
@@ -176,7 +176,7 @@
 
       #workspaces button {
         color: ${fg};
-        padding: 0 4px;
+        padding: 0 2px;
       }
 
       #workspaces button.focused {
@@ -187,7 +187,7 @@
         background: ${black};
         border: ${black};
         box-shadow: inherit;
-        padding: 0 4px;
+        padding: 0 3px;
         text-shadow: inherit;
       }
 
@@ -197,7 +197,7 @@
       #disk,
       #memory,
       #pulseaudio {
-        padding: 0 12px;
+        padding: 0 10px;
       }
     '';
   };
