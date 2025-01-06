@@ -18,7 +18,6 @@ in
 {
   home = {
     packages = with pkgs; [
-      colcon
       (
         with rosPackages.${rosCodename};
         buildEnv {
@@ -27,6 +26,10 @@ in
           ];
         }
       )
+      colcon
+      gcc-arm-embedded
+      openocd
+      stm32cubemx
     ];
     pointerCursor = {
       gtk.enable = true;
