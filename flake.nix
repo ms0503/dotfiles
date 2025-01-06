@@ -17,7 +17,10 @@
       url = "github:nix-community/home-manager/release-24.11";
     };
     hyprland = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks.follows = "git-hooks";
+      };
       url = "github:hyprwm/Hyprland";
     };
     hyprsome = {
@@ -25,7 +28,11 @@
       url = "github:sopa0/hyprsome";
     };
     lanzaboote = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks-nix.follows = "git-hooks";
+      };
       url = "github:nix-community/lanzaboote";
     };
     misc-tools = {
@@ -48,8 +55,12 @@
     };
     neovim-custom = {
       inputs = {
+        fenix.follows = "fenix";
+        flake-compat.follows = "flake-compat";
+        git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:ms0503/neovim-custom";
     };
@@ -68,7 +79,12 @@
       url = "github:wez/wezterm?dir=nix";
     };
     xremap = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        home-manager.follows = "home-manager";
+        hyprland.follows = "hyprland";
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
       url = "github:xremap/nix-flake";
     };
   };
