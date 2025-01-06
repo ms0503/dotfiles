@@ -1,4 +1,4 @@
-{ myPkgs, pkgs, ... }:
+{ pkgs, ... }:
 let
   lid-switch-handler = pkgs.writeScriptBin "lid-switch-handler" ''
     case "$1" in
@@ -34,7 +34,7 @@ in
     pointerCursor = {
       gtk.enable = true;
       name = "Milk1";
-      package = myPkgs.milk-cursor-themes;
+      package = pkgs.milk-cursor-themes;
       size = 32;
       x11.enable = true;
     };

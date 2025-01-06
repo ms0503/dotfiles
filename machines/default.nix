@@ -5,6 +5,7 @@ inputs@{
   misc-tools,
   nix-ros-overlay,
   nixpkgs,
+  private-pkgs,
   self,
   ...
 }:
@@ -110,6 +111,7 @@ in
       overlays = [
         fenix.overlays.default
         nix-ros-overlay.overlays.default
+        private-pkgs.overlays.default
       ];
       system = "x86_64-linux";
       theme = "onedark-warmer";

@@ -35,7 +35,7 @@
     },
     "build-gradle-application": {
       "inputs": {
-        "flake-parts": "flake-parts_2",
+        "flake-parts": "flake-parts_3",
         "nixpkgs": [
           "neovim-custom",
           "nixpkgs"
@@ -182,6 +182,26 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736143030,
+        "narHash": "sha256-+hu54pAoLDEZT9pjHlqL9DNzWz0NbUn8NEAHP7PQPzU=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "b905f6fc23a9051a6e1b741e1438dbfc0634c6de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": [
           "lanzaboote",
           "nixpkgs"
         ]
@@ -200,7 +220,7 @@
         "type": "github"
       }
     },
-    "flake-parts_2": {
+    "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
       },
@@ -217,7 +237,7 @@
         "type": "indirect"
       }
     },
-    "flake-parts_3": {
+    "flake-parts_4": {
       "inputs": {
         "nixpkgs-lib": [
           "neovim-custom",
@@ -239,7 +259,7 @@
         "type": "github"
       }
     },
-    "flake-parts_4": {
+    "flake-parts_5": {
       "inputs": {
         "nixpkgs-lib": [
           "neovim-custom",
@@ -261,7 +281,7 @@
         "type": "indirect"
       }
     },
-    "flake-parts_5": {
+    "flake-parts_6": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_2"
       },
@@ -370,9 +390,7 @@
     },
     "git-hooks": {
       "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
+        "flake-compat": [],
         "gitignore": "gitignore",
         "nixpkgs": [
           "nixpkgs"
@@ -432,7 +450,7 @@
     },
     "hercules-ci-effects": {
       "inputs": {
-        "flake-parts": "flake-parts_4",
+        "flake-parts": "flake-parts_5",
         "nixpkgs": [
           "neovim-custom",
           "neovim-nightly-overlay",
@@ -545,9 +563,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pre-commit-hooks": [
-          "git-hooks"
-        ],
+        "pre-commit-hooks": [],
         "systems": "systems",
         "xdph": "xdph"
       },
@@ -723,16 +739,12 @@
     "lanzaboote": {
       "inputs": {
         "crane": "crane_2",
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-parts": "flake-parts",
+        "flake-compat": [],
+        "flake-parts": "flake-parts_2",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pre-commit-hooks-nix": [
-          "git-hooks"
-        ],
+        "pre-commit-hooks-nix": [],
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
@@ -774,9 +786,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
+        "treefmt-nix": []
       },
       "locked": {
         "lastModified": 1735193538,
@@ -797,18 +807,12 @@
         "fenix": [
           "fenix"
         ],
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "git-hooks": [
-          "git-hooks"
-        ],
+        "flake-compat": [],
+        "git-hooks": [],
         "nixpkgs": [
           "nixpkgs"
         ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
+        "treefmt-nix": []
       },
       "locked": {
         "lastModified": 1736107511,
@@ -830,12 +834,8 @@
         "fenix": [
           "fenix"
         ],
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "git-hooks": [
-          "git-hooks"
-        ],
+        "flake-compat": [],
+        "git-hooks": [],
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": [
           "nixpkgs"
@@ -843,9 +843,7 @@
         "nixpkgs-stable": [
           "nixpkgs"
         ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
+        "treefmt-nix": []
       },
       "locked": {
         "lastModified": 1735991570,
@@ -867,7 +865,7 @@
           "neovim-custom",
           "flake-compat"
         ],
-        "flake-parts": "flake-parts_3",
+        "flake-parts": "flake-parts_4",
         "git-hooks": [
           "neovim-custom",
           "git-hooks"
@@ -1006,6 +1004,7 @@
       "inputs": {
         "fenix": "fenix",
         "flake-compat": "flake-compat",
+        "flake-parts": "flake-parts",
         "git-hooks": "git-hooks",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
@@ -1298,7 +1297,7 @@
       "inputs": {
         "crane": "crane_3",
         "devshell": "devshell",
-        "flake-parts": "flake-parts_5",
+        "flake-parts": "flake-parts_6",
         "home-manager": [
           "home-manager"
         ],
@@ -1308,9 +1307,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ],
+        "treefmt-nix": [],
         "xremap": "xremap_2"
       },
       "locked": {

@@ -5,9 +5,13 @@
       url = "github:nix-community/fenix";
     };
     flake-compat.url = "github:edolstra/flake-compat";
+    flake-parts = {
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+      url = "github:hercules-ci/flake-parts";
+    };
     git-hooks = {
       inputs = {
-        flake-compat.follows = "flake-compat";
+        flake-compat.follows = "";
         nixpkgs.follows = "nixpkgs";
       };
       url = "github:cachix/git-hooks.nix";
@@ -19,7 +23,7 @@
     hyprland = {
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        pre-commit-hooks.follows = "git-hooks";
+        pre-commit-hooks.follows = "";
       };
       url = "github:hyprwm/Hyprland";
     };
@@ -29,9 +33,9 @@
     };
     lanzaboote = {
       inputs = {
-        flake-compat.follows = "flake-compat";
+        flake-compat.follows = "";
         nixpkgs.follows = "nixpkgs";
-        pre-commit-hooks-nix.follows = "git-hooks";
+        pre-commit-hooks-nix.follows = "";
       };
       url = "github:nix-community/lanzaboote";
     };
@@ -39,28 +43,28 @@
       inputs = {
         fenix.follows = "fenix";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
+        treefmt-nix.follows = "";
       };
       url = "github:ms0503/misc-tools";
     };
     ms0503-pkgs = {
       inputs = {
         fenix.follows = "fenix";
-        flake-compat.follows = "flake-compat";
-        git-hooks.follows = "git-hooks";
+        flake-compat.follows = "";
+        git-hooks.follows = "";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
+        treefmt-nix.follows = "";
       };
       url = "github:ms0503/pkgs.nix";
     };
     neovim-custom = {
       inputs = {
         fenix.follows = "fenix";
-        flake-compat.follows = "flake-compat";
-        git-hooks.follows = "git-hooks";
+        flake-compat.follows = "";
+        git-hooks.follows = "";
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
+        treefmt-nix.follows = "";
       };
       url = "github:ms0503/neovim-custom";
     };
@@ -83,14 +87,15 @@
         home-manager.follows = "home-manager";
         hyprland.follows = "hyprland";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
+        treefmt-nix.follows = "";
       };
       url = "github:xremap/nix-flake";
     };
   };
   outputs =
-    inputs@{
+    prevInputs@{
       fenix,
+      flake-parts,
       git-hooks,
       nixpkgs,
       self,
@@ -98,87 +103,58 @@
       ...
     }:
     let
-      allSystems = [
+      inputs = prevInputs // {
+        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/0af54ac840a27addfdf7f3475e65cee7692595d0";
+      };
+    in
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      flake = {
+        homeConfigurations = (import ./machines inputs).home-manager;
+        nixosConfigurations = (import ./machines inputs).nixos;
+        overlays = import ./overlays;
+      };
+      imports = [
+        git-hooks.flakeModule
+        treefmt-nix.flakeModule
+      ];
+      perSystem =
+        {
+          config,
+          pkgs,
+          system,
+          ...
+        }:
+        {
+          devShells.default = pkgs.mkShell { };
+          pre-commit = {
+            check.enable = true;
+            settings = {
+              hooks = {
+                actionlint.enable = true;
+                check-json.enable = true;
+                check-toml.enable = true;
+                editorconfig-checker = {
+                  enable = true;
+                  excludes = [
+                    "flake.lock"
+                    "themes/.*/wezterm.toml"
+                  ];
+                };
+                luacheck.enable = true;
+                markdownlint.enable = true;
+                yamlfmt.enable = true;
+                yamllint.enable = true;
+              };
+              src = ./.;
+            };
+          };
+          treefmt = import ./treefmt.nix;
+        };
+      systems = [
         "aarch64-darwin"
         "aarch64-linux"
         "x86_64-darwin"
         "x86_64-linux"
       ];
-      forAllSystems = nixpkgs.lib.genAttrs allSystems;
-    in
-    {
-      checks = forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs { inherit system; };
-          treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-        in
-        {
-          formatting = treefmtEval.config.build.check self;
-          pre-commit-check = git-hooks.lib.${system}.run {
-            hooks = {
-              actionlint.enable = true;
-              check-json.enable = true;
-              check-toml.enable = true;
-              editorconfig-checker = {
-                enable = true;
-                excludes = [
-                  "flake.lock"
-                  "themes/.*/wezterm.toml"
-                ];
-              };
-              luacheck.enable = true;
-              markdownlint.enable = true;
-              treefmt = {
-                enable = true;
-                package = treefmtEval.config.build.wrapper;
-              };
-              yamlfmt.enable = true;
-              yamllint.enable = true;
-            };
-            src = ./.;
-          };
-        }
-      );
-      devShells = forAllSystems (
-        system:
-        let
-          packages = preCommitCheck.enabledPackages
-          #++ with pkgs; []
-          ;
-          pkgs = import nixpkgs { inherit system; };
-          preCommitCheck = self.checks.${system}.pre-commit-check;
-        in
-        {
-          default = pkgs.mkShell {
-            inherit packages;
-            inherit (preCommitCheck) shellHook;
-          };
-        }
-      );
-      formatter = forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs { inherit system; };
-          treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-        in
-        treefmtEval.config.build.wrapper
-      );
-      homeConfigurations = (import ./machines inputs).home-manager;
-      nixosConfigurations = (import ./machines inputs).nixos;
-      overlays = import ./overlays;
-      packages = forAllSystems (
-        system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [
-              fenix.overlays.default
-            ];
-          };
-        in
-        import ./pkgs pkgs
-      );
     };
 }
