@@ -2,10 +2,6 @@
   cat = "bat";
   cl-c = "wl-copy";
   cl-p = "wl-paste";
-  df = "duf";
-  du = "dust";
-  find = "fd";
-  flake = "nix flake";
   g = "git";
   gA = "git add";
   gAp = "git add -p";
@@ -33,7 +29,6 @@
   gpuom = "git push -u origin main";
   grb = "git rebase";
   grbi = "git rebase -i";
-  grep = "rg";
   grm = "git remote";
   grmao = "git remote add origin";
   grmau = "git remote add upstream";
@@ -61,7 +56,6 @@
   lla = "eza -aagl";
   ls = "eza";
   open = "xdg-open";
-  ps = "procs";
   top = "bottom";
   wc = "tokei";
 }
