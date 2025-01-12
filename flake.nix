@@ -1,5 +1,14 @@
 {
   inputs = {
+    crane = {
+      inputs = {
+        flake-compat.follows = "";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
+      url = "github:ipetkov/crane/v0.14.3";
+    };
     fenix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/fenix";
@@ -9,6 +18,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
       url = "github:hercules-ci/flake-parts";
     };
+    flake-utils.url = "github:numtide/flake-utils";
     git-hooks = {
       inputs = {
         flake-compat.follows = "";
@@ -28,15 +38,21 @@
       url = "github:hyprwm/Hyprland";
     };
     hyprsome = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        crane.follows = "crane";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
       url = "github:sopa0/hyprsome";
     };
     lanzaboote = {
       inputs = {
+        crane.follows = "crane";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         pre-commit-hooks-nix.follows = "";
+        rust-overlay.follows = "rust-overlay";
       };
       url = "github:nix-community/lanzaboote";
     };
@@ -70,21 +86,33 @@
       url = "github:ms0503/neovim-custom";
     };
     nix-ros-overlay = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
       url = "github:lopsided98/nix-ros-overlay";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    rust-overlay = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:oxalica/rust-overlay";
+    };
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
     };
     wezterm = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
       url = "github:wez/wezterm?dir=nix";
     };
     xremap = {
       inputs = {
+        crane.follows = "crane";
         flake-parts.follows = "flake-parts";
         home-manager.follows = "home-manager";
         hyprland.follows = "hyprland";
