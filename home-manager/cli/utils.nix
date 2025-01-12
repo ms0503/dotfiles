@@ -28,6 +28,7 @@ in
   home.packages =
     (with pkgs; [
       aria2
+      cachix
       curl
       du-dust
       duf
