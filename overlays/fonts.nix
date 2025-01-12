@@ -26,10 +26,10 @@ let
     src = fetchFromGitHub noto-cjk-repo;
   };
   noto-cjk-repo = {
+    hash = "sha256-GMoqBeDNngsALyDrA1Dp8LZ4ul6vMGa52IXrfIxBKp8=";
     owner = "notofonts";
     repo = "noto-cjk";
     rev = "f8d157532fbfaeda587e826d4cd5b21a49186f7c";
-    sha256 = "GMoqBeDNngsALyDrA1Dp8LZ4ul6vMGa52IXrfIxBKp8=";
     sparseCheckout = [
       "Sans/Mono"
       "Sans/OTC"
@@ -37,10 +37,10 @@ let
     ];
   };
   noto-fonts-repo = {
+    hash = "sha256-TAbWpGF4zYHWkgLgfSisR0TED+nFufs/ptw8ZyJULpA=";
     owner = "notofonts";
     repo = "notofonts.github.io";
     rev = "2fa93b7aa9c2e4db0f9412e047e2481dfb1ef1b6";
-    sha256 = "e3a9yk+VASYdp+/3oqFJ597fS7cDfH8IfpjW/WcxjCk=";
     sparseCheckout = [
       "fonts/NotoSans/hinted"
       "fonts/NotoSans/unhinted"
