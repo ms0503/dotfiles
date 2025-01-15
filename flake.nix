@@ -141,7 +141,7 @@
       flake = {
         homeConfigurations = (import ./machines inputs).home-manager;
         nixosConfigurations = (import ./machines inputs).nixos;
-        overlays = import ./overlays;
+        overlays = import ./overlays inputs;
       };
       imports = [
         git-hooks.flakeModule

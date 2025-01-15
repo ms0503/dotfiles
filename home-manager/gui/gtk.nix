@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ myPkgs, pkgs, ... }:
 {
   gtk = {
     enable = true;
     font = {
       name = "Noto Sans CJK JP";
-      package = pkgs.noto-fonts-cjk-sans;
+      package = myPkgs.noto-fonts-cjk-sans-non-variable;
       size = 10;
     };
     gtk2.extraConfig = ''

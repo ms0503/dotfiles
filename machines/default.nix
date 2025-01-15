@@ -29,11 +29,7 @@ let
             "electron-25.9.0"
           ];
         };
-        overlays =
-          overlays
-          ++ (with self.outputs.overlays; [
-            fonts
-          ]);
+        overlays = overlays ++ [ ];
       };
     in
     home-manager.lib.homeManagerConfiguration {
@@ -86,9 +82,7 @@ let
         lanzaboote.nixosModules.lanzaboote
         (import ../options.nix)
         {
-          nixpkgs.overlays = with self.outputs.overlays; [
-            fonts
-          ];
+          nixpkgs.overlays = [ ];
         }
       ] ++ modules;
       specialArgs = {

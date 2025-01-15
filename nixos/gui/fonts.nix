@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ myPkgs, pkgs, ... }:
 {
   fonts = {
     fontDir.enable = true;
@@ -20,13 +20,16 @@
         "Noto Color Emoji"
       ];
     };
-    packages = with pkgs; [
-      nerdfonts
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-emoji
-      source-han-code-jp
-    ];
+    packages =
+      (with pkgs; [
+        nerdfonts
+        noto-fonts-emoji
+        source-han-code-jp
+      ])
+      ++ (with myPkgs; [
+        noto-fonts-cjk-sans-non-variable
+        noto-fonts-cjk-serif-non-variable
+        noto-fonts-non-variable
+      ]);
   };
 }
