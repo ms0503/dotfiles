@@ -13,6 +13,9 @@
         ])
         ++ (with myPkgs; [
           alcom
+          unity-vrc-2019
+          unity-vrc-2022
+          unity-vrc-2022-old
         ])
       )
     else
