@@ -71,7 +71,12 @@ in
     exec-once = [
       "openrgb --startminimized"
     ];
-    input.kb_layout = "jp";
+    input = {
+      kb_layout = "jp";
+      kb_model = "pc105";
+      kb_options = "caps:none";
+      kb_variant = "OADG109A";
+    };
     monitor = [
       "desc:Chimei Innolux Corporation 0x1521, 1920x1080@144, 0x0, 1"
     ];

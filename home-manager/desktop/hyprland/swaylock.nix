@@ -4,7 +4,9 @@
   theme,
   ...
 }:
-with theme;
+let
+  inherit (theme) colors;
+in
 {
   home = {
     file."${config.xdg.configHome}/swaylock/config".text = with colors; ''

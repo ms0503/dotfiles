@@ -1,21 +1,31 @@
 { lib, ... }:
 let
+  inherit (lib) mkEnableOption mkOption;
   desktops = lib.types.enum [
     "hyprland"
+  ];
+  gpus = lib.types.enum [
+    "none"
+    "nvidia"
+    "radeon"
   ];
 in
 {
   options.ms0503 = {
-    bluetooth.enable = lib.mkEnableOption "a bluetooth support";
-    desktop = lib.mkOption {
+    bluetooth.enable = mkEnableOption "a bluetooth support";
+    desktop = mkOption {
       description = "Desktop environment.";
       type = desktops;
     };
-    gui.enable = lib.mkEnableOption "a gui";
-    media.enable = lib.mkEnableOption "media applications";
-    secureboot.enable = lib.mkEnableOption "a secureboot";
-    steam.enable = lib.mkEnableOption "a steam";
-    unity.enable = lib.mkEnableOption "Unity and some applications";
-    wayland.enable = lib.mkEnableOption "a wayland";
+    gpu = mkOption {
+      description = "GPU family.";
+      type = gpus;
+    };
+    gui.enable = mkEnableOption "a gui";
+    media.enable = mkEnableOption "media applications";
+    secureboot.enable = mkEnableOption "a secureboot";
+    steam.enable = mkEnableOption "a steam";
+    unity.enable = mkEnableOption "Unity and some applications";
+    wayland.enable = mkEnableOption "a wayland";
   };
 }

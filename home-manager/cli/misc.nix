@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    xdg-utils
+    sl
   ];
-  xdg.enable = true;
 }

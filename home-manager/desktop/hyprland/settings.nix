@@ -1,10 +1,13 @@
 {
+  config,
   lib,
   pkgs,
   theme,
   ...
 }:
-with theme;
+let
+  inherit (theme) colors;
+in
 {
   wayland.windowManager.hyprland.settings = {
     animations = {
@@ -32,12 +35,15 @@ with theme;
       preserve_split = true;
       pseudotile = true;
     };
-    env = [
-      "ELECTRON_OZONE_PLATFORM_HINT,auto"
-      "LIBVA_DRIVER_NAME,nvidia"
-      "NVD_BACKEND,direct"
-      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-    ];
+    env =
+      [
+        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+      ]
+      ++ lib.optionals (config.ms0503.gpu == "nvidia") [
+        "LIBVA_DRIVER_NAME,nvidia"
+        "NVD_BACKEND,direct"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      ];
     exec-once = import ./autostart.nix pkgs theme;
     general = {
       "col.active_border" = "rgb(${colors.blue})";
@@ -50,10 +56,6 @@ with theme;
     input = {
       accel_profile = "adaptive";
       follow_mouse = 1;
-      kb_layout = "jp";
-      kb_model = "pc105";
-      kb_options = "caps:none";
-      kb_variant = "OADG109A";
       numlock_by_default = false;
       repeat_delay = 300;
       repeat_rate = 30;

@@ -10,4 +10,7 @@
     stylua.enable = true;
     taplo.enable = true;
   };
+  settings.formatter.nixfmt.excludes = [
+    "_sources/generated.nix"
+  ];
 }

@@ -1,47 +1,10 @@
-{
-  pkgs,
-  theme,
-  ...
-}:
+{ pkgs, theme, ... }:
 let
   better-movefocus = pkgs.writeScriptBin "better-movefocus" ''
     if [[ "$(hyprctl activewindow -j | jq .fullscreen)" = "true" ]]; then
       hyprctl monitors -j | jq 'map(select(.focused | not).activeWorkspace.id)[0]' | xargs hyprctl dispatch workspace
     else
       hyprctl dispatch movefocus "$1"
-    fi
-  '';
-  close-window = pkgs.writeScriptBin "close-window" ''
-    hyprctl dispatch killactive
-    sleep 0.01
-    window_count=$(hyprctl activeworkspace -j | jq .windows)
-    is_fullscreen=$(hyprctl activeworkspace -j | jq .hasfullscreen)
-    if (( window_count == 1 )) && [[ $is_fullscreen = "false" ]]; then
-      hyprctl dispatch fullscreen
-    elif (( 1 < window_count )) && [[ $is_fullscreen = "true" ]]; then
-      hyprctl dispatch fullscreen
-    fi
-  '';
-  open-terminal = pkgs.writeScriptBin "open-terminal" ''
-    window_count=$(hyprctl activeworkspace -j | jq .windows)
-    is_fullscreen=$(hyprctl activeworkspace -j | jq .hasfullscreen)
-    hyprctl dispatch exec wezterm
-    if (( window_count == 0 )) && [[ $is_fullscreen = "false" ]]; then
-      sleep 0.1
-      hyprctl dispatch fullscreen
-    elif (( 1 <= window_count )) && [[ $is_fullscreen = "true" ]]; then
-      hyprctl dispatch fullscreen
-    fi
-  '';
-  open-wofi = pkgs.writeScriptBin "open-wofi" ''
-    window_count=$(hyprctl activeworkspace -j | jq .windows)
-    is_fullscreen=$(hyprctl activeworkspace -j | jq .hasfullscreen)
-    wofi --show drun --width 512px
-    if (( window_count == 0 )) && [[ $is_fullscreen = "false" ]]; then
-      sleep 0.1
-      hyprctl dispatch fullscreen
-    elif (( 1 <= window_count )) && [[ $is_fullscreen = "true" ]]; then
-      hyprctl dispatch fullscreen
     fi
   '';
   toggle-monitor = pkgs.writeScriptBin "toggle-monitor" ''
@@ -76,7 +39,7 @@ in
       "$mainMod SHIFT, 9, exec, ${ws-move}/bin/ws-move 9"
       "$mainMod SHIFT, F, togglefloating"
       "$mainMod SHIFT, M, exit"
-      "$mainMod SHIFT, Q, exec, ${close-window}/bin/close-window"
+      "$mainMod SHIFT, Q, exec, hyprctl dispatch killactive"
       "$mainMod SHIFT, c, exec, hyprpicker --autocopy"
       "$mainMod SHIFT, left, movetoworkspace, m-1"
       "$mainMod SHIFT, right, movetoworkspace, m+1"
@@ -93,16 +56,16 @@ in
       "$mainMod, 9, exec, ${ws-switch}/bin/ws-switch 9"
       "$mainMod, F, fullscreen"
       "$mainMod, Print, exec, grimblast --notify copysave output \"$HOME/Pictures/スクリーンショット/Screenshot from $(date +%Y-%m-%d' '%H-%M-%S).png\""
-      "$mainMod, Return, exec, ${open-terminal}/bin/open-terminal"
+      "$mainMod, Return, exec, hyprctl dispatch exec wezterm"
       "$mainMod, Tab, exec, ${toggle-monitor}/bin/toggle-monitor"
       "$mainMod, down, exec, ${better-movefocus}/bin/better-movefocus d"
       "$mainMod, l, exec, swaylock -f -c ${theme.colors.bg}"
       "$mainMod, left, exec, ${better-movefocus}/bin/better-movefocus l"
-      "$mainMod, mouse_down, workspace, m+1"
-      "$mainMod, mouse_up, workspace, m-1"
+      "$mainMod, mouse_down, workspace, m-1"
+      "$mainMod, mouse_up, workspace, m+1"
       "$mainMod, period, exec, wofi-emoji"
       "$mainMod, right, exec, ${better-movefocus}/bin/better-movefocus r"
-      "$mainMod, s, exec, ${open-wofi}/bin/open-wofi"
+      "$mainMod, s, exec, wofi --show drun --width 512px"
       "$mainMod, up, exec, ${better-movefocus}/bin/better-movefocus u"
       "$mainMod, x, exec, systemctl suspend"
       "$subMod SHIFT, Tab, cyclenext, prev"

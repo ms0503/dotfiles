@@ -1,0 +1,9 @@
+[gh-q]
+fetch.url = "https://github.com/kawarimidoll/gh-q/raw/main/gh-q"
+src.branch = "main"
+src.git = "https://github.com/kawarimidoll/gh-q.git"
+
+[tokyo-night-yazi]
+fetch.github = "BennyOe/tokyo-night.yazi"
+src.branch = "main"
+src.git = "https://github.com/BennyOe/tokyo-night.yazi.git"

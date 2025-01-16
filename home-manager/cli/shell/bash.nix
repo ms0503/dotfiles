@@ -1,4 +1,4 @@
-{ pkgs, theme, ... }:
+{ theme, ... }:
 {
   programs.bash = {
     bashrcExtra = builtins.readFile ./bashrc.bash;

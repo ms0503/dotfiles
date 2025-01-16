@@ -1,8 +1,8 @@
-{ lib, ... }:
-{
+_: {
   config.ms0503 = {
     bluetooth.enable = true;
     desktop = "hyprland";
+    gpu = "nvidia";
     gui.enable = true;
     media.enable = true;
     secureboot.enable = true;

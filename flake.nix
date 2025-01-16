@@ -155,7 +155,11 @@
           ...
         }:
         {
-          devShells.default = pkgs.mkShell { };
+          devShells.default = pkgs.mkShell {
+            packages = with pkgs; [
+              nvfetcher
+            ];
+          };
           pre-commit = {
             check.enable = true;
             settings = {

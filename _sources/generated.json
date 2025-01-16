@@ -1,0 +1,37 @@
+{
+    "gh-q": {
+        "cargoLocks": null,
+        "date": "2021-11-20",
+        "extract": null,
+        "name": "gh-q",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-i6EYYRrzC+9LzsGsA0fekMQIZAth1oEWd1L8+tkbmTA=",
+            "type": "url",
+            "url": "https://github.com/kawarimidoll/gh-q/raw/main/gh-q"
+        },
+        "version": "5dc627f350902e0166016a9dd1f9479c75e3f392"
+    },
+    "tokyo-night-yazi": {
+        "cargoLocks": null,
+        "date": "2024-12-30",
+        "extract": null,
+        "name": "tokyo-night-yazi",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "BennyOe",
+            "repo": "tokyo-night.yazi",
+            "rev": "caa00abcce9886373d687d8aea8b812870f74da7",
+            "sha256": "sha256-MRlvOVW7o9M/bPUDZbajjUA2nUtcIm8S1CJZLgMHYjI=",
+            "type": "github"
+        },
+        "version": "caa00abcce9886373d687d8aea8b812870f74da7"
+    }
+}

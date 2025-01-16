@@ -6,7 +6,6 @@ inputs@{
   nix-ros-overlay,
   nixpkgs,
   private-pkgs,
-  self,
   ...
 }:
 let

@@ -1,24 +1,22 @@
 { pkgs, ... }:
 let
-  gh-q = pkgs.stdenvNoCC.mkDerivation rec {
+  gh-q = pkgs.stdenvNoCC.mkDerivation {
+    inherit (sources.gh-q) pname src;
+    dontUnpack = true;
     installPhase = ''
-      install -dm755 "$out/bin"
-      install -Dm755 "$src/gh-q" "$out/bin/gh-q"
-      sed -i 1d "$out/bin/gh-q"
-      sed -i '1i#!\/usr\/bin\/env sh' "$out/bin/gh-q"
-      chmod 0555 "$out/bin/gh-q"
+      runHook preInstall
+      install -Dm555 "$src" "$out/bin/gh-q"
+      runHook postInstall
     '';
-    name = "gh-q";
-    phases = [
-      "installPhase"
-    ];
-    pname = name;
-    src = pkgs.fetchFromGitHub {
-      owner = "kawarimidoll";
-      repo = "gh-q";
-      rev = "5dc627f350902e0166016a9dd1f9479c75e3f392";
-      sha256 = "A0xYze0LCA67Qmck3WXiUihchLyjbOzWNQ++mitf3bk=";
-    };
+    version = sources.gh-q.date;
+  };
+  sources = import ../../_sources/generated.nix {
+    inherit (pkgs)
+      dockerTools
+      fetchFromGitHub
+      fetchgit
+      fetchurl
+      ;
   };
   userEmail = "ms0503@outlook.com";
   userName = "ms0503";

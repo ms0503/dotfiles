@@ -3,24 +3,22 @@ let
   jdk17-wrapped = pkgs.stdenvNoCC.mkDerivation {
     inherit (pkgs.jdk17) version;
     installPhase = ''
+      runHook preInstall
       install -dm755 "$out/lib/openjdk17"
       cp -rv "$src/lib/openjdk/"* "$out/lib/openjdk17"
+      runHook postInstall
     '';
-    phases = [
-      "installPhase"
-    ];
     pname = "jdk17-wrapped";
     src = pkgs.jdk17;
   };
   jdk8-wrapped = pkgs.stdenvNoCC.mkDerivation {
     inherit (pkgs.jdk8) version;
     installPhase = ''
+      runHook preInstall
       install -dm755 "$out/lib/openjdk8"
       cp -rv "$src/lib/openjdk/"* "$out/lib/openjdk8"
+      runHook postInstall
     '';
-    phases = [
-      "installPhase"
-    ];
     pname = "jdk8-wrapped";
     src = pkgs.jdk8;
   };
@@ -43,17 +41,6 @@ in
       jdk17-wrapped
       jdk8-wrapped
       zig
-    ])
-    ++ (with pkgs.jetbrains; [
-      clion
-      gateway
-      idea-ultimate
-      phpstorm
-      pycharm-professional
-      rider
-      rust-rover
-      webstorm
-      writerside
     ])
     ++ (with pkgs.nodePackages; [
       npm

@@ -61,7 +61,12 @@ in
 {
   home.packages =
     (with pkgs; [
+      gimp
+      libreoffice-fresh
       networkmanagerapplet
+      winePackages.stagingFull
+      winetricks
+      xdg-utils
       zoom-us
     ])
     ++ (
@@ -87,4 +92,5 @@ in
     shading = 75;
     transparent = true;
   };
+  xdg.enable = true;
 }

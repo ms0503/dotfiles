@@ -1,27 +1,32 @@
-{ myPkgs, pkgs, ... }:
+{
+  lib,
+  myPkgs,
+  pkgs,
+  ...
+}:
 let
+  sources = import ../../_sources/generated.nix {
+    inherit (pkgs)
+      dockerTools
+      fetchFromGitHub
+      fetchgit
+      fetchurl
+      ;
+  };
   tokyo-night-yazi = pkgs.stdenvNoCC.mkDerivation {
+    inherit (sources.tokyo-night-yazi) pname src;
     installPhase = ''
-      cd "$src"
+      runHook preInstall
       install -Dm444 -t "$out" \
-        LICENSE \
-        LICENSE-tmtheme \
-        README.md \
-        flavor.toml \
-        preview.png \
-        tmtheme.xml
+        "$src/LICENSE" \
+        "$src/LICENSE-tmtheme" \
+        "$src/README.md" \
+        "$src/flavor.toml" \
+        "$src/preview.png" \
+        "$src/tmtheme.xml"
+      runHook postInstall
     '';
-    phases = [
-      "installPhase"
-    ];
-    pname = "tokyo-night-yazi";
-    src = pkgs.fetchFromGitHub {
-      owner = "BennyOe";
-      repo = "tokyo-night.yazi";
-      rev = "024fb096821e7d2f9d09a338f088918d8cfadf34";
-      sha256 = "IhCwP5v0qbuanjfMRbk/Uatu31rPNVChJn5Y9c5KWYQ=";
-    };
-    version = "latest";
+    version = sources.tokyo-night-yazi.date;
   };
 in
 {
@@ -44,7 +49,7 @@ in
       procs
       ripunzip
       silicon
-      sl
+      sqlite
       tokei
       typos
       unar
@@ -71,6 +76,10 @@ in
       };
     };
     bottom.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     eza = {
       #colors = "auto";
       enable = true;
@@ -93,6 +102,12 @@ in
       generateCaches = true;
     };
     ripgrep.enable = true;
+    ssh = {
+      enable = true;
+      extraConfig = lib.mkDefault "";
+      serverAliveCountMax = 5;
+      serverAliveInterval = 60;
+    };
     yazi = {
       enable = true;
       flavors = {

@@ -1,8 +1,4 @@
-{
-  inputs,
-  username,
-  ...
-}:
+{ inputs, username, ... }:
 {
   hardware.uinput.enable = true;
   imports = [
