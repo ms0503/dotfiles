@@ -9,7 +9,8 @@
           tooltip = false;
         };
         "clock#2" = {
-          format = "{:%H:%M}";
+          format = "{:%H:%M:%S}";
+          interval = 1;
           tooltip = false;
         };
         "clock#3" = {
@@ -131,6 +132,14 @@
       }
 
       #custom-left-arrow-dark,
+      #custom-left-arrow-light,
+      #custom-right-arrow-dark,
+      #custom-right-arrow-light {
+        border-bottom: 4px solid transparent;
+        border-top: 4px solid transparent;
+      }
+
+      #custom-left-arrow-dark,
       #custom-right-arrow-dark {
         color: ${black};
       }
@@ -139,6 +148,22 @@
       #custom-right-arrow-light {
         background: ${black};
         color: ${bg};
+      }
+
+      #custom-left-arrow-dark {
+        border-right: 4px solid ${black};
+      }
+
+      #custom-left-arrow-light {
+        border-right: 4px solid ${bg};
+      }
+
+      #custom-right-arrow-dark {
+        border-left: 4px solid ${black};
+      }
+
+      #custom-right-arrow-light {
+        border-left: 4px solid ${bg};
       }
 
       #battery,
