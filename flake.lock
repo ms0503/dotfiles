@@ -690,11 +690,11 @@
         "treefmt-nix": []
       },
       "locked": {
-        "lastModified": 1736991483,
-        "narHash": "sha256-Hpibcaw2Xfz4F0mSllVoziZcsfXfqScTPTgqjEU3IAc=",
+        "lastModified": 1737208031,
+        "narHash": "sha256-sELJMgAvloeSamsECxcOfGaPG2m39osQ8YjkVIEfxbk=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "f3d5379c25cf14843856e3d3733bafb8fb80e679",
+        "rev": "a12474df615433e48f1baec12e044d6fe733f9b4",
         "type": "github"
       },
       "original": {
