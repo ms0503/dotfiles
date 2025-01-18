@@ -85,6 +85,19 @@
       };
       url = "github:ms0503/neovim-custom";
     };
+    nh = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:viperML/nh";
+    };
+    nix = {
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+        git-hooks-nix.follows = "";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:NixOS/nix/latest-release";
+    };
     nix-ros-overlay = {
       inputs = {
         flake-utils.follows = "flake-utils";

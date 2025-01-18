@@ -3,6 +3,7 @@ inputs@{
   home-manager,
   lanzaboote,
   misc-tools,
+  nh,
   nix-ros-overlay,
   nixpkgs,
   private-pkgs,
@@ -28,7 +29,9 @@ let
             "electron-25.9.0"
           ];
         };
-        overlays = overlays ++ [ ];
+        overlays = overlays ++ [
+          nh.overlays.default
+        ];
       };
     in
     home-manager.lib.homeManagerConfiguration {
@@ -81,7 +84,9 @@ let
         lanzaboote.nixosModules.lanzaboote
         (import ../options.nix)
         {
-          nixpkgs.overlays = [ ];
+          nixpkgs.overlays = [
+            nh.overlays.default
+          ];
         }
       ] ++ modules;
       specialArgs = {
