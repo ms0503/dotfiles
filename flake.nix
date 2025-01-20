@@ -59,6 +59,9 @@
     misc-tools = {
       inputs = {
         fenix.follows = "fenix";
+        flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
+        git-hooks.follows = "";
         nixpkgs.follows = "nixpkgs";
         treefmt-nix.follows = "";
       };
@@ -68,6 +71,7 @@
       inputs = {
         fenix.follows = "fenix";
         flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
         git-hooks.follows = "";
         nixpkgs.follows = "nixpkgs";
         treefmt-nix.follows = "";
@@ -80,7 +84,6 @@
         flake-compat.follows = "";
         git-hooks.follows = "";
         nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "nixpkgs";
         treefmt-nix.follows = "";
       };
       url = "github:ms0503/neovim-custom";

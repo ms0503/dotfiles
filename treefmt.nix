@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs = {
     nixfmt.enable = true;
     shellcheck.enable = true;
