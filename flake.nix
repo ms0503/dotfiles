@@ -61,9 +61,9 @@
         fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
-        git-hooks.follows = "";
+        git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "";
+        treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:ms0503/misc-tools";
     };
@@ -72,9 +72,9 @@
         fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
-        git-hooks.follows = "";
+        git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "";
+        treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:ms0503/pkgs.nix";
     };
@@ -82,9 +82,9 @@
       inputs = {
         fenix.follows = "fenix";
         flake-compat.follows = "";
-        git-hooks.follows = "";
+        git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "";
+        treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:ms0503/neovim-custom";
     };

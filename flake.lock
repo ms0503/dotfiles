@@ -664,11 +664,15 @@
         "flake-parts": [
           "flake-parts"
         ],
-        "git-hooks": [],
+        "git-hooks": [
+          "git-hooks"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
-        "treefmt-nix": []
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
       },
       "locked": {
         "lastModified": 1737302799,
@@ -693,11 +697,15 @@
         "flake-parts": [
           "flake-parts"
         ],
-        "git-hooks": [],
+        "git-hooks": [
+          "git-hooks"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
-        "treefmt-nix": []
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
       },
       "locked": {
         "lastModified": 1737302826,
@@ -721,12 +729,16 @@
         ],
         "flake-compat": [],
         "flake-parts": "flake-parts_2",
-        "git-hooks": [],
+        "git-hooks": [
+          "git-hooks"
+        ],
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "treefmt-nix": []
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
       },
       "locked": {
         "lastModified": 1737302720,
