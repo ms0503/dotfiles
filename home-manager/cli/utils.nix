@@ -47,6 +47,7 @@ in
       nh
       nurl
       p7zip
+      pandoc
       procs
       ripunzip
       silicon
