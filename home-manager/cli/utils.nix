@@ -37,6 +37,7 @@ in
       curl
       du-dust
       duf
+      ffmpeg-full
       file
       fx
       ghq
