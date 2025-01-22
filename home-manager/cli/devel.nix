@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   jdk17-wrapped = pkgs.stdenvNoCC.mkDerivation {
     inherit (pkgs.jdk17) version;
@@ -26,12 +26,15 @@ in
 {
   home.packages =
     (with pkgs; [
-      (fenix.combine [
-        fenix.latest.toolchain
-        fenix.stable.toolchain
-        fenix.targets.i686-unknown-linux-gnu.latest.rust-std
-        fenix.targets.i686-unknown-linux-gnu.stable.rust-std
-      ])
+      (fenix.combine (
+        [
+          fenix.latest.toolchain
+          fenix.stable.toolchain
+          fenix.targets.i686-unknown-linux-gnu.latest.rust-std
+          fenix.targets.i686-unknown-linux-gnu.stable.rust-std
+        ]
+        ++ config.ms0503.rust.extraTools
+      ))
       (lib.hiPrio nodejs-slim)
       (lib.hiPrio python312)
       (lib.hiPrio rust-analyzer-nightly)

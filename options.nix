@@ -23,6 +23,10 @@ in
     };
     gui.enable = mkEnableOption "a gui";
     media.enable = mkEnableOption "media applications";
+    rust.extraTools = mkOption {
+      description = "Extra Rust tools.";
+      type = lib.types.listOf lib.types.package;
+    };
     secureboot.enable = mkEnableOption "a secureboot";
     steam.enable = mkEnableOption "a steam";
     unity.enable = mkEnableOption "Unity and some applications";
