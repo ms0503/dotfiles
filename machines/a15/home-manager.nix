@@ -29,6 +29,7 @@ in
       colcon
       gcc-arm-embedded
       openocd
+      platformio
       stm32cubemx
     ];
     pointerCursor = {
