@@ -13,6 +13,9 @@
     '';
     "${config.xdg.configHome}/wezterm/colors/myTheme.toml".text = theme.wezterm;
   };
+  imports = [
+    ./config.nix
+  ];
   programs.wezterm = {
     enable = true;
     extraConfig = builtins.readFile ./wezterm.lua;

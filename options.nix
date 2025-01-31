@@ -12,6 +12,10 @@ let
 in
 {
   options.ms0503 = {
+    bash.aliases = mkOption {
+      description = "Bash aliases.";
+      type = lib.types.attrsOf lib.types.str;
+    };
     bluetooth.enable = mkEnableOption "a bluetooth support";
     desktop = mkOption {
       description = "Desktop environment.";

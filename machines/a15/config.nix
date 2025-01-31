@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   config.ms0503 = {
+    bash.aliases = { };
     bluetooth.enable = true;
     desktop = "hyprland";
     gpu = "nvidia";
