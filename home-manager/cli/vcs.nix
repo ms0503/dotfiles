@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ myPkgs, pkgs, ... }:
 let
   gh-q = pkgs.stdenvNoCC.mkDerivation {
     inherit (sources.gh-q) pname src;
@@ -22,6 +22,9 @@ let
   userName = "Sora Tonami";
 in
 {
+  home.packages = with myPkgs; [
+    git-vrc
+  ];
   programs = {
     gh = {
       enable = true;
