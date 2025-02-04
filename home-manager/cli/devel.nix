@@ -39,10 +39,12 @@ in
       (lib.hiPrio python312)
       (lib.hiPrio rust-analyzer-nightly)
       deno
+      dotnet-sdk
       gcc
       ghc
       jdk17-wrapped
       jdk8-wrapped
+      mono
       zig
     ])
     ++ (with pkgs.nodePackages; [
