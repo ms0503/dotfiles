@@ -64,6 +64,7 @@ in
       gimp
       libreoffice-fresh
       networkmanagerapplet
+      thunderbird-latest
       winePackages.stagingFull
       winetricks
       xdg-utils
