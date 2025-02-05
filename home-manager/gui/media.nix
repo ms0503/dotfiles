@@ -4,6 +4,7 @@
     evince
     spotify
     totem
+    vlc
   ];
   programs = {
     ncspot.enable = true;
