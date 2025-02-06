@@ -23,6 +23,7 @@
       enable32Bit = true;
       extraPackages = with pkgs; [
         nvidia-vaapi-driver
+        ocl-icd
         vaapiVdpau
       ];
     };
