@@ -112,7 +112,7 @@ in
         private-pkgs.overlays.default
       ];
       system = "x86_64-linux";
-      theme = "onedark-warmer";
+      theme = "chalk";
       username = "ms0503";
     };
     "ms0503@mainpc" = mkHomeManagerConfiguration {
@@ -123,7 +123,7 @@ in
         fenix.overlays.default
       ];
       system = "x86_64-linux";
-      theme = "onedark-warmer";
+      theme = "chalk";
       username = "ms0503";
     };
   };

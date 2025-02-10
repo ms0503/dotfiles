@@ -20,6 +20,6 @@ in
   "fcitx5 -D"
   "steam -silent"
   "[workspace 1 silent] microsoft-edge-dev"
-  "[workspace 2 silent] wezterm"
+  "[workspace 2 silent] ghostty"
   "[workspace 3 silent] discordcanary"
 ]

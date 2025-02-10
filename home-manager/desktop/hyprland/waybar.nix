@@ -127,8 +127,8 @@
       }
 
       window#waybar {
-        background: ${bg};
-        color: ${fg};
+        background: #333333;
+        color: #dddddd;
       }
 
       #custom-left-arrow-dark,
@@ -141,29 +141,29 @@
 
       #custom-left-arrow-dark,
       #custom-right-arrow-dark {
-        color: ${black};
+        color: #222222;
       }
 
       #custom-left-arrow-light,
       #custom-right-arrow-light {
-        background: ${black};
-        color: ${bg};
+        background: #222222;
+        color: #333333;
       }
 
       #custom-left-arrow-dark {
-        border-right: 4px solid ${black};
+        border-right: 4px solid #222222;
       }
 
       #custom-left-arrow-light {
-        border-right: 4px solid ${bg};
+        border-right: 4px solid #333333;
       }
 
       #custom-right-arrow-dark {
-        border-left: 4px solid ${black};
+        border-left: 4px solid #222222;
       }
 
       #custom-right-arrow-light {
-        border-left: 4px solid ${bg};
+        border-left: 4px solid #333333;
       }
 
       #battery,
@@ -176,41 +176,41 @@
       #pulseaudio,
       #tray,
       #workspaces {
-        background: ${black};
+        background: #222222;
       }
 
       #battery {
-        color: ${green};
+        color: #77cc77;
       }
 
       #cpu {
-        color: ${purple};
+        color: #aa11aa;
       }
 
       #disk {
-        color: ${magenta};
+        color: #ee55ee;
       }
 
       #memory {
-        color: ${teal};
+        color: #44aa99;
       }
 
       #pulseaudio {
-        color: ${blue};
+        color: #4499ff;
       }
 
       #workspaces button {
-        color: ${fg};
+        color: #dddddd;
         padding: 0 2px;
       }
 
       #workspaces button.focused {
-        color: ${blue};
+        color: #4499ff;
       }
 
       #workspaces button:hover {
-        background: ${black};
-        border: ${black};
+        background: #222222;
+        border: #222222;
         box-shadow: inherit;
         padding: 0 3px;
         text-shadow: inherit;

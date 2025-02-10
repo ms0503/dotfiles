@@ -23,7 +23,7 @@ in
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     "$subMod" = "ALT";
-    "$term" = "wezterm";
+    "$term" = "ghostty";
     bind = [
       "$mainMod CTRL, left, workspace, m-1"
       "$mainMod CTRL, right, workspace, m+1"
@@ -56,7 +56,7 @@ in
       "$mainMod, 9, exec, ${ws-switch}/bin/ws-switch 9"
       "$mainMod, F, fullscreen"
       "$mainMod, Print, exec, grimblast --notify copysave output \"$HOME/Pictures/スクリーンショット/Screenshot from $(date +%Y-%m-%d' '%H-%M-%S).png\""
-      "$mainMod, Return, exec, hyprctl dispatch exec wezterm"
+      "$mainMod, Return, exec, hyprctl dispatch exec ghostty"
       "$mainMod, Tab, exec, ${toggle-monitor}/bin/toggle-monitor"
       "$mainMod, down, exec, ${better-movefocus}/bin/better-movefocus d"
       "$mainMod, l, exec, swaylock -f -c ${theme.colors.bg}"
