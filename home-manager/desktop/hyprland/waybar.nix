@@ -1,4 +1,3 @@
-{ theme, ... }:
 {
   programs.waybar = {
     enable = true;
@@ -120,7 +119,7 @@
         tray.icon-size = 14;
       };
     };
-    style = with theme.xcolors; ''
+    style = ''
       * {
         font-family: monospace;
         font-size: 14px;

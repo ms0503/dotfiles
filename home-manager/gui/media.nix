@@ -1,16 +1,9 @@
-{ config, pkgs, ... }:
-let
-  spotify-wayland = pkgs.spotify.overrideAttrs (
-    _: _: {
-      preFixup = ''
-        gappsWrapperArgs+=(
-          --add-flags "--enable-wayland-ime"
-          --add-flags "--disable-gpu-compositing"
-        )
-      '';
-    }
-  );
-in
+{
+  config,
+  myPkgs,
+  pkgs,
+  ...
+}:
 {
   home.packages =
     with pkgs;
@@ -23,6 +16,7 @@ in
     ]
     ++ (
       if config.ms0503.wayland.enable then
+        with myPkgs;
         [
           spotify-wayland
         ]

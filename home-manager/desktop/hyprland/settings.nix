@@ -1,5 +1,4 @@
-{
-  config,
+args@{
   lib,
   pkgs,
   theme,
@@ -35,16 +34,10 @@ in
       preserve_split = true;
       pseudotile = true;
     };
-    env =
-      [
-        "ELECTRON_OZONE_PLATFORM_HINT,auto"
-      ]
-      ++ lib.optionals (config.ms0503.gpu == "nvidia") [
-        "LIBVA_DRIVER_NAME,nvidia"
-        "NVD_BACKEND,direct"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      ];
-    exec-once = import ./autostart.nix pkgs theme;
+    env = [
+      "ELECTRON_OZONE_PLATFORM_HINT,auto"
+    ];
+    exec-once = import ./autostart.nix args;
     general = {
       "col.active_border" = "rgb(${colors.blue})";
       "col.inactive_border" = "rgb(${colors.bg})";

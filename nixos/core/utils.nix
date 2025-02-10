@@ -14,6 +14,7 @@
       file
       fzf
       jq
+      libinput-gestures
       lsof
       man
       pciutils
@@ -39,5 +40,27 @@
       vimAlias = true;
     };
     yazi.enable = true;
+  };
+  services = {
+    fwupd.enable = true;
+    libinput.enable = true;
+    openssh = {
+      allowSFTP = true;
+      enable = true;
+    };
+    udev.extraRules = ''
+      ENV{UDISKS_AUTO}="1"
+    '';
+    udisks2 = {
+      enable = true;
+      mountOnMedia = true;
+    };
+  };
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 }

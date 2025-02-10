@@ -8,7 +8,7 @@
     "Source Han Code JP"
     "Noto Color Emoji"
   ];
-  font-size = 10;
+  font-size = 12;
   theme = "myTheme";
   title = "";
   window-padding-balance = true;

@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
-  config.ms0503 = {
-    bash.aliases = { };
+  ms0503 = {
     bluetooth.enable = true;
-    desktop = "hyprland";
+    desktop.hyprland.enable = true;
     gpu = "nvidia";
     gui.enable = true;
     media.enable = true;
@@ -13,7 +12,6 @@
     ];
     secureboot.enable = true;
     steam.enable = true;
-    unity.enable = true;
     wayland.enable = true;
   };
 }

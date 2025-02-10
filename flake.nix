@@ -142,6 +142,7 @@
       fenix,
       flake-parts,
       git-hooks,
+      home-manager,
       nixpkgs,
       self,
       treefmt-nix,
@@ -155,7 +156,10 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       flake = {
         homeConfigurations = (import ./machines inputs).home-manager;
+        homeManagerModules = import ./modules/home-manager;
+        lib = import ./lib inputs;
         nixosConfigurations = (import ./machines inputs).nixos;
+        nixosModules = import ./modules/nixos;
         overlays = import ./overlays inputs;
       };
       imports = [

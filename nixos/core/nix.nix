@@ -40,4 +40,8 @@
     };
   };
   nixpkgs.config.allowUnfree = true;
+  programs = {
+    nh.enable = true;
+    nix-ld.enable = true;
+  };
 }

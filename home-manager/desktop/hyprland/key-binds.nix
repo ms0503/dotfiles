@@ -1,5 +1,11 @@
-{ pkgs, theme, ... }:
+{
+  config,
+  pkgs,
+  theme,
+  ...
+}:
 let
+  inherit (config.ms0503) terminal;
   better-movefocus = pkgs.writeScriptBin "better-movefocus" ''
     if [[ "$(hyprctl activewindow -j | jq .fullscreen)" = "true" ]]; then
       hyprctl monitors -j | jq 'map(select(.focused | not).activeWorkspace.id)[0]' | xargs hyprctl dispatch workspace
@@ -23,7 +29,7 @@ in
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     "$subMod" = "ALT";
-    "$term" = "ghostty";
+    "$term" = "${terminal}";
     bind = [
       "$mainMod CTRL, left, workspace, m-1"
       "$mainMod CTRL, right, workspace, m+1"
@@ -56,7 +62,7 @@ in
       "$mainMod, 9, exec, ${ws-switch}/bin/ws-switch 9"
       "$mainMod, F, fullscreen"
       "$mainMod, Print, exec, grimblast --notify copysave output \"$HOME/Pictures/スクリーンショット/Screenshot from $(date +%Y-%m-%d' '%H-%M-%S).png\""
-      "$mainMod, Return, exec, hyprctl dispatch exec ghostty"
+      "$mainMod, Return, exec, hyprctl dispatch exec ${terminal}"
       "$mainMod, Tab, exec, ${toggle-monitor}/bin/toggle-monitor"
       "$mainMod, down, exec, ${better-movefocus}/bin/better-movefocus d"
       "$mainMod, l, exec, swaylock -f -c ${theme.colors.bg}"

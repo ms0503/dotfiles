@@ -1,29 +1,16 @@
-{ lib, ... }:
+{ lib, myLib, ... }:
 let
   inherit (lib) mkEnableOption mkOption;
-  desktops = lib.types.enum [
-    "hyprland"
-  ];
-  gpus = lib.types.enum [
-    "none"
-    "nvidia"
-    "radeon"
-  ];
+  types = lib.types // myLib.types;
 in
 {
   options.ms0503 = {
-    bash.aliases = mkOption {
-      description = "Bash aliases.";
-      type = lib.types.attrsOf lib.types.str;
-    };
-    bluetooth.enable = mkEnableOption "a bluetooth support";
-    desktop = mkOption {
-      description = "Desktop environment.";
-      type = desktops;
+    desktop = {
+      hyprland.enable = mkEnableOption "Hyprland";
     };
     gpu = mkOption {
       description = "GPU family.";
-      type = gpus;
+      type = types.gpus;
     };
     gui.enable = mkEnableOption "a gui";
     media.enable = mkEnableOption "media applications";
@@ -31,9 +18,6 @@ in
       description = "Extra Rust tools.";
       type = lib.types.listOf lib.types.package;
     };
-    secureboot.enable = mkEnableOption "a secureboot";
-    steam.enable = mkEnableOption "a steam";
-    unity.enable = mkEnableOption "Unity and some applications";
     wayland.enable = mkEnableOption "a wayland";
   };
 }

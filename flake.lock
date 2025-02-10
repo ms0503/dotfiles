@@ -727,11 +727,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739179265,
-        "narHash": "sha256-cH5Hrhb34Spi7KtpueV0ADI+388m2qCWeEZ3jmDDDCA=",
+        "lastModified": 1739197150,
+        "narHash": "sha256-UtXiXzpRvU/q1hpIfTbQygwQXGVzhnx0soKQ+gVuvgg=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "12d9ead324d204c1a7103cc83edd900a68e2e27d",
+        "rev": "6e55cc9e899f7481a3b409a4dc40eb2bcb2b20a9",
         "type": "github"
       },
       "original": {

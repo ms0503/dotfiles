@@ -1,23 +1,19 @@
-{ theme, ... }:
-let
-  inherit (theme) xcolors;
-in
 {
   services.dunst = {
     enable = true;
     settings = {
       global = {
-        background = xcolors.black;
+        background = "#222222";
         corner_radius = 10;
         font = "Noto Sans CJK JP";
-        foreground = xcolors.fg;
-        frame_color = xcolors.black;
+        foreground = "#dddddd";
+        frame_color = "#222222";
         monitor = 1;
         offset = "30x30";
         timeout = 10;
         transparency = 10;
       };
-      urgency_critical.frame_color = xcolors.red;
+      urgency_critical.frame_color = "#ff4444";
     };
   };
 }
