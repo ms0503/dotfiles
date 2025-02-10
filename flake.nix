@@ -69,7 +69,6 @@
     };
     ms0503-pkgs = {
       inputs = {
-        fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
@@ -150,7 +149,7 @@
     }:
     let
       inputs = prevInputs // {
-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/0af54ac840a27addfdf7f3475e65cee7692595d0";
+        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/509514bfd02615c06d9ccba100c4fa87756af11d";
       };
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
