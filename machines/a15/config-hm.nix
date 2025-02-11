@@ -12,6 +12,12 @@
     ];
     terminal = "wezterm";
     unity.enable = true;
+    walland = {
+      backend = "swww";
+      enable = true;
+      schedule = "daily";
+      source = "bing";
+    };
     wayland.enable = true;
   };
 }
