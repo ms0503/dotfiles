@@ -19,6 +19,7 @@ in
       system,
       theme,
       username,
+      withSystem,
     }:
     let
       myPkgs = ms0503-pkgs.packages.${system} // self.outputs.packages.${system};
@@ -36,76 +37,85 @@ in
         ];
       };
     in
-    home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = {
-        inherit
-          inputs
-          myLib
-          myPkgs
-          username
-          ;
-        theme = (import ../themes) theme;
-      };
-      modules = [
-        (import ../options.nix)
-        self.homeManagerModules.default
-        {
-          home = {
-            inherit username;
-            homeDirectory = "/home/${username}";
-            packages = (
-              with misc-tools.packages.${system};
-              [
-                colortool
-                generatehex
-                getcodepoint
-                getemoji
-                matrics
-                unicodeescape
-                urlencode
-              ]
-            );
-            stateVersion = "24.11";
-          };
-          programs = {
-            home-manager.enable = true;
-            git.enable = true;
-          };
-        }
-        ../home-manager/cli
-      ] ++ modules;
-    };
+    withSystem system (
+      { inputs', ... }:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit
+            inputs
+            inputs'
+            myLib
+            myPkgs
+            username
+            ;
+          theme = (import ../themes) theme;
+        };
+        modules = [
+          (import ../options.nix)
+          self.homeManagerModules.default
+          {
+            home = {
+              inherit username;
+              homeDirectory = "/home/${username}";
+              packages = (
+                with misc-tools.packages.${system};
+                [
+                  colortool
+                  generatehex
+                  getcodepoint
+                  getemoji
+                  matrics
+                  unicodeescape
+                  urlencode
+                ]
+              );
+              stateVersion = "24.11";
+            };
+            programs = {
+              home-manager.enable = true;
+              git.enable = true;
+            };
+          }
+          ../home-manager/cli
+        ] ++ modules;
+      }
+    );
   mkNixosSystem =
     {
       hostname,
       modules,
       system,
       username,
+      withSystem,
     }:
     let
       myPkgs = ms0503-pkgs.packages.${system} // self.outputs.packages.${system};
     in
-    nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [
-        lanzaboote.nixosModules.lanzaboote
-        (import ../options.nix)
-        self.nixosModules.default
-        {
-          nixpkgs.overlays = [
-            nh.overlays.default
-          ];
-        }
-      ] ++ modules;
-      specialArgs = {
-        inherit
-          hostname
-          inputs
-          myLib
-          myPkgs
-          username
-          ;
-      };
-    };
+    withSystem system (
+      { inputs', ... }:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          lanzaboote.nixosModules.lanzaboote
+          (import ../options.nix)
+          self.nixosModules.default
+          {
+            nixpkgs.overlays = [
+              nh.overlays.default
+            ];
+          }
+        ] ++ modules;
+        specialArgs = {
+          inherit
+            hostname
+            inputs
+            inputs'
+            myLib
+            myPkgs
+            username
+            ;
+        };
+      }
+    );
 }

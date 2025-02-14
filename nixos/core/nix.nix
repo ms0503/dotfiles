@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs', pkgs, ... }:
 {
   nix = {
     extraOptions = ''
@@ -9,7 +9,7 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    package = inputs.nix.packages.${pkgs.system}.default;
+    package = inputs'.nix.packages.default;
     settings = {
       accept-flake-config = true;
       auto-optimise-store = true;

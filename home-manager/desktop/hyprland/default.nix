@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs', pkgs, ... }:
 {
   home.packages =
     (with pkgs; [
@@ -15,7 +15,7 @@
       wlogout
     ])
     ++ [
-      inputs.hyprsome.packages.${pkgs.system}.default
+      inputs'.hyprsome.packages.default
     ];
   imports = [
     ./dunst.nix

@@ -153,61 +153,67 @@
         private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/509514bfd02615c06d9ccba100c4fa87756af11d";
       };
     in
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      flake = {
-        homeConfigurations = (import ./machines inputs).home-manager;
-        homeManagerModules = import ./modules/home-manager;
-        lib = import ./lib inputs;
-        nixosConfigurations = (import ./machines inputs).nixos;
-        nixosModules = import ./modules/nixos;
-        overlays = import ./overlays inputs;
-      };
-      imports = [
-        git-hooks.flakeModule
-        treefmt-nix.flakeModule
-      ];
-      perSystem =
-        {
-          config,
-          pkgs,
-          system,
-          ...
-        }:
-        {
-          devShells.default = pkgs.mkShell {
-            packages = with pkgs; [
-              nvfetcher
-            ];
-          };
-          pre-commit = {
-            check.enable = true;
-            settings = {
-              hooks = {
-                actionlint.enable = true;
-                check-json.enable = true;
-                check-toml.enable = true;
-                editorconfig-checker = {
-                  enable = true;
-                  excludes = [
-                    "flake.lock"
-                    "themes/.*/wezterm.toml"
-                  ];
-                };
-                luacheck.enable = true;
-                markdownlint.enable = true;
-                yamlfmt.enable = true;
-                yamllint.enable = true;
-              };
-              src = ./.;
-            };
-          };
-          treefmt = import ./treefmt.nix;
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { flake-parts-lib, withSystem, ... }:
+      let
+        inherit (flake-parts-lib) importApply;
+        machines = importApply ./machines { inherit withSystem; };
+      in
+      {
+        flake = {
+          homeManagerModules = import ./modules/home-manager;
+          lib = import ./lib inputs;
+          nixosModules = import ./modules/nixos;
+          overlays = import ./overlays inputs;
         };
-      systems = [
-        "aarch64-darwin"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "x86_64-linux"
-      ];
-    };
+        imports = [
+          git-hooks.flakeModule
+          machines
+          treefmt-nix.flakeModule
+        ];
+        perSystem =
+          {
+            config,
+            pkgs,
+            system,
+            ...
+          }:
+          {
+            devShells.default = pkgs.mkShell {
+              packages = with pkgs; [
+                nvfetcher
+              ];
+            };
+            pre-commit = {
+              check.enable = true;
+              settings = {
+                hooks = {
+                  actionlint.enable = true;
+                  check-json.enable = true;
+                  check-toml.enable = true;
+                  editorconfig-checker = {
+                    enable = true;
+                    excludes = [
+                      "flake.lock"
+                      "themes/.*/wezterm.toml"
+                    ];
+                  };
+                  luacheck.enable = true;
+                  markdownlint.enable = true;
+                  yamlfmt.enable = true;
+                  yamllint.enable = true;
+                };
+                src = ./.;
+              };
+            };
+            treefmt = import ./treefmt.nix;
+          };
+        systems = [
+          "aarch64-darwin"
+          "aarch64-linux"
+          "x86_64-darwin"
+          "x86_64-linux"
+        ];
+      }
+    );
 }
