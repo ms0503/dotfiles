@@ -2,6 +2,7 @@
   cat = "bat";
   cl-c = "wl-copy";
   cl-p = "wl-paste";
+  fzcd = "cd $(fzf)";
   g = "git";
   gA = "git add";
   gAp = "git add -p";
@@ -19,6 +20,7 @@
   gdc = "git diff --cached HEAD";
   gf = "git fetch";
   gfu = "git fetch upstream";
+  gfzcd = "cd $(ghq root)/$(ghq list | fzf)";
   gl = "git log --all --decorate --graph --oneline";
   gm = "git merge";
   gp = "git push";
