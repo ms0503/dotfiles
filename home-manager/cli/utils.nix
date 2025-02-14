@@ -2,6 +2,7 @@
   lib,
   myPkgs,
   pkgs,
+  theme,
   ...
 }:
 let
@@ -94,7 +95,10 @@ in
       icons = "auto";
     };
     fd.enable = true;
-    fzf.enable = true;
+    fzf = {
+      colors = theme.fzf;
+      enable = true;
+    };
     htop.enable = true;
     jq.enable = true;
     lazygit.enable = true;

@@ -4,7 +4,7 @@ let
 in
 rec {
   colors = builtins.mapAttrs (_: value: removeHash value) xcolors;
-  fzf = builtins.readFile ./colors/${theme}/fzf.sh;
+  fzf = import ./colors/${theme}/fzf.nix;
   ghostty = import ./colors/${theme}/ghostty.nix;
   wezterm = builtins.readFile ./colors/${theme}/wezterm.toml;
   xcolors = import ./colors/${theme};

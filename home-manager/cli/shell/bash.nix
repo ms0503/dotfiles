@@ -1,4 +1,3 @@
-{ theme, ... }:
 {
   programs.bash = {
     bashrcExtra = builtins.readFile ./bashrc.bash;
@@ -13,9 +12,6 @@
       "lla"
       "ls"
     ];
-    initExtra = ''
-      ${theme.fzf}
-    '';
     logoutExtra = builtins.readFile ./bash_logout.bash;
     profileExtra = builtins.readFile ./profile.bash;
     shellAliases = import ./aliases.nix;
