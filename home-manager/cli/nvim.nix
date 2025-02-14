@@ -1,6 +1,9 @@
-{ inputs, pkgs, ... }:
+{ inputs', ... }:
 {
   home.packages = [
-    inputs.neovim-custom.packages.${pkgs.system}.default
+    (inputs'.neovim-custom.packages.default.override {
+      viAlias = true;
+      vimAlias = true;
+    })
   ];
 }

@@ -1,7 +1,18 @@
-{ myPkgs, pkgs, ... }:
+{
+  inputs',
+  myPkgs,
+  pkgs,
+  ...
+}:
 {
   environment.systemPackages =
-    (with pkgs; [
+    [
+      (inputs'.neovim-custom.packages.default.override {
+        viAlias = true;
+        vimAlias = true;
+      })
+    ]
+    ++ (with pkgs; [
       acpi
       bash
       bat
@@ -33,12 +44,6 @@
     git.enable = true;
     htop.enable = true;
     less.enable = true;
-    neovim = {
-      defaultEditor = true;
-      enable = true;
-      viAlias = true;
-      vimAlias = true;
-    };
     yazi.enable = true;
   };
   services = {
