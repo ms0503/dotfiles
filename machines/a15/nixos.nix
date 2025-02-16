@@ -51,6 +51,10 @@
       common-pc-laptop
       common-pc-ssd
     ]);
+  networking.firewall.allowedTCPPorts = [
+    3000
+    80
+  ];
   security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
     asusd = {
