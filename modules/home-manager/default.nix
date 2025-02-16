@@ -5,7 +5,6 @@
     ./gpu.nix
     ./term.nix
     ./unity.nix
-    ./walland.nix
     ./wezterm
   ];
 }
