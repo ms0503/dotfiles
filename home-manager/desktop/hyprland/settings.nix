@@ -1,6 +1,5 @@
-args@{
+{
   lib,
-  pkgs,
   theme,
   ...
 }:
@@ -37,7 +36,6 @@ in
     env = [
       "ELECTRON_OZONE_PLATFORM_HINT,auto"
     ];
-    exec-once = import ./autostart.nix args;
     general = {
       "col.active_border" = "rgb(${colors.blue})";
       "col.inactive_border" = "rgb(${colors.bg})";

@@ -16,17 +16,19 @@ let
       &
   '';
 in
-[
-  "dbus-update-activation-environment --systemd --all"
-  "systemctl --user start hyprland-session.target"
-  "${sleep}/bin/sleep.sh"
-  "blueman-applet"
-  "nm-applet"
-  "waybar"
-  "swww init && swww img ~/.config/hypr/wallpaper/bg.jpg"
-  "fcitx5 -D"
-  "steam -silent"
-  "[workspace 1 silent] microsoft-edge-dev"
-  "[workspace 2 silent] ${terminal}"
-  "[workspace 3 silent] discordcanary"
-]
+{
+  wayland.windowManager.hyprland.settings.exec-once = [
+    "dbus-update-activation-environment --systemd --all"
+    "systemctl --user start hyprland-session.target"
+    "${sleep}/bin/sleep.sh"
+    "blueman-applet"
+    "nm-applet"
+    "waybar"
+    "swww init && swww img ~/.config/hypr/wallpaper/bg.jpg"
+    "fcitx5 -D"
+    "steam -silent"
+    "[workspace 1 silent] microsoft-edge-dev"
+    "[workspace 2 silent] ${terminal}"
+    "[workspace 3 silent] discordcanary"
+  ];
+}

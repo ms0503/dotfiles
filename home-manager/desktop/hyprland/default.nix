@@ -18,6 +18,7 @@
       inputs'.hyprsome.packages.default
     ];
   imports = [
+    ./autostart.nix
     ./dunst.nix
     ./gestures.nix
     ./key-binds.nix
