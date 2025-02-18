@@ -53,9 +53,14 @@
       allowSFTP = true;
       enable = true;
     };
-    udev.extraRules = ''
-      ENV{UDISKS_AUTO}="1"
-    '';
+    udev = {
+      extraRules = ''
+        ENV{UDISKS_AUTO}="1"
+      '';
+      packages = with pkgs; [
+        platformio-core.udev
+      ];
+    };
     udisks2 = {
       enable = true;
       mountOnMedia = true;
