@@ -82,6 +82,7 @@
   users.users."${username}" = {
     extraGroups = [
       "audio"
+      "dialout"
       "networkmanager"
       "video"
       "wheel"
