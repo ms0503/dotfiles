@@ -2,7 +2,7 @@
   cat = "bat";
   cl-c = "wl-copy";
   cl-p = "wl-paste";
-  fzcd = "cd $(fzf)";
+  fzcd = "cd $(fzf --walker dir,follow,hidden)";
   g = "git";
   gA = "git add";
   gAp = "git add -p";
