@@ -58,7 +58,6 @@
     };
     misc-tools = {
       inputs = {
-        fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
@@ -113,6 +112,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:oxalica/rust-overlay";
     };
+    systems.url = "github:nix-systems/default";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
@@ -145,6 +145,7 @@
       home-manager,
       nixpkgs,
       self,
+      systems,
       treefmt-nix,
       ...
     }:
