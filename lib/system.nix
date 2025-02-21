@@ -66,6 +66,8 @@ in
                   getcodepoint
                   getemoji
                   matrics
+                  skel
+                  swww-bing
                   unicodeescape
                   urlencode
                 ]
