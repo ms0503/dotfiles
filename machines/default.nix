@@ -29,12 +29,13 @@ in
       };
       "ms0503@mainpc" = mkHomeManagerConfiguration {
         inherit withSystem;
-        isNixOS = false;
         modules = [
+          ./mainpc/config-hm.nix
           ./mainpc/home-manager.nix
         ];
         overlays = [
           fenix.overlays.default
+          private-pkgs.overlays.default
         ];
         system = "x86_64-linux";
         theme = "chalk";
@@ -48,6 +49,16 @@ in
         modules = [
           ./a15/config-nixos.nix
           ./a15/nixos.nix
+        ];
+        system = "x86_64-linux";
+        username = "ms0503";
+      };
+      mainpc = mkNixosSystem {
+        inherit withSystem;
+        hostname = "mainpc";
+        modules = [
+          ./mainpc/config-nixos.nix
+          ./mainpc/nixos.nix
         ];
         system = "x86_64-linux";
         username = "ms0503";

@@ -1,8 +1,20 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ ];
+  home = {
+    packages = [ ];
+    pointerCursor = {
+      gtk.enable = true;
+      name = "Milk1";
+      package = pkgs.milk-cursor-themes;
+      size = 32;
+      x11.enable = true;
+    };
+    sessionVariables = {
+      HYPRCURSOR_SIZE = "32";
+      HYPRCURSOR_THEME = "Milk1";
+    };
+  };
   imports = [
-    ../../home-manager/cli
     ../../home-manager/desktop/hyprland
     ../../home-manager/gui
   ];
@@ -18,12 +30,17 @@
       User git
 
     Host a15
-      HostName 192.168.68.60
+      HostName 192.168.68.62
       IdentityFile ~/.ssh/a15
       User ms0503
   '';
   wayland.windowManager.hyprland.settings = {
-    input.kb_layout = "jp";
+    input = {
+      kb_layout = "jp";
+      kb_model = "pc105";
+      kb_options = "caps:none";
+      kb_variant = "OADG109A";
+    };
     monitor = [
       "desc:Hewlett Packard HP ZR2440w CN42260H0R, 1920x1200@60, 1920x-120, 1"
       "desc:I-O Data Device Inc LCD-MF224ED GGF504807255, 1920x1080@60, 0x0, 1"
