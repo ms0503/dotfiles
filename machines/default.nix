@@ -29,6 +29,7 @@ in
       };
       "ms0503@mainpc" = mkHomeManagerConfiguration {
         inherit withSystem;
+        isNixOS = false;
         modules = [
           ./mainpc/home-manager.nix
         ];

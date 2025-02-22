@@ -14,6 +14,7 @@ in
 {
   mkHomeManagerConfiguration =
     {
+      isNixOS ? true,
       modules,
       overlays,
       system,
@@ -45,6 +46,7 @@ in
           inherit
             inputs
             inputs'
+            isNixOS
             myLib
             myPkgs
             username
