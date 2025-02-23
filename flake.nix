@@ -104,7 +104,7 @@
         flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
       };
-      url = "github:lopsided98/nix-ros-overlay";
+      url = "github:lopsided98/nix-ros-overlay/master";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
