@@ -29,6 +29,16 @@
       fsType = "ext4";
     };
 
+  fileSystems."/mnt/Games" =
+    { device = "/dev/disk/by-uuid/dd212c79-36bb-401f-959e-30696bc5fc7b";
+      fsType = "ext4";
+    };
+
+  fileSystems."/mnt/GamesHDD" =
+    { device = "/dev/disk/by-uuid/96ec8c60-e47d-4685-9e76-b0a48ac6b7fd";
+      fsType = "ext4";
+    };
+
   fileSystems."/mnt/Movie" =
     { device = "/dev/disk/by-uuid/14f3c37b-733f-4c60-9676-a509c634bd41";
       fsType = "ext4";
