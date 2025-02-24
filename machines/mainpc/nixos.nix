@@ -63,6 +63,17 @@
         user = username;
       };
     };
+    pipewire.extraConfig.pipewire-pulse."99-tcp" = {
+      "context.modules" = [
+        {
+          args = { };
+          name = "libpipewire-module-protocol-pulse";
+        }
+      ];
+      "pulse.properties"."server.address" = [
+        "tcp:4713"
+      ];
+    };
     power-profiles-daemon.enable = true;
   };
   system.stateVersion = "24.11";

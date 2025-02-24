@@ -72,6 +72,22 @@
     };
     hardware.openrgb.enable = true;
     logind.lidSwitch = "ignore";
+    pipewire.extraConfig.pipewire-pulse."99-tunnel"."context.modules" = [
+      {
+        args = {
+          "pulse.server.address" = "tcp:mainpc";
+          "tunnel.mode" = "sink";
+        };
+        name = "libpipewire-module-pulse-tunnel";
+      }
+      {
+        args = {
+          "pulse.server.address" = "tcp:mainpc";
+          "tunnel.mode" = "source";
+        };
+        name = "libpipewire-module-pulse-tunnel";
+      }
+    ];
     power-profiles-daemon.enable = true;
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
