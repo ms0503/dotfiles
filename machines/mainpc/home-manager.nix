@@ -19,6 +19,11 @@
     ../../home-manager/gui
   ];
   programs.ssh.extraConfig = ''
+    Host a15
+      HostName a15
+      IdentityFile ~/.ssh/a15
+      User ms0503
+
     Host aur aur.archlinux.org
       HostName aur.archlinux.org
       IdentityFile ~/.ssh/aur
@@ -28,11 +33,6 @@
       HostName github.com
       IdentityFile ~/.ssh/github
       User git
-
-    Host a15
-      HostName 192.168.68.62
-      IdentityFile ~/.ssh/a15
-      User ms0503
   '';
   wayland.windowManager.hyprland.settings = {
     input = {

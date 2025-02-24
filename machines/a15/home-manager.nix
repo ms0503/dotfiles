@@ -60,7 +60,7 @@ in
       User git
 
     Host mainpc
-      HostName 192.168.68.55
+      HostName mainpc
       IdentityFile ~/.ssh/mainpc
       User ms0503
   '';
