@@ -1,9 +1,8 @@
-{ inputs', ... }:
 {
-  home.packages = [
-    (inputs'.neovim-custom.packages.default.override {
-      viAlias = true;
-      vimAlias = true;
-    })
-  ];
+  ms0503.neovim = {
+    defaultEditor = true;
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 }

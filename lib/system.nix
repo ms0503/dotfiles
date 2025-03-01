@@ -3,6 +3,7 @@ inputs@{
   lanzaboote,
   misc-tools,
   ms0503-pkgs,
+  neovim-custom,
   nh,
   nixpkgs,
   self,
@@ -54,6 +55,7 @@ in
           theme = (import ../themes) theme;
         };
         modules = [
+          neovim-custom.homeManagerModules.default
           (import ../options.nix)
           self.homeManagerModules.default
           {
@@ -102,6 +104,7 @@ in
         inherit system;
         modules = [
           lanzaboote.nixosModules.lanzaboote
+          neovim-custom.nixosModules.default
           (import ../options.nix)
           self.nixosModules.default
           {

@@ -1,18 +1,11 @@
 {
-  inputs',
   myPkgs,
   pkgs,
   ...
 }:
 {
   environment.systemPackages =
-    [
-      (inputs'.neovim-custom.packages.default.override {
-        viAlias = true;
-        vimAlias = true;
-      })
-    ]
-    ++ (with pkgs; [
+    (with pkgs; [
       acpi
       bash
       bat
@@ -40,6 +33,12 @@
     ++ (with myPkgs; [
       unzip-unicode
     ]);
+  ms0503.neovim = {
+    defaultEditor = true;
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
   programs = {
     git.enable = true;
     htop.enable = true;
