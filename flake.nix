@@ -1,14 +1,5 @@
 {
   inputs = {
-    crane = {
-      inputs = {
-        flake-compat.follows = "";
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-      url = "github:ipetkov/crane/v0.14.3";
-    };
     fenix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/fenix";
@@ -28,7 +19,7 @@
     };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
     };
     hyprland = {
       inputs = {
@@ -39,7 +30,6 @@
     };
     hyprsome = {
       inputs = {
-        crane.follows = "crane";
         flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
       };
@@ -47,7 +37,6 @@
     };
     lanzaboote = {
       inputs = {
-        crane.follows = "crane";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
@@ -80,6 +69,7 @@
       inputs = {
         fenix.follows = "fenix";
         flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
         treefmt-nix.follows = "treefmt-nix";
@@ -92,22 +82,20 @@
     };
     nix = {
       inputs = {
-        flake-compat.follows = "flake-compat";
+        flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         git-hooks-nix.follows = "";
         nixpkgs.follows = "nixpkgs";
       };
-      url = "github:NixOS/nix/latest-release";
+      url = "github:NixOS/nix";
     };
     nix-ros-overlay = {
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
-      url = "github:lopsided98/nix-ros-overlay/master";
+      inputs.flake-utils.follows = "flake-utils";
+      # url = "github:lopsided98/nix-ros-overlay/master";
+      url = "github:lopsided98/nix-ros-overlay/nix-bot-YNwyaHIFft"; # Unmerged updates. See https://github.com/lopsided98/nix-ros-overlay/pull/586 .
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     rust-overlay = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:oxalica/rust-overlay";
@@ -127,7 +115,6 @@
     };
     xremap = {
       inputs = {
-        crane.follows = "crane";
         flake-parts.follows = "flake-parts";
         home-manager.follows = "home-manager";
         hyprland.follows = "hyprland";

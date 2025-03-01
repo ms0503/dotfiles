@@ -22,7 +22,7 @@
     };
     packages =
       (with pkgs; [
-        nerdfonts
+        nerd-fonts.sauce-code-pro
         noto-fonts-emoji
         source-han-code-jp
       ])
