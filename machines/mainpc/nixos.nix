@@ -54,6 +54,7 @@
     ]);
   networking.firewall.allowedTCPPorts = [
     3000
+    4713
     80
   ];
   security.pam.services.greetd.enableGnomeKeyring = true;
@@ -67,15 +68,12 @@
         user = username;
       };
     };
-    pipewire.extraConfig.pipewire-pulse."99-tcp" = {
-      "context.modules" = [
+    pipewire.extraConfig.pipewire-pulse = {
+      "99-listen"."pulse.cmd" = [
         {
-          args = { };
-          name = "libpipewire-module-protocol-pulse";
+          args = "module-native-protocol-tcp auth-anonymous=1 listen=0.0.0.0";
+          cmd = "load-module";
         }
-      ];
-      "pulse.properties"."server.address" = [
-        "tcp:4713"
       ];
     };
     power-profiles-daemon.enable = true;

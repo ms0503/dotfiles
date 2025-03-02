@@ -72,20 +72,10 @@
     };
     hardware.openrgb.enable = true;
     logind.lidSwitch = "ignore";
-    pipewire.extraConfig.pipewire-pulse."99-tunnel"."context.modules" = [
+    pipewire.extraConfig.pipewire-pulse."99-tunnel"."pulse.cmd" = [
       {
-        args = {
-          "pulse.server.address" = "tcp:mainpc";
-          "tunnel.mode" = "sink";
-        };
-        name = "libpipewire-module-pulse-tunnel";
-      }
-      {
-        args = {
-          "pulse.server.address" = "tcp:mainpc";
-          "tunnel.mode" = "source";
-        };
-        name = "libpipewire-module-pulse-tunnel";
+        args = "module-tunnel-sink server=tcp:mainpc:4713";
+        cmd = "load-module";
       }
     ];
     power-profiles-daemon.enable = true;
