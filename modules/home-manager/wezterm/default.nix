@@ -9,6 +9,7 @@
 let
   inherit (lib) mkIf;
   cfg = config.ms0503.terminal;
+  wezimgcat-wrapper = inputs.ms0503-pkgs.packages.${pkgs.system}.wezimgcat-wrapper;
 in
 {
   config = mkIf (cfg == "wezterm") {
@@ -19,7 +20,7 @@ in
       '';
       "${config.xdg.configHome}/wezterm/colors/myTheme.toml".text = theme.wezterm;
     };
-    ms0503.bash.aliases.imgcat = "wezterm imgcat";
+    ms0503.bash.aliases.imgcat = "${wezimgcat-wrapper}/bin/wezimgcat-wrapper";
     programs.wezterm = {
       enable = true;
       extraConfig = builtins.readFile ./wezterm.lua;
