@@ -92,7 +92,7 @@
     nix-ros-overlay = {
       inputs.flake-utils.follows = "flake-utils";
       # url = "github:lopsided98/nix-ros-overlay/master";
-      url = "github:lopsided98/nix-ros-overlay/nix-bot-YNwyaHIFft"; # Unmerged updates. See https://github.com/lopsided98/nix-ros-overlay/pull/586 .
+      url = "github:lopsided98/nix-ros-overlay/develop";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
