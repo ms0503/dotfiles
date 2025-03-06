@@ -38,6 +38,7 @@ in
       (lib.hiPrio nodejs-slim)
       (lib.hiPrio python312)
       (lib.hiPrio rust-analyzer-nightly)
+      arduino-cli
       deno
       dotnet-sdk
       gcc
