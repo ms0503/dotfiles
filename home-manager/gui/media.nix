@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   myPkgs,
   pkgs,
   ...
@@ -28,7 +29,16 @@
     );
   programs = {
     ncspot.enable = true;
-    obs-studio.enable = true;
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-gstreamer
+        obs-pipewire-audio-capture
+        obs-vaapi
+        obs-vkcapture
+        wlrobs
+      ];
+    };
   };
   services.easyeffects.enable = true;
 }
