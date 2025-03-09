@@ -36,6 +36,7 @@ in
         };
         overlays = overlays ++ [
           nh.overlays.default
+          self.overlays.default
         ];
       };
     in
@@ -69,7 +70,6 @@ in
                   generatehex
                   getcodepoint
                   getemoji
-                  matrics
                   skel
                   swww-bing
                   unicodeescape
@@ -110,6 +110,7 @@ in
           {
             nixpkgs.overlays = [
               nh.overlays.default
+              self.overlays.default
             ];
           }
         ] ++ modules;

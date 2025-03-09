@@ -96,6 +96,7 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-firefox.url = "github:khaneliman/nixpkgs/firefox"; # See https://github.com/NixOS/nixpkgs/pull/387931
     rust-overlay = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:oxalica/rust-overlay";
