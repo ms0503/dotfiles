@@ -57,6 +57,7 @@ in
       typos
       unar
       unrar
+      vrc-get
       wget
       zenn-cli
       zip
