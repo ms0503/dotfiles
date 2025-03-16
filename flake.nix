@@ -96,7 +96,6 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-firefox.url = "github:khaneliman/nixpkgs/firefox"; # See https://github.com/NixOS/nixpkgs/pull/387931
     rust-overlay = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:oxalica/rust-overlay";
@@ -139,7 +138,7 @@
     }:
     let
       inputs = prevInputs // {
-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/509514bfd02615c06d9ccba100c4fa87756af11d";
+        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/dbf0b2c749da73cb6b99316e0dce495de5b12b1e";
       };
     in
     flake-parts.lib.mkFlake { inherit inputs; } (
