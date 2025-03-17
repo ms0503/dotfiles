@@ -2,7 +2,7 @@
   cat = "bat";
   cl-c = "wl-copy";
   cl-p = "wl-paste";
-  fzcd = "cd $(fzf --walker dir,follow,hidden)";
+  fzcd = ''cd "$(fzf --walker dir,follow,hidden || echo "$PWD")"'';
   g = "git";
   gA = "git add";
   gAp = "git add -p";
@@ -20,7 +20,8 @@
   gdc = "git diff --cached HEAD";
   gf = "git fetch";
   gfu = "git fetch upstream";
-  gfzcd = "cd $(ghq root)/$(ghq list | fzf)";
+  # gfzcd = ''cd "$(ghq root)/$(ghq list | fzf)"'';
+  gfzcd = ''cd "$(DIR=$(ghq list | fzf || echo "$PWD"); [[ $DIR = $PWD ]] && echo "$PWD" || echo "$(ghq root)/$DIR")"'';
   gl = "git log --all --decorate --graph --oneline";
   gm = "git merge";
   gp = "git push";
