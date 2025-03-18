@@ -81,12 +81,8 @@ in
       };
     };
     bottom.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+    direnv.enable = true;
     eza = {
-      #colors = "auto";
       enable = true;
       extraOptions = [
         "--color=auto"
@@ -130,4 +126,5 @@ in
       };
     };
   };
+  services.lorri.enable = true;
 }
