@@ -128,12 +128,10 @@
     prevInputs@{
       fenix,
       flake-parts,
-      git-hooks,
       home-manager,
       nixpkgs,
       self,
       systems,
-      treefmt-nix,
       ...
     }:
     let
@@ -145,7 +143,9 @@
       { flake-parts-lib, withSystem, ... }:
       let
         inherit (flake-parts-lib) importApply;
+        git-hooks = importApply ./git-hooks.nix { };
         machines = importApply ./machines { inherit withSystem; };
+        treefmt = importApply ./treefmt.nix { };
       in
       {
         flake = {
@@ -155,9 +155,9 @@
           overlays = import ./overlays inputs;
         };
         imports = [
-          git-hooks.flakeModule
+          git-hooks
           machines
-          treefmt-nix.flakeModule
+          treefmt
         ];
         perSystem =
           {
@@ -171,37 +171,12 @@
               packages = with pkgs; [
                 nvfetcher
               ];
+              shellHook = ''
+                ${config.pre-commit.installationScript}
+              '';
             };
-            pre-commit = {
-              check.enable = true;
-              settings = {
-                hooks = {
-                  actionlint.enable = true;
-                  check-json.enable = true;
-                  check-toml.enable = true;
-                  editorconfig-checker = {
-                    enable = true;
-                    excludes = [
-                      "flake.lock"
-                      "themes/.*/wezterm.toml"
-                    ];
-                  };
-                  luacheck.enable = true;
-                  markdownlint.enable = true;
-                  yamlfmt.enable = true;
-                  yamllint.enable = true;
-                };
-                src = ./.;
-              };
-            };
-            treefmt = import ./treefmt.nix;
           };
-        systems = [
-          "aarch64-darwin"
-          "aarch64-linux"
-          "x86_64-darwin"
-          "x86_64-linux"
-        ];
+        systems = import systems;
       }
     );
 }
