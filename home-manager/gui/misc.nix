@@ -1,11 +1,9 @@
-{ myPkgs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  home.packages =
-    (with pkgs; [
-      kicad
+  home.packages = (
+    with pkgs;
+    [
       minecraft
-    ])
-    ++ (with myPkgs; [
-      blender3
-    ]);
+    ]
+  );
 }

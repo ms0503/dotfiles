@@ -8,6 +8,8 @@
   home.packages =
     (with pkgs; [
       gimp
+      godot
+      kicad
       libreoffice-fresh
       networkmanagerapplet
       thunderbird-latest
@@ -15,6 +17,9 @@
       winetricks
       xdg-utils
       zoom-us
+    ])
+    ++ (with myPkgs; [
+      blender3
     ])
     ++ (
       if config.ms0503.wayland.enable then
