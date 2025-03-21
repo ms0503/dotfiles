@@ -8,7 +8,8 @@
   home.packages =
     (with pkgs; [
       gimp
-      godot
+      godot_4-export-templates
+      godot_4-mono
       kicad
       libreoffice-fresh
       networkmanagerapplet
