@@ -13,7 +13,12 @@ in
   config = mkIf cfg.enable {
     home.packages =
       (with pkgs; [
-        unityhub
+        (unityhub.override {
+          extraLibs =
+            pkgs: with pkgs; [
+              openssl_1_1
+            ];
+        })
       ])
       ++ (with myPkgs; [
         alcom
