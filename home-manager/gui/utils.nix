@@ -7,6 +7,7 @@
 {
   home.packages =
     (with pkgs; [
+      aseprite-unfree
       gimp
       godot_4-export-templates
       godot_4-mono
