@@ -34,6 +34,17 @@
       package = config.boot.kernelPackages.nvidiaPackages.beta;
       powerManagement.enable = false;
     };
+    printers = {
+      ensureDefaultPrinter = "HL-5350DN";
+      ensurePrinters = [
+        {
+          deviceUri = "usb://Brother/HL-5350DN%20series?serial=L2J567505";
+          model = "BR5350_2_GPL.ppd";
+          name = "HL-5350DN";
+          ppdOptions.PageSize = "A4";
+        }
+      ];
+    };
   };
   imports =
     [
@@ -61,6 +72,11 @@
       enable = true;
       enableUserService = true;
     };
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
     greetd = {
       enable = true;
       settings.default_session = {
@@ -79,6 +95,21 @@
       }
     ];
     power-profiles-daemon.enable = true;
+    printing = {
+      drivers = with pkgs; [
+        (writeTextDir "share/cups/model/BR5350_2_GPL.ppd" (builtins.readFile ./BR5350_2_GPL.ppd))
+        brgenml1cupswrapper
+        brgenml1lpr
+        brlaser
+        cnijfilter2
+        gutenprint
+        hplip
+        postscript-lexmark
+        samsung-unified-linux-driver
+        splix
+      ];
+      enable = true;
+    };
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5036", ATTR{power/wakeup}="disabled"
