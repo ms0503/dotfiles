@@ -65,11 +65,19 @@
       mountOnMedia = true;
     };
   };
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
+  virtualisation = {
+    docker = {
       enable = true;
-      setSocketVariable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
+    virtualbox.host = {
+      addNetworkInterface = false;
+      enable = true;
+      enableExtensionPack = true;
+      enableKvm = true;
     };
   };
 }

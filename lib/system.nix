@@ -113,6 +113,9 @@ in
               nh.overlays.default
               self.overlays.default
             ];
+            users.extraGroups.vboxusers.members = [
+              username
+            ];
           }
         ] ++ modules;
         specialArgs = {
