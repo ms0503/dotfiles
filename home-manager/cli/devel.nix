@@ -35,17 +35,21 @@ in
         ]
         ++ config.ms0503.rust.extraTools
       ))
+      (lib.hiPrio gcc)
       (lib.hiPrio nodejs-slim)
       (lib.hiPrio python312)
       (lib.hiPrio rust-analyzer-nightly)
       arduino-cli
+      clang
+      cmake
       deno
       dotnet-sdk
-      gcc
       ghc
       jdk17-wrapped
       jdk8-wrapped
+      mold
       mono
+      ninja
       zig
     ])
     ++ (with pkgs.nodePackages; [
