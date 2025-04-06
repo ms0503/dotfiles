@@ -5,38 +5,46 @@
   ...
 }:
 {
-  home.packages =
-    (with pkgs; [
-      aseprite-unfree
-      gimp
-      godot_4-export-templates
-      godot_4-mono
-      kicad
-      libreoffice-fresh
-      networkmanagerapplet
-      thunderbird-latest
-      winePackages.stagingFull
-      winetricks
-      xdg-utils
-      zoom-us
-    ])
-    ++ (with myPkgs; [
-      blender3
-    ])
-    ++ (
-      if config.ms0503.wayland.enable then
-        with myPkgs;
-        [
-          discord-canary-wayland
-          slack-wayland
-        ]
-      else
-        with pkgs;
-        [
-          discord-canary
-          slack
-        ]
-    );
+  home = {
+    file."${config.xdg.dataHome}/godot/export_templates/${
+      builtins.replaceStrings [ "-" ] [ "." ] pkgs.godot-mono.version
+    }.mono" =
+      {
+        recursive = true;
+        source = pkgs.godot-export-templates;
+      };
+    packages =
+      (with pkgs; [
+        aseprite-unfree
+        gimp
+        godot-mono
+        kicad
+        libreoffice-fresh
+        networkmanagerapplet
+        thunderbird-latest
+        winePackages.stagingFull
+        winetricks
+        xdg-utils
+        zoom-us
+      ])
+      ++ (with myPkgs; [
+        blender3
+      ])
+      ++ (
+        if config.ms0503.wayland.enable then
+          with myPkgs;
+          [
+            discord-canary-wayland
+            slack-wayland
+          ]
+        else
+          with pkgs;
+          [
+            discord-canary
+            slack
+          ]
+      );
+  };
   programs.urxvt = {
     enable = true;
     fonts = [
