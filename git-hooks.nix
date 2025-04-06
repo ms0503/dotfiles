@@ -17,6 +17,7 @@ _:
             editorconfig-checker = {
               enable = true;
               excludes = [
+                "_sources"
                 "flake.lock"
                 "machines/a15/BR5350_2_GPL.ppd"
                 "themes/.*/wezterm.toml"

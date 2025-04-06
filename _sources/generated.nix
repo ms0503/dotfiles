@@ -3,12 +3,12 @@
 {
   gh-q = {
     pname = "gh-q";
-    version = "5dc627f350902e0166016a9dd1f9479c75e3f392";
+    version = "a312c67b92baefadb07481ef1479c96d91243d41";
     src = fetchurl {
       url = "https://github.com/kawarimidoll/gh-q/raw/main/gh-q";
-      sha256 = "sha256-i6EYYRrzC+9LzsGsA0fekMQIZAth1oEWd1L8+tkbmTA=";
+      sha256 = "sha256-mjad7EUgDC0efY+TNjTtoueO83CVkQ/sCejfD++xZYQ=";
     };
-    date = "2021-11-20";
+    date = "2025-03-20";
   };
   tokyo-night-yazi = {
     pname = "tokyo-night-yazi";
