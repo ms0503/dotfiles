@@ -47,9 +47,11 @@ in
       lazydocker
       nh
       nurl
+      osslsigncode
       p7zip
       pandoc
       procs
+      rcodesign
       ripunzip
       silicon
       sqlite
