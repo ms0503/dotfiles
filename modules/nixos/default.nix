@@ -1,5 +1,6 @@
 {
   default.imports = [
+    ./arch
     ./bt.nix
     ./hyprland.nix
     ./media.nix
