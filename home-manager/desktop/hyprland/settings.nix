@@ -61,7 +61,9 @@ in
       "pseudo, noblur, class:(fcitx)"
     ];
     windowrulev2 = [
+      "float,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
       "noblur,class:^()$,title:^()$"
+      "nofocus,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
     ];
     xwayland.force_zero_scaling = true;
   };
