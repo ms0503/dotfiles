@@ -15,7 +15,7 @@
      }:
 -    let
 -      inputs = prevInputs // {
--        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/265c7d74fba1a3fc9774f4c7bc14eb2779e70990";
+-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/90b9b2d3897e66ff8b008c2ba66262ddc1ca4720";
 -      };
 -    in
      flake-parts.lib.mkFlake { inherit inputs; } (
