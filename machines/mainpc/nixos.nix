@@ -77,6 +77,7 @@
       ];
     };
     power-profiles-daemon.enable = true;
+    tailscale.useRoutingFeatures = "server";
   };
   system.stateVersion = "24.11";
   users.users."${username}" = {
