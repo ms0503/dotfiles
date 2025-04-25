@@ -59,6 +59,11 @@ in
       IdentityFile ~/.ssh/github
       User git
 
+    Host lightrover
+      HostName 192.168.0.136
+      IdentityFile ~/.ssh/lightrover
+      User pi
+
     Host mainpc
       HostName mainpc
       IdentityFile ~/.ssh/mainpc
