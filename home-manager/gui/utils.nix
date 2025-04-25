@@ -21,6 +21,7 @@
         kicad
         libreoffice-fresh
         networkmanagerapplet
+        realvnc-vnc-viewer
         thunderbird-latest
         winePackages.stagingFull
         winetricks
