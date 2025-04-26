@@ -13,6 +13,7 @@
     };
     hostName = hostname;
     networkmanager.enable = true;
+    nftables.enable = true;
   };
   services.tailscale = {
     enable = true;
