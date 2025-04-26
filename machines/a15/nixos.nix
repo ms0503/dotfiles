@@ -110,6 +110,7 @@
       ];
       enable = true;
     };
+    tailscale.useRoutingFeatures = "client";
     udev.extraRules = ''
       ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5036", ATTR{power/wakeup}="disabled"
