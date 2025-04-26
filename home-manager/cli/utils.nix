@@ -65,7 +65,6 @@ in
       zip
     ])
     ++ (with myPkgs; [
-      spotify-tui
       unzip-unicode
       zifu
     ]);
