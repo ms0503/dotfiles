@@ -31,8 +31,9 @@ in
           allowBroken = true;
           allowUnfree = true;
           permittedInsecurePackages = [
-            "electron-25.9.0"
+            "freeimage-3.18.0-unstable-2024-04-18"
             "openssl-1.1.1w"
+            "qtwebkit-5.212.0-alpha4"
           ];
         };
         overlays = overlays ++ [

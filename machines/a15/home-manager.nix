@@ -13,20 +13,10 @@ let
         ;;
     esac
   '';
-  rosCodename = "humble";
 in
 {
   home = {
     packages = with pkgs; [
-      (
-        with rosPackages.${rosCodename};
-        buildEnv {
-          paths = [
-            ros-core
-          ];
-        }
-      )
-      colcon
       gcc-arm-embedded
       openocd
       platformio

@@ -3,7 +3,6 @@
 let
   inherit (inputs)
     fenix
-    nix-ros-overlay
     private-pkgs
     self
     ;
@@ -20,7 +19,6 @@ in
         ];
         overlays = [
           fenix.overlays.default
-          nix-ros-overlay.overlays.default
           private-pkgs.overlays.default
         ];
         system = "x86_64-linux";

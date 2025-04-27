@@ -89,11 +89,6 @@
       };
       url = "github:NixOS/nix";
     };
-    nix-ros-overlay = {
-      inputs.flake-utils.follows = "flake-utils";
-      # url = "github:lopsided98/nix-ros-overlay/master";
-      url = "github:lopsided98/nix-ros-overlay/develop";
-    };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     rust-overlay = {
