@@ -50,7 +50,7 @@ in
       User git
 
     Host lightrover
-      HostName 192.168.0.136
+      HostName 192.168.0.140
       IdentityFile ~/.ssh/lightrover
       User pi
 
