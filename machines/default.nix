@@ -22,7 +22,7 @@ in
           private-pkgs.overlays.default
         ];
         system = "x86_64-linux";
-        theme = "chalk";
+        theme = "monokai";
         username = "ms0503";
       };
       "ms0503@mainpc" = mkHomeManagerConfiguration {
@@ -36,7 +36,7 @@ in
           private-pkgs.overlays.default
         ];
         system = "x86_64-linux";
-        theme = "chalk";
+        theme = "monokai";
         username = "ms0503";
       };
     };
