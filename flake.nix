@@ -138,9 +138,7 @@
       { flake-parts-lib, withSystem, ... }:
       let
         inherit (flake-parts-lib) importApply;
-        git-hooks = importApply ./git-hooks.nix { };
         machines = importApply ./machines { inherit withSystem; };
-        treefmt = importApply ./treefmt.nix { };
       in
       {
         flake = {
@@ -150,9 +148,9 @@
           overlays = import ./overlays inputs;
         };
         imports = [
-          git-hooks
+          ./treefmt.nix
+          ./git-hooks.nix
           machines
-          treefmt
         ];
         perSystem =
           {

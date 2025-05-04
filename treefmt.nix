@@ -1,4 +1,3 @@
-_:
 { inputs, ... }:
 {
   imports = [
@@ -31,9 +30,14 @@ _:
           stylua.enable = true;
           taplo.enable = true;
         };
-        settings.formatter.nixfmt.excludes = [
-          "_sources/generated.nix"
-        ];
+        settings.formatter = {
+          nixfmt.excludes = [
+            "_sources/generated.nix"
+          ];
+          shellcheck.excludes = [
+            ".envrc"
+          ];
+        };
       };
     };
 }

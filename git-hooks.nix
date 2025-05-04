@@ -1,4 +1,3 @@
-_:
 { inputs, ... }:
 {
   imports = [
@@ -14,15 +13,6 @@ _:
             actionlint.enable = true;
             check-json.enable = true;
             check-toml.enable = true;
-            editorconfig-checker = {
-              enable = true;
-              excludes = [
-                "_sources"
-                "flake.lock"
-                "machines/a15/BR5350_2_GPL.ppd"
-                "themes/.*/wezterm.toml"
-              ];
-            };
             luacheck.enable = true;
             markdownlint = {
               enable = true;
