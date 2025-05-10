@@ -54,9 +54,14 @@ in
     master.new_status = "slave";
     misc.disable_hyprland_logo = true;
     windowrulev2 = [
-      "float,nofocus,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
-      "pseudo,class:(fcitx)"
-      "workspace 3 silent,class:^(discord)$"
+      "float,nofocus,class:jetbrains-.*,title:win[0-9]+"
+      "opacity 1 override,content:game"
+      "opacity 1 override,content:photo"
+      "opacity 1 override,content:video"
+      "opacity 1 override,title:.*YouTube.*"
+      "opacity 1 override,title:.*ニコニコ動画.*"
+      "pseudo,class:fcitx"
+      "workspace 3 silent,class:discord"
     ];
     xwayland.force_zero_scaling = true;
   };
