@@ -10,13 +10,13 @@ in
   wayland.windowManager.hyprland.settings = {
     animations = {
       animation = [
-        "windows, 1, 4, myBezier, slide"
-        "layers, 1, 4, myBezier, fade"
-        "border, 1, 5, default"
-        "fade, 1, 5, default"
-        "workspaces, 1, 6, default"
+        "windows,1,4,myBezier,slide"
+        "layers,1,4,myBezier,fade"
+        "border,1,5,default"
+        "fade,1,5,default"
+        "workspaces,1,6,default"
       ];
-      bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+      bezier = "myBezier,0.05,0.9,0.1,1.05";
     };
     decoration = {
       active_opacity = 0.9;
@@ -53,13 +53,11 @@ in
     };
     master.new_status = "slave";
     misc.disable_hyprland_logo = true;
-    windowrule = [
-      "pseudo, noblur, class:(fcitx)"
-    ];
     windowrulev2 = [
-      "float,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
+      "float,nofocus,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
       "noblur,class:^()$,title:^()$"
-      "nofocus,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
+      "pseudo,noblur,class:(fcitx)"
+      "workspace 3 silent,class:^(discord)$"
     ];
     xwayland.force_zero_scaling = true;
   };
