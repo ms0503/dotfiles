@@ -13,12 +13,18 @@ let
 in
 {
   config = mkIf (cfg == "wezterm") {
-    home.file = {
-      "${config.xdg.configHome}/ranger/rc.conf".text = ''
-        set preview_images true
-        set preview_images_method iterm2
-      '';
-      "${config.xdg.configHome}/wezterm/colors/myTheme.toml".text = theme.wezterm;
+    home = {
+      file = {
+        "${config.xdg.configHome}/ranger/rc.conf".text = ''
+          set preview_images true
+          set preview_images_method iterm2
+        '';
+        "${config.xdg.configHome}/wezterm/colors/myTheme.toml".text = theme.wezterm;
+      };
+      packages = [
+        inputs.wezterm.packages.${pkgs.system}.default.terminfo
+      ];
+      sessionVariables.TERM = "wezterm";
     };
     ms0503.bash.aliases.imgcat = "${wezimgcat-wrapper}/bin/wezimgcat-wrapper";
     programs.wezterm = {
