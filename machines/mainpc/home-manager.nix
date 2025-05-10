@@ -48,6 +48,8 @@
     workspace = [
       "r[1-10],monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
       "r[11-20],monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
+      "1,default:true"
+      "11,default:true"
     ];
   };
 }

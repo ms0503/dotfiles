@@ -78,6 +78,7 @@ in
     ];
     workspace = [
       "r[1-10],monitor:desc:Chimei Innolux Corporation 0x1521"
+      "1,default:true"
     ];
   };
 }
