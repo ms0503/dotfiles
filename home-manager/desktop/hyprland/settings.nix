@@ -55,8 +55,7 @@ in
     misc.disable_hyprland_logo = true;
     windowrulev2 = [
       "float,nofocus,class:^(jetbrains-.*)$,title:^(win[0-9]+)$"
-      "noblur,class:^()$,title:^()$"
-      "pseudo,noblur,class:(fcitx)"
+      "pseudo,class:(fcitx)"
       "workspace 3 silent,class:^(discord)$"
     ];
     xwayland.force_zero_scaling = true;
