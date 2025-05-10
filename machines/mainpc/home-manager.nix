@@ -46,26 +46,8 @@
       "desc:I-O Data Device Inc LCD-MF224ED GGF504807255, 1920x1080@60, 0x0, 1"
     ];
     workspace = [
-      "1,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "2,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "3,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "4,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "5,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "6,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "7,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "8,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "9,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "10,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "11,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "12,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "13,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "14,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "15,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "16,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "17,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "18,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "19,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "20,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
+      "r[1-10],monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
+      "r[11-20],monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
     ];
   };
 }
