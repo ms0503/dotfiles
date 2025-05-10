@@ -23,7 +23,6 @@ return {
     use_fancy_tab_bar = false,
     use_ime = true,
     warn_about_missing_glyphs = false,
-    window_background_opacity = 0.9,
     window_frame = {
         font_size = 9.0,
     },
