@@ -19,14 +19,10 @@ in
       bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
     };
     decoration = {
-      blur = {
-        enabled = true;
-        ignore_opacity = true;
-        new_optimizations = true;
-        passes = 1;
-        size = 3;
-        xray = true;
-      };
+      active_opacity = 0.9;
+      blur.enabled = false;
+      fullscreen_opacity = 0.9;
+      inactive_opacity = 0.95;
       rounding = 10;
     };
     dwindle = {
