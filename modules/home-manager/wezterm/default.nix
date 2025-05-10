@@ -1,15 +1,14 @@
 {
   config,
-  inputs,
+  inputs',
   lib,
-  pkgs,
   theme,
   ...
 }:
 let
   inherit (lib) mkIf;
   cfg = config.ms0503.terminal;
-  wezimgcat-wrapper = inputs.ms0503-pkgs.packages.${pkgs.system}.wezimgcat-wrapper;
+  wezimgcat-wrapper = inputs'.ms0503-pkgs.packages.wezimgcat-wrapper;
 in
 {
   config = mkIf (cfg == "wezterm") {
@@ -22,7 +21,7 @@ in
         "${config.xdg.configHome}/wezterm/colors/myTheme.toml".text = theme.wezterm;
       };
       packages = [
-        inputs.wezterm.packages.${pkgs.system}.default.terminfo
+        inputs'.wezterm.packages.default.terminfo
       ];
       sessionVariables.TERM = "wezterm";
     };
@@ -30,7 +29,7 @@ in
     programs.wezterm = {
       enable = true;
       extraConfig = builtins.readFile ./wezterm.lua;
-      package = inputs.wezterm.packages.${pkgs.system}.default;
+      package = inputs'.wezterm.packages.default;
     };
   };
 }
