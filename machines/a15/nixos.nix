@@ -30,7 +30,7 @@
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = true;
-      open = false;
+      open = true;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
       powerManagement.enable = false;
     };
@@ -115,6 +115,9 @@
       ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5036", ATTR{power/wakeup}="disabled"
     '';
+    xserver.videoDrivers = [
+      "nvidia"
+    ];
   };
   system.stateVersion = "24.11";
   users.users."${username}" = {

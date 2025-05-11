@@ -32,7 +32,7 @@
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = true;
-      open = false;
+      open = true;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
       powerManagement.enable = false;
     };
@@ -78,6 +78,9 @@
     };
     power-profiles-daemon.enable = true;
     tailscale.useRoutingFeatures = "server";
+    xserver.videoDrivers = [
+      "nvidia"
+    ];
   };
   system.stateVersion = "24.11";
   users.users."${username}" = {
