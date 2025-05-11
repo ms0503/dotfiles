@@ -1,8 +1,4 @@
-{
-  lib,
-  theme,
-  ...
-}:
+{ lib, theme, ... }:
 let
   inherit (theme) colors;
 in
@@ -54,8 +50,10 @@ in
     master.new_status = "slave";
     misc.disable_hyprland_logo = true;
     windowrule = [
+      "center,class:jetbrains-.*,title:win[0-9]+"
       "float,class:jetbrains-.*,title:win[0-9]+"
       "nofocus,class:jetbrains-.*,title:win[0-9]+"
+      "opacity 1 override,class:VirtualBox Machine"
       "opacity 1 override,content:game"
       "opacity 1 override,content:photo"
       "opacity 1 override,content:video"
