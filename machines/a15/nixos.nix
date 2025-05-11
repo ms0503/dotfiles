@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   username,
@@ -8,43 +7,22 @@
 {
   boot = {
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelParams = [
-      "nvidia.NVreg_EnableS0ixPowerManagement=1"
-    ];
     loader.efi.canTouchEfiVariables = true;
     resumeDevice = "/dev/disk/by-uuid/0a943e07-390e-4810-a528-d1845c862246";
   };
   environment.systemPackages = with pkgs; [
     openrgb-with-all-plugins
   ];
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        nvidia-vaapi-driver
-        ocl-icd
-        vaapiVdpau
-      ];
-    };
-    nvidia = {
-      modesetting.enable = true;
-      nvidiaSettings = true;
-      open = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-      powerManagement.enable = false;
-    };
-    printers = {
-      ensureDefaultPrinter = "HL-5350DN";
-      ensurePrinters = [
-        {
-          deviceUri = "usb://Brother/HL-5350DN%20series?serial=L2J567505";
-          model = "BR5350_2_GPL.ppd";
-          name = "HL-5350DN";
-          ppdOptions.PageSize = "A4";
-        }
-      ];
-    };
+  hardware.printers = {
+    ensureDefaultPrinter = "HL-5350DN";
+    ensurePrinters = [
+      {
+        deviceUri = "usb://Brother/HL-5350DN%20series?serial=L2J567505";
+        model = "BR5350_2_GPL.ppd";
+        name = "HL-5350DN";
+        ppdOptions.PageSize = "A4";
+      }
+    ];
   };
   imports =
     [
@@ -115,9 +93,6 @@
       ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5036", ATTR{power/wakeup}="disabled"
     '';
-    xserver.videoDrivers = [
-      "nvidia"
-    ];
   };
   system.stateVersion = "24.11";
   users.users."${username}" = {

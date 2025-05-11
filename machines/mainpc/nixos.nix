@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   username,
@@ -12,31 +11,10 @@
       "net.ipv6.conf.all.forwarding" = true;
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    kernelParams = [
-      "nvidia.NVreg_EnableS0ixPowerManagement=1"
-    ];
     loader.efi.canTouchEfiVariables = true;
     resumeDevice = "/dev/disk/by-uuid/ae27955d-245c-465d-ad7a-1e24a2a310f0";
   };
   environment.systemPackages = [ ];
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        nvidia-vaapi-driver
-        ocl-icd
-        vaapiVdpau
-      ];
-    };
-    nvidia = {
-      modesetting.enable = true;
-      nvidiaSettings = true;
-      open = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-      powerManagement.enable = false;
-    };
-  };
   imports =
     [
       ../../nixos/core
@@ -78,9 +56,6 @@
     };
     power-profiles-daemon.enable = true;
     tailscale.useRoutingFeatures = "server";
-    xserver.videoDrivers = [
-      "nvidia"
-    ];
   };
   system.stateVersion = "24.11";
   users.users."${username}" = {

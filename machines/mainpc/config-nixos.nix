@@ -1,4 +1,4 @@
-_: {
+{
   ms0503 = {
     arch = "x86_64";
     bluetooth.enable = true;

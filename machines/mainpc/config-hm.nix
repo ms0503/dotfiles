@@ -1,4 +1,4 @@
-_: {
+{
   ms0503 = {
     bash.aliases = { };
     desktop.hyprland.enable = true;

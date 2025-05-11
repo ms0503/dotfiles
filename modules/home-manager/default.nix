@@ -2,7 +2,7 @@
   default.imports = [
     ./bash-aliases.nix
     ./ghostty
-    ./gpu.nix
+    ./gpu
     ./jetbrains.nix
     ./term.nix
     ./unity.nix
