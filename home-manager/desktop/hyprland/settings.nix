@@ -53,7 +53,7 @@ in
     };
     master.new_status = "slave";
     misc.disable_hyprland_logo = true;
-    windowrulev2 = [
+    windowrule = [
       "float,class:jetbrains-.*,title:win[0-9]+"
       "nofocus,class:jetbrains-.*,title:win[0-9]+"
       "opacity 1 override,content:game"
