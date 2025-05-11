@@ -1,5 +1,7 @@
 {
   config,
+  inputs',
+  lib,
   myPkgs,
   pkgs,
   ...
@@ -28,9 +30,7 @@
         xdg-utils
         zoom-us
       ])
-      ++ (with myPkgs; [
-        blender3
-      ])
+      ++ lib.optional (pkgs.system == "x86_64-linux") inputs'.nix-warez-blender.packages.blender_3_6
       ++ (
         if config.ms0503.wayland.enable then
           with myPkgs;

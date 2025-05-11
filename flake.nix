@@ -89,6 +89,10 @@
       };
       url = "github:NixOS/nix";
     };
+    nix-warez-blender = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:edolstra/nix-warez?dir=blender";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     rust-overlay = {
