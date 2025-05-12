@@ -816,11 +816,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747043981,
-        "narHash": "sha256-kB9/lYj5ZhN18OS2CufyxRpNSMh8FSxUF4WTIWrLEt8=",
+        "lastModified": 1747059631,
+        "narHash": "sha256-6a8NO/ibNQjG1ID7iYPXG0lSns7986B67BH2gEaArgg=",
         "owner": "ms0503",
         "repo": "neovim-custom",
-        "rev": "cf689048ac5083efe039d75ef2fef8387e2579ec",
+        "rev": "3dcaa1b3d453c758a25577af653ab8b5e5b3b580",
         "type": "github"
       },
       "original": {
