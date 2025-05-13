@@ -25,7 +25,7 @@
         networkmanagerapplet
         realvnc-vnc-viewer
         thunderbird-latest
-        winePackages.stagingFull
+        wineWowPackages.stagingFull
         winetricks
         xdg-utils
         zoom-us
