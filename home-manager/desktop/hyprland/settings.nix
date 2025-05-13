@@ -53,6 +53,7 @@ in
       "center,class:jetbrains-.*,title:win[0-9]+"
       "float,class:jetbrains-.*,title:win[0-9]+"
       "nofocus,class:jetbrains-.*,title:win[0-9]+"
+      "opacity 1 override,class:Gimp-[0-9.]+"
       "opacity 1 override,class:VirtualBox Machine"
       "opacity 1 override,content:game"
       "opacity 1 override,content:photo"
