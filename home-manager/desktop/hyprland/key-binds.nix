@@ -49,7 +49,7 @@ in
       "$mainMod SHIFT, c, exec, hyprpicker --autocopy"
       "$mainMod SHIFT, left, movetoworkspace, m-1"
       "$mainMod SHIFT, right, movetoworkspace, m+1"
-      "$mainMod SHIFT, s, exec, grimblast --notify copysave area \"$HOME/Pictures/スクリーンショット/Screenshot from $(date +%Y-%m-%d' '%H-%M-%S).png\""
+      "$mainMod SHIFT, s, exec, grimblast --notify copysave area \"$HOME/Pictures/Screenshots/$(date +%Y-%m-%d' '%H-%M-%S).png\""
       "$mainMod, 0, exec, ${ws-switch}/bin/ws-switch 10"
       "$mainMod, 1, exec, ${ws-switch}/bin/ws-switch 1"
       "$mainMod, 2, exec, ${ws-switch}/bin/ws-switch 2"
