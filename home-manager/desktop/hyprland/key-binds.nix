@@ -61,7 +61,7 @@ in
       "$mainMod, 8, exec, ${ws-switch}/bin/ws-switch 8"
       "$mainMod, 9, exec, ${ws-switch}/bin/ws-switch 9"
       "$mainMod, F, fullscreen"
-      "$mainMod, Print, exec, grimblast --notify copysave output \"$HOME/Pictures/スクリーンショット/Screenshot from $(date +%Y-%m-%d' '%H-%M-%S).png\""
+      "$mainMod, Print, exec, grimblast --notify copysave screen \"$HOME/Pictures/Screenshots/$(date +%Y-%m-%d'T'%H-%M-%S).png\""
       "$mainMod, Return, exec, hyprctl dispatch exec ${terminal}"
       "$mainMod, Tab, exec, ${toggle-monitor}/bin/toggle-monitor"
       "$mainMod, down, exec, ${better-movefocus}/bin/better-movefocus d"
@@ -76,7 +76,7 @@ in
       "$mainMod, x, exec, systemctl suspend"
       "$subMod SHIFT, Tab, cyclenext, prev"
       "$subMod, Tab, cyclenext"
-      ", Print, exec, grimblast --notify copy output"
+      ", Print, exec, grimblast --notify copysave output \"$HOME/Pictures/Screenshots/$(date +%Y-%m-%d'T'%H-%M-%S).png\""
     ];
     bindl = [
       ", XF86AudioMute, exec, pamixer -t"
