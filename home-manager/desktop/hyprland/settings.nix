@@ -51,7 +51,9 @@ in
     misc.disable_hyprland_logo = true;
     windowrule = [
       "center,class:jetbrains-.*,title:win[0-9]+"
+      "float,class:^$,title:^$"
       "float,class:jetbrains-.*,title:win[0-9]+"
+      "nofocus,class:^$,title:^$"
       "nofocus,class:jetbrains-.*,title:win[0-9]+"
       "opacity 1 override,class:Gimp-[0-9.]+"
       "opacity 1 override,class:VirtualBox Machine"
