@@ -6,20 +6,22 @@
   pkgs,
   ...
 }:
+let
+  godotPackages = pkgs.godotPackages_4_4;
+in
 {
   home = {
     file."${config.xdg.dataHome}/godot/export_templates/${
-      builtins.replaceStrings [ "-" ] [ "." ] pkgs.godot-mono.version
+      builtins.replaceStrings [ "-" ] [ "." ] godotPackages.godot-mono.version
     }.mono" =
       {
         recursive = true;
-        source = pkgs.godot-export-templates;
+        source = godotPackages.export-templates-bin;
       };
     packages =
       (with pkgs; [
         aseprite-unfree
         gimp
-        godot-mono
         kicad
         libreoffice-fresh
         networkmanagerapplet
@@ -29,6 +31,9 @@
         winetricks
         xdg-utils
         zoom-us
+      ])
+      ++ (with godotPackages; [
+        godot-mono
       ])
       ++ lib.optional (pkgs.system == "x86_64-linux") inputs'.nix-warez-blender.packages.blender_3_6
       ++ (
