@@ -62,6 +62,7 @@ in
       "opacity 1 override,class:Gimp-[0-9.]+"
       "opacity 1 override,class:VirtualBox Machine"
       "opacity 1 override,class:hoi4"
+      "opacity 1 override,class:steam_app_[0-9]+"
       "opacity 1 override,content:game"
       "opacity 1 override,content:photo"
       "opacity 1 override,content:video"
