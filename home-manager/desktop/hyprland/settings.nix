@@ -60,6 +60,7 @@ in
       "nofocus,class:^$,title:^$"
       "nofocus,class:jetbrains-.*,title:win[0-9]+"
       "opacity 1 override,class:Gimp-[0-9.]+"
+      "opacity 1 override,class:Unity"
       "opacity 1 override,class:VirtualBox Machine"
       "opacity 1 override,class:hoi4"
       "opacity 1 override,class:steam_app_[0-9]+"
