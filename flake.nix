@@ -9,7 +9,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
       url = "github:hercules-ci/flake-parts";
     };
-    flake-utils.url = "github:numtide/flake-utils";
     git-hooks = {
       inputs = {
         flake-compat.follows = "";
@@ -29,10 +28,7 @@
       url = "github:hyprwm/Hyprland";
     };
     hyprsome = {
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:sopa0/hyprsome";
     };
     lanzaboote = {
@@ -41,12 +37,12 @@
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         pre-commit-hooks-nix.follows = "";
-        rust-overlay.follows = "rust-overlay";
       };
       url = "github:nix-community/lanzaboote";
     };
     misc-tools = {
       inputs = {
+        fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
@@ -57,10 +53,12 @@
     };
     ms0503-pkgs = {
       inputs = {
+        fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
+        nix-warez-blender.follows = "";
         treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:ms0503/pkgs.nix";
@@ -95,21 +93,13 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    rust-overlay = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:oxalica/rust-overlay";
-    };
     systems.url = "github:nix-systems/default";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
     };
     wezterm = {
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:wez/wezterm?dir=nix";
     };
     xremap = {
@@ -135,7 +125,7 @@
     }:
     let
       inputs = prevInputs // {
-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/90b9b2d3897e66ff8b008c2ba66262ddc1ca4720";
+        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/71c325cefdfff07fb3a8648884c042aef2787bf7";
       };
     in
     flake-parts.lib.mkFlake { inherit inputs; } (
