@@ -50,7 +50,6 @@ in
     master.new_status = "slave";
     misc.disable_hyprland_logo = true;
     windowrule = [
-      "center,class:jetbrains-.*,title:win[0-9]+"
       "float,class:^$,title:^$"
       "float,class:jetbrains-.*,title:win[0-9]+"
       "float,class:kicad,title:.* — シンボル エディター"
