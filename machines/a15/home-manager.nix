@@ -61,8 +61,8 @@ in
   '';
   wayland.windowManager.hyprland.settings = {
     bindl = [
-      ", switch:off:Lid Switch, exec, ${lid-switch-handler}/bin/lid-switch-handler off"
-      ", switch:on:Lid Switch, exec, ${lid-switch-handler}/bin/lid-switch-handler on"
+      ",switch:off:Lid Switch, exec,${lid-switch-handler}/bin/lid-switch-handler off"
+      ",switch:on:Lid Switch, exec,${lid-switch-handler}/bin/lid-switch-handler on"
     ];
     exec-once = [
       "openrgb --startminimized"
@@ -74,11 +74,19 @@ in
       kb_variant = "OADG109A";
     };
     monitor = [
-      "desc:Chimei Innolux Corporation 0x1521, 1920x1080@144, 0x0, 1"
+      "desc:Chimei Innolux Corporation 0x1521,1920x1080@144,0x0,1"
     ];
     workspace = [
-      "r[1-10],monitor:desc:Chimei Innolux Corporation 0x1521"
-      "1,default:true"
+      "1,default:true,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "2,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "3,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "4,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "5,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "6,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "7,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "8,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "9,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "10,monitor:desc:Chimei Innolux Corporation 0x1521"
     ];
   };
 }
