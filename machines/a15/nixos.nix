@@ -93,6 +93,12 @@
       ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
       ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5036", ATTR{power/wakeup}="disabled"
     '';
+    xserver.xkb = {
+      layout = "jp";
+      model = "pc105";
+      options = "caps:none";
+      variant = "OADG109A";
+    };
   };
   system.stateVersion = "24.11";
   users.users."${username}" = {

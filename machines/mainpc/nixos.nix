@@ -56,6 +56,12 @@
     };
     power-profiles-daemon.enable = true;
     tailscale.useRoutingFeatures = "server";
+    xserver.xkb = {
+      layout = "jp";
+      model = "pc105";
+      options = "caps:none";
+      variant = "OADG109A";
+    };
   };
   system.stateVersion = "24.11";
   users.users."${username}" = {
