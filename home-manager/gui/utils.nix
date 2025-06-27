@@ -1,6 +1,5 @@
 {
   config,
-  inputs',
   lib,
   myPkgs,
   pkgs,
@@ -35,7 +34,7 @@ in
       ++ (with godotPackages; [
         godot-mono
       ])
-      ++ lib.optional (pkgs.system == "x86_64-linux") inputs'.nix-warez-blender.packages.blender_3_6
+      ++ lib.optional (pkgs.system == "x86_64-linux") myPkgs.blender3
       ++ (
         if config.ms0503.wayland.enable then
           with myPkgs;

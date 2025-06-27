@@ -58,7 +58,6 @@
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
-        nix-warez-blender.follows = "";
         treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:ms0503/pkgs.nix";
@@ -86,10 +85,6 @@
         nixpkgs.follows = "nixpkgs";
       };
       url = "github:NixOS/nix";
-    };
-    nix-warez-blender = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:edolstra/nix-warez?dir=blender";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

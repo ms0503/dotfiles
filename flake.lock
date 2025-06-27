@@ -746,7 +746,6 @@
         "git-hooks": [
           "git-hooks"
         ],
-        "nix-warez-blender": [],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -756,11 +755,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750301342,
-        "narHash": "sha256-NVcxiwJr6GoONZhfiyEeB8I5uTGyTTl7nrz0+w+tQwg=",
+        "lastModified": 1750998826,
+        "narHash": "sha256-e4i4n4zLh5/C8J7NnHBhjFQlsQBw4JAM4KkMUbZHyBw=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "464ebc6f17cf2f73bf4199a1d5f919402827b1bc",
+        "rev": "be147abbc7352a5ccea7a1560cce6c9239f5d5fa",
         "type": "github"
       },
       "original": {
@@ -903,28 +902,6 @@
         "type": "github"
       }
     },
-    "nix-warez-blender": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "blender",
-        "lastModified": 1746378999,
-        "narHash": "sha256-aF+uC/aYR4I7VxN9s0gQG1WRDTE0Re3jAMd0qBkWjV4=",
-        "owner": "edolstra",
-        "repo": "nix-warez",
-        "rev": "85d76721132cc6631bbaa8c950d4d0f3aa4003fd",
-        "type": "github"
-      },
-      "original": {
-        "dir": "blender",
-        "owner": "edolstra",
-        "repo": "nix-warez",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1750083401,
@@ -1019,7 +996,6 @@
         "neovim-custom": "neovim-custom",
         "nh": "nh",
         "nix": "nix",
-        "nix-warez-blender": "nix-warez-blender",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "systems": "systems_7",
