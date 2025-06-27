@@ -34,7 +34,7 @@ in
       ++ (with godotPackages; [
         godot-mono
       ])
-      ++ lib.optional (pkgs.system == "x86_64-linux") myPkgs.blender3
+      ++ lib.optional (pkgs.stdenv.isLinux) myPkgs.blender3-gpu
       ++ (
         if config.ms0503.wayland.enable then
           with myPkgs;
