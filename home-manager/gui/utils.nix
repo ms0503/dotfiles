@@ -34,7 +34,11 @@ in
       ++ (with godotPackages; [
         godot-mono
       ])
-      ++ lib.optional (pkgs.stdenv.isLinux) myPkgs.blender3-gpu
+      ++ lib.optional (pkgs.stdenv.isLinux) (
+        myPkgs.blender3-gpu.override {
+          blenderAlias = true;
+        }
+      )
       ++ (
         if config.ms0503.wayland.enable then
           with myPkgs;
