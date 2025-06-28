@@ -721,11 +721,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751106629,
-        "narHash": "sha256-rcTZUcn0MEDEK/Q0oT0mFB1p2hYY1cjmVHVWoms4ZHY=",
+        "lastModified": 1751129240,
+        "narHash": "sha256-ECYrt0Ea8v70SfN7WYoX1MdOr86ywFdfjfAHQuVtwtk=",
         "owner": "ms0503",
         "repo": "misc-tools",
-        "rev": "9ca264a16ce405d737aeeadbb233d2f211f8c730",
+        "rev": "4524fd44d1e0197d484535c9e290caff44fc59e9",
         "type": "github"
       },
       "original": {
@@ -749,17 +749,20 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "nixpkgs-blender3": [
+          "nixpkgs-2505"
+        ],
         "systems": "systems_5",
         "treefmt-nix": [
           "treefmt-nix"
         ]
       },
       "locked": {
-        "lastModified": 1751106880,
-        "narHash": "sha256-/sSS0JiMStsWdYoeNoAraqAlQZtlys2jC4qsI2klHYQ=",
+        "lastModified": 1751130630,
+        "narHash": "sha256-w3sfdvDF8KG41vuYsgqXeyQMJXMT8tvTuqbn3RKy7G0=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "978bf9efb8d2fda941294252b018e033848911c2",
+        "rev": "05bfb3312237c71c40062f7f052754f6a63d7a1f",
         "type": "github"
       },
       "original": {
@@ -949,6 +952,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-2505": {
+      "locked": {
+        "lastModified": 1750969886,
+        "narHash": "sha256-zW/OFnotiz/ndPFdebpo3X0CrbVNf22n4DjN2vxlb58=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a676066377a2fe7457369dd37c31fd2263b662f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -998,6 +1017,7 @@
         "nix": "nix",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-2505": "nixpkgs-2505",
         "systems": "systems_7",
         "treefmt-nix": "treefmt-nix",
         "wezterm": "wezterm",

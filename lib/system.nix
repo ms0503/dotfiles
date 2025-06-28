@@ -6,6 +6,7 @@ inputs@{
   neovim-custom,
   nh,
   nixpkgs,
+  nixpkgs-2505,
   self,
   ...
 }:
@@ -32,7 +33,6 @@ in
           allowUnfree = true;
           permittedInsecurePackages = [
             "freeimage-3.18.0-unstable-2024-04-18"
-            "openssl-1.1.1w"
             "qtwebkit-5.212.0-alpha4"
           ];
         };
@@ -40,6 +40,15 @@ in
           nh.overlays.default
           self.overlays.default
         ];
+      };
+      pkgs2505 = import nixpkgs-2505 {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          permittedInsecurePackages = [
+            "openssl-1.1.1w"
+          ];
+        };
       };
     in
     withSystem system (
@@ -53,6 +62,7 @@ in
             isNixOS
             myLib
             myPkgs
+            pkgs2505
             username
             ;
           theme = (import ../themes) theme;
@@ -99,6 +109,9 @@ in
     }:
     let
       myPkgs = ms0503-pkgs.packages.${system} // self.outputs.packages.${system};
+      pkgs2505 = import nixpkgs-2505 {
+        inherit system;
+      };
     in
     withSystem system (
       { inputs', ... }:
@@ -126,6 +139,7 @@ in
             inputs'
             myLib
             myPkgs
+            pkgs2505
             username
             ;
         };
