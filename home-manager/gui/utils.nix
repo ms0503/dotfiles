@@ -20,7 +20,7 @@ in
     packages =
       (with pkgs; [
         aseprite-unfree
-        gimp
+        gimp3-with-plugins
         kicad
         libreoffice-fresh
         networkmanagerapplet
