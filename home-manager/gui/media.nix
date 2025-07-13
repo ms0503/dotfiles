@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   myPkgs,
   pkgs,
   ...
@@ -27,18 +26,6 @@
           spotify
         ]
     );
-  programs = {
-    ncspot.enable = true;
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-gstreamer
-        obs-pipewire-audio-capture
-        obs-vaapi
-        obs-vkcapture
-        wlrobs
-      ];
-    };
-  };
+  programs.ncspot.enable = true;
   services.easyeffects.enable = true;
 }
