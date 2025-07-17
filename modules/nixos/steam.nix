@@ -11,17 +11,23 @@ let
 in
 {
   config = mkIf cfg.enable {
-    programs.steam = {
-      dedicatedServer.openFirewall = true;
-      enable = true;
-      extraCompatPackages =
-        (with pkgs; [
-          proton-ge-bin
-        ])
-        ++ (with myPkgs; [
-          proton-ge-rtsp-bin
-        ]);
-      remotePlay.openFirewall = true;
+    programs = {
+      alvr = {
+        enable = true;
+        openFirewall = true;
+      };
+      steam = {
+        dedicatedServer.openFirewall = true;
+        enable = true;
+        extraCompatPackages =
+          (with pkgs; [
+            proton-ge-bin
+          ])
+          ++ (with myPkgs; [
+            proton-ge-rtsp-bin
+          ]);
+        remotePlay.openFirewall = true;
+      };
     };
   };
   options.ms0503.steam.enable = mkEnableOption "a steam";
