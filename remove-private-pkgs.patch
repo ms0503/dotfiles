@@ -67,8 +67,8 @@
          ];
          system = "x86_64-linux";
          theme = "chalk";
---- a/machines/mainpc/home-manager.nix
-+++ b/machines/mainpc/home-manager.nix
+--- a/machines/nyx/home-manager.nix
++++ b/machines/nyx/home-manager.nix
 @@ -2,17 +2,6 @@
  {
    home = {

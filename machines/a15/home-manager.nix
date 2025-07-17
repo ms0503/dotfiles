@@ -54,9 +54,9 @@ in
       IdentityFile ~/.ssh/lightrover
       User pi
 
-    Host mainpc
-      HostName mainpc
-      IdentityFile ~/.ssh/mainpc
+    Host nyx
+      HostName nyx
+      IdentityFile ~/.ssh/nyx
       User ms0503
   '';
   wayland.windowManager.hyprland.settings = {

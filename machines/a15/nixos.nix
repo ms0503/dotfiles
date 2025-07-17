@@ -68,7 +68,7 @@
     logind.lidSwitch = "ignore";
     pipewire.extraConfig.pipewire-pulse."99-tunnel"."pulse.cmd" = [
       {
-        args = "module-tunnel-sink server=tcp:mainpc:4713";
+        args = "module-tunnel-sink server=tcp:nyx:4713";
         cmd = "load-module";
       }
     ];

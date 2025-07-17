@@ -25,11 +25,11 @@ in
         theme = "monokai";
         username = "ms0503";
       };
-      "ms0503@mainpc" = mkHomeManagerConfiguration {
+      "ms0503@nyx" = mkHomeManagerConfiguration {
         inherit withSystem;
         modules = [
-          ./mainpc/config-hm.nix
-          ./mainpc/home-manager.nix
+          ./nyx/config-hm.nix
+          ./nyx/home-manager.nix
         ];
         overlays = [
           fenix.overlays.default
@@ -51,12 +51,12 @@ in
         system = "x86_64-linux";
         username = "ms0503";
       };
-      mainpc = mkNixosSystem {
+      nyx = mkNixosSystem {
         inherit withSystem;
-        hostname = "mainpc";
+        hostname = "nyx";
         modules = [
-          ./mainpc/config-nixos.nix
-          ./mainpc/nixos.nix
+          ./nyx/config-nixos.nix
+          ./nyx/nixos.nix
         ];
         system = "x86_64-linux";
         username = "ms0503";
