@@ -11,11 +11,11 @@ in
 {
   flake = {
     homeConfigurations = {
-      "ms0503@a15" = mkHomeManagerConfiguration {
+      "ms0503@erebos" = mkHomeManagerConfiguration {
         inherit withSystem;
         modules = [
-          ./a15/config-hm.nix
-          ./a15/home-manager.nix
+          ./erebos/config-hm.nix
+          ./erebos/home-manager.nix
         ];
         overlays = [
           fenix.overlays.default
@@ -41,12 +41,12 @@ in
       };
     };
     nixosConfigurations = {
-      a15 = mkNixosSystem {
+      erebos = mkNixosSystem {
         inherit withSystem;
-        hostname = "a15";
+        hostname = "erebos";
         modules = [
-          ./a15/config-nixos.nix
-          ./a15/nixos.nix
+          ./erebos/config-nixos.nix
+          ./erebos/nixos.nix
         ];
         system = "x86_64-linux";
         username = "ms0503";

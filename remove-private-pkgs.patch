@@ -21,8 +21,8 @@
      flake-parts.lib.mkFlake { inherit inputs; } (
        { flake-parts-lib, withSystem, ... }:
        let
---- a/machines/a15/home-manager.nix
-+++ b/machines/a15/home-manager.nix
+--- a/machines/erebos/home-manager.nix
++++ b/machines/erebos/home-manager.nix
 @@ -22,17 +22,6 @@
        platformio
        stm32cubemx

@@ -19,9 +19,9 @@
     ../../home-manager/gui
   ];
   programs.ssh.extraConfig = ''
-    Host a15
-      HostName a15
-      IdentityFile ~/.ssh/a15
+    Host erebos
+      HostName erebos
+      IdentityFile ~/.ssh/erebos
       User ms0503
 
     Host aur aur.archlinux.org
