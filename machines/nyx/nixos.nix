@@ -46,14 +46,12 @@
         user = username;
       };
     };
-    pipewire.extraConfig.pipewire-pulse = {
-      "99-listen"."pulse.cmd" = [
-        {
-          args = "module-native-protocol-tcp auth-anonymous=1 listen=0.0.0.0";
-          cmd = "load-module";
-        }
-      ];
-    };
+    pipewire.extraConfig.pipewire-pulse."99-listen"."pulse.cmd" = [
+      {
+        args = "module-native-protocol-tcp auth-anonymous=1 listen=0.0.0.0";
+        cmd = "load-module";
+      }
+    ];
     power-profiles-daemon.enable = true;
     tailscale.useRoutingFeatures = "server";
     xserver.xkb = {

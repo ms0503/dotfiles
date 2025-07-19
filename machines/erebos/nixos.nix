@@ -66,12 +66,38 @@
     };
     hardware.openrgb.enable = true;
     logind.lidSwitch = "ignore";
-    pipewire.extraConfig.pipewire-pulse."99-tunnel"."pulse.cmd" = [
-      {
-        args = "module-tunnel-sink server=tcp:nyx:4713";
-        cmd = "load-module";
-      }
-    ];
+    pipewire = {
+      extraConfig.pipewire-pulse."99-tunnel"."pulse.cmd" = [
+        {
+          args = "module-tunnel-sink server=tcp:nyx:4713";
+          cmd = "load-module";
+        }
+      ];
+      wireplumber.extraConfig."99-sink-priority"."monitor.alsa.rules" = [
+        {
+          actions.update-props = {
+            "priority.driver" = 1100;
+            "priority.session" = 1100;
+          };
+          matches = [
+            {
+              "node.name" = "tunnel-sink.tcp:nyx:4713";
+            }
+          ];
+        }
+        {
+          actions.update-props = {
+            "priority.driver" = 1200;
+            "priority.session" = 1200;
+          };
+          matches = [
+            {
+              "node.name" = "ALVR Audio";
+            }
+          ];
+        }
+      ];
+    };
     power-profiles-daemon.enable = true;
     printing = {
       drivers = with pkgs; [
