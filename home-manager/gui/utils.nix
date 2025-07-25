@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   myPkgs,
   pkgs,
   ...
@@ -19,6 +18,10 @@ in
       };
     packages =
       (with pkgs; [
+        (blender.override {
+          cudaSupport = config.ms0503.gpu == "nvidia";
+          hipSupport = config.ms0503.gpu == "radeon";
+        })
         aseprite-unfree
         gimp3-with-plugins
         kicad
@@ -34,11 +37,6 @@ in
       ++ (with godotPackages; [
         godot-mono
       ])
-      ++ lib.optional (pkgs.stdenv.isLinux) (
-        myPkgs.blender3-gpu.override {
-          blenderAlias = true;
-        }
-      )
       ++ (
         if config.ms0503.wayland.enable then
           with myPkgs;
