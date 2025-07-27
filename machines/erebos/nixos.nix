@@ -13,16 +13,19 @@
   environment.systemPackages = with pkgs; [
     openrgb-with-all-plugins
   ];
-  hardware.printers = {
-    ensureDefaultPrinter = "HL-5350DN";
-    ensurePrinters = [
-      {
-        deviceUri = "usb://Brother/HL-5350DN%20series?serial=L2J567505";
-        model = "BR5350_2_GPL.ppd";
-        name = "HL-5350DN";
-        ppdOptions.PageSize = "A4";
-      }
-    ];
+  hardware = {
+    printers = {
+      ensureDefaultPrinter = "HL-5350DN";
+      ensurePrinters = [
+        {
+          deviceUri = "usb://Brother/HL-5350DN%20series?serial=L2J567505";
+          model = "BR5350_2_GPL.ppd";
+          name = "HL-5350DN";
+          ppdOptions.PageSize = "A4";
+        }
+      ];
+    };
+    steam-hardware.enable = true;
   };
   imports =
     [
