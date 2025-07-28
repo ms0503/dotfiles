@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ myPkgs, pkgs, ... }:
 let
   lid-switch-handler = pkgs.writeScriptBin "lid-switch-handler" ''
     case "$1" in
@@ -16,12 +16,15 @@ let
 in
 {
   home = {
-    packages = with pkgs; [
-      gcc-arm-embedded
-      openocd
-      platformio
-      stm32cubemx
-    ];
+    packages =
+      (with pkgs; [
+        gcc-arm-embedded
+        openocd
+        stm32cubemx
+      ])
+      ++ (with myPkgs; [
+        platformio-core
+      ]);
     pointerCursor = {
       gtk.enable = true;
       name = "Milk1";

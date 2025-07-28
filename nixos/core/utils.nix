@@ -56,7 +56,7 @@
       extraRules = ''
         ENV{UDISKS_AUTO}="1"
       '';
-      packages = with pkgs; [
+      packages = with myPkgs; [
         platformio-core.udev
       ];
     };

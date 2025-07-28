@@ -141,6 +141,7 @@
         imports = [
           ./treefmt.nix
           ./git-hooks.nix
+          ./pkgs
           machines
         ];
         perSystem =
