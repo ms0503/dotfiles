@@ -13,36 +13,32 @@
   environment.systemPackages = with pkgs; [
     openrgb-with-all-plugins
   ];
-  hardware = {
-    printers = {
-      ensureDefaultPrinter = "HL-5350DN";
-      ensurePrinters = [
-        {
-          deviceUri = "usb://Brother/HL-5350DN%20series?serial=L2J567505";
-          model = "BR5350_2_GPL.ppd";
-          name = "HL-5350DN";
-          ppdOptions.PageSize = "A4";
-        }
-      ];
-    };
-    steam-hardware.enable = true;
+  hardware.printers = {
+    ensureDefaultPrinter = "HL-5350DN";
+    ensurePrinters = [
+      {
+        deviceUri = "usb://Brother/HL-5350DN%20series?serial=L2J567505";
+        model = "BR5350_2_GPL.ppd";
+        name = "HL-5350DN";
+        ppdOptions.PageSize = "A4";
+      }
+    ];
   };
-  imports =
-    [
-      ../../nixos/core
-      ../../nixos/gui
-      ./hardware-configuration.nix
-    ]
-    ++ (with inputs.nixos-hardware.nixosModules; [
-      asus-battery
-      common-cpu-amd
-      common-cpu-amd-pstate
-      common-cpu-amd-zenpower
-      common-gpu-nvidia-nonprime
-      common-hidpi
-      common-pc-laptop
-      common-pc-ssd
-    ]);
+  imports = [
+    ../../nixos/core
+    ../../nixos/gui
+    ./hardware-configuration.nix
+  ]
+  ++ (with inputs.nixos-hardware.nixosModules; [
+    asus-battery
+    common-cpu-amd
+    common-cpu-amd-pstate
+    common-cpu-amd-zenpower
+    common-gpu-nvidia-nonprime
+    common-hidpi
+    common-pc-laptop
+    common-pc-ssd
+  ]);
   networking.firewall.allowedTCPPorts = [
     3000
     80
