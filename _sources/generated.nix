@@ -12,14 +12,14 @@
   };
   tokyo-night-yazi = {
     pname = "tokyo-night-yazi";
-    version = "b3950bf0f51f13ab5e22b61267298554d798c63b";
+    version = "5f5636427f9bb16cc3f7c5e5693c60914c73f036";
     src = fetchFromGitHub {
       owner = "BennyOe";
       repo = "tokyo-night.yazi";
-      rev = "b3950bf0f51f13ab5e22b61267298554d798c63b";
+      rev = "5f5636427f9bb16cc3f7c5e5693c60914c73f036";
       fetchSubmodules = false;
-      sha256 = "sha256-WtOjzk7ATA4Ue6Lu6IgiweOIHk/BK01Khio6ESF201k=";
+      sha256 = "sha256-4aNPlO5aXP8c7vks6bTlLCuyUQZ4Hx3GWtGlRmbhdto=";
     };
-    date = "2025-05-05";
+    date = "2025-06-29";
   };
 }
