@@ -49,12 +49,15 @@ in
   };
   systemd.user.services.lock-on-suspend = {
     Install.WantedBy = [
-      "pre-sleep.target"
+      "sleep.target"
     ];
     Service = {
       ExecStart = "swaylock -f -c ${colors.bg}";
       Type = "oneshot";
     };
-    Unit.Description = "lock on suspend";
+    Unit = {
+      Before = "sleep.target";
+      Description = "lock on suspend";
+    };
   };
 }
