@@ -25,6 +25,7 @@ in
       preserve_split = true;
       pseudotile = true;
     };
+    ecosystem.no_update_news = true;
     env = [
       "ELECTRON_OZONE_PLATFORM_HINT,auto"
     ];
