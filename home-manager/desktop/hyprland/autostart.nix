@@ -10,8 +10,6 @@ let
   inherit (theme) colors;
   sleep = writeScriptBin "sleep" ''
     swayidle -w \
-      after-resume 'systemctl --user start libinput-gestures' \
-      before-sleep 'systemctl --user stop libinput-gestures' \
       before-sleep 'swaylock -f -c ${colors.bg}' \
       &
   '';
@@ -23,19 +21,25 @@ let
   '';
 in
 {
-  wayland.windowManager.hyprland.settings.exec-once = [
-    "dbus-update-activation-environment --systemd --all"
-    "systemctl --user start hyprland-session.target"
-    "${sleep}/bin/sleep"
-    "blueman-applet"
-    "nm-applet"
-    "${waybar-wrapper}/bin/waybar-wrapper"
-    "swww-daemon"
-    "swww img ~/.config/hypr/wallpaper/bg.webp"
-    "fcitx5 -D"
-    "steam -silent"
-    "[workspace 1 silent] microsoft-edge-dev"
-    "[workspace 2 silent] ${terminal}"
-    "[workspace 3 silent] discordcanary"
-  ];
+  wayland.windowManager.hyprland.settings = {
+    exec-once = [
+      "dbus-update-activation-environment --systemd --all"
+      "systemctl --user start hyprland-session.target"
+      "libinput-gestures"
+      "${sleep}/bin/sleep"
+      "blueman-applet"
+      "nm-applet"
+      "${waybar-wrapper}/bin/waybar-wrapper"
+      "swww-daemon"
+      "swww img ~/.config/hypr/wallpaper/bg.webp"
+      "fcitx5 -D"
+      "steam -silent"
+      "[workspace 1 silent] microsoft-edge-dev"
+      "[workspace 2 silent] ${terminal}"
+      "[workspace 3 silent] discordcanary"
+    ];
+    windowrule = [
+      "workspace 3 silent, class:discord"
+    ];
+  };
 }
