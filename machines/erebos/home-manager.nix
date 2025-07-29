@@ -1,19 +1,4 @@
 { myPkgs, pkgs, ... }:
-let
-  lid-switch-handler = pkgs.writeScriptBin "lid-switch-handler" ''
-    case "$1" in
-      off)
-        hyprctl dispatch dpms on
-        ;;
-      on)
-        hyprctl dispatch dpms off
-        systemctl suspend
-        ;;
-      *)
-        ;;
-    esac
-  '';
-in
 {
   home = {
     packages =
@@ -63,9 +48,11 @@ in
       User ms0503
   '';
   wayland.windowManager.hyprland.settings = {
-    bindl = [
-      ",switch:off:Lid Switch, exec,${lid-switch-handler}/bin/lid-switch-handler off"
-      ",switch:on:Lid Switch, exec,${lid-switch-handler}/bin/lid-switch-handler on"
+    device = [
+      {
+        enabled = false;
+        name = "Lid Switch";
+      }
     ];
     exec-once = [
       "openrgb --startminimized"
@@ -77,19 +64,19 @@ in
       kb_variant = "OADG109A";
     };
     monitor = [
-      "desc:Chimei Innolux Corporation 0x1521,1920x1080@144,0x0,1"
+      "desc:Chimei Innolux Corporation 0x1521, 1920x1080@144, 0x0, 1"
     ];
     workspace = [
-      "1,default:true,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "2,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "3,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "4,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "5,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "6,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "7,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "8,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "9,monitor:desc:Chimei Innolux Corporation 0x1521"
-      "10,monitor:desc:Chimei Innolux Corporation 0x1521"
+      "1, default:true, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "2, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "3, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "4, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "5, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "6, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "7, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "8, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "9, monitor:desc:Chimei Innolux Corporation 0x1521"
+      "10, monitor:desc:Chimei Innolux Corporation 0x1521"
     ];
   };
 }
