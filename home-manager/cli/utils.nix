@@ -41,6 +41,7 @@ in
       ffmpeg-full
       file
       fx
+      gemini-cli
       ghq
       imagemagick
       killall
