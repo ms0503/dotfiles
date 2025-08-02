@@ -50,6 +50,7 @@ in
       mold
       mono
       ninja
+      uv
       zig
     ])
     ++ (with pkgs.nodePackages; [
