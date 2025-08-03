@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   myPkgs,
   pkgs,
   ...
@@ -22,8 +23,31 @@ in
           cudaSupport = config.ms0503.gpu == "nvidia";
           hipSupport = config.ms0503.gpu == "radeon";
         })
+        (gimp3-with-plugins.override {
+          gimpPlugins = gimp3Plugins.override {
+            gimp = gimp3.overrideAttrs (
+              let
+                python = python3.withPackages (
+                  pp: with pp; [
+                    pygobject3
+                  ]
+                );
+              in
+              _: prev: {
+                preFixup = prev.preFixup + ''
+                  gappsWrapperArgs+=(
+                    --prefix PATH : ${
+                      lib.makeBinPath [
+                        python
+                      ]
+                    }
+                  )
+                '';
+              }
+            );
+          };
+        })
         aseprite-unfree
-        gimp3-with-plugins
         kicad
         libreoffice-fresh
         networkmanagerapplet
