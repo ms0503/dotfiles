@@ -96,7 +96,8 @@ in
             };
           }
           ../home-manager/cli
-        ] ++ modules;
+        ]
+        ++ modules;
       }
     );
   mkNixosSystem =
@@ -131,7 +132,8 @@ in
               username
             ];
           }
-        ] ++ modules;
+        ]
+        ++ modules;
         specialArgs = {
           inherit
             hostname

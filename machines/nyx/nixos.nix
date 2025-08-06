@@ -15,21 +15,20 @@
     resumeDevice = "/dev/disk/by-uuid/ae27955d-245c-465d-ad7a-1e24a2a310f0";
   };
   environment.systemPackages = [ ];
-  imports =
-    [
-      ../../nixos/core
-      ../../nixos/gui
-      ./hardware-configuration.nix
-    ]
-    ++ (with inputs.nixos-hardware.nixosModules; [
-      common-cpu-amd
-      common-cpu-amd-pstate
-      common-cpu-amd-zenpower
-      common-gpu-nvidia-nonprime
-      common-hidpi
-      common-pc
-      common-pc-ssd
-    ]);
+  imports = [
+    ../../nixos/core
+    ../../nixos/gui
+    ./hardware-configuration.nix
+  ]
+  ++ (with inputs.nixos-hardware.nixosModules; [
+    common-cpu-amd
+    common-cpu-amd-pstate
+    common-cpu-amd-zenpower
+    common-gpu-nvidia-nonprime
+    common-hidpi
+    common-pc
+    common-pc-ssd
+  ]);
   networking.firewall.allowedTCPPorts = [
     3000
     4713

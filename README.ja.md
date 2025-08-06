@@ -26,5 +26,4 @@ nh home switch .
 
 ## 関連ページ
 
-- [asa1984/dotfiles](https://github.com/asa1984/dotfiles)
-  (~~パクっ...~~参考元)
+- [asa1984/dotfiles](https://github.com/asa1984/dotfiles) (~パクっ...~参考元)
