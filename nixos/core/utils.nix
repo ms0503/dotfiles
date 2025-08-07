@@ -31,6 +31,7 @@
       tokei
       unar
       unrar
+      usbutils
       zip
     ])
     ++ (with myPkgs; [
