@@ -9,7 +9,7 @@
       acpi
       bash
       bat
-      bottom
+      btop
       btrfs-progs
       du-dust
       duf
@@ -45,7 +45,6 @@
   };
   programs = {
     git.enable = true;
-    htop.enable = true;
     less.enable = true;
     yazi.enable = true;
   };
