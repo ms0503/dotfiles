@@ -21,10 +21,13 @@
       libinput-gestures
       lsof
       man
+      man-pages
+      man-pages-posix
       pciutils
       procs
       ripgrep
       sl
+      stdmanpages
       tokei
       unar
       unrar
