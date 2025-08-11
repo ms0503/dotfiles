@@ -115,8 +115,11 @@
     };
     tailscale.useRoutingFeatures = "client";
     udev.extraRules = ''
+      ACTION=="add", SUBSYSTEM=="acpi", DRIVER=="battery", ATTR{power/wakeup}="disabled"
+      ACTION=="add", SUBSYSTEM=="acpi", DRIVER=="button", ATTR{power/wakeup}="disabled"
+      ACTION=="add", SUBSYSTEM=="i2c", DRIVER=="i2c_hid_acpi", ATTR{power/wakeup}="disabled"
       ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
-      ACTION=="add", SUBSYSTEM=="pci", ATTR{vendor}=="0x15b7", ATTR{device}=="0x5036", ATTR{power/wakeup}="disabled"
+      ACTION=="add", SUBSYSTEM=="pci", DRIVER=="xhci_hcd", ATTR{power/wakeup}="disabled"
     '';
     xserver.xkb = {
       layout = "jp";
