@@ -11,6 +11,7 @@
       bat
       btop
       btrfs-progs
+      ccid
       du-dust
       duf
       eza
@@ -23,7 +24,9 @@
       man
       man-pages
       man-pages-posix
+      opensc
       pciutils
+      pcsctools
       procs
       ripgrep
       sl
@@ -55,6 +58,7 @@
       allowSFTP = true;
       enable = true;
     };
+    pcscd.enable = true;
     udev = {
       extraRules = ''
         ENV{UDISKS_AUTO}="1"
