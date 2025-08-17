@@ -45,6 +45,10 @@
   nixpkgs.config.allowUnfree = true;
   programs = {
     nh.enable = true;
+    nix-index = {
+      enable = true;
+      enableBashIntegration = true;
+    };
     nix-ld.enable = true;
   };
 }
