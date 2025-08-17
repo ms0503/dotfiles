@@ -62,6 +62,10 @@
     udev = {
       extraRules = ''
         ENV{UDISKS_AUTO}="1"
+
+        # PaSoRi SC-S380
+        SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="06c1", MODE="0666"
+        SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="06c3", MODE="0666"
       '';
       packages = with myPkgs; [
         platformio-core.udev
