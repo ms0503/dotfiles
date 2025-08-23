@@ -83,7 +83,10 @@ in
       };
     };
     bottom.enable = true;
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     eza = {
       enable = true;
       extraOptions = [
@@ -128,5 +131,4 @@ in
       };
     };
   };
-  services.lorri.enable = true;
 }
