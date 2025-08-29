@@ -58,13 +58,13 @@
       enable = true;
       settings.default_session = {
         command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland
+          ${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland
         '';
         user = username;
       };
     };
     hardware.openrgb.enable = true;
-    logind.lidSwitch = "ignore";
+    logind.settings.Login.HandleLidSwitch = "ignore";
     pipewire = {
       extraConfig.pipewire-pulse."99-tunnel"."pulse.cmd" = [
         {
