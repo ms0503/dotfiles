@@ -16,7 +16,11 @@ in
     media.enable = mkEnableOption "media applications";
     rust.extraTools = mkOption {
       description = "Extra Rust tools.";
-      type = lib.types.listOf lib.types.package;
+      type = types.listOf types.package;
+    };
+    shell.type = mkOption {
+      description = "Login shell.";
+      type = types.shells;
     };
     wayland.enable = mkEnableOption "a wayland";
   };

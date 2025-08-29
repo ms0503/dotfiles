@@ -6,6 +6,7 @@
     ./hyprland.nix
     ./media.nix
     ./secureboot.nix
+    ./shell
     ./steam.nix
   ];
 }

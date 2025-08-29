@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   ms0503 = {
-    bash.aliases = { };
     desktop.hyprland.enable = true;
     gpu = "nvidia";
     gui.enable = true;
@@ -11,6 +10,10 @@
       targets.thumbv7em-none-eabihf.latest.rust-std
       targets.thumbv7em-none-eabihf.stable.rust-std
     ];
+    shell = {
+      aliases = { };
+      type = "bash";
+    };
     terminal = "wezterm";
     unity.enable = true;
     wayland.enable = true;

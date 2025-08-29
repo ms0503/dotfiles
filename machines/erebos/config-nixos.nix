@@ -12,6 +12,7 @@
       targets.thumbv7em-none-eabihf.stable.rust-std
     ];
     secureboot.enable = true;
+    shell.type = "bash";
     steam.enable = true;
     wayland.enable = true;
   };

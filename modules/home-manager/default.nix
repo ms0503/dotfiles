@@ -1,9 +1,9 @@
 {
   default.imports = [
-    ./bash-aliases.nix
     ./ghostty
     ./gpu
     ./jetbrains.nix
+    ./shell
     ./term.nix
     ./unity.nix
     ./wezterm

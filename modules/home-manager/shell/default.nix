@@ -1,6 +1,7 @@
 {
   imports = [
-    ./bash.nix
+    ./aliases.nix
+    ./bash
     ./starship.nix
   ];
 }

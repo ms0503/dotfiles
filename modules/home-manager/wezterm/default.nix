@@ -25,7 +25,7 @@ in
       ];
       sessionVariables.TERM = "wezterm";
     };
-    ms0503.bash.aliases.imgcat = "${wezimgcat-wrapper}/bin/wezimgcat-wrapper";
+    ms0503.shell.aliases.imgcat = "${wezimgcat-wrapper}/bin/wezimgcat-wrapper";
     programs.wezterm = {
       enable = true;
       extraConfig = builtins.readFile ./wezterm.lua;

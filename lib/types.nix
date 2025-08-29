@@ -8,6 +8,10 @@ in
     "nvidia"
     "radeon"
   ];
+  shells = types.enum [
+    "bash"
+    "zsh"
+  ];
   terminals = types.enum [
     "ghostty"
     "wezterm"

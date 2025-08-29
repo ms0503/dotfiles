@@ -138,6 +138,5 @@
       "wheel"
     ];
     isNormalUser = true;
-    shell = pkgs.bash;
   };
 }

@@ -8,6 +8,7 @@
     media.enable = true;
     rust.extraTools = [ ];
     secureboot.enable = true;
+    shell.type = "bash";
     steam.enable = true;
     wayland.enable = true;
   };
