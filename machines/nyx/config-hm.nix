@@ -8,7 +8,7 @@
     rust.extraTools = [ ];
     shell = {
       aliases = { };
-      type = "bash";
+      type = "zsh";
     };
     terminal = "wezterm";
     unity.enable = true;

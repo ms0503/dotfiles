@@ -50,6 +50,16 @@
     git.enable = true;
     less.enable = true;
     yazi.enable = true;
+    zsh = {
+      autosuggestions = {
+        async = true;
+        enable = true;
+      };
+      enable = true;
+      enableBashCompletion = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+    };
   };
   services = {
     fwupd.enable = true;
