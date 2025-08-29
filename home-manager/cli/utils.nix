@@ -1,5 +1,4 @@
 {
-  lib,
   myPkgs,
   pkgs,
   theme,
@@ -113,9 +112,11 @@ in
     ripgrep.enable = true;
     ssh = {
       enable = true;
-      extraConfig = lib.mkDefault "";
-      serverAliveCountMax = 5;
-      serverAliveInterval = 60;
+      enableDefaultConfig = false;
+      matchBlocks."*" = {
+        serverAliveCountMax = 5;
+        serverAliveInterval = 60;
+      };
     };
     yazi = {
       enable = true;
