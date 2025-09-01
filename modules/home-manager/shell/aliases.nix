@@ -1,12 +1,12 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkOption types;
+  inherit (lib) mkOption optionalAttrs types;
   cfg = config.ms0503.shell.aliases;
   shellType = config.ms0503.shell.type;
 in
 {
   config = {
-    programs.${shellType}.shellAliases = {
+    programs."${shellType}".shellAliases = {
       cat = "bat";
       cl-c = "wl-copy";
       cl-p = "wl-paste";
@@ -69,6 +69,9 @@ in
       open = "xdg-open";
       top = "bottom";
       wc = "tokei";
+    }
+    // optionalAttrs (shellType == "zsh") {
+      nix = "noglob nix"; # In zsh, '#' has special meaning
     }
     // cfg;
   };
