@@ -11,6 +11,7 @@ in
       enable = true;
       enableCompletion = true;
       historySubstringSearch.enable = true;
+      initContent = import ../functions.nix;
       prezto = {
         editor.dotExpansion = true;
         enable = true;

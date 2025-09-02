@@ -18,6 +18,7 @@ in
         "lla"
         "ls"
       ];
+      initExtra = import ../functions.nix;
       logoutExtra = builtins.readFile ./bash_logout.bash;
       profileExtra = builtins.readFile ./profile.bash;
     };
