@@ -47,9 +47,9 @@ in
       grsH = "git reset --hard";
       grsM = "git reset --mixed";
       grsS = "git reset --soft";
-      grsh = "git reset --hard HEAD^";
-      grsm = "git reset --mixed HEAD^";
-      grss = "git reset --soft HEAD^";
+      grsh = "git reset --hard HEAD~";
+      grsm = "git reset --mixed HEAD~";
+      grss = "git reset --soft HEAD~";
       gs = "git status";
       gst = "git stash";
       gsta = "git stash apply";
