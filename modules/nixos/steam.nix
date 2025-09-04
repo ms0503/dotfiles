@@ -27,6 +27,14 @@ in
           ++ (with myPkgs; [
             proton-ge-rtsp-bin
           ]);
+        extraPackages = with pkgs; [
+          json-glib
+          libGLU
+          libbsd
+          libcap
+          libuuid
+          libxkbcommon
+        ];
         remotePlay.openFirewall = true;
       };
     };
