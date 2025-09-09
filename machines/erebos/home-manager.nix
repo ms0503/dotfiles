@@ -64,6 +64,11 @@
         enabled = false;
         name = "Lid Switch";
       }
+      {
+        accel_profile = "flat";
+        name = "elecom-opticalmouse";
+        sensitivity = -0.2;
+      }
     ];
     exec-once = [
       "openrgb --startminimized"
