@@ -47,7 +47,10 @@ in
       };
       enable = true;
       extraConfig = {
-        core.autocrlf = "input";
+        core = {
+          autocrlf = "input";
+          editor = "nvim";
+        };
         init.defaultBranch = "main";
         merge.ff = "only";
         pager = {
