@@ -67,7 +67,7 @@ in
     bun.enable = true;
     go = {
       enable = true;
-      goBin = ".local/bin";
+      env.GOBIN = ".local/bin";
     };
     java = {
       enable = true;
