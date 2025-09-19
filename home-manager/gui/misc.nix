@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = (
-    with pkgs;
-    [
-      minecraft
-    ]
-  );
+  home.packages = with pkgs; [
+    prismlauncher
+  ];
 }
