@@ -14,12 +14,8 @@ in
       clion
       gateway
       idea-ultimate
-      phpstorm
-      pycharm-professional
       rider
-      rust-rover
       webstorm
-      writerside
     ];
   };
   options.ms0503.jetbrains.enable = mkEnableOption "JetBrains IDEs";
