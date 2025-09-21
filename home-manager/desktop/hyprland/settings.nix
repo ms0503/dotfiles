@@ -60,6 +60,7 @@ in
       "nofocus, class:^$, title:^$"
       "nofocus, class:jetbrains-.*, title:win[0-9]+"
       "opacity 1 override, class:.*\\.x86_64"
+      "opacity 1 override, class:Minecraft.*"
       "opacity 1 override, class:Unity"
       "opacity 1 override, class:VirtualBox Machine"
       "opacity 1 override, class:[Bb]lender"
