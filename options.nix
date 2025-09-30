@@ -22,6 +22,7 @@ in
       description = "Login shell.";
       type = types.shells;
     };
+    steam.enable = mkEnableOption "a steam";
     wayland.enable = mkEnableOption "a wayland";
   };
 }

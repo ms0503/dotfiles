@@ -10,6 +10,7 @@
       aliases = { };
       type = "zsh";
     };
+    steam.enable = true;
     terminal = "wezterm";
     unity.enable = true;
     wayland.enable = true;
