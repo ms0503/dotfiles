@@ -39,12 +39,12 @@ in
         "swww img ~/.config/hypr/wallpaper/bg.webp"
         "fcitx5 -D"
         "steam -silent"
-        "[workspace 1 silent] microsoft-edge-dev"
-        "[workspace 2 silent] ${terminal}"
-        "[workspace 3 silent] discordcanary"
+        "[workspace ${builtins.toString (cfgHyprland.startup-monitor * 10 + 1)} silent] microsoft-edge-dev"
+        "[workspace ${builtins.toString (cfgHyprland.startup-monitor * 10 + 2)} silent] ${terminal}"
+        "[workspace ${builtins.toString (cfgHyprland.startup-monitor * 10 + 3)} silent] discordcanary"
       ];
       windowrule = [
-        "workspace 3 silent, class:discord"
+        "workspace ${builtins.toString (cfgHyprland.startup-monitor * 10 + 3)} silent, class:discord"
       ];
     };
   };

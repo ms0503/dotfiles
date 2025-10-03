@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
   ms0503 = {
-    desktop.hyprland.enable = true;
+    desktop.hyprland = {
+      enable = true;
+      startup-monitor = 0;
+    };
     gpu = "nvidia";
     gui.enable = true;
     jetbrains.enable = true;

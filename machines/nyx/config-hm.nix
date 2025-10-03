@@ -1,6 +1,9 @@
 {
   ms0503 = {
-    desktop.hyprland.enable = true;
+    desktop.hyprland = {
+      enable = true;
+      startup-monitor = 1;
+    };
     gpu = "nvidia";
     gui.enable = true;
     jetbrains.enable = true;
