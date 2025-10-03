@@ -76,7 +76,7 @@
     input = {
       kb_layout = "jp";
       kb_model = "pc105";
-      kb_options = "caps:none";
+      kb_options = "caps:none,compose:paus";
       kb_variant = "OADG109A";
     };
     monitor = [
