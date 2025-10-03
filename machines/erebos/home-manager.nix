@@ -33,9 +33,7 @@
       HYPRCURSOR_THEME = "Milk1";
     };
   };
-  imports = [
-    ../../home-manager/gui
-  ];
+  imports = [ ];
   programs.ssh.extraConfig = ''
     Host aur aur.archlinux.org
       HostName aur.archlinux.org
