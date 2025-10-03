@@ -34,7 +34,6 @@
     };
   };
   imports = [
-    ../../home-manager/desktop/hyprland
     ../../home-manager/gui
   ];
   programs.ssh.extraConfig = ''

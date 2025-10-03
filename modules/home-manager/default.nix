@@ -1,5 +1,6 @@
 {
   default.imports = [
+    ./desktop
     ./ghostty
     ./gpu
     ./jetbrains.nix
