@@ -1,5 +1,6 @@
 {
   default.imports = [
+    ./cli
     ./desktop
     ./ghostty
     ./gpu

@@ -8,12 +8,12 @@
 }:
 let
   inherit (lib) mkIf mkOption;
-  cfgGUI = config.ms0503.gui;
-  cfgHyprland = config.ms0503.desktop.hyprland;
+  cfg = config.ms0503.desktop.hyprland;
+  cfgGui = config.ms0503.gui;
   types = lib.types // myLib.types;
 in
 {
-  config = mkIf (cfgGUI.enable && cfgHyprland.enable) {
+  config = mkIf (cfgGui.enable && cfg.enable) {
     home.packages =
       (with pkgs; [
         brightnessctl

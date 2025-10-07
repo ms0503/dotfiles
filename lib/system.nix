@@ -9,6 +9,7 @@ inputs@{
   nixpkgs,
   nixpkgs-2505,
   self,
+  xremap,
   ...
 }:
 let
@@ -96,7 +97,6 @@ in
               git.enable = true;
             };
           }
-          ../home-manager/cli
         ]
         ++ modules;
       }
@@ -123,6 +123,7 @@ in
           lanzaboote.nixosModules.lanzaboote
           neovim-custom.nixosModules.default
           nixos-wsl.nixosModules.default
+          xremap.nixosModules.default
           (import ../options.nix)
           self.nixosModules.default
           {

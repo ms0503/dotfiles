@@ -7,11 +7,11 @@
 }:
 let
   inherit (lib) mkIf;
-  cfgGUI = config.ms0503.gui;
+  cfg = config.ms0503.gui;
   godotPackages = pkgs.godotPackages_4_4;
 in
 {
-  config = mkIf cfgGUI.enable {
+  config = mkIf cfg.enable {
     home = {
       file."${config.xdg.dataHome}/godot/export_templates/${
         builtins.replaceStrings [ "-" ] [ "." ] godotPackages.godot-mono.version

@@ -1,11 +1,11 @@
 { config, lib, ... }:
 let
   inherit (lib) mkIf;
-  cfgGUI = config.ms0503.gui;
-  cfgHyprland = config.ms0503.desktop.hyprland;
+  cfg = config.ms0503.desktop.hyprland;
+  cfgGui = config.ms0503.gui;
 in
 {
-  config = mkIf (cfgGUI.enable && cfgHyprland.enable) {
+  config = mkIf (cfgGui.enable && cfg.enable) {
     home.file."${config.xdg.configHome}/libinput-gestures.conf".text = ''
       gesture swipe up 3 wofi --show drun --width 512px
     '';

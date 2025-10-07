@@ -2,8 +2,10 @@
   default.imports = [
     ./arch
     ./bt.nix
+    ./core
+    ./desktop
     ./gpu
-    ./hyprland.nix
+    ./gui
     ./media.nix
     ./secureboot.nix
     ./steam.nix

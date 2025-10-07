@@ -15,8 +15,8 @@ let
       hyprctl dispatch movefocus "$1"
     fi
   '';
-  cfgGUI = config.ms0503.gui;
-  cfgHyprland = config.ms0503.desktop.hyprland;
+  cfg = config.ms0503.desktop.hyprland;
+  cfgGui = config.ms0503.gui;
   toggle-monitor = pkgs.writeScriptBin "toggle-monitor" ''
     hyprctl monitors -j | jq 'map(select(.focused | not).activeWorkspace.id)[0]' | xargs hyprctl dispatch workspace
   '';
@@ -30,7 +30,7 @@ let
   '';
 in
 {
-  config = mkIf (cfgGUI.enable && cfgHyprland.enable) {
+  config = mkIf (cfgGui.enable && cfg.enable) {
     wayland.windowManager.hyprland.settings = {
       "$mainMod" = "SUPER";
       "$subMod" = "ALT";

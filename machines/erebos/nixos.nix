@@ -25,8 +25,6 @@
     ];
   };
   imports = [
-    ../../nixos/core
-    ../../nixos/gui
     ./hardware-configuration.nix
   ]
   ++ (with inputs.nixos-hardware.nixosModules; [

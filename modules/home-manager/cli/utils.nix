@@ -5,7 +5,7 @@
   ...
 }:
 let
-  sources = import ../../_sources/generated.nix {
+  sources = import ../../../_sources/generated.nix {
     inherit (pkgs)
       dockerTools
       fetchFromGitHub

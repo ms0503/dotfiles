@@ -1,8 +1,4 @@
-{
-  myPkgs,
-  pkgs,
-  ...
-}:
+{ myPkgs, pkgs, ... }:
 {
   environment.systemPackages =
     (with pkgs; [

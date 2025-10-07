@@ -7,10 +7,10 @@
 }:
 let
   inherit (lib) mkIf;
-  cfgGUI = config.ms0503.gui;
+  cfg = config.ms0503.gui;
 in
 {
-  config = mkIf cfgGUI.enable {
+  config = mkIf cfg.enable {
     home.packages =
       with pkgs;
       [
