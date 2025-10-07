@@ -1,4 +1,7 @@
 { config, hostname, ... }:
+let
+  cfgWsl = config.ms0503.wsl;
+in
 {
   networking = {
     firewall = {
@@ -16,7 +19,7 @@
     nftables.enable = true;
   };
   services.tailscale = {
-    enable = true;
+    enable = !cfgWsl.enable;
     openFirewall = true;
   };
   systemd.services.NetworkManager-wait-online.enable = false;

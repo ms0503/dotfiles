@@ -1,4 +1,12 @@
-{ myPkgs, pkgs, ... }:
+{
+  config,
+  myPkgs,
+  pkgs,
+  ...
+}:
+let
+  cfgWsl = config.ms0503.wsl;
+in
 {
   environment.systemPackages =
     (with pkgs; [
@@ -58,7 +66,7 @@
     };
   };
   services = {
-    fwupd.enable = true;
+    fwupd.enable = !cfgWsl.enable;
     libinput.enable = true;
     openssh = {
       allowSFTP = true;
