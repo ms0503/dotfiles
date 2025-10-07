@@ -33,7 +33,6 @@
     };
     settings = {
       substituters = [
-        "https://cache.nixos.org"
         "https://helix.cachix.org"
         "https://hyprland.cachix.org"
         "https://ms0503.cachix.org"
@@ -42,7 +41,6 @@
         "https://ros.cachix.org"
       ];
       trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "ms0503.cachix.org-1:Cc2mXpepZr7O9aFcRj5jq3mIcvdUPp85sLFuQj+IKbM="
