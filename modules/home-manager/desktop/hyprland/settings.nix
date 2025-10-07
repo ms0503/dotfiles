@@ -7,11 +7,34 @@
 let
   inherit (lib) mkIf;
   inherit (theme) colors;
-  cfgGUI = config.ms0503.gui;
-  cfgHyprland = config.ms0503.desktop.hyprland;
+  cfg = config.ms0503.desktop.hyprland;
+  cfgGui = config.ms0503.gui;
+  force-opaque-windows = [
+    "class:.*\\.x86_64"
+    "class:Minecraft.*"
+    "class:Unity"
+    "class:VirtualBox Machine"
+    "class:[Bb]lender"
+    "class:gimp"
+    "class:hoi4"
+    "class:msedge-_cmkncekebbebpfilplodngbpllndjkfo-Default" # Chrome Remote Desktop
+    "class:steam_app_[0-9]+"
+    "content:game"
+    "content:photo"
+    "content:video"
+    "title:.*YouTube.*"
+    "title:.*\\.avif \\([0-9]+×[0-9]+\\).*"
+    "title:.*\\.bmp \\([0-9]+×[0-9]+\\).*"
+    "title:.*\\.gif \\([0-9]+×[0-9]+\\).*"
+    "title:.*\\.jpe?g \\([0-9]+×[0-9]+\\).*"
+    "title:.*\\.png \\([0-9]+×[0-9]+\\).*"
+    "title:.*\\.webp \\([0-9]+×[0-9]+\\).*"
+    "title:.*ニコニコ動画.*"
+  ];
+  generateOpaqueWindowRules = builtins.map (win: "opacity 1 override, ${win}");
 in
 {
-  config = mkIf (cfgGUI.enable && cfgHyprland.enable) {
+  config = mkIf (cfgGui.enable && cfg.enable) {
     wayland.windowManager.hyprland.settings = {
       animations = {
         animation = [
@@ -68,28 +91,9 @@ in
         "float, class:kicad, title:フットプリントを割り当て"
         "nofocus, class:^$, title:^$"
         "nofocus, class:jetbrains-.*, title:win[0-9]+"
-        "opacity 1 override, class:.*\\.x86_64"
-        "opacity 1 override, class:Minecraft.*"
-        "opacity 1 override, class:Unity"
-        "opacity 1 override, class:VirtualBox Machine"
-        "opacity 1 override, class:[Bb]lender"
-        "opacity 1 override, class:gimp"
-        "opacity 1 override, class:hoi4"
-        "opacity 1 override, class:msedge-_cmkncekebbebpfilplodngbpllndjkfo-Default" # Chrome Remote Desktop
-        "opacity 1 override, class:steam_app_[0-9]+"
-        "opacity 1 override, content:game"
-        "opacity 1 override, content:photo"
-        "opacity 1 override, content:video"
-        "opacity 1 override, title:.*YouTube.*"
-        "opacity 1 override, title:.*\\.avif \\([0-9]+×[0-9]+\\).*"
-        "opacity 1 override, title:.*\\.bmp \\([0-9]+×[0-9]+\\).*"
-        "opacity 1 override, title:.*\\.gif \\([0-9]+×[0-9]+\\).*"
-        "opacity 1 override, title:.*\\.jpe?g \\([0-9]+×[0-9]+\\).*"
-        "opacity 1 override, title:.*\\.png \\([0-9]+×[0-9]+\\).*"
-        "opacity 1 override, title:.*\\.webp \\([0-9]+×[0-9]+\\).*"
-        "opacity 1 override, title:.*ニコニコ動画.*"
         "pseudo, class:fcitx"
-      ];
+      ]
+      ++ generateOpaqueWindowRules force-opaque-windows;
       xwayland.force_zero_scaling = true;
     };
   };
