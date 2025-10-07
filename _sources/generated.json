@@ -13,26 +13,5 @@
             "url": "https://github.com/kawarimidoll/gh-q/raw/main/gh-q"
         },
         "version": "a312c67b92baefadb07481ef1479c96d91243d41"
-    },
-    "tokyo-night-yazi": {
-        "cargoLocks": null,
-        "date": "2025-06-29",
-        "extract": null,
-        "name": "tokyo-night-yazi",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "deepClone": false,
-            "fetchSubmodules": false,
-            "leaveDotGit": false,
-            "name": null,
-            "owner": "BennyOe",
-            "repo": "tokyo-night.yazi",
-            "rev": "5f5636427f9bb16cc3f7c5e5693c60914c73f036",
-            "sha256": "sha256-4aNPlO5aXP8c7vks6bTlLCuyUQZ4Hx3GWtGlRmbhdto=",
-            "sparseCheckout": [],
-            "type": "github"
-        },
-        "version": "5f5636427f9bb16cc3f7c5e5693c60914c73f036"
     }
 }

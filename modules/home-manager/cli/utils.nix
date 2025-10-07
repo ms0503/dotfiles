@@ -4,31 +4,6 @@
   theme,
   ...
 }:
-let
-  sources = import ../../../_sources/generated.nix {
-    inherit (pkgs)
-      dockerTools
-      fetchFromGitHub
-      fetchgit
-      fetchurl
-      ;
-  };
-  tokyo-night-yazi = pkgs.stdenvNoCC.mkDerivation {
-    inherit (sources.tokyo-night-yazi) pname src;
-    installPhase = ''
-      runHook preInstall
-      install -Dm444 -t "$out" \
-        "$src/LICENSE" \
-        "$src/LICENSE-tmtheme" \
-        "$src/README.md" \
-        "$src/flavor.toml" \
-        "$src/preview.png" \
-        "$src/tmtheme.xml"
-      runHook postInstall
-    '';
-    version = sources.tokyo-night-yazi.date;
-  };
-in
 {
   home.packages =
     (with pkgs; [
@@ -118,12 +93,7 @@ in
         serverAliveInterval = 60;
       };
     };
-    yazi = {
-      enable = true;
-      flavors = {
-        tokyo-night = tokyo-night-yazi;
-      };
-    };
+    yazi.enable = true;
     yt-dlp = {
       enable = true;
       settings = {
