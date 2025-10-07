@@ -34,6 +34,7 @@ in
       ];
     };
     git = {
+      inherit userEmail userName;
       delta = {
         enable = true;
         options = {
@@ -65,7 +66,6 @@ in
         };
         push.gpgSign = "if-asked";
       };
-      inherit userEmail userName;
       lfs.enable = true;
       signing = {
         key = "4FCF9A4478F4BB66DC7A51E348EB16DEF513A505";
@@ -73,8 +73,8 @@ in
       };
     };
     mercurial = {
-      enable = true;
       inherit userEmail userName;
+      enable = true;
     };
   };
 }
