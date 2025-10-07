@@ -88,6 +88,13 @@
       url = "github:NixOS/nix";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-wsl = {
+      inputs = {
+        flake-compat.follows = "";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:nix-community/NixOS-WSL";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-2505.url = "github:NixOS/nixpkgs/nixos-25.05";
     systems.url = "github:nix-systems/default";

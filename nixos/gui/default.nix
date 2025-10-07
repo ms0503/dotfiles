@@ -6,5 +6,6 @@
     ./media.nix
     ./security.nix
     ./sound.nix
+    ./utils.nix
   ];
 }

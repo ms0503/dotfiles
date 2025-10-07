@@ -5,6 +5,7 @@ inputs@{
   ms0503-pkgs,
   neovim-custom,
   nh,
+  nixos-wsl,
   nixpkgs,
   nixpkgs-2505,
   self,
@@ -121,6 +122,7 @@ in
         modules = [
           lanzaboote.nixosModules.lanzaboote
           neovim-custom.nixosModules.default
+          nixos-wsl.nixosModules.default
           (import ../options.nix)
           self.nixosModules.default
           {

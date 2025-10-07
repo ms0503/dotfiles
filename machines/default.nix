@@ -39,6 +39,20 @@ in
         theme = "monokai";
         username = "ms0503";
       };
+      "ms0503@nyx-win" = mkHomeManagerConfiguration {
+        inherit withSystem;
+        modules = [
+          ./nyx-win/config-hm.nix
+          ./nyx-win/home-manager.nix
+        ];
+        overlays = [
+          fenix.overlays.default
+          private-pkgs.overlays.default
+        ];
+        system = "x86_64-linux";
+        theme = "monokai";
+        username = "ms0503";
+      };
     };
     nixosConfigurations = {
       erebos = mkNixosSystem {
@@ -57,6 +71,16 @@ in
         modules = [
           ./nyx/config-nixos.nix
           ./nyx/nixos.nix
+        ];
+        system = "x86_64-linux";
+        username = "ms0503";
+      };
+      nyx-win = mkNixosSystem {
+        inherit withSystem;
+        hostname = "nyx-win";
+        modules = [
+          ./nyx-win/config-nixos.nix
+          ./nyx-win/nixos.nix
         ];
         system = "x86_64-linux";
         username = "ms0503";

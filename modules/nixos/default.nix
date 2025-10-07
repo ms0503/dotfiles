@@ -7,5 +7,6 @@
     ./media.nix
     ./secureboot.nix
     ./steam.nix
+    ./wsl.nix
   ];
 }
