@@ -75,6 +75,7 @@ in
         "opacity 1 override, class:[Bb]lender"
         "opacity 1 override, class:gimp"
         "opacity 1 override, class:hoi4"
+        "opacity 1 override, class:msedge-_cmkncekebbebpfilplodngbpllndjkfo-Default" # Chrome Remote Desktop
         "opacity 1 override, class:steam_app_[0-9]+"
         "opacity 1 override, content:game"
         "opacity 1 override, content:photo"
