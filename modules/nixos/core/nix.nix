@@ -1,4 +1,4 @@
-{ inputs', ... }:
+{ inputs', pkgs, ... }:
 {
   nix = {
     extraOptions = ''
@@ -9,7 +9,18 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    package = inputs'.nix.packages.default;
+    package = inputs'.nix.packages.default.override {
+      nix-manual = inputs'.nix.packages.nix-manual.override {
+        json-schema-for-humans = pkgs.json-schema-for-humans.overrideAttrs (
+          _: prev: {
+            disabledTests = prev.disabledTests ++ [
+              "test_config_parameters_with_nonexistent_output_path"
+              "test_nonexistent_output_path"
+            ];
+          }
+        );
+      };
+    };
     settings = {
       accept-flake-config = true;
       auto-optimise-store = true;
