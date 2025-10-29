@@ -16,6 +16,7 @@ in
         keymap = [ ];
         modmap = [ ];
       };
+      enable = true;
       serviceMode = "user";
       userName = username;
     };
