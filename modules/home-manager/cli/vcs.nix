@@ -26,6 +26,18 @@ in
     git-vrc
   ];
   programs = {
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        line-numbers = true;
+        minus-style = "syntax #330000";
+        navigate = true;
+        plus-style = "syntax #003300";
+        side-by-side = true;
+        syntax-theme = "zenburn";
+      };
+    };
     gh = {
       enable = true;
       extensions = [
@@ -34,20 +46,9 @@ in
       ];
     };
     git = {
-      inherit userEmail userName;
-      delta = {
-        enable = true;
-        options = {
-          line-numbers = true;
-          minus-style = "syntax #330000";
-          navigate = true;
-          plus-style = "syntax #003300";
-          side-by-side = true;
-          syntax-theme = "zenburn";
-        };
-      };
       enable = true;
-      extraConfig = {
+      lfs.enable = true;
+      settings = {
         core = {
           autocrlf = "input";
           editor = "nvim";
@@ -65,8 +66,11 @@ in
           rebase = true;
         };
         push.gpgSign = "if-asked";
+        user = {
+          email = userEmail;
+          name = userName;
+        };
       };
-      lfs.enable = true;
       signing = {
         key = "4FCF9A4478F4BB66DC7A51E348EB16DEF513A505";
         signByDefault = true;
