@@ -1,6 +1,6 @@
 --- a/flake.nix
 +++ b/flake.nix
-@@ -120,7 +120,7 @@
+@@ -118,7 +118,7 @@
      };
    };
    outputs =
@@ -9,13 +9,13 @@
        fenix,
        flake-parts,
        home-manager,
-@@ -129,11 +129,6 @@
+@@ -127,11 +127,6 @@
        systems,
        ...
      }:
 -    let
 -      inputs = prevInputs // {
--        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/71c325cefdfff07fb3a8648884c042aef2787bf7";
+-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/4f5dc74e2ad700ef08e394de5c3cd37e45be34a0";
 -      };
 -    in
      flake-parts.lib.mkFlake { inherit inputs; } (
@@ -23,10 +23,10 @@
        let
 --- a/machines/erebos/home-manager.nix
 +++ b/machines/erebos/home-manager.nix
-@@ -22,17 +22,6 @@
-       platformio
-       stm32cubemx
-     ];
+@@ -21,17 +21,6 @@
+         })
+         platformio-core
+       ]);
 -    pointerCursor = {
 -      gtk.enable = true;
 -      name = "Milk1";
@@ -39,8 +39,8 @@
 -      HYPRCURSOR_THEME = "Milk1";
 -    };
    };
-   imports = [
-     ../../home-manager/desktop/hyprland
+   imports = [ ];
+   programs.ssh.extraConfig = ''
 --- a/machines/default.nix
 +++ b/machines/default.nix
 @@ -3,7 +3,6 @@
@@ -58,7 +58,7 @@
 -          private-pkgs.overlays.default
          ];
          system = "x86_64-linux";
-         theme = "chalk";
+         theme = "monokai";
 @@ -33,7 +31,6 @@
          ];
          overlays = [
@@ -66,9 +66,37 @@
 -          private-pkgs.overlays.default
          ];
          system = "x86_64-linux";
-         theme = "chalk";
+         theme = "monokai";
+@@ -47,7 +44,6 @@
+         ];
+         overlays = [
+           fenix.overlays.default
+-          private-pkgs.overlays.default
+         ];
+         system = "x86_64-linux";
+         theme = "monokai";
 --- a/machines/nyx/home-manager.nix
 +++ b/machines/nyx/home-manager.nix
+@@ -14,17 +14,6 @@
+         vrchat-exe-path = "${compat-client-install-path}/steamapps/common/VRChat/VRChat.exe";
+       })
+     ];
+-    pointerCursor = {
+-      gtk.enable = true;
+-      name = "Milk1";
+-      package = pkgs.milk-cursor-themes;
+-      size = 32;
+-      x11.enable = true;
+-    };
+-    sessionVariables = {
+-      HYPRCURSOR_SIZE = "32";
+-      HYPRCURSOR_THEME = "Milk1";
+-    };
+   };
+   imports = [ ];
+   programs.ssh.extraConfig = ''
+--- a/machines/nyx-win/home-manager.nix
++++ b/machines/nyx-win/home-manager.nix
 @@ -2,17 +2,6 @@
  {
    home = {
@@ -84,6 +112,6 @@
 -      HYPRCURSOR_SIZE = "32";
 -      HYPRCURSOR_THEME = "Milk1";
 -    };
-  };
-  imports = [
-    ../../home-manager/desktop/hyprland
+   };
+   imports = [ ];
+   programs.ssh.extraConfig = ''
