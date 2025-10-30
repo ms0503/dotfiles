@@ -1,10 +1,12 @@
 {
   config,
+  lib,
   myPkgs,
   pkgs,
   ...
 }:
 let
+  inherit (lib) optionalAttrs;
   cfgWsl = config.ms0503.wsl;
 in
 {
@@ -98,6 +100,8 @@ in
         setSocketVariable = true;
       };
     };
+  }
+  // optionalAttrs (!cfgWsl.enable) {
     virtualbox.host = {
       addNetworkInterface = false;
       enable = true;
