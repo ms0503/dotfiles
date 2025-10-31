@@ -77,7 +77,7 @@ in
         repeat_rate = 30;
         touchpad = {
           natural_scroll = true;
-          scroll_factor = lib.mkDefault 0.1;
+          scroll_factor = lib.mkDefault 0.7;
         };
       };
       master.new_status = "slave";
