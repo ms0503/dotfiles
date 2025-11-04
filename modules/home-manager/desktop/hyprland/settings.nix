@@ -93,6 +93,7 @@ in
         "nofocus, class:jetbrains-.*, title:win[0-9]+"
         "pseudo, class:fcitx"
         "scrolltouchpad 0.7, class:microsoft-edge.*"
+        "scrolltouchpad 0.7, class:msedge-.*"
       ]
       ++ generateOpaqueWindowRules force-opaque-windows;
       xwayland.force_zero_scaling = true;
