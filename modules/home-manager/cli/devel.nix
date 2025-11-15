@@ -4,19 +4,30 @@ let
     inherit (pkgs.jdk17) version;
     installPhase = ''
       runHook preInstall
-      install -dm755 "$out/lib/openjdk17"
-      cp -rv "$src/lib/openjdk/"* "$out/lib/openjdk17"
+      install -dm755 "$out/lib"
+      ln -s "$src/lib/openjdk" "$out/lib/openjdk17"
       runHook postInstall
     '';
     pname = "jdk17-wrapped";
     src = pkgs.jdk17;
   };
+  jdk21-wrapped = pkgs.stdenvNoCC.mkDerivation {
+    inherit (pkgs.jdk21) version;
+    installPhase = ''
+      runHook preInstall
+      install -dm755 "$out/lib"
+      ln -s "$src/lib/openjdk" "$out/lib/openjdk21"
+      runHook postInstall
+    '';
+    pname = "jdk21-wrapped";
+    src = pkgs.jdk21;
+  };
   jdk8-wrapped = pkgs.stdenvNoCC.mkDerivation {
     inherit (pkgs.jdk8) version;
     installPhase = ''
       runHook preInstall
-      install -dm755 "$out/lib/openjdk8"
-      cp -rv "$src/lib/openjdk/"* "$out/lib/openjdk8"
+      install -dm755 "$out/lib"
+      ln -s "$src/lib/openjdk" "$out/lib/openjdk8"
       runHook postInstall
     '';
     pname = "jdk8-wrapped";
@@ -46,6 +57,7 @@ in
       dotnet-sdk
       ghc
       jdk17-wrapped
+      jdk21-wrapped
       jdk8-wrapped
       mold
       mono
