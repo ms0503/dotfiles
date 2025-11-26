@@ -40,6 +40,11 @@
       IdentityFile ~/.ssh/aur
       User aur
 
+    Host gaia gaia.local
+      HostName gaia.local
+      IdentityFile ~/.ssh/gaia
+      User ms0503
+
     Host github github.com
       HostName github.com
       IdentityFile ~/.ssh/github
