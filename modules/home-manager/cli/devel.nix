@@ -47,9 +47,12 @@ in
         ++ config.ms0503.rust.extraTools
       ))
       (lib.hiPrio gcc)
-      (lib.hiPrio nodejs-slim)
+      (lib.hiPrio nodejs-slim_latest)
       (lib.hiPrio python312)
       (lib.hiPrio rust-analyzer-nightly)
+      (yarn-berry.override {
+        nodejs = nodejs_latest;
+      })
       arduino-cli
       clang
       cmake
@@ -68,7 +71,6 @@ in
     ++ (with pkgs.nodePackages; [
       npm
       pnpm
-      yarn
     ])
     ++ (with pkgs.python312Packages; [
       build
