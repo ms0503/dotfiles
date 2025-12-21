@@ -85,7 +85,7 @@ in
     };
     java = {
       enable = true;
-      package = pkgs.jdk23;
+      package = pkgs.jdk25;
     };
   };
 }
