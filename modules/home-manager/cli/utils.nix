@@ -10,7 +10,7 @@
       aria2
       cachix
       curl
-      du-dust
+      dust
       duf
       ffmpeg-full
       file

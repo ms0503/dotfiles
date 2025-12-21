@@ -18,7 +18,7 @@ in
       btop
       btrfs-progs
       ccid
-      du-dust
+      dust
       duf
       eza
       fd
