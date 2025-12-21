@@ -32,7 +32,7 @@ in
       man-pages-posix
       opensc
       pciutils
-      pcsctools
+      pcsc-tools
       procs
       ripgrep
       sl
