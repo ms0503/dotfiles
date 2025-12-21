@@ -50,7 +50,7 @@ in
               );
             };
           })
-          aseprite-unfree
+          aseprite
           kicad
           libreoffice-fresh
           networkmanagerapplet
