@@ -34,7 +34,7 @@ in
       packages =
         (with pkgs; [
           nerd-fonts.sauce-code-pro
-          noto-fonts-emoji
+          noto-fonts-color-emoji
           source-han-code-jp
         ])
         ++ (with myPkgs; [
