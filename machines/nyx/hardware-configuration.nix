@@ -49,8 +49,8 @@
       fsType = "ext4";
     };
     "/mnt/Movie" = {
-      device = "/dev/disk/by-uuid/14f3c37b-733f-4c60-9676-a509c634bd41";
-      fsType = "ext4";
+      device = "/dev/disk/by-uuid/1F8F-2BF1";
+      fsType = "vfat";
     };
     "/mnt/Repo" = {
       device = "/dev/disk/by-uuid/277196c0-dc11-4ee3-98b9-65f849039f30";
