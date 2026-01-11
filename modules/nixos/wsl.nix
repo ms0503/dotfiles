@@ -13,6 +13,7 @@ in
     wsl = {
       defaultUser = username;
       enable = true;
+      interop.register = true;
     };
   };
   options.ms0503.wsl.enable = mkEnableOption "WSL";
