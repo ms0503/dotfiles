@@ -1,5 +1,14 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  myLib,
+  pkgs,
+  ...
+}:
 let
+  inherit (config.ms0503) feature-set;
+  inherit (lib) hiPrio optionalAttrs optionals;
+  inherit (myLib) const;
   jdk17-wrapped = pkgs.stdenvNoCC.mkDerivation {
     inherit (pkgs.jdk17) version;
     installPhase = ''
@@ -37,36 +46,16 @@ in
 {
   home.packages =
     (with pkgs; [
-      (fenix.combine (
-        [
-          fenix.latest.toolchain
-          fenix.stable.toolchain
-          fenix.targets.i686-unknown-linux-gnu.latest.rust-std
-          fenix.targets.i686-unknown-linux-gnu.stable.rust-std
-        ]
-        ++ config.ms0503.rust.extraTools
-      ))
-      (lib.hiPrio gcc)
-      (lib.hiPrio nodejs-slim_latest)
-      (lib.hiPrio python312)
-      (lib.hiPrio rust-analyzer-nightly)
+      (hiPrio gcc)
+      (hiPrio nodejs-slim_latest)
       (yarn-berry.override {
         nodejs = nodejs_latest;
       })
-      arduino-cli
       clang
       cmake
-      deno
-      dotnet-sdk
-      ghc
-      jdk17-wrapped
-      jdk21-wrapped
-      jdk8-wrapped
       mold
-      mono
       ninja
       uv
-      zig
     ])
     ++ (with pkgs.nodePackages; [
       npm
@@ -74,18 +63,48 @@ in
     ])
     ++ (with pkgs.python312Packages; [
       build
+      python
       setuptools
       wheel
-    ]);
+    ])
+    ++ optionals (const.feature-sets.lite <= feature-set) (
+      with pkgs;
+      [
+        (fenix.combine (
+          [
+            fenix.latest.toolchain
+          ]
+          ++ optionals (const.feature-sets.full <= feature-set) [
+            fenix.stable.toolchain
+            fenix.targets.i686-unknown-linux-gnu.latest.rust-std
+            fenix.targets.i686-unknown-linux-gnu.stable.rust-std
+          ]
+          ++ config.ms0503.rust.extraTools
+        ))
+        (hiPrio rust-analyzer-nightly)
+        arduino-cli
+        deno
+        dotnet-sdk
+        ghc
+        jdk17-wrapped
+        jdk21-wrapped
+        jdk8-wrapped
+        mono
+        zig
+      ]
+    );
   programs = {
+    java = {
+      enable = true;
+      package = pkgs.jre25_minimal;
+    };
+  }
+  // optionalAttrs (const.feature-sets.lite <= feature-set) {
     bun.enable = true;
     go = {
       enable = true;
       env.GOBIN = ".local/bin";
     };
-    java = {
-      enable = true;
-      package = pkgs.jdk25;
-    };
+    java.package = pkgs.jdk25;
   };
 }

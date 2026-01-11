@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ myLib, pkgs, ... }:
 {
   ms0503 = {
     desktop.hyprland = {
       enable = true;
       startup-monitor = 0;
     };
+    feature-set = myLib.const.feature-sets.full;
     gpu = "nvidia";
     gui.enable = true;
     jetbrains.enable = true;

@@ -1,12 +1,15 @@
 {
   config,
   lib,
+  myLib,
   myPkgs,
   pkgs,
   ...
 }:
 let
-  inherit (lib) optionalAttrs;
+  inherit (config.ms0503) feature-set;
+  inherit (lib) optionalAttrs optionals;
+  inherit (myLib) const;
   cfgWsl = config.ms0503.wsl;
 in
 {
@@ -35,7 +38,6 @@ in
       pcsc-tools
       procs
       ripgrep
-      sl
       stdmanpages
       tokei
       unar
@@ -45,7 +47,13 @@ in
     ])
     ++ (with myPkgs; [
       unzip-unicode
-    ]);
+    ])
+    ++ optionals (const.feature-sets.full <= feature-set) (
+      with pkgs;
+      [
+        sl
+      ]
+    );
   ms0503.neovim = {
     defaultEditor = true;
     enable = true;

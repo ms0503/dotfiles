@@ -1,48 +1,66 @@
 {
+  config,
+  lib,
+  myLib,
   myPkgs,
   pkgs,
   theme,
   ...
 }:
+let
+  inherit (config.ms0503) feature-set;
+  inherit (lib) optionalAttrs optionals;
+  inherit (myLib) const;
+in
 {
   home.packages =
     (with pkgs; [
-      aria2
       cachix
       curl
       dust
       duf
-      ffmpeg-full
       file
-      fx
-      gemini-cli
       ghq
-      imagemagick
       killall
-      lazydocker
       nh
       nurl
-      osslsigncode
       p7zip
       pandoc
       procs
-      rcodesign
       ripunzip
-      silicon
       sqlite
       tokei
       typos
       unar
       unrar
-      vrc-get
       wget
-      zenn-cli
       zip
     ])
     ++ (with myPkgs; [
       unzip-unicode
       zifu
-    ]);
+    ])
+    ++ optionals (const.feature-sets.lite <= feature-set) (
+      with pkgs;
+      [
+        (if (const.feature-sets.full <= feature-set) then ffmpeg-full else ffmpeg)
+        aria2
+        fx
+        imagemagick
+        osslsigncode
+        rcodesign
+        vrc-get
+      ]
+    )
+    ++ optionals (const.feature-sets.full <= feature-set) (
+      with pkgs;
+      [
+        gemini-cli
+        lazydocker
+        silicon
+        zenn-cli
+      ]
+    );
   programs = {
     bat = {
       enable = true;
@@ -77,7 +95,6 @@
     };
     htop.enable = true;
     jq.enable = true;
-    lazygit.enable = true;
     less.enable = true;
     lesspipe.enable = true;
     man = {
@@ -94,6 +111,9 @@
       };
     };
     yazi.enable = true;
+  }
+  // optionalAttrs (const.feature-sets.lite <= feature-set) {
+    lazygit.enable = true;
     yt-dlp = {
       enable = true;
       settings = {

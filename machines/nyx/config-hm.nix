@@ -1,9 +1,11 @@
+{ myLib, ... }:
 {
   ms0503 = {
     desktop.hyprland = {
       enable = true;
       startup-monitor = 1;
     };
+    feature-set = myLib.const.feature-sets.full;
     gpu = "nvidia";
     gui.enable = true;
     jetbrains.enable = true;

@@ -1,8 +1,10 @@
+{ myLib, ... }:
 {
   ms0503 = {
     arch = "x86_64";
     bluetooth.enable = false;
     desktop.hyprland.enable = false;
+    feature-set = myLib.const.feature-sets.lite;
     gpu = "nvidia";
     gui.enable = true;
     media.enable = false;

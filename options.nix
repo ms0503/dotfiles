@@ -1,6 +1,13 @@
 { lib, myLib, ... }:
 let
-  inherit (lib) mkEnableOption mkOption;
+  inherit (lib)
+    attrValues
+    last
+    mkEnableOption
+    mkOption
+    sort
+    ;
+  inherit (myLib) const;
   types = lib.types // myLib.types;
 in
 {
@@ -8,6 +15,16 @@ in
     desktop = {
       hyprland.enable = mkEnableOption "Hyprland";
     };
+    feature-set =
+      let
+        feature-set-max = last feature-set-values;
+        feature-set-min = builtins.elemAt feature-set-values 0;
+        feature-set-values = sort (a: b: a < b) (attrValues const.feature-sets);
+      in
+      mkOption {
+        description = "Feature Set.";
+        type = types.ints.between feature-set-min feature-set-max;
+      };
     gpu = mkOption {
       description = "GPU family.";
       type = types.gpus;
