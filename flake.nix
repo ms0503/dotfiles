@@ -107,10 +107,7 @@
     xremap = {
       inputs = {
         flake-parts.follows = "flake-parts";
-        home-manager.follows = "home-manager";
-        hyprland.follows = "hyprland";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:xremap/nix-flake";
     };
