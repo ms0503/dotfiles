@@ -8,6 +8,7 @@ in
     programs.zsh = {
       autocd = true;
       autosuggestion.enable = true;
+      dotDir = "${config.xdg.configHome}/zsh";
       enable = true;
       enableCompletion = true;
       historySubstringSearch.enable = true;
