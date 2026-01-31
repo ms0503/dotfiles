@@ -11,15 +11,8 @@ let
 in
 {
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      wlx-overlay-s
-    ];
     hardware.steam-hardware.enable = true;
     programs = {
-      alvr = {
-        enable = true;
-        openFirewall = true;
-      };
       steam = {
         dedicatedServer.openFirewall = true;
         enable = true;
