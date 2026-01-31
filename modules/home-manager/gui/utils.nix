@@ -24,7 +24,7 @@ in
         (with pkgs; [
           (blender.override {
             cudaSupport = config.ms0503.gpu == "nvidia";
-            hipSupport = config.ms0503.gpu == "radeon";
+            rocmSupport = config.ms0503.gpu == "radeon";
           })
           (gimp3-with-plugins.override {
             gimpPlugins = gimp3Plugins.override {
