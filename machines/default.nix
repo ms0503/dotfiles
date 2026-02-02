@@ -25,6 +25,17 @@ in
         theme = "monokai";
         username = "ms0503";
       };
+      "ms0503@hades" = mkHomeManagerConfiguration {
+        inherit withSystem;
+        modules = [
+          ./hades/config-hm.nix
+          ./hades/home-manager.nix
+        ];
+        overlays = [ ];
+        system = "x86_64-linux";
+        theme = "monokai";
+        username = "ms0503";
+      };
       "ms0503@nyx" = mkHomeManagerConfiguration {
         inherit withSystem;
         modules = [
@@ -61,6 +72,16 @@ in
         modules = [
           ./erebos/config-nixos.nix
           ./erebos/nixos.nix
+        ];
+        system = "x86_64-linux";
+        username = "ms0503";
+      };
+      hades = mkNixosSystem {
+        inherit withSystem;
+        hostname = "hades";
+        modules = [
+          ./hades/config-nixos.nix
+          ./hades/nixos.nix
         ];
         system = "x86_64-linux";
         username = "ms0503";

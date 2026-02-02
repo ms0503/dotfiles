@@ -13,6 +13,7 @@ in
     "zsh"
   ];
   terminals = types.enum [
+    ""
     "ghostty"
     "wezterm"
   ];
