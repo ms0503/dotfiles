@@ -50,6 +50,11 @@
       IdentityFile ~/.ssh/github
       User git
 
+    Host hades
+      HostName hades
+      IdentityFile ~/.ssh/hades
+      User ms0503
+
     Host lightrover
       HostName 192.168.0.140
       IdentityFile ~/.ssh/lightrover
