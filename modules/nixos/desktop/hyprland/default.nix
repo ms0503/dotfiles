@@ -9,6 +9,7 @@ in
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
     programs.hyprland = {
       enable = true;
+      withUWSM = true;
       xwayland.enable = true;
     };
     security.pam.services.swaylock = { };

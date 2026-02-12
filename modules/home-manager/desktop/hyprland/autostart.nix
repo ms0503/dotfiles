@@ -28,20 +28,22 @@ in
   config = mkIf (cfgGui.enable && cfg.enable) {
     wayland.windowManager.hyprland.settings = {
       exec-once = [
-        "dbus-update-activation-environment --systemd --all"
-        "systemctl --user start hyprland-session.target"
-        "libinput-gestures"
-        "${sleep}/bin/sleep"
-        "blueman-applet"
-        "nm-applet"
-        "${waybar-wrapper}/bin/waybar-wrapper"
-        "swww-daemon"
-        "swww img ~/.config/hypr/wallpaper/bg.webp"
-        "fcitx5 -D"
-        "steam -silent"
-        "[workspace ${builtins.toString (cfg.startup-monitor * 10 + 1)} silent] microsoft-edge-dev"
-        "[workspace ${builtins.toString (cfg.startup-monitor * 10 + 2)} silent] ${terminal}"
-        "[workspace ${builtins.toString (cfg.startup-monitor * 10 + 3)} silent] discordcanary"
+        "uwsm app -- dbus-update-activation-environment --systemd --all"
+        "uwsm app -- systemctl --user start hyprland-session.target"
+        "uwsm app -- libinput-gestures"
+        "uwsm app -- ${sleep}/bin/sleep"
+        "uwsm app -- blueman-applet"
+        "uwsm app -- nm-applet"
+        "uwsm app -- ${waybar-wrapper}/bin/waybar-wrapper"
+        "uwsm app -- swww-daemon"
+        "uwsm app -- swww img ~/.config/hypr/wallpaper/bg.webp"
+        "uwsm app -- fcitx5 -D"
+        "uwsm app -- steam -silent"
+        "[workspace ${
+          builtins.toString (cfg.startup-monitor * 10 + 1)
+        } silent] uwsm app -- microsoft-edge-dev"
+        "[workspace ${builtins.toString (cfg.startup-monitor * 10 + 2)} silent] uwsm app -- ${terminal}"
+        "[workspace ${builtins.toString (cfg.startup-monitor * 10 + 3)} silent] uwsm app -- discordcanary"
       ];
       windowrule = [
         "match:class discord, workspace ${builtins.toString (cfg.startup-monitor * 10 + 3)} silent"
