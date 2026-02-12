@@ -10,28 +10,28 @@ let
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
   force-opaque-windows = [
-    "class:.*\\.x86_64"
-    "class:Minecraft.*"
-    "class:Unity"
-    "class:VirtualBox Machine"
-    "class:[Bb]lender"
-    "class:gimp"
-    "class:hoi4"
-    "class:msedge-_cmkncekebbebpfilplodngbpllndjkfo-Default" # Chrome Remote Desktop
-    "class:steam_app_[0-9]+"
-    "content:game"
-    "content:photo"
-    "content:video"
-    "title:.*YouTube.*"
-    "title:.*\\.avif \\([0-9]+×[0-9]+\\).*"
-    "title:.*\\.bmp \\([0-9]+×[0-9]+\\).*"
-    "title:.*\\.gif \\([0-9]+×[0-9]+\\).*"
-    "title:.*\\.jpe?g \\([0-9]+×[0-9]+\\).*"
-    "title:.*\\.png \\([0-9]+×[0-9]+\\).*"
-    "title:.*\\.webp \\([0-9]+×[0-9]+\\).*"
-    "title:.*ニコニコ動画.*"
+    "match:class .*\\.x86_64"
+    "match:class Minecraft.*"
+    "match:class Unity"
+    "match:class VirtualBox Machine"
+    "match:class [Bb]lender"
+    "match:class gimp"
+    "match:class hoi4"
+    "match:class msedge-_cmkncekebbebpfilplodngbpllndjkfo-Default" # Chrome Remote Desktop
+    "match:class steam_app_[0-9]+"
+    "match:content game"
+    "match:content photo"
+    "match:content video"
+    "match:title .*YouTube.*"
+    "match:title .*\\.avif \\([0-9]+×[0-9]+\\).*"
+    "match:title .*\\.bmp \\([0-9]+×[0-9]+\\).*"
+    "match:title .*\\.gif \\([0-9]+×[0-9]+\\).*"
+    "match:title .*\\.jpe?g \\([0-9]+×[0-9]+\\).*"
+    "match:title .*\\.png \\([0-9]+×[0-9]+\\).*"
+    "match:title .*\\.webp \\([0-9]+×[0-9]+\\).*"
+    "match:title .*ニコニコ動画.*"
   ];
-  generateOpaqueWindowRules = builtins.map (win: "opacity 1 override, ${win}");
+  generateOpaqueWindowRules = builtins.map (win: "${win}, opaque on");
 in
 {
   config = mkIf (cfgGui.enable && cfg.enable) {
@@ -83,15 +83,13 @@ in
       master.new_status = "slave";
       misc.disable_hyprland_logo = true;
       windowrule = [
-        "float, class:^$, title:^$"
-        "float, class:jetbrains-.*, title:win[0-9]+"
-        "float, class:kicad, title:.* — シンボル エディター"
-        "float, class:kicad, title:.* — フットプリント エディター"
-        "float, class:kicad, title:シンボル選択.*"
-        "float, class:kicad, title:フットプリントを割り当て"
-        "nofocus, class:^$, title:^$"
-        "nofocus, class:jetbrains-.*, title:win[0-9]+"
-        "pseudo, class:fcitx"
+        "match:class ^$, match:title ^$, float on, no_focus on"
+        "match:class fcitx, pseudo on"
+        "match:class jetbrains-.*, match:title win[0-9]+, float on, no_focus on"
+        "match:class kicad, match:title .* — フットプリント エディター, float on"
+        "match:class kicad, match:title シンボル選択.*, float on"
+        "match:class kicad, match:title フットプリントを割り当て, float on"
+        "match:class kicad, match:title .* — シンボル エディター, float on"
       ]
       ++ generateOpaqueWindowRules force-opaque-windows;
       xwayland.force_zero_scaling = true;

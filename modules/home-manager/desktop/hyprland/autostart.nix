@@ -44,7 +44,7 @@ in
         "[workspace ${builtins.toString (cfg.startup-monitor * 10 + 3)} silent] discordcanary"
       ];
       windowrule = [
-        "workspace ${builtins.toString (cfg.startup-monitor * 10 + 3)} silent, class:discord"
+        "match:class discord, workspace ${builtins.toString (cfg.startup-monitor * 10 + 3)} silent"
       ];
     };
   };
