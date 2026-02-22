@@ -14,33 +14,33 @@ let
     installPhase = ''
       runHook preInstall
       install -dm755 "$out/lib"
-      ln -s "$src/lib/openjdk" "$out/lib/openjdk17"
+      ln -s "$src" "$out/lib/openjdk17"
       runHook postInstall
     '';
     pname = "jdk17-wrapped";
-    src = pkgs.jdk17;
+    src = pkgs.temurin-bin-17;
   };
   jdk21-wrapped = pkgs.stdenvNoCC.mkDerivation {
     inherit (pkgs.jdk21) version;
     installPhase = ''
       runHook preInstall
       install -dm755 "$out/lib"
-      ln -s "$src/lib/openjdk" "$out/lib/openjdk21"
+      ln -s "$src" "$out/lib/openjdk21"
       runHook postInstall
     '';
     pname = "jdk21-wrapped";
-    src = pkgs.jdk21;
+    src = pkgs.temurin-bin-21;
   };
   jdk8-wrapped = pkgs.stdenvNoCC.mkDerivation {
     inherit (pkgs.jdk8) version;
     installPhase = ''
       runHook preInstall
       install -dm755 "$out/lib"
-      ln -s "$src/lib/openjdk" "$out/lib/openjdk8"
+      ln -s "$src" "$out/lib/openjdk8"
       runHook postInstall
     '';
     pname = "jdk8-wrapped";
-    src = pkgs.jdk8;
+    src = pkgs.temurin-bin-8;
   };
 in
 {
@@ -105,6 +105,9 @@ in
       enable = true;
       env.GOBIN = ".local/bin";
     };
-    java.package = pkgs.jdk25;
+    java = {
+      enable = true;
+      package = pkgs.temurin-bin-25;
+    };
   };
 }
