@@ -110,7 +110,10 @@ in
         serverAliveInterval = 60;
       };
     };
-    yazi.enable = true;
+    yazi = {
+      enable = true;
+      shellWrapperName = "y";
+    };
   }
   // optionalAttrs (const.feature-sets.lite <= feature-set) {
     lazygit.enable = true;
