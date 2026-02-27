@@ -18,6 +18,7 @@ in
       ga = "git add -A";
       gb = "git branch";
       gc = "git commit";
+      gca = "git commit --amend";
       gcl = "git clone --recurse-submodules";
       gcm = "git commit -m";
       gco = "git checkout";
@@ -36,6 +37,8 @@ in
       gpuoM = "git push -u origin master";
       gpuom = "git push -u origin main";
       grb = "git rebase";
+      grba = "git rebase --abort";
+      grbc = "git rebase --continue";
       grbi = "git rebase -i";
       grm = "git remote";
       grmao = "git remote add origin";
