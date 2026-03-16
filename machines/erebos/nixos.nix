@@ -43,10 +43,7 @@
   ];
   security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
-    asusd = {
-      enable = true;
-      enableUserService = true;
-    };
+    asusd.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
