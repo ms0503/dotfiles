@@ -1,23 +1,16 @@
 --- a/flake.nix
 +++ b/flake.nix
-@@ -118,7 +118,7 @@
+@@ -113,12 +113,7 @@
      };
    };
    outputs =
--    prevInputs@{
-+    inputs@{
-       fenix,
-       flake-parts,
-       home-manager,
-@@ -127,11 +127,6 @@
-       systems,
-       ...
-     }:
+-    prevInputs@{ flake-parts, systems, ... }:
 -    let
 -      inputs = prevInputs // {
--        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/4f5dc74e2ad700ef08e394de5c3cd37e45be34a0";
+-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/b11c013de609eb315bcff990d845e188cccb589e";
 -      };
 -    in
++    inputs@{ flake-parts, systems, ... }:
      flake-parts.lib.mkFlake { inherit inputs; } (
        { flake-parts-lib, withSystem, ... }:
        let
@@ -59,7 +52,7 @@
          ];
          system = "x86_64-linux";
          theme = "monokai";
-@@ -33,7 +31,6 @@
+@@ -44,7 +42,6 @@
          ];
          overlays = [
            fenix.overlays.default
@@ -67,7 +60,7 @@
          ];
          system = "x86_64-linux";
          theme = "monokai";
-@@ -47,7 +44,6 @@
+@@ -58,7 +55,6 @@
          ];
          overlays = [
            fenix.overlays.default

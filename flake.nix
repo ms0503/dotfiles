@@ -113,18 +113,10 @@
     };
   };
   outputs =
-    prevInputs@{
-      fenix,
-      flake-parts,
-      home-manager,
-      nixpkgs,
-      self,
-      systems,
-      ...
-    }:
+    prevInputs@{ flake-parts, systems, ... }:
     let
       inputs = prevInputs // {
-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/4f5dc74e2ad700ef08e394de5c3cd37e45be34a0";
+        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/b11c013de609eb315bcff990d845e188cccb589e";
       };
     in
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -155,11 +147,13 @@
           }:
           {
             devShells.default = pkgs.mkShell {
-              packages = with pkgs; [
-                nvfetcher
-              ];
+              packages =
+                config.pre-commit.settings.enabledPackages
+                ++ (with pkgs; [
+                  nvfetcher
+                ]);
               shellHook = ''
-                ${config.pre-commit.installationScript}
+                ${config.pre-commit.shellHook}
               '';
             };
           };
