@@ -48,6 +48,9 @@ in
     (with pkgs; [
       (hiPrio gcc)
       (hiPrio nodejs-slim_latest)
+      (pnpm.override {
+        nodejs = nodejs_latest;
+      })
       (yarn-berry.override {
         nodejs = nodejs_latest;
       })
@@ -55,11 +58,8 @@ in
       cmake
       mold
       ninja
+      nodejs-slim_latest.npm
       uv
-    ])
-    ++ (with pkgs.nodePackages; [
-      npm
-      pnpm
     ])
     ++ (with pkgs.python312Packages; [
       build
