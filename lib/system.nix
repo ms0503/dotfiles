@@ -80,12 +80,12 @@ in
               packages = (
                 with misc-tools.packages.${system};
                 [
+                  awww-bing
                   colortool
                   generatehex
                   getcodepoint
                   getemoji
                   skel
-                  swww-bing
                   unicodeescape
                   urlencode
                 ]

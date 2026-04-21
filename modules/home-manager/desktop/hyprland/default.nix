@@ -16,13 +16,13 @@ in
   config = mkIf (cfgGui.enable && cfg.enable) {
     home.packages =
       (with pkgs; [
+        awww
         brightnessctl
         grimblast
         hyprcursor
         hyprpicker
         pamixer
         playerctl
-        swww
         wev
         wf-recorder
         wl-clipboard

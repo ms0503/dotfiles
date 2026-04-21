@@ -35,8 +35,8 @@ in
         "uwsm app -- blueman-applet"
         "uwsm app -- nm-applet"
         "uwsm app -- ${waybar-wrapper}/bin/waybar-wrapper"
-        "uwsm app -- swww-daemon"
-        "uwsm app -- swww img ~/.config/hypr/wallpaper/bg.webp"
+        "uwsm app -- awww-daemon"
+        "uwsm app -- awww img ~/.config/hypr/wallpaper/bg.webp"
         "uwsm app -- fcitx5 -D"
         "uwsm app -- steam -silent"
         "[workspace ${
