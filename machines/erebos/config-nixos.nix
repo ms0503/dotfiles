@@ -3,6 +3,10 @@
   ms0503 = {
     arch = "x86_64";
     bluetooth.enable = true;
+    bootloader = {
+      efi.enable = true;
+      type = "lanzaboote";
+    };
     desktop.hyprland.enable = true;
     feature-set = myLib.const.feature-sets.full;
     gpu = "nvidia";
@@ -12,7 +16,6 @@
       targets.thumbv7em-none-eabihf.latest.rust-std
       targets.thumbv7em-none-eabihf.stable.rust-std
     ];
-    secureboot.enable = true;
     shell.type = "zsh";
     steam.enable = true;
     wayland.enable = true;

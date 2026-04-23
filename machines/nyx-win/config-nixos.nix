@@ -3,6 +3,10 @@
   ms0503 = {
     arch = "x86_64";
     bluetooth.enable = false;
+    bootloader = {
+      efi.enable = false;
+      type = "";
+    };
     desktop.hyprland.enable = false;
     feature-set = myLib.const.feature-sets.lite;
     gpu = "nvidia";
