@@ -11,6 +11,17 @@ in
 {
   flake = {
     homeConfigurations = {
+      "ms0503@ares" = mkHomeManagerConfiguration {
+        inherit withSystem;
+        modules = [
+          ./ares/config-hm.nix
+          ./ares/home-manager.nix
+        ];
+        overlays = [ ];
+        system = "x86_64-linux";
+        theme = "monokai";
+        username = "ms0503";
+      };
       "ms0503@erebos" = mkHomeManagerConfiguration {
         inherit withSystem;
         modules = [
@@ -66,6 +77,16 @@ in
       };
     };
     nixosConfigurations = {
+      ares = mkNixosSystem {
+        inherit withSystem;
+        hostname = "ares";
+        modules = [
+          ./ares/config-nixos.nix
+          ./ares/nixos.nix
+        ];
+        system = "x86_64-linux";
+        username = "ms0503";
+      };
       erebos = mkNixosSystem {
         inherit withSystem;
         hostname = "erebos";
