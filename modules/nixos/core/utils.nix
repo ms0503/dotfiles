@@ -109,7 +109,7 @@ in
       };
     };
   }
-  // optionalAttrs (!cfgWsl.enable) {
+  // optionalAttrs (!cfgWsl.enable && const.feature-sets.full <= feature-set) {
     virtualbox.host = {
       addNetworkInterface = false;
       enable = true;
