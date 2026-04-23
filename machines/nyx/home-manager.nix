@@ -28,15 +28,20 @@
   };
   imports = [ ];
   programs.ssh.extraConfig = ''
-    Host erebos
-      HostName erebos
-      IdentityFile ~/.ssh/erebos
+    Host ares
+      HostName ares
+      IdentityFile ~/.ssh/ares
       User ms0503
 
     Host aur aur.archlinux.org
       HostName aur.archlinux.org
       IdentityFile ~/.ssh/aur
       User aur
+
+    Host erebos
+      HostName erebos
+      IdentityFile ~/.ssh/erebos
+      User ms0503
 
     Host github github.com
       HostName github.com

@@ -35,6 +35,11 @@
   };
   imports = [ ];
   programs.ssh.extraConfig = ''
+    Host ares
+      HostName ares
+      IdentityFile ~/.ssh/ares
+      User ms0503
+
     Host aur aur.archlinux.org
       HostName aur.archlinux.org
       IdentityFile ~/.ssh/aur
