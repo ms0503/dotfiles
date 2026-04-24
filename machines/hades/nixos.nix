@@ -37,7 +37,7 @@
   ];
   services = {
     power-profiles-daemon.enable = true;
-    tailscale.useRoutingFeatures = "server";
+    tailscale.useRoutingFeatures = "client";
     xremap.enable = false;
   };
   system.stateVersion = "24.11";
