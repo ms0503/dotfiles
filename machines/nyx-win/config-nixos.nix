@@ -13,10 +13,9 @@
     gui.enable = true;
     media.enable = false;
     rust.extraTools = [ ];
-    secureboot.enable = false;
+    server.minecraft.enable = false;
     shell.type = "zsh";
     steam.enable = false;
     wayland.enable = true;
-    wsl.enable = true;
   };
 }

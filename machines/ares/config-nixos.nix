@@ -13,6 +13,7 @@
     gui.enable = false;
     media.enable = false;
     rust.extraTools = [ ];
+    server.minecraft.enable = false;
     shell.type = "zsh";
     steam.enable = false;
     wayland.enable = false;

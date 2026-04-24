@@ -16,6 +16,7 @@
       targets.thumbv7em-none-eabihf.latest.rust-std
       targets.thumbv7em-none-eabihf.stable.rust-std
     ];
+    server.minecraft.enable = false;
     shell.type = "zsh";
     steam.enable = true;
     wayland.enable = true;

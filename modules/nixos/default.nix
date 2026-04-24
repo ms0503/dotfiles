@@ -8,6 +8,7 @@
     ./gpu
     ./gui
     ./media.nix
+    ./server
     ./steam.nix
     ./wsl.nix
   ];

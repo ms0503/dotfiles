@@ -36,6 +36,28 @@
     80
   ];
   services = {
+    nginx = {
+      enable = true;
+      package = pkgs.nginx.override {
+        modules = with pkgs.nginxModules; [
+          brotli
+          zstd
+        ];
+        withMail = true;
+      };
+      recommendedBrotliSettings = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      virtualHosts = {
+        "mcsrv.ms0503.dev" = {
+          locations."/" = {
+            root = "/data/www/mcsrv";
+          };
+          reuseport = true;
+        };
+      };
+    };
     power-profiles-daemon.enable = true;
     tailscale.useRoutingFeatures = "client";
     xremap.enable = false;
@@ -43,7 +65,9 @@
   system.stateVersion = "24.11";
   users.users."${username}" = {
     extraGroups = [
+      "minecraft"
       "networkmanager"
+      "nginx"
       "wheel"
     ];
     isNormalUser = true;
