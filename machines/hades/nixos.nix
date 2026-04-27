@@ -59,7 +59,7 @@
       };
     };
     power-profiles-daemon.enable = true;
-    tailscale.useRoutingFeatures = "client";
+    tailscale.useRoutingFeatures = "server";
     xremap.enable = false;
   };
   system.stateVersion = "24.11";
