@@ -57,6 +57,7 @@
     nix-index = {
       enable = true;
       enableBashIntegration = true;
+      package = inputs'.nix-index.packages.default;
     };
     nix-ld.enable = true;
   };

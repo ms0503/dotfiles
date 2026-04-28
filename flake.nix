@@ -85,6 +85,13 @@
       };
       url = "github:NixOS/nix";
     };
+    nix-index = {
+      inputs = {
+        flake-compat.follows = "";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:nix-community/nix-index";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-wsl = {
       inputs = {

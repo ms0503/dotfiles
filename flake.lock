@@ -916,6 +916,27 @@
         "type": "github"
       }
     },
+    "nix-index": {
+      "inputs": {
+        "flake-compat": [],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777390267,
+        "narHash": "sha256-3tnrsI3Z51WUCs/wte3mdzo10vsmcVruQKNCFq04LTo=",
+        "owner": "nix-community",
+        "repo": "nix-index",
+        "rev": "db3e2fea2e2c34b35adccc772850e01685e94458",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1775490113,
@@ -1031,6 +1052,7 @@
         "neovim-custom": "neovim-custom",
         "nh": "nh",
         "nix": "nix",
+        "nix-index": "nix-index",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
