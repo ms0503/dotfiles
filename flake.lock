@@ -747,11 +747,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777406039,
-        "narHash": "sha256-oOxtNk///w6R2F1rVMxKRyk9AZ7dKJ6rxavtuioBv4o=",
+        "lastModified": 1777414831,
+        "narHash": "sha256-cABMoXp9n5waNPgRxR042h18Tq2lFEOLbwd+AV5lL+8=",
         "owner": "ms0503",
         "repo": "mc-mod-downloader",
-        "rev": "8bb95db9f04caf0679303aa3c41212cca24a856e",
+        "rev": "d1e1093d55d944fcc38d77d54a65f59d5dd36e1b",
         "type": "github"
       },
       "original": {
@@ -819,11 +819,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777406638,
-        "narHash": "sha256-haER4zYLwb8kn7AgoRgAotRd7/6eqCNjMJyC0suXoHI=",
+        "lastModified": 1777415059,
+        "narHash": "sha256-Bel7TLYY/h+T0E+Bt3kEkCQhNZ28lsa/C4b2Pbn+J1E=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "a6cff9b12ccce89935b11c2b180859625dc8fcd4",
+        "rev": "838ff4daf22e18e128ea0b39ee5078207f45a161",
         "type": "github"
       },
       "original": {
