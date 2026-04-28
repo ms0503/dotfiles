@@ -46,6 +46,7 @@ in
       zip
     ])
     ++ (with myPkgs; [
+      mc-mod-downloader
       unzip-unicode
     ])
     ++ optionals (const.feature-sets.full <= feature-set) (
