@@ -27,27 +27,23 @@
     };
   };
   imports = [ ];
-  programs.ssh.extraConfig = ''
-    Host ares
-      HostName ares
-      IdentityFile ~/.ssh/ares
-      User ms0503
-
-    Host aur aur.archlinux.org
-      HostName aur.archlinux.org
-      IdentityFile ~/.ssh/aur
-      User aur
-
-    Host erebos
-      HostName erebos
-      IdentityFile ~/.ssh/erebos
-      User ms0503
-
-    Host github github.com
-      HostName github.com
-      IdentityFile ~/.ssh/github
-      User git
-  '';
+  programs.ssh.matchBlocks = {
+    ares = {
+      hostname = "ares";
+      identityFile = "~/.ssh/ares";
+      user = "ms0503";
+    };
+    erebos = {
+      hostname = "erebos";
+      identityFile = "~/.ssh/erebos";
+      user = "ms0503";
+    };
+    github = {
+      hostname = "github.com";
+      identityFile = "~/.ssh/github";
+      user = "git";
+    };
+  };
   wayland.windowManager.hyprland.settings = {
     input = {
       kb_layout = "jp";

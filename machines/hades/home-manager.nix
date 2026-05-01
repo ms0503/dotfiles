@@ -1,10 +1,9 @@
 {
   home.packages = [ ];
   imports = [ ];
-  programs.ssh.extraConfig = ''
-    Host github github.com
-      HostName github.com
-      IdentityFile ~/.ssh/github
-      User git
-  '';
+  programs.ssh.matchBlocks.github = {
+    hostname = "github.com";
+    identityFile = "~/.ssh/github";
+    user = "git";
+  };
 }

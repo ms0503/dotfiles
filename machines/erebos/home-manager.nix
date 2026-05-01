@@ -34,42 +34,28 @@
     };
   };
   imports = [ ];
-  programs.ssh.extraConfig = ''
-    Host ares
-      HostName ares
-      IdentityFile ~/.ssh/ares
-      User ms0503
-
-    Host aur aur.archlinux.org
-      HostName aur.archlinux.org
-      IdentityFile ~/.ssh/aur
-      User aur
-
-    Host gaia gaia.local
-      HostName gaia.local
-      IdentityFile ~/.ssh/gaia
-      User ms0503
-
-    Host github github.com
-      HostName github.com
-      IdentityFile ~/.ssh/github
-      User git
-
-    Host hades
-      HostName hades
-      IdentityFile ~/.ssh/hades
-      User ms0503
-
-    Host lightrover
-      HostName 192.168.0.140
-      IdentityFile ~/.ssh/lightrover
-      User pi
-
-    Host nyx
-      HostName nyx
-      IdentityFile ~/.ssh/nyx
-      User ms0503
-  '';
+  programs.ssh.matchBlocks = {
+    ares = {
+      hostname = "ares";
+      identityFile = "~/.ssh/ares";
+      user = "ms0503";
+    };
+    github = {
+      hostname = "github.com";
+      identityFile = "~/.ssh/github";
+      user = "git";
+    };
+    hades = {
+      hostname = "hades";
+      identityFile = "~/.ssh/hades";
+      user = "ms0503";
+    };
+    nyx = {
+      hostname = "nyx";
+      identityFile = "~/.ssh/nyx";
+      user = "ms0503";
+    };
+  };
   wayland.windowManager.hyprland.settings = {
     device = [
       {
