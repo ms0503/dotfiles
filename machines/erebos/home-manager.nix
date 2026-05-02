@@ -50,6 +50,11 @@
       identityFile = "~/.ssh/hades";
       user = "ms0503";
     };
+    hades-minecraft = {
+      hostname = "hades";
+      identityFile = "~/.ssh/hades-minecraft";
+      user = "minecraft";
+    };
     nyx = {
       hostname = "nyx";
       identityFile = "~/.ssh/nyx";

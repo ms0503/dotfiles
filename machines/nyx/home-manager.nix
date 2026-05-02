@@ -38,6 +38,16 @@
       identityFile = "~/.ssh/erebos";
       user = "ms0503";
     };
+    hades = {
+      hostname = "hades";
+      identityFile = "~/.ssh/hades";
+      user = "ms0503";
+    };
+    hades-minecraft = {
+      hostname = "hades";
+      identityFile = "~/.ssh/hades-minecraft";
+      user = "minecraft";
+    };
     github = {
       hostname = "github.com";
       identityFile = "~/.ssh/github";
