@@ -63,14 +63,17 @@
     xremap.enable = false;
   };
   system.stateVersion = "24.11";
-  users.users."${username}" = {
-    extraGroups = [
-      "minecraft"
-      "networkmanager"
-      "nginx"
-      "wheel"
-    ];
-    isNormalUser = true;
-    shell = pkgs.zsh;
+  users.users = {
+    "${username}" = {
+      extraGroups = [
+        "minecraft"
+        "networkmanager"
+        "nginx"
+        "wheel"
+      ];
+      isNormalUser = true;
+      shell = pkgs.zsh;
+    };
+    minecraft.shell = pkgs.bash;
   };
 }
