@@ -38,17 +38,6 @@
       };
       url = "github:nix-community/lanzaboote";
     };
-    misc-tools = {
-      inputs = {
-        fenix.follows = "fenix";
-        flake-compat.follows = "";
-        flake-parts.follows = "flake-parts";
-        git-hooks.follows = "git-hooks";
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-      url = "github:ms0503/misc-tools";
-    };
     ms0503-pkgs = {
       inputs = {
         fenix.follows = "fenix";

@@ -1,7 +1,6 @@
 inputs@{
   home-manager,
   lanzaboote,
-  misc-tools,
   ms0503-pkgs,
   neovim-custom,
   nh,
@@ -78,7 +77,7 @@ in
               inherit username;
               homeDirectory = "/home/${username}";
               packages = (
-                with misc-tools.packages.${system};
+                with myPkgs;
                 [
                   awww-bing
                   colortool
