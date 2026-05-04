@@ -51,8 +51,28 @@
       recommendedProxySettings = true;
       virtualHosts = {
         "mcsrv.ms0503.dev" = {
-          locations."/" = {
-            root = "/data/www/mcsrv";
+          locations = {
+            "/" = {
+              root = "/data/www/mcsrv";
+            };
+            "/maps/create-aeronautics/" = {
+              alias = "/data/mcsrv/bluemap/create-aeronautics/web/";
+              extraConfig = ''
+                gzip_static always;
+              '';
+            };
+            "@empty".return = "204";
+            "~* ^/maps/create-aeronautics/(maps/[^/]*/live/.*)$" = {
+              alias = "/data/mcsrv/bluemap/create-aeronautics/web/$1";
+              proxyPass = "http://localhost:8100";
+            };
+            "~* ^/maps/create-aeronautics/(maps/[^/]*/tiles/.*)$" = {
+              alias = "/data/mcsrv/bluemap/create-aeronautics/web/$1";
+              extraConfig = ''
+                error_page 404 = @empty;
+                gzip_static always;
+              '';
+            };
           };
           reuseport = true;
         };
