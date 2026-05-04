@@ -11,6 +11,14 @@ let
     mkOption
     types
     ;
+  bluemap-permission-fixer = pkgs.writeScriptBin "bluemap-permission-fixer" ''
+    #!${pkgs.bash}/bin/bash
+    set -euo pipefail
+    declare -r idx=$1
+    ${pkgs.findutils}/bin/find "/data/mcsrv/bluemap/$idx/web" -perm 0600 -exec ${pkgs.coreutils}/bin/chmod 0644 {} +
+    ${pkgs.findutils}/bin/find "/data/mcsrv/bluemap/$idx/web" -perm 0700 -exec ${pkgs.coreutils}/bin/chmod 0755 {} +
+    ${pkgs.findutils}/bin/find "/data/mcsrv/bluemap/$idx/web" -perm 0744 -exec ${pkgs.coreutils}/bin/chmod 0755 {} +
+  '';
   cfg = config.ms0503.server.minecraft;
   stop-script = pkgs.writeScriptBin "minecraft-server-stop" ''
     #!${pkgs.bash}/bin/bash
@@ -41,59 +49,69 @@ in
         |> builtins.map (server: server.query.port);
     };
     systemd = {
-      services."minecraft-server@" = {
-        after = [
-          "minecraft-server@%i.socket"
-          "network.target"
-        ];
-        description = "Minecraft Server Service, index:%i";
-        environment.LD_LIBRARY_PATH =
-          with pkgs;
-          [
-            udev
-          ]
-          |> lib.makeLibraryPath;
-        requires = [
-          "minecraft-server@%i.socket"
-        ];
-        serviceConfig = {
-          CapabilityBoundingSet = [
-            ""
+      services = {
+        "bluemap-permission-fix@" = {
+          description = "Bluemap Permission Fixer, name:%i";
+          serviceConfig = {
+            ExecStart = "${bluemap-permission-fixer}/bin/bluemap-permission-fixer %i";
+            Type = "oneshot";
+            User = "minecraft";
+          };
+        };
+        "minecraft-server@" = {
+          after = [
+            "minecraft-server@%i.socket"
+            "network.target"
           ];
-          DeviceAllow = [
-            ""
+          description = "Minecraft Server Service, name:%i";
+          environment.LD_LIBRARY_PATH =
+            with pkgs;
+            [
+              udev
+            ]
+            |> lib.makeLibraryPath;
+          requires = [
+            "minecraft-server@%i.socket"
           ];
-          EnvironmentFile = "/srv/mcsrv/%i/.env";
-          ExecStart = "${pkgs.bash}/bin/bash /srv/mcsrv/%i/run.sh";
-          ExecStop = "${stop-script}/bin/minecraft-server-stop %i $MAINPID";
-          LockPersonality = true;
-          PrivateDevices = true;
-          PrivateTmp = true;
-          PrivateUsers = true;
-          ProtectClock = true;
-          ProtectControlGroups = true;
-          ProtectHome = true;
-          ProtectHostname = true;
-          ProtectKernelLogs = true;
-          ProtectKernelModules = true;
-          ProtectKernelTunables = true;
-          ProtectProc = "invisible";
-          Restart = "always";
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-          ];
-          RestrictNamespaces = true;
-          RestrictRealtime = true;
-          RestrictSUIDSGID = true;
-          StandardError = "journal";
-          StandardInput = "socket";
-          StandardOutput = "journal";
-          SystemCallArchitectures = "native";
-          Type = "simple";
-          UMask = "0077";
-          User = "minecraft";
-          WorkingDirectory = "/srv/mcsrv/%i";
+          serviceConfig = {
+            CapabilityBoundingSet = [
+              ""
+            ];
+            DeviceAllow = [
+              ""
+            ];
+            EnvironmentFile = "/srv/mcsrv/%i/.env";
+            ExecStart = "${pkgs.bash}/bin/bash /srv/mcsrv/%i/run.sh";
+            ExecStop = "${stop-script}/bin/minecraft-server-stop %i $MAINPID";
+            LockPersonality = true;
+            PrivateDevices = true;
+            PrivateTmp = true;
+            PrivateUsers = true;
+            ProtectClock = true;
+            ProtectControlGroups = true;
+            ProtectHome = true;
+            ProtectHostname = true;
+            ProtectKernelLogs = true;
+            ProtectKernelModules = true;
+            ProtectKernelTunables = true;
+            ProtectProc = "invisible";
+            Restart = "always";
+            RestrictAddressFamilies = [
+              "AF_INET"
+              "AF_INET6"
+            ];
+            RestrictNamespaces = true;
+            RestrictRealtime = true;
+            RestrictSUIDSGID = true;
+            StandardError = "journal";
+            StandardInput = "socket";
+            StandardOutput = "journal";
+            SystemCallArchitectures = "native";
+            Type = "simple";
+            UMask = "0077";
+            User = "minecraft";
+            WorkingDirectory = "/srv/mcsrv/%i";
+          };
         };
       };
       sockets."minecraft-server@" = {
@@ -109,8 +127,27 @@ in
           SocketUser = "minecraft";
         };
       };
-      targets.multi-user.wants =
-        cfg.servers |> lib.mapAttrsToList (name: _: "minecraft-server@${name}.service");
+      targets = {
+        multi-user.wants =
+          cfg.servers
+          |> lib.mapAttrsToList (
+            name: _: [
+              "bluemap-permission-fix@${name}.service"
+              "minecraft-server@${name}.service"
+            ]
+          )
+          |> lib.flatten;
+        timers.wants = cfg.servers |> lib.mapAttrsToList (name: _: "bluemap-permission-fix@${name}.timer");
+      };
+      timers."bluemap-permission-fix@" = {
+        description = "Timer for bluemap-permission-fix";
+        timerConfig = {
+          AccuracySec = "1us";
+          OnCalendar = "*:*:00/5";
+          Persistent = true;
+          RandomizedDelaySec = "1s";
+        };
+      };
       tmpfiles.rules =
         cfg.servers
         |> lib.mapAttrsToList (
