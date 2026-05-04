@@ -63,11 +63,8 @@
               '';
             };
             "@empty".return = "204";
-            "~* ^/maps/create-aeronautics/(maps/[^/]*/live/.*)$" = {
-              alias = "/data/mcsrv/bluemap/create-aeronautics/web/$1";
-              proxyPass = "http://localhost:8100";
-            };
-            "~* ^/maps/create-aeronautics/(maps/[^/]*/tiles/.*)$" = {
+            "~* ^/maps/create-aeronautics/(maps/[^\\s/]*/live/[^\\s]*)$".proxyPass = "http://127.0.0.1:8100/$1";
+            "~* ^/maps/create-aeronautics/(maps/[^\\s/]*/tiles/[^\\s]*)$" = {
               alias = "/data/mcsrv/bluemap/create-aeronautics/web/$1";
               extraConfig = ''
                 error_page 404 = @empty;
