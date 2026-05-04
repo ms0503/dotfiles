@@ -55,6 +55,7 @@
             "/" = {
               root = "/data/www/mcsrv";
             };
+            "/maps/create-aeronautics".return = "301 /maps/create-aeronautics/";
             "/maps/create-aeronautics/" = {
               alias = "/data/mcsrv/bluemap/create-aeronautics/web/";
               extraConfig = ''
