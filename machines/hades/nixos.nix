@@ -95,5 +95,8 @@
       shell = pkgs.zsh;
     };
     minecraft.shell = pkgs.bash;
+    nginx.extraGroups = [
+      "minecraft"
+    ];
   };
 }
