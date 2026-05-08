@@ -1,5 +1,7 @@
 {
   inputs,
+  lib,
+  myLib,
   pkgs,
   username,
   ...
@@ -33,6 +35,22 @@
       25565
       443
     ];
+    extraInputRules =
+      [
+        (
+          builtins.readFile ./block-ips-v4.txt
+          |> lib.splitString "\n"
+          |> builtins.filter (line: line != "")
+          |> myLib.network.blockIpv4FromList
+        )
+        (
+          builtins.readFile ./block-ips-v6.txt
+          |> lib.splitString "\n"
+          |> builtins.filter (line: line != "")
+          |> myLib.network.blockIpv6FromList
+        )
+      ]
+      |> builtins.concatStringsSep "\n";
   };
   security.acme = {
     acceptTerms = true;
