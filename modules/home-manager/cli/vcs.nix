@@ -1,4 +1,9 @@
-{ myPkgs, pkgs, ... }:
+{
+  config,
+  myPkgs,
+  pkgs,
+  ...
+}:
 let
   gh-q = pkgs.stdenvNoCC.mkDerivation {
     inherit (sources.gh-q) pname src;
@@ -55,12 +60,7 @@ in
         };
         init.defaultBranch = "main";
         merge.ff = "only";
-        pager = {
-          diff = "delta";
-          log = "delta";
-          reflog = "delta";
-          show = "delta";
-        };
+        pager.reflog = "${config.programs.delta.finalPackage}/bin/delta";
         pull = {
           ff = "only";
           rebase = true;
