@@ -15,6 +15,7 @@ in
       (if config.ms0503.wayland.enable then microsoft-edge-dev-wayland else microsoft-edge-dev)
     ];
     programs.firefox = {
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       enable = true;
       languagePacks = [
         "en-US"
