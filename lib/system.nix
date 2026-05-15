@@ -7,6 +7,7 @@ inputs@{
   nixos-wsl,
   nixpkgs,
   nixpkgs-2505,
+  nixpkgs-master,
   self,
   xremap,
   ...
@@ -51,6 +52,9 @@ in
           ];
         };
       };
+      pkgsMaster = import nixpkgs-master {
+        inherit system;
+      };
     in
     withSystem system (
       { inputs', ... }:
@@ -64,6 +68,7 @@ in
             myLib
             myPkgs
             pkgs2505
+            pkgsMaster
             username
             ;
           theme = (import ../themes) theme;
@@ -113,6 +118,9 @@ in
       pkgs2505 = import nixpkgs-2505 {
         inherit system;
       };
+      pkgsMaster = import nixpkgs-master {
+        inherit system;
+      };
     in
     withSystem system (
       { inputs', ... }:
@@ -144,6 +152,7 @@ in
             myLib
             myPkgs
             pkgs2505
+            pkgsMaster
             username
             ;
         };

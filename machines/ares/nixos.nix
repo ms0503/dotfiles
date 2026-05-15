@@ -3,6 +3,7 @@
   lib,
   myLib,
   pkgs,
+  pkgsMaster,
   username,
   ...
 }:
@@ -63,8 +64,8 @@
         proxy_headers_hash_max_size 1024;
       '';
       enable = true;
-      package = pkgs.nginx.override {
-        modules = with pkgs.nginxModules; [
+      package = pkgsMaster.nginx.override {
+        modules = with pkgsMaster.nginxModules; [
           brotli
           zstd
         ];

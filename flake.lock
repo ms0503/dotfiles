@@ -1242,6 +1242,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1778835577,
+        "narHash": "sha256-8nOtgKh9SBMyeXWAYWMxQjQiKDhb7eO65y7mtrrtHF4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2ed1d1c79f7d1143542f85f3872f1ff9668b0ef2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -1277,6 +1293,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nixpkgs-2505": "nixpkgs-2505",
+        "nixpkgs-master": "nixpkgs-master",
         "systems": "systems_17",
         "treefmt-nix": "treefmt-nix",
         "wezterm": "wezterm",

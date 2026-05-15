@@ -2,6 +2,7 @@
   inputs,
   lib,
   pkgs,
+  pkgsMaster,
   username,
   ...
 }:
@@ -38,8 +39,8 @@
   services = {
     nginx = {
       enable = true;
-      package = pkgs.nginx.override {
-        modules = with pkgs.nginxModules; [
+      package = pkgsMaster.nginx.override {
+        modules = with pkgsMaster.nginxModules; [
           brotli
           zstd
         ];
