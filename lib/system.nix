@@ -6,7 +6,6 @@ inputs@{
   nh,
   nixos-wsl,
   nixpkgs,
-  nixpkgs-2505,
   self,
   xremap,
   ...
@@ -42,15 +41,6 @@ in
           self.overlays.default
         ];
       };
-      pkgs2505 = import nixpkgs-2505 {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          permittedInsecurePackages = [
-            "openssl-1.1.1w"
-          ];
-        };
-      };
     in
     withSystem system (
       { inputs', ... }:
@@ -63,7 +53,6 @@ in
             isNixOS
             myLib
             myPkgs
-            pkgs2505
             username
             ;
           theme = (import ../themes) theme;
@@ -110,9 +99,6 @@ in
     }:
     let
       myPkgs = ms0503-pkgs.packages.${system} // self.outputs.packages.${system};
-      pkgs2505 = import nixpkgs-2505 {
-        inherit system;
-      };
     in
     withSystem system (
       { inputs', ... }:
@@ -143,7 +129,6 @@ in
             inputs'
             myLib
             myPkgs
-            pkgs2505
             username
             ;
         };

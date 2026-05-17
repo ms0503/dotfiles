@@ -45,7 +45,7 @@
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "git-hooks";
         nixpkgs.follows = "nixpkgs";
-        nixpkgs-blender3.follows = "nixpkgs-2505";
+        nixpkgs-blender3.follows = "";
         treefmt-nix.follows = "treefmt-nix";
       };
       url = "github:ms0503/pkgs.nix";
@@ -90,7 +90,6 @@
       url = "github:nix-community/NixOS-WSL";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-2505.url = "github:NixOS/nixpkgs/nixos-25.05";
     systems.url = "github:nix-systems/default";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
