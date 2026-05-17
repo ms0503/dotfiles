@@ -91,7 +91,6 @@
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-2505.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     systems.url = "github:nix-systems/default";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
