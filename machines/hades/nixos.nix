@@ -38,7 +38,7 @@
   services = {
     nginx = {
       enable = true;
-      package = pkgs.nginx.override {
+      package = pkgs.nginxMainline.override {
         modules = with pkgs.nginxModules; [
           brotli
           zstd

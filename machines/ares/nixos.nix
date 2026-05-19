@@ -63,7 +63,7 @@
         proxy_headers_hash_max_size 1024;
       '';
       enable = true;
-      package = pkgs.nginx.override {
+      package = pkgs.nginxMainline.override {
         modules = with pkgs.nginxModules; [
           brotli
           zstd
