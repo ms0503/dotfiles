@@ -1,13 +1,14 @@
 {
   config,
   inputs',
+  isNixOS,
   lib,
   myLib,
   pkgs,
   ...
 }:
 let
-  inherit (lib) mkIf mkOption;
+  inherit (lib) mkIf mkOption optionalAttrs;
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
   types = lib.types // myLib.types;
@@ -40,6 +41,10 @@ in
       settings.lib._var = "require('lib')";
       systemd.enable = false;
       xwayland.enable = true;
+    }
+    // optionalAttrs isNixOS {
+      package = null;
+      portalPackage = null;
     };
     xdg.configFile = {
       "hypr/lib.lua".source = ./lib.lua;
