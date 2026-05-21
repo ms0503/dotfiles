@@ -1,9 +1,13 @@
 {
+  lib,
   myPkgs,
   pkgs,
   username,
   ...
 }:
+let
+  inherit (lib) mkLuaInline;
+in
 {
   home = {
     packages = with myPkgs; [
@@ -55,37 +59,109 @@
     };
   };
   wayland.windowManager.hyprland.settings = {
-    input = {
+    config.input = {
       kb_layout = "jp";
       kb_model = "pc105";
       kb_options = "caps:none,compose:paus";
       kb_variant = "OADG109A";
     };
     monitor = [
-      "desc:Hewlett Packard HP ZR2440w CN42260H0R,1920x1200@60,1920x-120,1"
-      "desc:I-O Data Device Inc LCD-MF224ED GGF504807255,1920x1080@60,0x0,1"
+      {
+        mode = "1920x1200@60";
+        output = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        position = "1920x-120";
+        scale = 1;
+      }
+      {
+        mode = "1920x1080@60";
+        output = "I-O Data Device Inc LCD-MF224ED GGF504807255";
+        position = "0x0";
+        scale = 1;
+      }
     ];
-    workspace = [
-      "1,default:true,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "2,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "3,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "4,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "5,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "6,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "7,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "8,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "9,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "10,monitor:desc:Hewlett Packard HP ZR2440w CN42260H0R"
-      "11,default:true,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "12,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "13,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "14,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "15,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "16,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "17,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "18,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "19,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
-      "20,monitor:desc:I-O Data Device Inc LCD-MF224ED GGF504807255"
+    workspace_rule = [
+      {
+        default = true;
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "1";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "2";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "3";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "4";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "5";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "6";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "7";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "8";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "9";
+      }
+      {
+        monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        workspace = "10";
+      }
+      {
+        default = true;
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "11";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "12";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "13";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "14";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "15";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "16";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "17";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "18";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "19";
+      }
+      {
+        monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        workspace = "20";
+      }
     ];
   };
 }

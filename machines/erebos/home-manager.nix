@@ -1,9 +1,13 @@
 {
+  lib,
   myPkgs,
   pkgs,
   username,
   ...
 }:
+let
+  inherit (lib) mkLuaInline;
+in
 {
   home = {
     packages =
@@ -62,6 +66,12 @@
     };
   };
   wayland.windowManager.hyprland.settings = {
+    config.input = {
+      kb_layout = "jp";
+      kb_model = "pc105";
+      kb_options = "caps:none,compose:paus";
+      kb_variant = "OADG109A";
+    };
     device = [
       {
         enabled = false;
@@ -73,29 +83,62 @@
         sensitivity = -0.2;
       }
     ];
-    exec-once = [
-      "openrgb --startminimized"
-    ];
-    input = {
-      kb_layout = "jp";
-      kb_model = "pc105";
-      kb_options = "caps:none,compose:paus";
-      kb_variant = "OADG109A";
+    monitor = {
+      mode = "1920x1080@144";
+      output = "desc:Chimei Innolux Corporation 0x1521";
+      position = "0x0";
+      scale = 1;
     };
-    monitor = [
-      "desc:Chimei Innolux Corporation 0x1521, 1920x1080@144, 0x0, 1"
+    on._args = [
+      "hyprland.start"
+      (mkLuaInline ''
+        function()
+          hl.exec_cmd("uwsm app -- openrgb --startminimized")
+        end
+      '')
     ];
-    workspace = [
-      "1, default:true, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "2, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "3, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "4, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "5, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "6, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "7, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "8, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "9, monitor:desc:Chimei Innolux Corporation 0x1521"
-      "10, monitor:desc:Chimei Innolux Corporation 0x1521"
+    workspace_rule = [
+      {
+        default = true;
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "1";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "2";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "3";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "4";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "5";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "6";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "7";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "8";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "9";
+      }
+      {
+        monitor = "desc:Chimei Innolux Corporation 0x1521";
+        workspace = "10";
+      }
     ];
   };
 }

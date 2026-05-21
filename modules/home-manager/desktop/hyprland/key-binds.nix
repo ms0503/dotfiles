@@ -1,104 +1,496 @@
 {
   config,
   lib,
-  pkgs,
   theme,
   ...
 }:
 let
   inherit (config.ms0503) terminal;
-  inherit (lib) mkIf;
-  better-movefocus = pkgs.writeScriptBin "better-movefocus" ''
-    if [[ "$(hyprctl activewindow -j | jq .fullscreen)" = "true" ]]; then
-      hyprctl monitors -j | jq 'map(select(.focused | not).activeWorkspace.id)[0]' | xargs hyprctl dispatch workspace
-    else
-      hyprctl dispatch movefocus "$1"
-    fi
-  '';
+  inherit (lib) mkIf mkLuaInline;
+  better-movefocus =
+    dir:
+    mkLuaInline ''
+      function()
+        local active_window = hl.get_active_window()
+        if active_window.fullscreen ~= 0 then
+          local monitors = hl.get_monitors()
+          local suggested_monitors = lib.map(lib.filter(monitors, function(m)
+            return not m.focused
+          end), function(m)
+            return m.activeWorkspace.id
+          end)
+          if 0 < #suggested_monitors then
+            hl.dispatch(hl.dsp.focus({
+              workspace = suggested_monitors[1]
+            }))
+          end
+        else
+          hl.dispatch(hl.dsp.focus({
+            direction = '${dir}'
+          }))
+        end
+      end
+    '';
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
-  toggle-monitor = pkgs.writeScriptBin "toggle-monitor" ''
-    hyprctl monitors -j | jq 'map(select(.focused | not).activeWorkspace.id)[0]' | xargs hyprctl dispatch workspace
+  toggle-monitor = mkLuaInline ''
+    function()
+      local monitors = hl.get_monitors()
+      local suggested_monitors = lib.map(lib.filter(monitors, function(m)
+        return not m.focused
+      end), function(m)
+        return m.activeWorkspace.id
+      end)
+      if 0 < #suggested_monitors then
+        hl.dispatch(hl.dsp.focus({
+          workspace = suggested_monitors[1]
+        }))
+      end
+    end
   '';
-  ws-move = pkgs.writeScriptBin "ws-move" ''
-    monitor=$(hyprctl activeworkspace -j | jq .monitorID)
-    hyprctl dispatch movetoworkspace $((monitor * 10 + $1))
-  '';
-  ws-switch = pkgs.writeScriptBin "ws-switch" ''
-    monitor=$(hyprctl activeworkspace -j | jq .monitorID)
-    hyprctl dispatch workspace $((monitor * 10 + $1))
-  '';
+  ws-move =
+    id:
+    mkLuaInline ''
+      function()
+        local monitor = hl.get_active_workspace().monitor.id
+        hl.dispatch(hl.dsp.window.move({
+          workspace = monitor * 10 + ${id |> builtins.toString}
+        }))
+      end
+    '';
+  ws-switch =
+    id:
+    mkLuaInline ''
+      function()
+        local monitor = hl.get_active_workspace().monitor.id
+        hl.dispatch(hl.dsp.focus({
+          workspace = monitor * 10 + ${id |> builtins.toString}
+        }))
+      end
+    '';
 in
 {
   config = mkIf (cfgGui.enable && cfg.enable) {
-    wayland.windowManager.hyprland.settings = {
-      "$mainMod" = "SUPER";
-      "$subMod" = "ALT";
-      "$term" = "uwsm app -- ${terminal}";
-      bind = [
-        "$mainMod CTRL, left, workspace, m-1"
-        "$mainMod CTRL, right, workspace, m+1"
-        "$mainMod SHIFT, 0, exec, uwsm app -- ${ws-move}/bin/ws-move 10"
-        "$mainMod SHIFT, 1, exec, uwsm app -- ${ws-move}/bin/ws-move 1"
-        "$mainMod SHIFT, 2, exec, uwsm app -- ${ws-move}/bin/ws-move 2"
-        "$mainMod SHIFT, 3, exec, uwsm app -- ${ws-move}/bin/ws-move 3"
-        "$mainMod SHIFT, 4, exec, uwsm app -- ${ws-move}/bin/ws-move 4"
-        "$mainMod SHIFT, 5, exec, uwsm app -- ${ws-move}/bin/ws-move 5"
-        "$mainMod SHIFT, 6, exec, uwsm app -- ${ws-move}/bin/ws-move 6"
-        "$mainMod SHIFT, 7, exec, uwsm app -- ${ws-move}/bin/ws-move 7"
-        "$mainMod SHIFT, 8, exec, uwsm app -- ${ws-move}/bin/ws-move 8"
-        "$mainMod SHIFT, 9, exec, uwsm app -- ${ws-move}/bin/ws-move 9"
-        "$mainMod SHIFT, F, togglefloating"
-        "$mainMod SHIFT, M, exit"
-        "$mainMod SHIFT, Q, exec, uwsm app -- hyprctl dispatch killactive"
-        "$mainMod SHIFT, c, exec, uwsm app -- hyprpicker --autocopy"
-        "$mainMod SHIFT, left, movetoworkspace, m-1"
-        "$mainMod SHIFT, right, movetoworkspace, m+1"
-        "$mainMod SHIFT, s, exec, uwsm app -- grimblast --notify copysave area \"$HOME/Pictures/Screenshots/$(date +%Y-%m-%d' '%H-%M-%S).png\""
-        "$mainMod, 0, exec, uwsm app -- ${ws-switch}/bin/ws-switch 10"
-        "$mainMod, 1, exec, uwsm app -- ${ws-switch}/bin/ws-switch 1"
-        "$mainMod, 2, exec, uwsm app -- ${ws-switch}/bin/ws-switch 2"
-        "$mainMod, 3, exec, uwsm app -- ${ws-switch}/bin/ws-switch 3"
-        "$mainMod, 4, exec, uwsm app -- ${ws-switch}/bin/ws-switch 4"
-        "$mainMod, 5, exec, uwsm app -- ${ws-switch}/bin/ws-switch 5"
-        "$mainMod, 6, exec, uwsm app -- ${ws-switch}/bin/ws-switch 6"
-        "$mainMod, 7, exec, uwsm app -- ${ws-switch}/bin/ws-switch 7"
-        "$mainMod, 8, exec, uwsm app -- ${ws-switch}/bin/ws-switch 8"
-        "$mainMod, 9, exec, uwsm app -- ${ws-switch}/bin/ws-switch 9"
-        "$mainMod, F, fullscreen"
-        "$mainMod, Print, exec, uwsm app -- grimblast --notify copysave screen \"$HOME/Pictures/Screenshots/$(date +%Y-%m-%d'T'%H-%M-%S).png\""
-        "$mainMod, Return, exec, uwsm app -- hyprctl dispatch exec ${terminal}"
-        "$mainMod, Tab, exec, uwsm app -- ${toggle-monitor}/bin/toggle-monitor"
-        "$mainMod, down, exec, uwsm app -- ${better-movefocus}/bin/better-movefocus d"
-        "$mainMod, l, exec, uwsm app -- swaylock -f -c ${theme.colors.bg}"
-        "$mainMod, left, exec, uwsm app -- ${better-movefocus}/bin/better-movefocus l"
-        "$mainMod, mouse_down, workspace, m-1"
-        "$mainMod, mouse_up, workspace, m+1"
-        "$mainMod, period, exec, uwsm app -- wofi-emoji"
-        "$mainMod, right, exec, uwsm app -- ${better-movefocus}/bin/better-movefocus r"
-        "$mainMod, s, exec, uwsm app -- wofi --show drun --width 512px"
-        "$mainMod, up, exec, uwsm app -- ${better-movefocus}/bin/better-movefocus u"
-        "$mainMod, x, exec, uwsm app -- systemctl suspend"
-        "$subMod SHIFT, Tab, cyclenext, prev"
-        "$subMod, Tab, cyclenext"
-        ", Print, exec, uwsm app -- grimblast --notify copysave output \"$HOME/Pictures/Screenshots/$(date +%Y-%m-%d'T'%H-%M-%S).png\""
-      ];
-      bindl = [
-        ", XF86AudioMute, exec, uwsm app -- pamixer -t"
-        ", XF86AudioNext, exec, uwsm app -- playerctl next"
-        ", XF86AudioPlay, exec, uwsm app -- playerctl play-pause"
-        ", XF86AudioPrev, exec, uwsm app -- playerctl previous"
-      ];
-      bindle = [
-        ", XF86AudioLowerVolume, exec, uwsm app -- pamixer -d 5"
-        ", XF86AudioRaiseVolume, exec, uwsm app -- pamixer -i 5"
-        ", XF86MonBrightnessDown, exec, uwsm app -- brightnessctl set 5%-"
-        ", XF86MonBrightnessUp, exec, uwsm app -- brightnessctl set +5%"
-      ];
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-      ];
-    };
+    wayland.windowManager.hyprland.settings =
+      let
+        mainMod = "SUPER";
+        subMod = "ALT";
+      in
+      {
+        bind = [
+          {
+            _args = [
+              "${mainMod} + CTRL + Left"
+              (mkLuaInline ''
+                hl.dsp.focus({
+                  workspace = 'm-1'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + CTRL + Right"
+              (mkLuaInline ''
+                hl.dsp.focus({
+                  workspace = 'm+1'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 0"
+              (ws-move 10)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 1"
+              (ws-move 1)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 2"
+              (ws-move 2)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 3"
+              (ws-move 3)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 4"
+              (ws-move 4)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 5"
+              (ws-move 5)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 6"
+              (ws-move 6)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 7"
+              (ws-move 7)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 8"
+              (ws-move 8)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + 9"
+              (ws-move 9)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + C"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- hyprpicker --autocopy')")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + F"
+              (mkLuaInline ''
+                hl.dsp.window.float({
+                  action = 'toggle'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + M"
+              (mkLuaInline "hl.dsp.exit()")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + Q"
+              (mkLuaInline ''
+                hl.dsp.window.close({
+                  window = 'activewindow'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + Left"
+              (mkLuaInline ''
+                hl.dsp.window.move({
+                  workspace = 'm-1'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + Right"
+              (mkLuaInline ''
+                hl.dsp.window.move({
+                  workspace = 'm+1'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + SHIFT + S"
+              (mkLuaInline ''hl.dsp.exec_cmd('uwsm app -- grimblast --notify copysave area "$HOME/Pictures/Screenshots/$(date +%Y-%m-%dT%H-%M-%S).png"')'')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 0"
+              (ws-switch 10)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 1"
+              (ws-switch 1)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 2"
+              (ws-switch 2)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 3"
+              (ws-switch 3)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 4"
+              (ws-switch 4)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 5"
+              (ws-switch 5)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 6"
+              (ws-switch 6)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 7"
+              (ws-switch 7)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 8"
+              (ws-switch 8)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + 9"
+              (ws-switch 9)
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + Down"
+              (better-movefocus "d")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + F"
+              (mkLuaInline ''
+                hl.dsp.window.fullscreen({
+                  action = 'toggle',
+                  mode = 'fullscreen',
+                  window = 'activewindow'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + L"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- swaylock -f -c ${theme.colors.bg}')")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + Left"
+              (better-movefocus "l")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + mouse_down"
+              (mkLuaInline ''
+                hl.dsp.focus({
+                  workspace = 'm-1'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + mouse_up"
+              (mkLuaInline ''
+                hl.dsp.focus({
+                  workspace = 'm+1'
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + Period"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- wofi-emoji')")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + Print"
+              (mkLuaInline ''hl.dsp.exec_cmd('uwsm app -- grimblast --notify copysave screen "$HOME/Pictures/Screenshots/$(date +%Y-%m-%dT%H-%M-%S).png"')'')
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + Return"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- ${terminal}')")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + Right"
+              (better-movefocus "r")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + S"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- wofi --show drun --width 512px')")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + Tab"
+              toggle-monitor
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + Up"
+              (better-movefocus "u")
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + X"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- systemctl suspend')")
+            ];
+          }
+          {
+            _args = [
+              "${subMod} + SHIFT + Tab"
+              (mkLuaInline ''
+                hl.dsp.window.cycle_next({
+                  next = false
+                })
+              '')
+            ];
+          }
+          {
+            _args = [
+              "${subMod} + Tab"
+              (mkLuaInline "hl.dsp.window.cycle_next()")
+            ];
+          }
+          {
+            _args = [
+              "Print"
+              (mkLuaInline ''hl.dsp.exec_cmd('uwsm app -- grimblast --notify copysave output "$HOME/Pictures/Screenshots/$(date +%Y-%m-%dT%H-%M-%S).png"')'')
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioMute"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- pamixer -t')")
+              {
+                locked = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioNext"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- playerctl next')")
+              {
+                locked = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPlay"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- playerctl play-pause')")
+              {
+                locked = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioPrev"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- playerctl previous')")
+              {
+                locked = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioLowerVolume"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- pamixer -d 5')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86AudioRaiseVolume"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- pamixer -i 5')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86MonBrightnessDown"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- brightnessctl set 5%-')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "XF86MonBrightnessUp"
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm app -- brightnessctl set +5%')")
+              {
+                locked = true;
+                repeating = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + mouse:272"
+              (mkLuaInline "hl.dsp.window.drag()")
+              {
+                mouse = true;
+              }
+            ];
+          }
+          {
+            _args = [
+              "${mainMod} + mouse:273"
+              (mkLuaInline "hl.dsp.window.resize()")
+              {
+                mouse = true;
+              }
+            ];
+          }
+        ];
+      };
   };
 }

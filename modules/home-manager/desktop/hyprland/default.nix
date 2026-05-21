@@ -14,27 +14,36 @@ let
 in
 {
   config = mkIf (cfgGui.enable && cfg.enable) {
-    home.packages =
-      (with pkgs; [
-        awww
-        brightnessctl
-        grimblast
-        hyprcursor
-        hyprpicker
-        pamixer
-        playerctl
-        wev
-        wf-recorder
-        wl-clipboard
-        wlogout
-      ])
-      ++ [
-        inputs'.hyprsome.packages.default
-      ];
+    home = {
+      packages =
+        (with pkgs; [
+          awww
+          brightnessctl
+          grimblast
+          hyprcursor
+          hyprpicker
+          pamixer
+          playerctl
+          wev
+          wf-recorder
+          wl-clipboard
+          wlogout
+        ])
+        ++ [
+          inputs'.hyprsome.packages.default
+        ];
+      sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    };
     wayland.windowManager.hyprland = {
+      configType = "lua";
       enable = true;
+      settings.lib._var = "require('lib')";
       systemd.enable = false;
       xwayland.enable = true;
+    };
+    xdg.configFile = {
+      "hypr/lib.lua".source = ./lib.lua;
+      "uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
     };
   };
   imports = [
