@@ -1,13 +1,9 @@
 {
-  lib,
   myPkgs,
   pkgs,
   username,
   ...
 }:
-let
-  inherit (lib) mkLuaInline;
-in
 {
   home = {
     packages = with myPkgs; [
@@ -31,31 +27,31 @@ in
     };
   };
   imports = [ ];
-  programs.ssh.matchBlocks = {
+  programs.ssh.settings = {
     ares = {
-      hostname = "ares";
-      identityFile = "~/.ssh/ares";
-      user = "ms0503";
+      HostName = "ares";
+      IdentityFile = "~/.ssh/ares";
+      User = "ms0503";
     };
     erebos = {
-      hostname = "erebos";
-      identityFile = "~/.ssh/erebos";
-      user = "ms0503";
+      HostName = "erebos";
+      IdentityFile = "~/.ssh/erebos";
+      User = "ms0503";
     };
     hades = {
-      hostname = "hades";
-      identityFile = "~/.ssh/hades";
-      user = "ms0503";
+      HostName = "hades";
+      IdentityFile = "~/.ssh/hades";
+      User = "ms0503";
     };
     hades-minecraft = {
-      hostname = "hades";
-      identityFile = "~/.ssh/hades-minecraft";
-      user = "minecraft";
+      HostName = "hades";
+      IdentityFile = "~/.ssh/hades-minecraft";
+      User = "minecraft";
     };
     github = {
-      hostname = "github.com";
-      identityFile = "~/.ssh/github";
-      user = "git";
+      HostName = "github.com";
+      IdentityFile = "~/.ssh/github";
+      User = "git";
     };
   };
   wayland.windowManager.hyprland.settings = {

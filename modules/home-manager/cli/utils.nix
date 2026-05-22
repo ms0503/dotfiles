@@ -105,9 +105,9 @@ in
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks."*" = {
-        serverAliveCountMax = 5;
-        serverAliveInterval = 60;
+      settings."*" = {
+        ServerAliveCountMax = 5;
+        ServerAliveInterval = 60;
       };
     };
     yazi = {

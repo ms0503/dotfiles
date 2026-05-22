@@ -38,31 +38,31 @@ in
     };
   };
   imports = [ ];
-  programs.ssh.matchBlocks = {
+  programs.ssh.settings = {
     ares = {
-      hostname = "ares";
-      identityFile = "~/.ssh/ares";
-      user = "ms0503";
+      HostName = "ares";
+      IdentityFile = "~/.ssh/ares";
+      User = "ms0503";
     };
     github = {
-      hostname = "github.com";
-      identityFile = "~/.ssh/github";
-      user = "git";
+      HostName = "github.com";
+      IdentityFile = "~/.ssh/github";
+      User = "git";
     };
     hades = {
-      hostname = "hades";
-      identityFile = "~/.ssh/hades";
-      user = "ms0503";
+      HostName = "hades";
+      IdentityFile = "~/.ssh/hades";
+      User = "ms0503";
     };
     hades-minecraft = {
-      hostname = "hades";
-      identityFile = "~/.ssh/hades-minecraft";
-      user = "minecraft";
+      HostName = "hades";
+      IdentityFile = "~/.ssh/hades-minecraft";
+      User = "minecraft";
     };
     nyx = {
-      hostname = "nyx";
-      identityFile = "~/.ssh/nyx";
-      user = "ms0503";
+      HostName = "nyx";
+      IdentityFile = "~/.ssh/nyx";
+      User = "ms0503";
     };
   };
   wayland.windowManager.hyprland.settings = {
