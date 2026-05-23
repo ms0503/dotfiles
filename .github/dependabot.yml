@@ -1,0 +1,6 @@
+updates:
+  - directory: "/"
+    package-ecosystem: "nix"
+    schedule:
+      interval: "weekly"
+version: 2
