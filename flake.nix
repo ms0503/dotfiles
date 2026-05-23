@@ -4,7 +4,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/fenix";
     };
-    flake-compat.url = "github:edolstra/flake-compat";
+    flake-compat = {
+      flake = false;
+      url = "github:NixOS/flake-compat";
+    };
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs";
       url = "github:hercules-ci/flake-parts";
