@@ -139,6 +139,7 @@
         perSystem =
           {
             config,
+            inputs',
             lib,
             pkgs,
             system,
@@ -151,6 +152,9 @@
                 ++ (config.treefmt.build.programs |> lib.attrValues)
                 ++ (with pkgs; [
                   nvfetcher
+                ])
+                ++ (with inputs'.nh.packages; [
+                  default
                 ]);
               shellHook = ''
                 ${config.pre-commit.shellHook}
