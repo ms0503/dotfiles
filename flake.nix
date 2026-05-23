@@ -139,6 +139,7 @@
         perSystem =
           {
             config,
+            lib,
             pkgs,
             system,
             ...
@@ -147,6 +148,7 @@
             devShells.default = pkgs.mkShell {
               packages =
                 config.pre-commit.settings.enabledPackages
+                ++ (config.treefmt.build.programs |> lib.attrValues)
                 ++ (with pkgs; [
                   nvfetcher
                 ]);
