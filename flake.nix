@@ -161,19 +161,38 @@
             ...
           }:
           {
-            devShells.default = pkgs.mkShell {
-              packages =
-                config.pre-commit.settings.enabledPackages
-                ++ (config.treefmt.build.programs |> lib.attrValues)
-                ++ (with pkgs; [
-                  nvfetcher
-                ])
-                ++ (with inputs'.nh.packages; [
-                  default
-                ]);
-              shellHook = ''
-                ${config.pre-commit.shellHook}
-              '';
+            devShells = {
+              bootstrap = pkgs.mkShell {
+                packages =
+                  (with pkgs; [
+                    ghq
+                    git
+                    gnupg
+                  ])
+                  ++ (with inputs'.home-manager.packages; [
+                    home-manager
+                  ])
+                  ++ (with inputs'.neovim-custom.packages; [
+                    default
+                  ])
+                  ++ (with inputs'.nix.packages; [
+                    nix
+                  ]);
+              };
+              default = pkgs.mkShell {
+                packages =
+                  config.pre-commit.settings.enabledPackages
+                  ++ (config.treefmt.build.programs |> lib.attrValues)
+                  ++ (with pkgs; [
+                    nvfetcher
+                  ])
+                  ++ (with inputs'.nh.packages; [
+                    nh
+                  ]);
+                shellHook = ''
+                  ${config.pre-commit.shellHook}
+                '';
+              };
             };
           };
         systems = import systems;
