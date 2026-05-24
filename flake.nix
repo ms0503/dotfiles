@@ -133,23 +133,21 @@
       };
     in
     flake-parts.lib.mkFlake { inherit inputs; } (
-      { flake-parts-lib, withSystem, ... }:
-      let
-        inherit (flake-parts-lib) importApply;
-        machines = importApply ./machines { inherit withSystem; };
-      in
+      { withSystem, ... }:
       {
         flake = {
           homeManagerModules = import ./modules/home-manager;
-          lib = import ./lib inputs;
+          lib = import ./lib {
+            inherit inputs withSystem;
+          };
           nixosModules = import ./modules/nixos;
-          overlays = import ./overlays inputs;
+          overlays = import ./overlays;
         };
         imports = [
           ./treefmt.nix
           ./git-hooks.nix
           ./pkgs
-          machines
+          ./machines
         ];
         perSystem =
           {

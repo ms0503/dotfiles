@@ -1,16 +1,16 @@
-inputs@{
-  home-manager,
-  lanzaboote,
-  ms0503-pkgs,
-  neovim-custom,
-  nh,
-  nixos-wsl,
-  nixpkgs,
-  self,
-  xremap,
-  ...
-}:
+{ inputs, withSystem }:
 let
+  inherit (inputs)
+    home-manager
+    lanzaboote
+    ms0503-pkgs
+    neovim-custom
+    nh
+    nixos-wsl
+    nixpkgs
+    self
+    xremap
+    ;
   myLib = self.lib;
 in
 {
@@ -22,7 +22,6 @@ in
       system,
       theme,
       username,
-      withSystem,
     }:
     let
       myPkgs = ms0503-pkgs.packages.${system} // self.outputs.packages.${system};
@@ -95,7 +94,6 @@ in
       modules,
       system,
       username,
-      withSystem,
     }:
     let
       myPkgs = ms0503-pkgs.packages.${system} // self.outputs.packages.${system};

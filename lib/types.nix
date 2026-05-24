@@ -1,5 +1,6 @@
-{ nixpkgs, ... }:
+{ inputs, ... }:
 let
+  inherit (inputs) nixpkgs;
   inherit (nixpkgs.lib) types;
 in
 {

@@ -1,7 +1,7 @@
-inputs: rec {
+args: rec {
   inherit (system) mkHomeManagerConfiguration mkNixosSystem;
-  const = import ./const.nix inputs;
-  network = import ./network.nix inputs;
-  system = import ./system.nix inputs;
-  types = import ./types.nix inputs;
+  const = import ./const.nix args;
+  network = import ./network.nix args;
+  system = import ./system.nix args;
+  types = import ./types.nix args;
 }

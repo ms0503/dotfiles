@@ -1,4 +1,4 @@
-inputs: {
+_: {
   blockIpv4FromList =
     ips: ips |> builtins.map (ip: "ip saddr ${ip} drop") |> builtins.concatStringsSep "\n";
   blockIpv6FromList =

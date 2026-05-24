@@ -1,4 +1,3 @@
-{ withSystem, ... }:
 { inputs, ... }:
 let
   inherit (inputs)
@@ -12,7 +11,6 @@ in
   flake = {
     homeConfigurations = {
       "ms0503@ares" = mkHomeManagerConfiguration {
-        inherit withSystem;
         modules = [
           ./ares/config-hm.nix
           ./ares/home-manager.nix
@@ -23,7 +21,6 @@ in
         username = "ms0503";
       };
       "ms0503@erebos" = mkHomeManagerConfiguration {
-        inherit withSystem;
         modules = [
           ./erebos/config-hm.nix
           ./erebos/home-manager.nix
@@ -37,7 +34,6 @@ in
         username = "ms0503";
       };
       "ms0503@hades" = mkHomeManagerConfiguration {
-        inherit withSystem;
         modules = [
           ./hades/config-hm.nix
           ./hades/home-manager.nix
@@ -48,7 +44,6 @@ in
         username = "ms0503";
       };
       "ms0503@nyx" = mkHomeManagerConfiguration {
-        inherit withSystem;
         modules = [
           ./nyx/config-hm.nix
           ./nyx/home-manager.nix
@@ -64,7 +59,6 @@ in
     };
     nixosConfigurations = {
       ares = mkNixosSystem {
-        inherit withSystem;
         hostname = "ares";
         modules = [
           ./ares/config-nixos.nix
@@ -74,7 +68,6 @@ in
         username = "ms0503";
       };
       erebos = mkNixosSystem {
-        inherit withSystem;
         hostname = "erebos";
         modules = [
           ./erebos/config-nixos.nix
@@ -84,7 +77,6 @@ in
         username = "ms0503";
       };
       hades = mkNixosSystem {
-        inherit withSystem;
         hostname = "hades";
         modules = [
           ./hades/config-nixos.nix
@@ -94,7 +86,6 @@ in
         username = "ms0503";
       };
       nyx = mkNixosSystem {
-        inherit withSystem;
         hostname = "nyx";
         modules = [
           ./nyx/config-nixos.nix
