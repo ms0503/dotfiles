@@ -21,6 +21,12 @@ let
 in
 {
   config = mkIf (cfgGui.enable && cfg.enable) {
+    assertions = [
+      {
+        assertion = cfg.type != null;
+        message = "ms0503.im.type must not be null";
+      }
+    ];
     i18n.inputMethod = {
       enable = true;
       fcitx5 = {
@@ -46,8 +52,9 @@ in
     enable = mkEnableOption "an input method";
     hazkey.enableGpu = mkEnableOption "GPU support";
     type = mkOption {
+      default = null;
       description = "Choose an input method to use";
-      type = types.ims;
+      type = types.nullOr types.ims;
     };
   };
 }
