@@ -11,6 +11,11 @@
     feature-set = myLib.const.feature-sets.full;
     gpu = "nvidia";
     gui.enable = true;
+    im = {
+      enable = true;
+      hazkey.enableGpu = true;
+      type = "hazkey";
+    };
     media.enable = true;
     rust.extraTools = with pkgs.fenix; [
       targets.thumbv7em-none-eabihf.latest.rust-std

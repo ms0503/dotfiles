@@ -11,6 +11,7 @@
     feature-set = myLib.const.feature-sets.tiny;
     gpu = "none";
     gui.enable = false;
+    im.enable = false;
     media.enable = false;
     rust.extraTools = [ ];
     server.minecraft.enable = false;

@@ -6,6 +6,7 @@ let
     ms0503-pkgs
     neovim-custom
     nh
+    nix-hazkey
     nixos-wsl
     nixpkgs
     self
@@ -105,6 +106,7 @@ in
         modules = [
           lanzaboote.nixosModules.lanzaboote
           neovim-custom.nixosModules.default
+          nix-hazkey.nixosModules.hazkey
           nixos-wsl.nixosModules.default
           xremap.nixosModules.default
           (import ../options.nix)

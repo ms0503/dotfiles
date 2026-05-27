@@ -77,6 +77,13 @@
       };
       url = "github:NixOS/nix";
     };
+    nix-hazkey = {
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:aster-void/nix-hazkey";
+    };
     nix-index = {
       inputs = {
         flake-compat.follows = "";
@@ -117,10 +124,12 @@
       "pipe-operators"
     ];
     substituters = [
+      "https://cache.nixos.org"
       "https://ms0503.cachix.org"
       "https://nix-community.cachix.org"
     ];
     trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "ms0503.cachix.org-1:Cc2mXpepZr7O9aFcRj5jq3mIcvdUPp85sLFuQj+IKbM="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];

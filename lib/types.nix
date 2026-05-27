@@ -15,6 +15,11 @@ in
     "nvidia"
     "radeon"
   ];
+  ims = types.enum [
+    "hazkey"
+    "mozc"
+    "mozc-ut"
+  ];
   shells = types.enum [
     "bash"
     "zsh"

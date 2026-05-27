@@ -1,25 +1,53 @@
 {
   config,
+  inputs',
   lib,
+  myLib,
   pkgs,
   ...
 }:
 let
-  inherit (lib) mkIf;
-  cfg = config.ms0503.gui;
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    mkOption
+    optional
+    optionalAttrs
+    ;
+  cfg = config.ms0503.im;
+  cfgGui = config.ms0503.gui;
   cfgWayland = config.ms0503.wayland;
+  types = lib.types // myLib.types;
 in
 {
-  config = mkIf cfg.enable {
+  config = mkIf (cfgGui.enable && cfg.enable) {
     i18n.inputMethod = {
       enable = true;
       fcitx5 = {
-        addons = with pkgs; [
-          fcitx5-mozc-ut
-        ];
+        addons =
+          with pkgs;
+          (optional (cfg.type == "mozc") fcitx5-mozc ++ optional (cfg.type == "mozc-ut") fcitx5-mozc-ut);
         waylandFrontend = cfgWayland.enable;
       };
       type = "fcitx5";
+    };
+    services = optionalAttrs (cfg.type == "hazkey") {
+      hazkey = {
+        enable = true;
+      }
+      // optionalAttrs cfg.hazkey.enableGpu {
+        server.package = inputs'.nix-hazkey.packages.hazkey-server.override {
+          enableVulkan = true;
+        };
+      };
+    };
+  };
+  options.ms0503.im = {
+    enable = mkEnableOption "an input method";
+    hazkey.enableGpu = mkEnableOption "GPU support";
+    type = mkOption {
+      description = "Choose an input method to use";
+      type = types.ims;
     };
   };
 }
