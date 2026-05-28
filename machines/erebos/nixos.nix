@@ -6,6 +6,7 @@
 }:
 {
   boot = {
+    kernel.sysfs.class.power_supply.BAT1.charge_control_end_threshold = "85";
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader.efi.canTouchEfiVariables = true;
     resumeDevice = "/dev/disk/by-uuid/0a943e07-390e-4810-a528-d1845c862246";
