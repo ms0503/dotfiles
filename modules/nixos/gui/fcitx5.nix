@@ -3,6 +3,7 @@
   inputs',
   lib,
   myLib,
+  myPkgs,
   pkgs,
   ...
 }:
@@ -32,7 +33,12 @@ in
       fcitx5 = {
         addons =
           with pkgs;
-          (optional (cfg.type == "mozc") fcitx5-mozc ++ optional (cfg.type == "mozc-ut") fcitx5-mozc-ut);
+          with myPkgs;
+          (
+            optional (cfg.type == "karukan") karukan
+            ++ optional (cfg.type == "mozc") fcitx5-mozc
+            ++ optional (cfg.type == "mozc-ut") fcitx5-mozc-ut
+          );
         waylandFrontend = cfgWayland.enable;
       };
       type = "fcitx5";

@@ -17,6 +17,7 @@ in
   ];
   ims = types.enum [
     "hazkey"
+    "karukan"
     "mozc"
     "mozc-ut"
   ];

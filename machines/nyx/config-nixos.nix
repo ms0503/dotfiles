@@ -13,8 +13,7 @@
     gui.enable = true;
     im = {
       enable = true;
-      hazkey.enableGpu = true;
-      type = "hazkey";
+      type = "karukan";
     };
     media.enable = true;
     rust.extraTools = [ ];

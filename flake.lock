@@ -997,11 +997,11 @@
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1779869804,
-        "narHash": "sha256-BNwgX/mul9PkuR2EsQP4AgkZ4sR8n8ogpO1QdBfA26k=",
+        "lastModified": 1780187320,
+        "narHash": "sha256-v3vUwr+X5JSaZBLl7K6kCTDt6rK7oiGyp1UTkaP2L9o=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "924768db659fd8aa4c9532ff85aa66edc8ed5210",
+        "rev": "6f834502ab98134eb1931c9993075fdc2cd40bed",
         "type": "github"
       },
       "original": {
