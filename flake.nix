@@ -1,5 +1,6 @@
 {
   inputs = {
+    crane.url = "github:ipetkov/crane";
     fenix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/fenix";
@@ -12,6 +13,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
       url = "github:hercules-ci/flake-parts";
     };
+    flake-utils.url = "github:numtide/flake-utils";
     git-hooks = {
       inputs = {
         flake-compat.follows = "";
@@ -31,13 +33,22 @@
       url = "github:hyprwm/Hyprland";
     };
     hyprsome = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        crane = {
+          inputs.nixpkgs.follows = "nixpkgs";
+          url = "github:ipetkov/crane/95b42093e50ff889aab558682922251bb70c0f91";
+        };
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
       url = "github:sopa0/hyprsome";
     };
     lanzaboote = {
       inputs = {
+        crane.follows = "crane";
         nixpkgs.follows = "nixpkgs";
         pre-commit.follows = "";
+        rust-overlay.follows = "rust-overlay";
       };
       url = "github:nix-community/lanzaboote";
     };
@@ -100,17 +111,26 @@
       url = "github:nix-community/NixOS-WSL";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    rust-overlay = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:oxalica/rust-overlay";
+    };
     systems.url = "github:nix-systems/default";
     treefmt-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
     };
     wezterm = {
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
       url = "github:wez/wezterm?dir=nix";
     };
     xremap = {
       inputs = {
+        crane.follows = "crane";
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
       };
