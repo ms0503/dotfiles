@@ -41,6 +41,7 @@ in
       ripgrep
       stdmanpages
       tokei
+      tree
       unar
       unrar
       usbutils
