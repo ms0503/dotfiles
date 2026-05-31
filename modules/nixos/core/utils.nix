@@ -33,6 +33,7 @@ in
       man
       man-pages
       man-pages-posix
+      nix-output-monitor
       opensc
       pciutils
       pcsc-tools
