@@ -20,6 +20,7 @@ in
     "karukan"
     "mozc"
     "mozc-ut"
+    "mozkey"
   ];
   shells = types.enum [
     "bash"

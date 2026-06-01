@@ -38,6 +38,7 @@ in
             optional (cfg.type == "karukan") karukan
             ++ optional (cfg.type == "mozc") fcitx5-mozc
             ++ optional (cfg.type == "mozc-ut") fcitx5-mozc-ut
+            ++ optional (cfg.type == "mozkey") fcitx5-mozkey
           );
         waylandFrontend = cfgWayland.enable;
       };

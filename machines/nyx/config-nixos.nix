@@ -13,7 +13,7 @@
     gui.enable = true;
     im = {
       enable = true;
-      type = "karukan";
+      type = "mozkey";
     };
     media.enable = true;
     rust.extraTools = [ ];

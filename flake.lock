@@ -933,11 +933,11 @@
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1780187320,
-        "narHash": "sha256-v3vUwr+X5JSaZBLl7K6kCTDt6rK7oiGyp1UTkaP2L9o=",
+        "lastModified": 1780327144,
+        "narHash": "sha256-MFx38C9Hn0Vxywb6/1st/0Epnyd3tvvM3idSy64Eu4g=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "6f834502ab98134eb1931c9993075fdc2cd40bed",
+        "rev": "968d056ef97e31b96a9c99e2604300a2809e4a16",
         "type": "github"
       },
       "original": {
