@@ -70,7 +70,7 @@
       }
       {
         mode = "1920x1080@60";
-        output = "I-O Data Device Inc LCD-MF224ED GGF504807255";
+        output = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
         position = "0x0";
         scale = 1;
       }
