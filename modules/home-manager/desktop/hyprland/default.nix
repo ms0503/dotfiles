@@ -3,15 +3,18 @@
   inputs',
   isNixOS,
   lib,
-  myLib,
   pkgs,
   ...
 }:
 let
-  inherit (lib) mkIf mkOption optionalAttrs;
+  inherit (lib)
+    mkIf
+    mkOption
+    optionalAttrs
+    types
+    ;
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
-  types = lib.types // myLib.types;
 in
 {
   config = mkIf (cfgGui.enable && cfg.enable) {

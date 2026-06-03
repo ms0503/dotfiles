@@ -1,7 +1,6 @@
-{ lib, myLib, ... }:
+{ lib, ... }:
 let
-  inherit (lib) mkEnableOption mkOption;
-  types = lib.types // myLib.types;
+  inherit (lib) mkEnableOption mkOption types;
 in
 {
   imports = [
@@ -13,7 +12,13 @@ in
     efi.enable = mkEnableOption "an EFI";
     type = mkOption {
       description = "Choose a bootloader";
-      type = types.bootloaders;
+      type = types.nullOr (
+        types.enum [
+          "grub"
+          "lanzaboote"
+          "systemd-boot"
+        ]
+      );
     };
   };
 }

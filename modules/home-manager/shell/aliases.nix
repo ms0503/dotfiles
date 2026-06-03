@@ -71,7 +71,9 @@ in
       wc = "tokei";
     }
     // optionalAttrs (shellType == "zsh") {
-      nix = "noglob nix"; # In zsh, '#' has special meaning
+      # In zsh, '#' has special meaning
+      nix = "noglob nix";
+      nom = "noglob nom";
     }
     // cfg;
   };

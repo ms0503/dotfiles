@@ -9,7 +9,7 @@
     };
     desktop.hyprland.enable = false;
     feature-set = myLib.const.feature-sets.tiny;
-    gpu = "none";
+    gpu = null;
     gui.enable = false;
     im.enable = false;
     media.enable = false;

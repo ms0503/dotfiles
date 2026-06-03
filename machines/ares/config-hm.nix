@@ -3,7 +3,7 @@
   ms0503 = {
     desktop.hyprland.enable = false;
     feature-set = myLib.const.feature-sets.tiny;
-    gpu = "none";
+    gpu = null;
     gui.enable = false;
     jetbrains.enable = false;
     media.enable = false;
@@ -13,7 +13,7 @@
       type = "zsh";
     };
     steam.enable = false;
-    terminal = "";
+    terminal = null;
     unity.enable = false;
     wayland.enable = false;
   };

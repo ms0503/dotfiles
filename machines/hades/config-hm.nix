@@ -13,7 +13,7 @@
       type = "zsh";
     };
     steam.enable = false;
-    terminal = "";
+    terminal = null;
     unity.enable = false;
     wayland.enable = false;
   };

@@ -2,7 +2,6 @@
   config,
   inputs',
   lib,
-  myLib,
   myPkgs,
   pkgs,
   ...
@@ -14,11 +13,11 @@ let
     mkOption
     optional
     optionalAttrs
+    types
     ;
   cfg = config.ms0503.im;
   cfgGui = config.ms0503.gui;
   cfgWayland = config.ms0503.wayland;
-  types = lib.types // myLib.types;
 in
 {
   config = mkIf (cfgGui.enable && cfg.enable) {
@@ -61,7 +60,15 @@ in
     type = mkOption {
       default = null;
       description = "Choose an input method to use";
-      type = types.nullOr types.ims;
+      type = types.nullOr (
+        types.enum [
+          "hazkey"
+          "karukan"
+          "mozc"
+          "mozc-ut"
+          "mozkey"
+        ]
+      );
     };
   };
 }

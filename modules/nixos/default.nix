@@ -1,5 +1,6 @@
 {
   default.imports = [
+    ../common
     ./arch
     ./bootloader
     ./bt.nix

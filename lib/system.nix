@@ -59,7 +59,6 @@ in
         };
         modules = [
           neovim-custom.homeManagerModules.default
-          (import ../options.nix)
           self.homeManagerModules.default
           {
             home = {
@@ -109,7 +108,6 @@ in
           nix-hazkey.nixosModules.hazkey
           nixos-wsl.nixosModules.default
           xremap.nixosModules.default
-          (import ../options.nix)
           self.nixosModules.default
           {
             nixpkgs.overlays = [
