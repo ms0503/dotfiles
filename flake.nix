@@ -176,8 +176,8 @@
           overlays = import ./overlays;
         };
         imports = [
-          ./treefmt.nix
-          ./git-hooks.nix
+          ./tools/treefmt.nix
+          ./tools/git-hooks.nix
           ./pkgs
           ./machines
         ];
