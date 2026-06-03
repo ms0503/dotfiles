@@ -16,6 +16,7 @@ in
       steam = {
         dedicatedServer.openFirewall = true;
         enable = true;
+        extest.enable = true;
         extraCompatPackages =
           (with pkgs; [
             proton-ge-bin
