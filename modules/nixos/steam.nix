@@ -32,6 +32,7 @@ in
           libuuid
           libxkbcommon
         ];
+        protontricks.enable = true;
         remotePlay.openFirewall = true;
       };
     };
