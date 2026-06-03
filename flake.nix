@@ -57,10 +57,10 @@
         fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
-        git-hooks.follows = "git-hooks";
+        git-hooks.follows = "";
         nixpkgs.follows = "nixpkgs";
         nixpkgs-blender3.follows = "";
-        treefmt-nix.follows = "treefmt-nix";
+        treefmt-nix.follows = "";
       };
       url = "github:ms0503/pkgs.nix";
     };
@@ -69,9 +69,9 @@
         fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
-        git-hooks.follows = "git-hooks";
+        git-hooks.follows = "";
         nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
+        treefmt-nix.follows = "";
       };
       url = "github:ms0503/neovim-custom";
     };
@@ -102,7 +102,10 @@
       };
       url = "github:nix-community/nix-index";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:NixOS/nixos-hardware";
+    };
     nixos-wsl = {
       inputs = {
         flake-compat.follows = "";
