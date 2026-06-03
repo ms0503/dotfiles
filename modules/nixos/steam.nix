@@ -47,9 +47,24 @@ in
         remotePlay.openFirewall = true;
       };
     };
-    services.monado = {
-      defaultRuntime = true;
-      enable = true;
+    services = {
+      monado = {
+        defaultRuntime = true;
+        enable = true;
+      };
+      wivrn = {
+        autoStart = true;
+        enable = true;
+        highPriority = true;
+        openFirewall = true;
+        package = pkgs.wivrn.override {
+          cudaSupport = true;
+        };
+        steam = {
+          enable = true;
+          importOXRRuntimes = true;
+        };
+      };
     };
     systemd.user.services.monado.environment = {
       STEAMVR_LH_ENABLE = "1";
