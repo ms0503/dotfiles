@@ -178,7 +178,6 @@
         imports = [
           ./tools/treefmt.nix
           ./tools/git-hooks.nix
-          ./pkgs
           ./machines
         ];
         perSystem =

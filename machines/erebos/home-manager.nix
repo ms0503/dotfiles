@@ -14,6 +14,7 @@ in
       (with pkgs; [
         gcc-arm-embedded
         openocd
+        platformio-core
         stm32cubemx
       ])
       ++ (with myPkgs; [
@@ -23,7 +24,6 @@ in
           proton-path = "${proton-ge-rtsp-bin.steamcompattool}/proton";
           vrchat-exe-path = "${compat-client-install-path}/steamapps/common/VRChat/VRChat.exe";
         })
-        platformio-core
       ]);
     pointerCursor = {
       gtk.enable = true;

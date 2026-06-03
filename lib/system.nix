@@ -25,7 +25,7 @@ in
       username,
     }:
     let
-      myPkgs = ms0503-pkgs.packages.${system} // self.outputs.packages.${system};
+      myPkgs = ms0503-pkgs.packages.${system};
       pkgs = import nixpkgs {
         inherit system;
         config = {
@@ -96,7 +96,7 @@ in
       username,
     }:
     let
-      myPkgs = ms0503-pkgs.packages.${system} // self.outputs.packages.${system};
+      myPkgs = ms0503-pkgs.packages.${system};
     in
     withSystem system (
       { inputs', ... }:

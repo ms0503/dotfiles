@@ -95,7 +95,7 @@ in
         SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="06c1", MODE="0666"
         SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="06c3", MODE="0666"
       '';
-      packages = with myPkgs; [
+      packages = with pkgs; [
         platformio-core.udev
       ];
     };

@@ -1,7 +1,7 @@
 --- a/flake.nix
 +++ b/flake.nix
-@@ -113,12 +113,7 @@
-     };
+@@ -155,12 +155,7 @@
+     ];
    };
    outputs =
 -    prevInputs@{ flake-parts, systems, ... }:
@@ -12,31 +12,11 @@
 -    in
 +    inputs@{ flake-parts, systems, ... }:
      flake-parts.lib.mkFlake { inherit inputs; } (
-       { flake-parts-lib, withSystem, ... }:
-       let
---- a/machines/erebos/home-manager.nix
-+++ b/machines/erebos/home-manager.nix
-@@ -21,17 +21,6 @@
-         })
-         platformio-core
-       ]);
--    pointerCursor = {
--      gtk.enable = true;
--      name = "Milk1";
--      package = pkgs.milk-cursor-themes;
--      size = 32;
--      x11.enable = true;
--    };
--    sessionVariables = {
--      HYPRCURSOR_SIZE = "32";
--      HYPRCURSOR_THEME = "Milk1";
--    };
-   };
-   imports = [ ];
-   programs.ssh.extraConfig = ''
+       { withSystem, ... }:
+       {
 --- a/machines/default.nix
 +++ b/machines/default.nix
-@@ -3,7 +3,6 @@
+@@ -2,10 +2,10 @@
  let
    inherit (inputs)
      fenix
@@ -44,67 +24,7 @@
      self
      ;
    inherit (self.lib) mkHomeManagerConfiguration mkNixosSystem;
-@@ -19,7 +18,6 @@
-         ];
-         overlays = [
-           fenix.overlays.default
--          private-pkgs.overlays.default
-         ];
-         system = "x86_64-linux";
-         theme = "monokai";
-@@ -44,7 +42,6 @@
-         ];
-         overlays = [
-           fenix.overlays.default
--          private-pkgs.overlays.default
-         ];
-         system = "x86_64-linux";
-         theme = "monokai";
-@@ -58,7 +55,6 @@
-         ];
-         overlays = [
-           fenix.overlays.default
--          private-pkgs.overlays.default
-         ];
-         system = "x86_64-linux";
-         theme = "monokai";
---- a/machines/nyx/home-manager.nix
-+++ b/machines/nyx/home-manager.nix
-@@ -14,17 +14,6 @@
-         vrchat-exe-path = "${compat-client-install-path}/steamapps/common/VRChat/VRChat.exe";
-       })
-     ];
--    pointerCursor = {
--      gtk.enable = true;
--      name = "Milk1";
--      package = pkgs.milk-cursor-themes;
--      size = 32;
--      x11.enable = true;
--    };
--    sessionVariables = {
--      HYPRCURSOR_SIZE = "32";
--      HYPRCURSOR_THEME = "Milk1";
--    };
-   };
-   imports = [ ];
-   programs.ssh.extraConfig = ''
---- a/machines/nyx-win/home-manager.nix
-+++ b/machines/nyx-win/home-manager.nix
-@@ -2,17 +2,6 @@
++  private-pkgs.overlays.default = _: _: { };
+ in
  {
-   home = {
-     packages = [ ];
--    pointerCursor = {
--      gtk.enable = true;
--      name = "Milk1";
--      package = pkgs.milk-cursor-themes;
--      size = 32;
--      x11.enable = true;
--    };
--    sessionVariables = {
--      HYPRCURSOR_SIZE = "32";
--      HYPRCURSOR_THEME = "Milk1";
--    };
-   };
-   imports = [ ];
-   programs.ssh.extraConfig = ''
+   flake = {
