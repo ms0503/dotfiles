@@ -12,5 +12,11 @@
     };
     dirmngr.enable = true;
   };
-  security.sudo.wheelNeedsPassword = false;
+  security = {
+    sudo.enable = false;
+    sudo-rs = {
+      enable = true;
+      wheelNeedsPassword = false;
+    };
+  };
 }

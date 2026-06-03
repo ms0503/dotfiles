@@ -45,6 +45,7 @@ in
       unar
       unrar
       usbutils
+      uutils-coreutils-noprefix
       zip
     ])
     ++ (with myPkgs; [
