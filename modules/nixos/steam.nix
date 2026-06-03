@@ -6,11 +6,22 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf optional;
   cfg = config.ms0503.steam;
 in
 {
   config = mkIf cfg.enable {
+    boot.kernelPatches = optional (config.ms0503.gpu == "radeon") {
+      name = "amdgpu-ignore-ctx-privileges";
+      patch = pkgs.fetchpatch {
+        hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
+        name = "cap_sys_nice_begone.patch";
+        url = "https://github.com/Frogging-Family/community-patches/raw/cbcc5e4d72d22fc08afe81bb517a54b0e01515a5/linux61-tkg/cap_sys_nice_begone.mypatch";
+      };
+    };
+    environment.systemPackages = with pkgs; [
+      wayvr
+    ];
     programs = {
       steam = {
         dedicatedServer.openFirewall = true;
@@ -35,6 +46,14 @@ in
         protontricks.enable = true;
         remotePlay.openFirewall = true;
       };
+    };
+    services.monado = {
+      defaultRuntime = true;
+      enable = true;
+    };
+    systemd.user.services.monado.environment = {
+      STEAMVR_LH_ENABLE = "1";
+      XRT_COMPOSITOR_COMPUTE = "1";
     };
   };
 }
