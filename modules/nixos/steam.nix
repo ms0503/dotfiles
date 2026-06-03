@@ -11,7 +11,6 @@ let
 in
 {
   config = mkIf cfg.enable {
-    hardware.steam-hardware.enable = true;
     programs = {
       steam = {
         dedicatedServer.openFirewall = true;
