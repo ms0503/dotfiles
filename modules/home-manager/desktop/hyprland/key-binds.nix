@@ -177,7 +177,7 @@ in
           {
             _args = [
               "${mainMod} + SHIFT + M"
-              (mkLuaInline "hl.dsp.exit()")
+              (mkLuaInline "hl.dsp.exec_cmd('uwsm stop')")
             ];
           }
           {
