@@ -9,6 +9,7 @@
 let
   inherit (lib)
     mkIf
+    mkLuaInline
     mkOption
     optionalAttrs
     types
@@ -42,8 +43,8 @@ in
       configType = "lua";
       enable = true;
       settings = {
-        lib._var = "require('lib')";
-        tool._var = "require('tool')";
+        lib._var = mkLuaInline "require('lib')";
+        tool._var = mkLuaInline "require('tool')";
       };
       systemd.enable = false;
       xwayland.enable = true;
