@@ -41,7 +41,10 @@ in
     wayland.windowManager.hyprland = {
       configType = "lua";
       enable = true;
-      settings.lib._var = "require('lib')";
+      settings = {
+        lib._var = "require('lib')";
+        tool._var = "require('tool')";
+      };
       systemd.enable = false;
       xwayland.enable = true;
     }
@@ -51,6 +54,7 @@ in
     };
     xdg.configFile = {
       "hypr/lib.lua".source = ./lib.lua;
+      "hypr/tool.lua".source = ./tool.lua;
       "uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
     };
   };
