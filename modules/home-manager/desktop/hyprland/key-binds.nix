@@ -311,7 +311,7 @@ in
               "${mainMod} + mouse_down"
               (mkLuaInline ''
                 hl.dsp.focus({
-                  workspace = 'm-1'
+                  workspace = 'm+1'
                 })
               '')
             ];
@@ -321,7 +321,7 @@ in
               "${mainMod} + mouse_up"
               (mkLuaInline ''
                 hl.dsp.focus({
-                  workspace = 'm+1'
+                  workspace = 'm-1'
                 })
               '')
             ];
