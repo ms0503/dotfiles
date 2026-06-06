@@ -20,6 +20,9 @@ let
       match.class = "Unity";
     }
     {
+      match.class = "VampireSurvivors\\.exe";
+    }
+    {
       match.class = "VirtualBox Machine";
     }
     {
