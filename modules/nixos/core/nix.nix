@@ -1,4 +1,4 @@
-{ inputs', pkgs, ... }:
+{ inputs', ... }:
 {
   nix = {
     extraOptions = ''
@@ -25,6 +25,7 @@
         "https://ms0503.cachix.org"
         "https://nix-community.cachix.org"
         "https://nix-ros.cachix.org"
+        "https://nixpkgs-unfree.cachix.org"
         "https://ros.cachix.org"
       ];
       trusted-public-keys = [
@@ -34,6 +35,7 @@
         "ms0503.cachix.org-1:Cc2mXpepZr7O9aFcRj5jq3mIcvdUPp85sLFuQj+IKbM="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nix-ros.cachix.org-1:e1GCZW6WLNkQ0t0s7zsQz8c7+UoGvTkkq023FWSAtfQ="
+        "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
         "ros.cachix.org-1:dSyZxI8geDCJrwgvCOHDoAfOm5sV1wCPjBkKL+38Rvo="
       ];
       trusted-users = [
