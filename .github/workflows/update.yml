@@ -1,0 +1,34 @@
+jobs:
+  update:
+    permissions:
+      contents: "write"
+    runs-on: "ubuntu-24.04"
+    steps:
+      - name: "Checkout repository"
+        uses: "actions/checkout@v6"
+      - name: "Install Nix"
+        uses: "cachix/install-nix-action@v31"
+        with:
+          extra_nix_config: |
+            accept-flake-config = true
+            experimental-features = flakes nix-command pipe-operators
+          github_access_token: "${{ secrets.GITHUB_TOKEN }}"
+          nix_path: "nixpkgs=channel:nixos-unstable"
+      - name: "Configure Git"
+        run: |
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+      - name: "Update Nix Flakes"
+        run: |
+          nix flake update
+          git add flake.lock
+          git commit -m "chore: update flakes"
+      - name: "Push to repository"
+        run: |
+          git push origin main
+name: "Update Nix Flakes"
+on:
+  schedule:
+    - cron: "15 0 * * 0" # weekly
+  workflow_dispatch:
