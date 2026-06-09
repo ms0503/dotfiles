@@ -43,7 +43,7 @@
           "neovim-custom",
           "nixpkgs"
         ],
-        "systems": "systems_13"
+        "systems": "systems_14"
       },
       "locked": {
         "lastModified": 1779869573,
@@ -75,6 +75,10 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
@@ -85,11 +89,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780936079,
-        "narHash": "sha256-rQWl34lnGcrwzNnxBjpq09PHDrV2msnvJe50vdvLDgQ=",
+        "lastModified": 1781003562,
+        "narHash": "sha256-do7qg6SMTLyDrEn91j7wHXTbsachx0YCjTK39Bsn3TU=",
         "owner": "ms0503",
         "repo": "awww-bing",
-        "rev": "e717f495c9c353aea3088253e1d04c612604aab7",
+        "rev": "f436754638557708d4781f632c746c31835162b5",
         "type": "github"
       },
       "original": {
@@ -114,6 +118,10 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
@@ -124,11 +132,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780936039,
-        "narHash": "sha256-x4LpMbv96cJoC0080SzputCShp8Q4yfEfiWF4y1nfCQ=",
+        "lastModified": 1781003997,
+        "narHash": "sha256-p9Z6dhVuldCUX7sNs/dq7F9dHARCdwXVIJnM9JdBi/E=",
         "owner": "ms0503",
         "repo": "colortool",
-        "rev": "000183c37561d835ef6e1dd8cf8e5caf51d0a387",
+        "rev": "cb389187972ad3897acbaf1f65eb6098d06b2316",
         "type": "github"
       },
       "original": {
@@ -281,6 +289,10 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
@@ -291,11 +303,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780936425,
-        "narHash": "sha256-+bm+rVXWkjj+K1l9DTnVVUMX2CcNtVx9YroOO1QYYEc=",
+        "lastModified": 1781003997,
+        "narHash": "sha256-aJyS7hUpI68a7vNpDs/ik/U1r2p8DeakgATBO+jCPEM=",
         "owner": "ms0503",
         "repo": "generatehex",
-        "rev": "e1defe5fcdeeba0a00115afc1a3143c40e078356",
+        "rev": "d5e4b1f7d4274e3ec1d887b3b692c7db9d6c5803",
         "type": "github"
       },
       "original": {
@@ -320,6 +332,10 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
@@ -330,11 +346,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780936723,
-        "narHash": "sha256-JsnHjRB4xCOVMWuNszBP4rpNZOsAEePtlSFOCvgHPhg=",
+        "lastModified": 1781003998,
+        "narHash": "sha256-+I9LqsKQQ0PsH9Wd2XTpzMAe+vwYG2D0ZicQtfnQQIw=",
         "owner": "ms0503",
         "repo": "getcodepoint",
-        "rev": "a471d2d7ecad486586c327631f7792441d280b86",
+        "rev": "a4ed89dd816d7eb0362e491a070020855b48e09e",
         "type": "github"
       },
       "original": {
@@ -359,6 +375,10 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
@@ -369,11 +389,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780937153,
-        "narHash": "sha256-gttShY0L3HRcDyPsusaGTRLadkrhaiKdtX47SsLpaKo=",
+        "lastModified": 1781003998,
+        "narHash": "sha256-g6ZFy5yGPslISQrxnJypiQXtPXEGoQ0o1z9tqaDR9YA=",
         "owner": "ms0503",
         "repo": "getemoji",
-        "rev": "1d6a24793c7e25089d276484a3e1ce9786f07816",
+        "rev": "36d6bf85af93688458a32a02a41cd76e64727038",
         "type": "github"
       },
       "original": {
@@ -867,6 +887,10 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
@@ -877,16 +901,51 @@
         ]
       },
       "locked": {
-        "lastModified": 1780937546,
-        "narHash": "sha256-Tb6gDDRiokkPm0hJJwL7SU8/Jk1jh3fPQ4F5oaOmIjs=",
+        "lastModified": 1781003998,
+        "narHash": "sha256-BnqJ0UH6wZMdFXmyDm9ZwoDBuWlcwCTPqny37+WHyQc=",
         "owner": "ms0503",
         "repo": "mc-mod-downloader",
-        "rev": "5ac49ef1bdb14087588cd32e6e69b48cb5114600",
+        "rev": "e646e6e223256275d7edbd0901a9b98bf772735f",
         "type": "github"
       },
       "original": {
         "owner": "ms0503",
         "repo": "mc-mod-downloader",
+        "type": "github"
+      }
+    },
+    "ms0503-lib": {
+      "inputs": {
+        "flake-compat": [
+          "ms0503-pkgs"
+        ],
+        "flake-parts": [
+          "ms0503-pkgs",
+          "flake-parts"
+        ],
+        "git-hooks": [
+          "ms0503-pkgs"
+        ],
+        "nixpkgs": [
+          "ms0503-pkgs",
+          "nixpkgs"
+        ],
+        "systems": "systems_9",
+        "treefmt-nix": [
+          "ms0503-pkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781003244,
+        "narHash": "sha256-Z8v8kCpIFvi5njGTujSWewOTzNI0YTxwgQH0pQ2IQoM=",
+        "owner": "ms0503",
+        "repo": "lib.nix",
+        "rev": "9e35743c40b69686daa10ed7fecca9a77b9d7bb9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ms0503",
+        "repo": "lib.nix",
         "type": "github"
       }
     },
@@ -906,22 +965,23 @@
         "getemoji": "getemoji",
         "git-hooks": [],
         "mc-mod-downloader": "mc-mod-downloader",
+        "ms0503-lib": "ms0503-lib",
         "nixpkgs": [
           "nixpkgs"
         ],
         "nixpkgs-blender3": [],
         "skel": "skel",
-        "systems": "systems_10",
+        "systems": "systems_11",
         "treefmt-nix": [],
         "unicodeescape": "unicodeescape",
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1780990007,
-        "narHash": "sha256-sOeRb5IeCczyshbqh5pTz8YzwY88gLa5npqzj0f4Qls=",
+        "lastModified": 1781004546,
+        "narHash": "sha256-k/6jlLYcvnpLhbrGf6+JVy4S+bEPJtyd5hj8WtrZ0zk=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "27d11dd103d0ffdd449aa595c1b5d35ae25d58f4",
+        "rev": "4f39e47b8d6dc5d531bf736789d5199d3ff85137",
         "type": "github"
       },
       "original": {
@@ -945,7 +1005,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_14",
+        "systems": "systems_15",
         "treefmt-nix": [],
         "vscode-css-variables": "vscode-css-variables"
       },
@@ -1207,7 +1267,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "rust-overlay": "rust-overlay",
-        "systems": "systems_16",
+        "systems": "systems_17",
         "treefmt-nix": "treefmt-nix",
         "wezterm": "wezterm",
         "xremap": "xremap"
@@ -1266,21 +1326,25 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_9",
+        "systems": "systems_10",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
       },
       "locked": {
-        "lastModified": 1780937994,
-        "narHash": "sha256-vS6JFjEHEZu7HbunzXacZTv23wEiqQrqbKkWW7bbjQs=",
+        "lastModified": 1781003997,
+        "narHash": "sha256-jQogde2S5Odwp6d8FzVJVhXRkIP4/P++E66t0sBTKbY=",
         "owner": "ms0503",
         "repo": "skel",
-        "rev": "cf80e35dc03d757590818903778a40812b01afdf",
+        "rev": "7d710aca3d964a422a84a5f56416affadf10fe31",
         "type": "github"
       },
       "original": {
@@ -1401,6 +1465,22 @@
       }
     },
     "systems_16": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_17": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
@@ -1578,21 +1658,25 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_11",
+        "systems": "systems_12",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
       },
       "locked": {
-        "lastModified": 1780938247,
-        "narHash": "sha256-5yA3OiuJMnppAB5cYS59UyMilAAaqVAgf5eSYvc25AI=",
+        "lastModified": 1781003997,
+        "narHash": "sha256-qaeuCEblWC+PuNSLONEjk3u1sd/eyt+B5zlSIzHMMsY=",
         "owner": "ms0503",
         "repo": "unicodeescape",
-        "rev": "4227e70fed775079465c9316131dc316c900ff62",
+        "rev": "8073783af40bc4c8bf50d9e437351e553b3b2607",
         "type": "github"
       },
       "original": {
@@ -1617,21 +1701,25 @@
         "git-hooks": [
           "ms0503-pkgs"
         ],
+        "ms0503-lib": [
+          "ms0503-pkgs",
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_12",
+        "systems": "systems_13",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
       },
       "locked": {
-        "lastModified": 1780938555,
-        "narHash": "sha256-dBp6r70NFELXFUbrFGCBOUj78GNkv5rZDpNJbBL2HQA=",
+        "lastModified": 1781003997,
+        "narHash": "sha256-DaqDcboqNcYVaFDZDduImVk07OBKnYgxdtq9Z4lYGPE=",
         "owner": "ms0503",
         "repo": "urlencode",
-        "rev": "80a02cd97c7c8d98b49b7a524f4996e1b26015fe",
+        "rev": "6bd02aedaafcd347753e7b41d0492b62a7a60f14",
         "type": "github"
       },
       "original": {
@@ -1650,7 +1738,7 @@
           "neovim-custom",
           "nixpkgs"
         ],
-        "systems": "systems_15"
+        "systems": "systems_16"
       },
       "locked": {
         "lastModified": 1779869586,
