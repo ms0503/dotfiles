@@ -89,13 +89,17 @@ in
       position = "0x0";
       scale = 1;
     };
-    on._args = [
-      "hyprland.start"
-      (mkLuaInline ''
-        function()
-          hl.exec_cmd("uwsm app -- openrgb --startminimized")
-        end
-      '')
+    on = [
+      {
+        _args = [
+          "hyprland.start"
+          (mkLuaInline ''
+            function()
+              hl.exec_cmd("uwsm app -- openrgb --startminimized")
+            end
+          '')
+        ];
+      }
     ];
     workspace_rule = [
       {
