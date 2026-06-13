@@ -73,7 +73,7 @@ in
       };
       signing = {
         format = "openpgp";
-        key = "4FCF9A4478F4BB66DC7A51E348EB16DEF513A505";
+        key = "DCF85C4F1287C99B0E4E12B3AB39C1264641DB7E";
         signByDefault = true;
       };
     };
