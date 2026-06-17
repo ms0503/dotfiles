@@ -1,0 +1,67 @@
+(
+    brightness: Med,
+    builtins: {
+        Breathe: (
+            colour1: (
+                b: 0,
+                g: 0,
+                r: 166,
+            ),
+            colour2: (
+                b: 0,
+                g: 0,
+                r: 0,
+            ),
+            direction: Right,
+            mode: Breathe,
+            speed: Med,
+            zone: r#None,
+        ),
+        RainbowCycle: (
+            colour1: (
+                b: 0,
+                g: 0,
+                r: 166,
+            ),
+            colour2: (
+                b: 0,
+                g: 0,
+                r: 0,
+            ),
+            direction: Right,
+            mode: RainbowCycle,
+            speed: Med,
+            zone: r#None,
+        ),
+        Static: (
+            colour1: (
+                b: 0,
+                g: 0,
+                r: 166,
+            ),
+            colour2: (
+                b: 0,
+                g: 0,
+                r: 0,
+            ),
+            direction: Right,
+            mode: Static,
+            speed: Med,
+            zone: r#None,
+        ),
+    },
+    config_name: "aura_tuf.ron",
+    current_mode: Static,
+    enabled: (
+        states: [
+            (
+                awake: true,
+                boot: true,
+                shutdown: true,
+                sleep: true,
+                zone: Keyboard,
+            ),
+        ],
+    ),
+    multizone_on: false,
+)

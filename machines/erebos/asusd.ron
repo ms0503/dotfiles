@@ -1,0 +1,41 @@
+(
+    ac_command: "",
+    ac_profile_tunings: {
+        Performance: {
+            enabled: false,
+            group: {},
+        },
+        Quiet: {
+            enabled: false,
+            group: {},
+        },
+    },
+    armoury_settings: {},
+    base_charge_control_end_threshold: 85,
+    bat_command: "",
+    change_platform_profile_on_ac: true,
+    change_platform_profile_on_battery: true,
+    charge_control_end_threshold: 85,
+    dc_profile_tunings: {
+        Balenced: {
+            enabled: false,
+            group: {},
+        },
+        Performance: {
+            enabled: false,
+            group: {},
+        },
+        Quiet: {
+            enabled: false,
+            group: {},
+        },
+    },
+    disable_nvidia_powerd_on_battery: true,
+    platform_profile_linked_epp: true,
+    platform_profile_on_ac: Performance,
+    platform_profile_on_battery: Quiet,
+    profile_balanced_epp: BalancePerformance,
+    profile_custom_epp: Performance,
+    profile_performance_epp: Performance,
+    profile_quiet_epp: Power,
+)
