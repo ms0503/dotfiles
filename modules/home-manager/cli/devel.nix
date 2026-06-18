@@ -7,7 +7,12 @@
 }:
 let
   inherit (config.ms0503) feature-set;
-  inherit (lib) hiPrio optionalAttrs optionals;
+  inherit (lib)
+    hiPrio
+    mergeAttrsList
+    optionalAttrs
+    optionals
+    ;
   inherit (myLib) const;
   jdk17-wrapped = pkgs.stdenvNoCC.mkDerivation {
     inherit (pkgs.jdk17) version;
@@ -93,21 +98,23 @@ in
         zig
       ]
     );
-  programs = {
-    java = {
-      enable = true;
-      package = pkgs.jre25_minimal;
-    };
-  }
-  // optionalAttrs (const.feature-sets.lite <= feature-set) {
-    bun.enable = true;
-    go = {
-      enable = true;
-      env.GOBIN = ".local/bin";
-    };
-    java = {
-      enable = true;
-      package = pkgs.temurin-bin-25;
-    };
-  };
+  programs = mergeAttrsList [
+    {
+      java = {
+        enable = true;
+        package = pkgs.jre25_minimal;
+      };
+    }
+    (optionalAttrs (const.feature-sets.lite <= feature-set) {
+      bun.enable = true;
+      go = {
+        enable = true;
+        env.GOBIN = ".local/bin";
+      };
+      java = {
+        enable = true;
+        package = pkgs.temurin-bin-25;
+      };
+    })
+  ];
 }

@@ -8,6 +8,7 @@
 }:
 let
   inherit (lib)
+    mergeAttrsList
     mkEnableOption
     mkIf
     mkOption
@@ -44,14 +45,16 @@ in
       type = "fcitx5";
     };
     services = optionalAttrs (cfg.type == "hazkey") {
-      hazkey = {
-        enable = true;
-      }
-      // optionalAttrs cfg.hazkey.enableGpu {
-        server.package = inputs'.nix-hazkey.packages.hazkey-server.override {
-          enableVulkan = true;
-        };
-      };
+      hazkey = mergeAttrsList [
+        {
+          enable = true;
+        }
+        (optionalAttrs cfg.hazkey.enableGpu {
+          server.package = inputs'.nix-hazkey.packages.hazkey-server.override {
+            enableVulkan = true;
+          };
+        })
+      ];
     };
   };
   options.ms0503.im = {

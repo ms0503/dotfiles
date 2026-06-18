@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mergeAttrsList mkDefault mkIf;
   inherit (theme) colors;
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
@@ -78,10 +78,12 @@ let
     force-opaque-windows
     |> builtins.map (
       win:
-      win
-      // {
-        opaque = true;
-      }
+      mergeAttrsList [
+        win
+        {
+          opaque = true;
+        }
+      ]
     );
 in
 {
@@ -150,7 +152,7 @@ in
           repeat_rate = 30;
           touchpad = {
             natural_scroll = true;
-            scroll_factor = lib.mkDefault 0.1;
+            scroll_factor = mkDefault 0.1;
           };
         };
         master.new_status = "slave";
