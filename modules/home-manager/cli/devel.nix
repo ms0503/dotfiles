@@ -49,7 +49,7 @@ let
   };
 in
 {
-  home.packages =
+  home.packages = builtins.concatLists [
     (with pkgs; [
       (hiPrio gcc)
       (hiPrio nodejs-slim_latest)
@@ -66,26 +66,29 @@ in
       nodejs-slim_latest.npm
       uv
     ])
-    ++ (with pkgs.python312Packages; [
+    (with pkgs.python312Packages; [
       build
       python
       setuptools
       wheel
     ])
-    ++ optionals (const.feature-sets.lite <= feature-set) (
+    (optionals (const.feature-sets.lite <= feature-set) (
       with pkgs;
       [
-        (fenix.combine (
-          [
-            fenix.latest.toolchain
+        (
+          builtins.concatLists [
+            [
+              fenix.latest.toolchain
+            ]
+            (optionals (const.feature-sets.full <= feature-set) [
+              fenix.stable.toolchain
+              fenix.targets.i686-unknown-linux-gnu.latest.rust-std
+              fenix.targets.i686-unknown-linux-gnu.stable.rust-std
+            ])
+            config.ms0503.rust.extraTools
           ]
-          ++ optionals (const.feature-sets.full <= feature-set) [
-            fenix.stable.toolchain
-            fenix.targets.i686-unknown-linux-gnu.latest.rust-std
-            fenix.targets.i686-unknown-linux-gnu.stable.rust-std
-          ]
-          ++ config.ms0503.rust.extraTools
-        ))
+          |> fenix.combine
+        )
         (hiPrio rust-analyzer-nightly)
         arduino-cli
         deno
@@ -97,7 +100,8 @@ in
         mono
         zig
       ]
-    );
+    ))
+  ];
   programs = mergeAttrsList [
     {
       java = {

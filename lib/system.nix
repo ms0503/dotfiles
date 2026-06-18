@@ -36,9 +36,12 @@ in
             "qtwebkit-5.212.0-alpha4"
           ];
         };
-        overlays = overlays ++ [
-          nh.overlays.default
-          self.overlays.default
+        overlays = builtins.concatLists [
+          overlays
+          [
+            nh.overlays.default
+            self.overlays.default
+          ]
         ];
       };
     in
@@ -57,16 +60,15 @@ in
             ;
           theme = (import ../themes) theme;
         };
-        modules = [
-          neovim-custom.homeManagerModules.default
-          self.homeManagerModules.default
-          {
-            home = {
-              inherit username;
-              homeDirectory = "/home/${username}";
-              packages = (
-                with myPkgs;
-                [
+        modules = builtins.concatLists [
+          [
+            neovim-custom.homeManagerModules.default
+            self.homeManagerModules.default
+            {
+              home = {
+                inherit username;
+                homeDirectory = "/home/${username}";
+                packages = with myPkgs; [
                   awww-bing
                   colortool
                   generatehex
@@ -75,17 +77,17 @@ in
                   skel
                   unicodeescape
                   urlencode
-                ]
-              );
-              stateVersion = "24.11";
-            };
-            programs = {
-              home-manager.enable = true;
-              git.enable = true;
-            };
-          }
-        ]
-        ++ modules;
+                ];
+                stateVersion = "24.11";
+              };
+              programs = {
+                home-manager.enable = true;
+                git.enable = true;
+              };
+            }
+          ]
+          modules
+        ];
       }
     );
   mkNixosSystem =
@@ -102,24 +104,26 @@ in
       { inputs', ... }:
       nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [
-          lanzaboote.nixosModules.lanzaboote
-          neovim-custom.nixosModules.default
-          nix-hazkey.nixosModules.hazkey
-          nixos-wsl.nixosModules.default
-          xremap.nixosModules.default
-          self.nixosModules.default
-          {
-            nixpkgs.overlays = [
-              nh.overlays.default
-              self.overlays.default
-            ];
-            users.extraGroups.vboxusers.members = [
-              username
-            ];
-          }
-        ]
-        ++ modules;
+        modules = builtins.concatLists [
+          [
+            lanzaboote.nixosModules.lanzaboote
+            neovim-custom.nixosModules.default
+            nix-hazkey.nixosModules.hazkey
+            nixos-wsl.nixosModules.default
+            xremap.nixosModules.default
+            self.nixosModules.default
+            {
+              nixpkgs.overlays = [
+                nh.overlays.default
+                self.overlays.default
+              ];
+              users.extraGroups.vboxusers.members = [
+                username
+              ];
+            }
+          ]
+          modules
+        ];
         specialArgs = {
           inherit
             hostname

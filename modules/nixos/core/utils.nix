@@ -13,7 +13,7 @@ let
   cfgWsl = config.ms0503.wsl;
 in
 {
-  environment.systemPackages =
+  environment.systemPackages = builtins.concatLists [
     (with pkgs; [
       acpi
       bash
@@ -48,16 +48,17 @@ in
       uutils-coreutils-noprefix
       zip
     ])
-    ++ (with myPkgs; [
+    (with myPkgs; [
       mc-mod-downloader
       unzip-unicode
     ])
-    ++ optionals (const.feature-sets.full <= feature-set) (
+    (optionals (const.feature-sets.full <= feature-set) (
       with pkgs;
       [
         sl
       ]
-    );
+    ))
+  ];
   ms0503.neovim = {
     defaultEditor = true;
     enable = true;

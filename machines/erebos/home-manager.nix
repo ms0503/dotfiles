@@ -10,21 +10,22 @@ let
 in
 {
   home = {
-    packages =
+    packages = builtins.concatLists [
       (with pkgs; [
         gcc-arm-embedded
         openocd
         platformio-core
         stm32cubemx
       ])
-      ++ (with myPkgs; [
+      (with myPkgs; [
         (fakevrchat.override rec {
           compat-client-install-path = "/home/${username}/.local/share/Steam";
           compat-data-path = "${compat-client-install-path}/steamapps/compatdata/438100";
           proton-path = "${proton-ge-rtsp-bin.steamcompattool}/proton";
           vrchat-exe-path = "${compat-client-install-path}/steamapps/common/VRChat/VRChat.exe";
         })
-      ]);
+      ])
+    ];
     pointerCursor = {
       gtk.enable = true;
       name = "Milk1";

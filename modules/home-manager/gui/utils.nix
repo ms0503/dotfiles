@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) makeBinPath mkIf;
   cfg = config.ms0503.gui;
   godotPackages = pkgs.godotPackages_4_4;
 in
@@ -20,7 +20,7 @@ in
           recursive = true;
           source = godotPackages.export-templates-bin;
         };
-      packages =
+      packages = builtins.concatLists [
         (with pkgs; [
           (blender.override {
             cudaSupport = config.ms0503.gpu == "nvidia";
@@ -40,7 +40,7 @@ in
                   preFixup = prev.preFixup + ''
                     gappsWrapperArgs+=(
                       --prefix PATH : ${
-                        lib.makeBinPath [
+                        makeBinPath [
                           python
                         ]
                       }
@@ -61,10 +61,10 @@ in
           xdg-utils
           zoom-us
         ])
-        ++ (with godotPackages; [
+        (with godotPackages; [
           godot-mono
         ])
-        ++ (
+        (
           if config.ms0503.wayland.enable then
             with myPkgs;
             [
@@ -77,7 +77,8 @@ in
               discord-canary
               slack
             ]
-        );
+        )
+      ];
     };
     programs.urxvt = {
       enable = true;

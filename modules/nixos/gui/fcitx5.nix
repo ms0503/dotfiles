@@ -31,15 +31,12 @@ in
     i18n.inputMethod = {
       enable = true;
       fcitx5 = {
-        addons =
-          with pkgs;
-          with myPkgs;
-          (
-            optional (cfg.type == "karukan") karukan
-            ++ optional (cfg.type == "mozc") fcitx5-mozc
-            ++ optional (cfg.type == "mozc-ut") fcitx5-mozc-ut
-            ++ optional (cfg.type == "mozkey") fcitx5-mozkey
-          );
+        addons = builtins.concatLists [
+          (optional (cfg.type == "karukan") myPkgs.karukan)
+          (optional (cfg.type == "mozc") pkgs.fcitx5-mozc)
+          (optional (cfg.type == "mozc-ut") pkgs.fcitx5-mozc-ut)
+          (optional (cfg.type == "mozkey") myPkgs.fcitx5-mozkey)
+        ];
         waylandFrontend = cfgWayland.enable;
       };
       type = "fcitx5";

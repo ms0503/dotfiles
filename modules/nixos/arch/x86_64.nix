@@ -6,15 +6,17 @@ let
 in
 {
   config = mkIf (cfg == "x86_64") {
-    boot.binfmt.emulatedSystems = [
-      "aarch64-linux"
-      "armv7l-linux"
-      "wasm32-wasi"
-      "wasm64-wasi"
-    ]
-    ++ optionals (!cfgWsl.enable) [
-      "i686-windows"
-      "x86_64-windows"
+    boot.binfmt.emulatedSystems = builtins.concatLists [
+      [
+        "aarch64-linux"
+        "armv7l-linux"
+        "wasm32-wasi"
+        "wasm64-wasi"
+      ]
+      (optionals (!cfgWsl.enable) [
+        "i686-windows"
+        "x86_64-windows"
+      ])
     ];
   };
 }

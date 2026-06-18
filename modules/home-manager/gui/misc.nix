@@ -13,8 +13,11 @@ in
     home.packages = with pkgs; [
       (prismlauncher.overrideAttrs (
         _: prev: {
-          qtWrapperArgs = prev.qtWrapperArgs ++ [
-            "--unset WAYLAND_DISPLAY"
+          qtWrapperArgs = builtins.concatLists [
+            prev.qtWrapperArgs
+            [
+              "--unset WAYLAND_DISPLAY"
+            ]
           ];
         }
       ))

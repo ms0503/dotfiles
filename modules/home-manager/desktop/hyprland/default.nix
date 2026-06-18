@@ -21,7 +21,7 @@ in
 {
   config = mkIf (cfgGui.enable && cfg.enable) {
     home = {
-      packages =
+      packages = builtins.concatLists [
         (with pkgs; [
           awww
           brightnessctl
@@ -35,9 +35,10 @@ in
           wl-clipboard
           wlogout
         ])
-        ++ [
+        [
           inputs'.hyprsome.packages.default
-        ];
+        ]
+      ];
       sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
     };
     wayland.windowManager.hyprland = mergeAttrsList [
