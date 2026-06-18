@@ -116,6 +116,10 @@ in
     };
   }
   // optionalAttrs (const.feature-sets.lite <= feature-set) {
+    fastfetch = {
+      enable = true;
+      settings = import ./fastfetch-config.nix;
+    };
     lazygit.enable = true;
     yt-dlp = {
       enable = true;

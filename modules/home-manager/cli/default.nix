@@ -4,7 +4,7 @@
     ./misc.nix
     ./nix.nix
     ./nvim.nix
-    ./utils.nix
+    ./utils
     ./vcs.nix
   ];
 }

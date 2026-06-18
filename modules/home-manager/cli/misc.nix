@@ -11,18 +11,11 @@ let
   inherit (myLib) const;
 in
 {
-  home.packages =
-    optionals (const.feature-sets.lite <= feature-set) (
-      with pkgs;
-      [
-        fastfetch
-      ]
-    )
-    ++ optionals (const.feature-sets.full <= feature-set) (
-      with pkgs;
-      [
-        cava
-        sl
-      ]
-    );
+  home.packages = optionals (const.feature-sets.full <= feature-set) (
+    with pkgs;
+    [
+      cava
+      sl
+    ]
+  );
 }
