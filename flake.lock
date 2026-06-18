@@ -1010,11 +1010,11 @@
         "vscode-css-variables": "vscode-css-variables"
       },
       "locked": {
-        "lastModified": 1781410733,
-        "narHash": "sha256-mqXlnNzbp+bVwwacS45snXMsKjLfS1pIbcCBhWB3nV8=",
+        "lastModified": 1781816042,
+        "narHash": "sha256-D8NP6R3l0G06yRo4DUqXLvYhZPETcm4sG2cQiGPwZCM=",
         "owner": "ms0503",
         "repo": "neovim-custom",
-        "rev": "13f95732272d466a309608403532b3c31aba0f26",
+        "rev": "5c0b563dfc2eeee1e203bed43bce4b1fae156f26",
         "type": "github"
       },
       "original": {
