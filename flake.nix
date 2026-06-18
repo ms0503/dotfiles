@@ -210,32 +210,34 @@
           {
             devShells = {
               bootstrap = pkgs.mkShell {
-                packages =
+                packages = builtins.concatLists [
                   (with pkgs; [
                     ghq
                     git
                     gnupg
                   ])
-                  ++ (with inputs'.home-manager.packages; [
+                  (with inputs'.home-manager.packages; [
                     home-manager
                   ])
-                  ++ (with inputs'.neovim-custom.packages; [
+                  (with inputs'.neovim-custom.packages; [
                     default
                   ])
-                  ++ (with inputs'.nix.packages; [
+                  (with inputs'.nix.packages; [
                     nix
-                  ]);
+                  ])
+                ];
               };
               default = pkgs.mkShell {
-                packages =
+                packages = builtins.concatLists [
                   config.pre-commit.settings.enabledPackages
-                  ++ (config.treefmt.build.programs |> lib.attrValues)
-                  ++ (with pkgs; [
+                  (config.treefmt.build.programs |> lib.attrValues)
+                  (with pkgs; [
                     nvfetcher
                   ])
-                  ++ (with inputs'.nh.packages; [
+                  (with inputs'.nh.packages; [
                     nh
-                  ]);
+                  ])
+                ];
                 shellHook = ''
                   ${config.pre-commit.shellHook}
                 '';

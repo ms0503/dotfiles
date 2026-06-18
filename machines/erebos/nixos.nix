@@ -24,19 +24,21 @@
       }
     ];
   };
-  imports = [
-    ./hardware-configuration.nix
-  ]
-  ++ (with inputs.nixos-hardware.nixosModules; [
-    asus-battery
-    common-cpu-amd
-    common-cpu-amd-pstate
-    common-cpu-amd-zenpower
-    common-gpu-nvidia-nonprime
-    common-hidpi
-    common-pc-laptop
-    common-pc-ssd
-  ]);
+  imports = builtins.concatLists [
+    [
+      ./hardware-configuration.nix
+    ]
+    (with inputs.nixos-hardware.nixosModules; [
+      asus-battery
+      common-cpu-amd
+      common-cpu-amd-pstate
+      common-cpu-amd-zenpower
+      common-gpu-nvidia-nonprime
+      common-hidpi
+      common-pc-laptop
+      common-pc-ssd
+    ])
+  ];
   networking.firewall.allowedTCPPorts = [
     3000
     80

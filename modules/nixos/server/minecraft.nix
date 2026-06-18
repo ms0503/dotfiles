@@ -6,6 +6,9 @@
 }:
 let
   inherit (lib)
+    flatten
+    makeLibraryPath
+    mapAttrsToList
     mkEnableOption
     mkIf
     mkOption
@@ -34,14 +37,15 @@ in
 {
   config = mkIf cfg.enable {
     networking.firewall = {
-      allowedTCPPorts =
+      allowedTCPPorts = builtins.concatLists [
         (cfg.servers |> builtins.attrValues |> builtins.map (server: server.port))
-        ++ (
+        (
           cfg.servers
           |> builtins.attrValues
           |> builtins.filter (server: server.rcon.enable)
           |> builtins.map (server: server.rcon.port)
-        );
+        )
+      ];
       allowedUDPPorts =
         cfg.servers
         |> builtins.attrValues
@@ -69,7 +73,7 @@ in
             [
               udev
             ]
-            |> lib.makeLibraryPath;
+            |> makeLibraryPath;
           requires = [
             "minecraft-server@%i.socket"
           ];
@@ -130,14 +134,14 @@ in
       targets = {
         multi-user.wants =
           cfg.servers
-          |> lib.mapAttrsToList (
+          |> mapAttrsToList (
             name: _: [
               "bluemap-permission-fix@${name}.service"
               "minecraft-server@${name}.service"
             ]
           )
-          |> lib.flatten;
-        timers.wants = cfg.servers |> lib.mapAttrsToList (name: _: "bluemap-permission-fix@${name}.timer");
+          |> flatten;
+        timers.wants = cfg.servers |> mapAttrsToList (name: _: "bluemap-permission-fix@${name}.timer");
       };
       timers."bluemap-permission-fix@" = {
         description = "Timer for bluemap-permission-fix";
@@ -150,7 +154,7 @@ in
       };
       tmpfiles.rules =
         cfg.servers
-        |> lib.mapAttrsToList (
+        |> mapAttrsToList (
           name: server:
           let
             dotenv = pkgs.writeText ".env" ''

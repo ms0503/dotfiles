@@ -5,7 +5,7 @@ in
 {
   networking = {
     firewall = {
-      allowedTCPPorts = [ ] ++ config.services.openssh.ports;
+      allowedTCPPorts = config.services.openssh.ports;
       allowedUDPPorts = [
         config.services.tailscale.port
       ];

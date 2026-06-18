@@ -31,17 +31,18 @@ in
           "Noto Color Emoji"
         ];
       };
-      packages =
+      packages = builtins.concatLists [
         (with pkgs; [
           nerd-fonts.sauce-code-pro
           noto-fonts-color-emoji
           source-han-code-jp
         ])
-        ++ (with myPkgs; [
+        (with myPkgs; [
           noto-fonts-cjk-sans-non-variable
           noto-fonts-cjk-serif-non-variable
           noto-fonts-non-variable
-        ]);
+        ])
+      ];
     };
   };
 }

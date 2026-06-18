@@ -13,7 +13,7 @@ let
   inherit (myLib) const;
 in
 {
-  home.packages =
+  home.packages = builtins.concatLists [
     (with pkgs; [
       cachix
       curl
@@ -36,11 +36,11 @@ in
       wget
       zip
     ])
-    ++ (with myPkgs; [
+    (with myPkgs; [
       unzip-unicode
       zifu
     ])
-    ++ optionals (const.feature-sets.lite <= feature-set) (
+    (optionals (const.feature-sets.lite <= feature-set) (
       with pkgs;
       [
         (if (const.feature-sets.full <= feature-set) then ffmpeg-full else ffmpeg)
@@ -51,8 +51,8 @@ in
         rcodesign
         vrc-get
       ]
-    )
-    ++ optionals (const.feature-sets.full <= feature-set) (
+    ))
+    (optionals (const.feature-sets.full <= feature-set) (
       with pkgs;
       [
         gemini-cli
@@ -60,7 +60,8 @@ in
         silicon
         zenn-cli
       ]
-    );
+    ))
+  ];
   programs = mergeAttrsList [
     {
       bat = {

@@ -27,13 +27,14 @@ in
         dedicatedServer.openFirewall = true;
         enable = true;
         extest.enable = true;
-        extraCompatPackages =
+        extraCompatPackages = builtins.concatLists [
           (with pkgs; [
             proton-ge-bin
           ])
-          ++ (with myPkgs; [
+          (with myPkgs; [
             proton-ge-rtsp-bin
-          ]);
+          ])
+        ];
         extraPackages = with pkgs; [
           json-glib
           libGLU

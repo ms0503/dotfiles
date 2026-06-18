@@ -5,6 +5,9 @@
   username,
   ...
 }:
+let
+  inherit (lib) mkForce;
+in
 {
   boot = {
     kernel.sysctl = {
@@ -16,22 +19,24 @@
   };
   environment.systemPackages = [ ];
   hardware.nvidia = {
-    powerManagement.enable = lib.mkForce true;
+    powerManagement.enable = mkForce true;
     prime = {
       intelBusId = "PCI:0@0:2:0";
       nvidiaBusId = "PCI:1@0:0:0";
     };
   };
-  imports = [
-    ./hardware-configuration.nix
-  ]
-  ++ (with inputs.nixos-hardware.nixosModules; [
-    common-cpu-intel
-    common-gpu-nvidia
-    common-hidpi
-    common-pc
-    common-pc-ssd
-  ]);
+  imports = builtins.concatLists [
+    [
+      ./hardware-configuration.nix
+    ]
+    (with inputs.nixos-hardware.nixosModules; [
+      common-cpu-intel
+      common-gpu-nvidia
+      common-hidpi
+      common-pc
+      common-pc-ssd
+    ])
+  ];
   networking.firewall.allowedTCPPorts = [
     80
   ];

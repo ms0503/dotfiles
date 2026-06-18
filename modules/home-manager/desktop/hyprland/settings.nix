@@ -179,57 +179,59 @@ in
           ];
         }
       ];
-      window_rule = [
-        {
-          float = true;
-          match = {
-            class = "^$";
-            title = "^$";
-          };
-          no_focus = true;
-        }
-        {
-          match.class = "fcitx";
-          pseudo = true;
-        }
-        {
-          float = true;
-          match = {
-            class = "jetbrains-.*";
-            title = "win[0-9]+";
-          };
-          no_focus = true;
-        }
-        {
-          float = true;
-          match = {
-            class = "kicad";
-            title = ".* — フットプリント エディター";
-          };
-        }
-        {
-          float = true;
-          match = {
-            class = "kicad";
-            title = "シンボル選択.*";
-          };
-        }
-        {
-          float = true;
-          match = {
-            class = "kicad";
-            title = "フットプリントを割り当て";
-          };
-        }
-        {
-          float = true;
-          match = {
-            class = "kicad";
-            title = ".* — シンボル エディター";
-          };
-        }
-      ]
-      ++ opaque-window-rules;
+      window_rule = builtins.concatLists [
+        [
+          {
+            float = true;
+            match = {
+              class = "^$";
+              title = "^$";
+            };
+            no_focus = true;
+          }
+          {
+            match.class = "fcitx";
+            pseudo = true;
+          }
+          {
+            float = true;
+            match = {
+              class = "jetbrains-.*";
+              title = "win[0-9]+";
+            };
+            no_focus = true;
+          }
+          {
+            float = true;
+            match = {
+              class = "kicad";
+              title = ".* — フットプリント エディター";
+            };
+          }
+          {
+            float = true;
+            match = {
+              class = "kicad";
+              title = "シンボル選択.*";
+            };
+          }
+          {
+            float = true;
+            match = {
+              class = "kicad";
+              title = "フットプリントを割り当て";
+            };
+          }
+          {
+            float = true;
+            match = {
+              class = "kicad";
+              title = ".* — シンボル エディター";
+            };
+          }
+        ]
+        opaque-window-rules
+      ];
     };
   };
 }

@@ -6,6 +6,10 @@
   username,
   ...
 }:
+let
+  inherit (lib) splitString;
+  inherit (myLib.network) blockIpv4FromList blockIpv6FromList;
+in
 {
   boot = {
     kernel.sysctl = {
@@ -16,14 +20,16 @@
     loader.grub.device = "/dev/vda";
   };
   environment.systemPackages = [ ];
-  imports = [
-    ./hardware-configuration.nix
-  ]
-  ++ (with inputs.nixos-hardware.nixosModules; [
-    common-cpu-intel-cpu-only
-    common-pc
-    common-pc-ssd
-  ]);
+  imports = builtins.concatLists [
+    [
+      ./hardware-configuration.nix
+    ]
+    (with inputs.nixos-hardware.nixosModules; [
+      common-cpu-intel-cpu-only
+      common-pc
+      common-pc-ssd
+    ])
+  ];
   networking.firewall = {
     allowedTCPPorts = [
       25565
@@ -39,15 +45,15 @@
       [
         (
           builtins.readFile ./block-ips-v4.txt
-          |> lib.splitString "\n"
+          |> splitString "\n"
           |> builtins.filter (line: line != "")
-          |> myLib.network.blockIpv4FromList
+          |> blockIpv4FromList
         )
         (
           builtins.readFile ./block-ips-v6.txt
-          |> lib.splitString "\n"
+          |> splitString "\n"
           |> builtins.filter (line: line != "")
-          |> myLib.network.blockIpv6FromList
+          |> blockIpv6FromList
         )
       ]
       |> builtins.concatStringsSep "\n";
