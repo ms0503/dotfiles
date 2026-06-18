@@ -54,7 +54,7 @@ in
       (hiPrio gcc)
       (hiPrio nodejs-slim_latest)
       (pnpm.override {
-        nodejs = nodejs_latest;
+        nodejs-slim = nodejs-slim_latest;
       })
       (yarn-berry.override {
         nodejs = nodejs_latest;
