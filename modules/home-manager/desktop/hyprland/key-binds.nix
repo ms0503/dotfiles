@@ -7,13 +7,14 @@
 let
   inherit (config.ms0503) terminal;
   inherit (lib) mkIf mkLuaInline;
+  inherit (lib.generators) toLua;
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
   execCmd =
     cmd:
     "hl.dsp.exec_cmd(${
       cmd
-      |> lib.generators.toLua {
+      |> toLua {
         multiline = false;
       }
     })";
