@@ -168,11 +168,19 @@
     ];
   };
   outputs =
-    prevInputs@{ flake-parts, systems, ... }:
+    prevInputs@{
+      flake-parts,
+      nixpkgs,
+      systems,
+      ...
+    }:
     let
-      inputs = prevInputs // {
-        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/b11c013de609eb315bcff990d845e188cccb589e";
-      };
+      inputs = nixpkgs.lib.mergeAttrsList [
+        prevInputs
+        {
+          private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/b11c013de609eb315bcff990d845e188cccb589e";
+        }
+      ];
     in
     flake-parts.lib.mkFlake { inherit inputs; } (
       { withSystem, ... }:

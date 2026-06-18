@@ -8,6 +8,7 @@
 }:
 let
   inherit (lib)
+    mergeAttrsList
     mkIf
     mkLuaInline
     mkOption
@@ -39,20 +40,22 @@ in
         ];
       sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
     };
-    wayland.windowManager.hyprland = {
-      configType = "lua";
-      enable = true;
-      settings = {
-        lib._var = mkLuaInline "require('lib')";
-        tool._var = mkLuaInline "require('tool')";
-      };
-      systemd.enable = false;
-      xwayland.enable = true;
-    }
-    // optionalAttrs isNixOS {
-      package = null;
-      portalPackage = null;
-    };
+    wayland.windowManager.hyprland = mergeAttrsList [
+      {
+        configType = "lua";
+        enable = true;
+        settings = {
+          lib._var = mkLuaInline "require('lib')";
+          tool._var = mkLuaInline "require('tool')";
+        };
+        systemd.enable = false;
+        xwayland.enable = true;
+      }
+      (optionalAttrs isNixOS {
+        package = null;
+        portalPackage = null;
+      })
+    ];
     xdg.configFile = {
       "hypr/lib.lua".source = ./lib.lua;
       "hypr/tool.lua".source = ./tool.lua;

@@ -1,14 +1,22 @@
 --- a/flake.nix
 +++ b/flake.nix
-@@ -155,12 +155,7 @@
+@@ -168,20 +168,7 @@
      ];
    };
    outputs =
--    prevInputs@{ flake-parts, systems, ... }:
+-    prevInputs@{
+-      flake-parts,
+-      nixpkgs,
+-      systems,
+-      ...
+-    }:
 -    let
--      inputs = prevInputs // {
--        private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/b11c013de609eb315bcff990d845e188cccb589e";
--      };
+-      inputs = nixpkgs.lib.mergeAttrsList [
+-        prevInputs
+-        {
+-          private-pkgs = builtins.getFlake "github:ms0503/private-pkgs.nix/b11c013de609eb315bcff990d845e188cccb589e";
+-        }
+-      ];
 -    in
 +    inputs@{ flake-parts, systems, ... }:
      flake-parts.lib.mkFlake { inherit inputs; } (

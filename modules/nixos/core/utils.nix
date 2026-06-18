@@ -8,7 +8,7 @@
 }:
 let
   inherit (config.ms0503) feature-set;
-  inherit (lib) optionalAttrs optionals;
+  inherit (lib) mergeAttrsList optionalAttrs optionals;
   inherit (myLib) const;
   cfgWsl = config.ms0503.wsl;
 in
@@ -104,21 +104,23 @@ in
       mountOnMedia = true;
     };
   };
-  virtualisation = {
-    docker = {
-      enable = true;
-      rootless = {
+  virtualisation = mergeAttrsList [
+    {
+      docker = {
         enable = true;
-        setSocketVariable = true;
+        rootless = {
+          enable = true;
+          setSocketVariable = true;
+        };
       };
-    };
-  }
-  // optionalAttrs (!cfgWsl.enable && const.feature-sets.full <= feature-set) {
-    virtualbox.host = {
-      addNetworkInterface = false;
-      enable = true;
-      enableExtensionPack = true;
-      enableKvm = true;
-    };
-  };
+    }
+    (optionalAttrs (!cfgWsl.enable && const.feature-sets.full <= feature-set) {
+      virtualbox.host = {
+        addNetworkInterface = false;
+        enable = true;
+        enableExtensionPack = true;
+        enableKvm = true;
+      };
+    })
+  ];
 }
