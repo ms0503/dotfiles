@@ -2,9 +2,11 @@
   config,
   lib,
   modulesPath,
-  pkgs,
   ...
 }:
+let
+  inherit (lib) mkDefault;
+in
 {
   boot = {
     extraModulePackages = [ ];
@@ -42,11 +44,11 @@
       fsType = "ext4";
     };
   };
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
+    "${modulesPath}/installer/scan/not-detected.nix"
   ];
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = mkDefault "x86_64-linux";
   swapDevices = [
     {
       device = "/dev/disk/by-uuid/5430ace0-7cac-4a40-83bc-0e98013316df";

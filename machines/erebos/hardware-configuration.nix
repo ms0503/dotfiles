@@ -4,6 +4,9 @@
   modulesPath,
   ...
 }:
+let
+  inherit (lib) mkDefault;
+in
 {
   boot = {
     extraModulePackages = [ ];
@@ -34,12 +37,12 @@
       ];
     };
   };
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
+    "${modulesPath}/installer/scan/not-detected.nix"
   ];
-  networking.useDHCP = lib.mkDefault true;
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  networking.useDHCP = mkDefault true;
+  nixpkgs.hostPlatform = mkDefault "x86_64-linux";
   swapDevices = [
     {
       device = "/dev/disk/by-uuid/0a943e07-390e-4810-a528-d1845c862246";
