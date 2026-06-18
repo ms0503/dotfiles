@@ -68,6 +68,7 @@ in
   programs = {
     git.enable = true;
     less.enable = true;
+    nano.enable = false;
     yazi.enable = true;
     zsh = {
       autosuggestions = {
