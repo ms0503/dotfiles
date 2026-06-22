@@ -36,6 +36,7 @@ in
           nerd-fonts.sauce-code-pro
           noto-fonts-color-emoji
           source-han-code-jp
+          wqy_microhei # for old unity games
         ])
         (with myPkgs; [
           noto-fonts-cjk-sans-non-variable
