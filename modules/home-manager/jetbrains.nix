@@ -15,6 +15,7 @@ in
       gateway
       idea
       rider
+      rust-rover
       webstorm
     ];
   };
