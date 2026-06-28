@@ -14,19 +14,39 @@
     im.enable = false;
     media.enable = false;
     rust.extraTools = [ ];
-    server.minecraft = {
-      enable = true;
-      servers.create-aeronautics = {
-        jre = pkgs.javaPackages.compiler.temurin-bin.jre-21;
-        port = 25565;
-        query = {
-          enable = true;
+    server = {
+      minecraft = {
+        enable = true;
+        servers.create-aeronautics = {
+          jre = pkgs.javaPackages.compiler.temurin-bin.jre-21;
           port = 25565;
+          query = {
+            enable = true;
+            port = 25565;
+          };
+          rcon = {
+            enable = true;
+            port = 25575;
+          };
         };
-        rcon = {
-          enable = true;
-          port = 25575;
-        };
+      };
+      nix-repo-updater = {
+        enable = true;
+        repos = [
+          {
+            delay = 15 * 60;
+            owner = "ms0503";
+            repo = "dotfiles";
+          }
+          {
+            owner = "ms0503";
+            repo = "neovim-custom";
+          }
+          {
+            owner = "ms0503";
+            repo = "pkgs.nix";
+          }
+        ];
       };
     };
     shell.type = "zsh";

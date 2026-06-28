@@ -14,7 +14,10 @@
     im.enable = false;
     media.enable = false;
     rust.extraTools = [ ];
-    server.minecraft.enable = false;
+    server = {
+      minecraft.enable = false;
+      nix-repo-updater.enable = false;
+    };
     shell.type = "zsh";
     steam.enable = false;
     wayland.enable = false;
