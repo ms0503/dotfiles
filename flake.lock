@@ -559,11 +559,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1782592679,
-        "narHash": "sha256-sP0xRyoV4NpY1DwK/eA3S+HTz9Lx/h9HraHacTsOjqk=",
+        "lastModified": 1782640197,
+        "narHash": "sha256-/KPaAKGDmVWCw8rr4ZZILg6wXxb9vl8sjkQ7FwWyuEI=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "ca877baddeabc16583ac57286683ad1347ff5f02",
+        "rev": "28bbe66da7f2fc1f1613677f37511c67731fafd5",
         "type": "github"
       },
       "original": {
@@ -971,11 +971,11 @@
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1782429160,
-        "narHash": "sha256-+46oT/ch2LAbGwSXJOg1Ub9jNxdUJQ0tivZACq5xnDM=",
+        "lastModified": 1782630252,
+        "narHash": "sha256-SO7/kP5Snyn5+oBRFINLSWPQFkkovwz0+W5x54da/cc=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "1f37f7241e080958038e30af2da12d7821913078",
+        "rev": "2e51080db5f393b8dd909114efb85af2bfd7570a",
         "type": "github"
       },
       "original": {
@@ -1004,11 +1004,11 @@
         "vscode-css-variables": "vscode-css-variables"
       },
       "locked": {
-        "lastModified": 1782619327,
-        "narHash": "sha256-uSJWche5sg0L3eOSaC79FzVRYx3/etyVtLy6z91lSZU=",
+        "lastModified": 1782629953,
+        "narHash": "sha256-+Jn+dcflqGfHwd4Jc7svNcUeMmljA5ZnJkT1K5ZmzlU=",
         "owner": "ms0503",
         "repo": "neovim-custom",
-        "rev": "9c7cf8af13d7d83af090d8d148fb17172701323e",
+        "rev": "08c6f61ffee44e8cda25caefbda9789deda7b8c1",
         "type": "github"
       },
       "original": {
