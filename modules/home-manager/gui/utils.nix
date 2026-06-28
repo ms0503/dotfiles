@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) makeBinPath mkIf;
+  inherit (lib) mkIf;
   cfg = config.ms0503.gui;
   godotPackages = pkgs.godotPackages_4_4;
 in
@@ -26,31 +26,8 @@ in
             cudaSupport = config.ms0503.gpu == "nvidia";
             rocmSupport = config.ms0503.gpu == "radeon";
           })
-          (gimp3-with-plugins.override {
-            gimpPlugins = gimp3Plugins.override {
-              gimp = gimp3.overrideAttrs (
-                let
-                  python = python3.withPackages (
-                    pp: with pp; [
-                      pygobject3
-                    ]
-                  );
-                in
-                _: prev: {
-                  preFixup = prev.preFixup + ''
-                    gappsWrapperArgs+=(
-                      --prefix PATH : ${
-                        makeBinPath [
-                          python
-                        ]
-                      }
-                    )
-                  '';
-                }
-              );
-            };
-          })
           aseprite
+          gimp3-with-plugins
           kicad
           libreoffice-fresh
           networkmanagerapplet
