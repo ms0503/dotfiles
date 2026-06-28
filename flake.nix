@@ -52,12 +52,23 @@
       };
       url = "github:nix-community/lanzaboote";
     };
+    ms0503-lib = {
+      inputs = {
+        flake-compat.follows = "";
+        flake-parts.follows = "flake-parts";
+        git-hooks.follows = "";
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "";
+      };
+      url = "github:ms0503/lib.nix";
+    };
     ms0503-pkgs = {
       inputs = {
         fenix.follows = "fenix";
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         git-hooks.follows = "";
+        ms0503-lib.follows = "ms0503-lib";
         nixpkgs.follows = "nixpkgs";
         nixpkgs-blender3.follows = "";
         treefmt-nix.follows = "";

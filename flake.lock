@@ -83,7 +83,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_3",
+        "systems": "systems_4",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -126,7 +126,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_4",
+        "systems": "systems_5",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -297,7 +297,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_5",
+        "systems": "systems_6",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -340,7 +340,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_6",
+        "systems": "systems_7",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -383,7 +383,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_7",
+        "systems": "systems_8",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -895,7 +895,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_8",
+        "systems": "systems_9",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -916,31 +916,23 @@
     },
     "ms0503-lib": {
       "inputs": {
-        "flake-compat": [
-          "ms0503-pkgs"
-        ],
+        "flake-compat": [],
         "flake-parts": [
-          "ms0503-pkgs",
           "flake-parts"
         ],
-        "git-hooks": [
-          "ms0503-pkgs"
-        ],
+        "git-hooks": [],
         "nixpkgs": [
-          "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_9",
-        "treefmt-nix": [
-          "ms0503-pkgs"
-        ]
+        "systems": "systems_3",
+        "treefmt-nix": []
       },
       "locked": {
-        "lastModified": 1781782715,
-        "narHash": "sha256-UrzRXO4EiI5ICX1DcDwdoUD3uID1dBErbXYHCPoZYcM=",
+        "lastModified": 1782626970,
+        "narHash": "sha256-LM85hA05gHGlrtWUDn2ePcwGz1q+YB+W8MmdWEqd3xo=",
         "owner": "ms0503",
         "repo": "lib.nix",
-        "rev": "6ed04561a127f1f08c09690fcc82029ac07936c2",
+        "rev": "cebd0f44e9f4f26c3332fac941e27b32a3740049",
         "type": "github"
       },
       "original": {
@@ -965,7 +957,9 @@
         "getemoji": "getemoji",
         "git-hooks": [],
         "mc-mod-downloader": "mc-mod-downloader",
-        "ms0503-lib": "ms0503-lib",
+        "ms0503-lib": [
+          "ms0503-lib"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -1257,6 +1251,7 @@
         "hyprland": "hyprland",
         "hyprsome": "hyprsome",
         "lanzaboote": "lanzaboote",
+        "ms0503-lib": "ms0503-lib",
         "ms0503-pkgs": "ms0503-pkgs",
         "neovim-custom": "neovim-custom",
         "nh": "nh",
