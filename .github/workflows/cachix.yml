@@ -203,7 +203,7 @@ jobs:
       - name: "Build"
         run: |
           user=${{ matrix.user }}
-          nix build \
+          nix build --no-link \
             ".#homeConfigurations.${user}.config.home.activationPackage"
     strategy:
       fail-fast: false
@@ -231,7 +231,7 @@ jobs:
       - name: "Build"
         run: |
           host=${{ matrix.host }}
-          nix build \
+          nix build --no-link \
             ".#nixosConfigurations.${host}.config.system.build.toplevel"
     strategy:
       fail-fast: false
@@ -241,6 +241,23 @@ jobs:
           - "erebos"
           - "hades"
           - "nyx"
+  build-shell:
+    permissions:
+      contents: "read"
+    runs-on: "ubuntu-24.04"
+    steps:
+      - name: "Checkout repository"
+        uses: "actions/checkout@v6"
+      - name: "Remove unused tools"
+        run: *remove-unused-tools
+      - name: "Install Nix"
+        uses: "cachix/install-nix-action@v31"
+        with: *install-nix-action-args
+      - name: "Use Cachix"
+        uses: "cachix/cachix-action@v17"
+        with: *cachix-action-args
+      - name: "Build"
+        run: "nix build --no-link .#devShells.x86_64-linux.default"
 name: "Upload binary cache to Cachix"
 on:
   pull_request:
