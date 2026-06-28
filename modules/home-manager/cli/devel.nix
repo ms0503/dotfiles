@@ -53,18 +53,14 @@ in
     (with pkgs; [
       (hiPrio gcc)
       (hiPrio nodejs-slim_latest)
-      (pnpm.override {
-        nodejs-slim = nodejs-slim_latest;
-      })
-      (yarn-berry.override {
-        nodejs = nodejs_latest;
-      })
       clang
       cmake
       mold
       ninja
       nodejs-slim_latest.npm
+      pnpm
       uv
+      yarn-berry
     ])
     (with pkgs.python312Packages; [
       build
@@ -89,7 +85,6 @@ in
           ]
           |> fenix.combine
         )
-        (hiPrio rust-analyzer-nightly)
         arduino-cli
         deno
         dotnet-sdk

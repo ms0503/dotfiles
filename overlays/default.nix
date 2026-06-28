@@ -5,6 +5,45 @@
       inherit (final) lib;
     in
     {
+      alcom = prev.alcom.overrideAttrs (
+        _: prev': {
+          nativeBuildInputs = builtins.concatLists [
+            (prev'.nativeBuildInputs or [ ])
+            (with final; [
+              makeBinaryWrapper
+            ])
+          ];
+          # See https://github.com/tauri-apps/tauri/issues/10702
+          postInstall =
+            (prev'.postInstall or "")
+            + lib.optionalString final.stdenv.hostPlatform.isLinux ''
+              wrapProgram "$out/bin/ALCOM" \
+                --set __GL_THREADED_OPTIMIZATIONS 0 \
+                --set __NV_DISABLE_EXPLICIT_SYNC 1
+            '';
+        }
+      );
+      gimp = final.gimp3;
+      gimp3 = prev.gimp.overrideAttrs (
+        let
+          python = final.python3.withPackages (
+            pp: with pp; [
+              pygobject3
+            ]
+          );
+        in
+        _: prev: {
+          preFixup = prev.preFixup + ''
+            gappsWrapperArgs+=(
+              --prefix PATH : ${
+                lib.makeBinPath [
+                  python
+                ]
+              }
+            )
+          '';
+        }
+      );
       platformio-core = prev.platformio-core.overrideAttrs (
         _: _: {
           disabledTestPaths = [
@@ -81,6 +120,19 @@
           ];
         }
       );
+      pnpm = prev.pnpm.override {
+        nodejs-slim = final.nodejs-slim_latest;
+      };
+      prismlauncher = prev.prismlauncher.overrideAttrs (
+        _: prev': {
+          qtWrapperArgs = builtins.concatLists [
+            (prev'.qtWrapperArgs or [ ])
+            [
+              "--unset WAYLAND_DISPLAY"
+            ]
+          ];
+        }
+      );
       realvnc-vnc-viewer =
         assert lib.versionOlder prev.realvnc-vnc-viewer.version "8.0.0";
         prev.realvnc-vnc-viewer.overrideAttrs (
@@ -123,5 +175,8 @@
             version = "8.4.2";
           }
         );
+      yarn-berry = prev.yarn-berry.override {
+        nodejs = final.nodejs_latest;
+      };
     };
 }

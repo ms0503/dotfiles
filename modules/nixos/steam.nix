@@ -59,7 +59,7 @@ in
         highPriority = true;
         openFirewall = true;
         package = pkgs.wivrn.override {
-          cudaSupport = true;
+          cudaSupport = config.ms0503.gpu == "nvidia";
         };
         steam = {
           enable = true;
