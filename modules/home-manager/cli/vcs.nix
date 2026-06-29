@@ -58,6 +58,7 @@ in
           autocrlf = "input";
           editor = "nvim";
         };
+        extensions.objectFormat = "sha256";
         init.defaultBranch = "main";
         merge.ff = "only";
         pager.reflog = "${config.programs.delta.finalPackage}/bin/delta";
