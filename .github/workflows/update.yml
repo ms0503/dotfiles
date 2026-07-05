@@ -23,7 +23,7 @@ jobs:
         run: |
           nix flake update
           git add flake.lock
-          git commit -m "chore: update flakes"
+          git commit -m "chore: update flakes" || :
       - name: "Push to repository"
         run: |
           git push origin main
