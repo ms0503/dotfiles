@@ -949,11 +949,11 @@
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1783244293,
-        "narHash": "sha256-Rd2dGZTLqaqMvfRqiFPiofZ5PA98ZBBc8b/9MvhLu70=",
+        "lastModified": 1783256619,
+        "narHash": "sha256-bvpQ68E0wvX30N9S+yYmaXrGJbLWNIF0N92i8J+4rPM=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "62a943905a74461a45518183d1f3752b5b2d19d5",
+        "rev": "057c6c1976255072327db49847f8a250d2475976",
         "type": "github"
       },
       "original": {
