@@ -29,6 +29,4 @@ jobs:
           git push origin main
 name: "Update Nix Flakes"
 on:
-  schedule:
-    - cron: "15 0 * * 0" # weekly
   workflow_dispatch:
