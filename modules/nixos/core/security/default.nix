@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 {
   environment.systemPackages = with pkgs; [
     libfido2
@@ -18,5 +18,14 @@
       enable = true;
       wheelNeedsPassword = false;
     };
+  };
+  services.udev.packages = [
+    (pkgs.callPackage ./udev-rules.nix { })
+  ];
+  users = {
+    groups.plugdev = { };
+    users."${username}".extraGroups = [
+      "plugdev"
+    ];
   };
 }
