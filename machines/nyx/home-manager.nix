@@ -15,6 +15,7 @@
       })
     ];
     pointerCursor = {
+      enable = true;
       gtk.enable = true;
       name = "Milk1";
       package = pkgs.milk-cursor-themes;
