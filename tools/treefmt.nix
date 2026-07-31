@@ -37,6 +37,8 @@
         };
         stylua.enable = true;
         taplo.enable = true;
+        yamlfmt.enable = false;
+        yamllint.enable = true;
       };
     };
 }

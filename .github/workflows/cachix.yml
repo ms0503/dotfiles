@@ -1,5 +1,8 @@
 jobs:
   build-home:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: "read"
     runs-on: "ubuntu-24.04"
@@ -214,6 +217,9 @@ jobs:
           - "ms0503@hades"
           - "ms0503@nyx"
   build-nixos:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: "read"
     runs-on: "ubuntu-24.04"
@@ -242,6 +248,9 @@ jobs:
           - "hades"
           - "nyx"
   build-shell:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: "read"
     runs-on: "ubuntu-24.04"
@@ -263,3 +272,8 @@ on:
   pull_request:
   push:
   workflow_dispatch:
+  workflow_run:
+    types:
+      - "completed"
+    workflows:
+      - "Update Nix Flakes"
