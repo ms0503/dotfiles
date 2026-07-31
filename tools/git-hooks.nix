@@ -33,10 +33,10 @@
               enable = true;
               package = config.treefmt.build.wrapper;
             };
-            yamlfmt.enable = true;
-            yamllint.enable = true;
+            yamlfmt.enable = false; # treefmt
+            yamllint.enable = false; # treefmt
           };
-          src = ./.;
+          src = ../.;
         };
       };
     };
