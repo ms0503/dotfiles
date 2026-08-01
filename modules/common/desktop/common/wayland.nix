@@ -10,6 +10,7 @@ in
       description = "Desktop shell.";
       type = types.nullOr (
         types.enum [
+          "noctalia"
         ]
       );
     };

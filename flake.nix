@@ -125,6 +125,10 @@
       url = "github:nix-community/NixOS-WSL";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    noctalia = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:noctalia-dev/noctalia";
+    };
     rust-overlay = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:oxalica/rust-overlay";

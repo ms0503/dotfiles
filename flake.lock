@@ -1217,6 +1217,26 @@
         "type": "github"
       }
     },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785541892,
+        "narHash": "sha256-Rx+h25QwbY0yipUK9YU30uTlVoYRpq2Y0aNTQIsHGpA=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia",
+        "rev": "acdeb41fcf5316154148a42e797a93466d261f5c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "crane": "crane",
@@ -1239,6 +1259,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
+        "noctalia": "noctalia",
         "rust-overlay": "rust-overlay",
         "systems": "systems_17",
         "treefmt-nix": "treefmt-nix",

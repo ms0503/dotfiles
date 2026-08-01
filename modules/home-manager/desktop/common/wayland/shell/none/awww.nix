@@ -1,15 +1,20 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (lib) mkIf mkLuaInline optionalAttrs;
   cfg = config.ms0503.desktop.common.wayland;
   cfgHl = config.ms0503.desktop.hyprland;
 in
 {
-  config = mkIf cfg.enable (
+  config = mkIf (cfg.enable && cfg.shell == null) (
     {
-      home.file."${config.xdg.configHome}/libinput-gestures.conf".text = ''
-        gesture swipe up 3 wofi --show drun --width 512px
-      '';
+      home.packages = with pkgs; [
+        awww
+      ];
     }
     // optionalAttrs cfgHl.enable {
       wayland.windowManager.hyprland.settings.on = [
@@ -18,7 +23,8 @@ in
             "hyprland.start"
             (mkLuaInline ''
               function()
-                hl.exec_cmd('uwsm app -- libinput-gestures')
+                hl.exec_cmd('uwsm app -- awww-daemon')
+                hl.exec_cmd('uwsm app -- awww img ~/.config/hypr/wallpaper/bg.webp')
               end
             '')
           ];
