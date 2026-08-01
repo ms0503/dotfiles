@@ -30,6 +30,16 @@ in
             '')
           ];
         }
+        {
+          _args = [
+            "hyprland.shutdown"
+            (mkLuaInline ''
+              function()
+                os.execute('systemctl --user stop hyprland-session.target && sleep 0.1')
+              end
+            '')
+          ];
+        }
       ];
       window_rule = [
         {
