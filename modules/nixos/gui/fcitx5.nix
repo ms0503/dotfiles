@@ -18,11 +18,15 @@ let
     ;
   cfg = config.ms0503.im;
   cfgGui = config.ms0503.gui;
-  cfgWayland = config.ms0503.wayland;
+  cfgWl = config.ms0503.wayland;
 in
 {
-  config = mkIf (cfgGui.enable && cfg.enable) {
+  config = mkIf cfg.enable {
     assertions = [
+      {
+        assertion = cfgGui.enable;
+        message = "ms0503.gui.enable must be true";
+      }
       {
         assertion = cfg.type != null;
         message = "ms0503.im.type must not be null";
@@ -37,7 +41,7 @@ in
           (optional (cfg.type == "mozc-ut") pkgs.fcitx5-mozc-ut)
           (optional (cfg.type == "mozkey") myPkgs.fcitx5-mozkey)
         ];
-        waylandFrontend = cfgWayland.enable;
+        waylandFrontend = cfgWl.enable;
       };
       type = "fcitx5";
     };

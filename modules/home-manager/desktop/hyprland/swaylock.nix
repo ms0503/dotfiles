@@ -9,10 +9,9 @@ let
   inherit (lib) mkIf;
   inherit (theme) colors;
   cfg = config.ms0503.desktop.hyprland;
-  cfgGui = config.ms0503.gui;
 in
 {
-  config = mkIf (cfgGui.enable && cfg.enable) {
+  config = mkIf cfg.enable {
     home = {
       file."${config.xdg.configHome}/swaylock/config".text = with colors; ''
         bs-hl-color=${cyan}
