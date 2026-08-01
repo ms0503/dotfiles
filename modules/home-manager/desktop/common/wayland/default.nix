@@ -30,4 +30,11 @@ in
     xdg.configFile."uwsm/env".source =
       "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   };
+  imports = [
+    ./dunst.nix
+    ./gestures.nix
+    ./swaylock.nix
+    ./waybar.nix
+    ./wofi.nix
+  ];
 }

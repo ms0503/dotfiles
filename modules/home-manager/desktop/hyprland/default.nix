@@ -65,13 +65,9 @@ in
   imports = [
     ../common/wayland
     ./autostart.nix
-    ./dunst.nix
     ./gestures.nix
     ./key-binds.nix
     ./settings.nix
-    ./swaylock.nix
-    ./waybar.nix
-    ./wofi.nix
   ];
   options.ms0503.desktop.hyprland.startup-monitor = mkOption {
     description = "Monitor ID that is used by startup";
