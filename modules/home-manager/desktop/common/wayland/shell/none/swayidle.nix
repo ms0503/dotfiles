@@ -18,14 +18,12 @@ let
   '';
 in
 {
-  config = mkIf (cfg.enable && cfg.shell == null) (
-    {
-      home.packages = with pkgs; [
-        swayidle
-      ];
-    }
-    // optionalAttrs cfgHl.enable {
-      wayland.windowManager.hyprland.settings.on = [
+  config = mkIf (cfg.enable && cfg.shell == null) {
+    home.packages = with pkgs; [
+      swayidle
+    ];
+    wayland = optionalAttrs cfgHl.enable {
+      windowManager.hyprland.settings.on = [
         {
           _args = [
             "hyprland.start"
@@ -37,6 +35,6 @@ in
           ];
         }
       ];
-    }
-  );
+    };
+  };
 }
