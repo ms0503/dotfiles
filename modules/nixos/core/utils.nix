@@ -106,6 +106,7 @@ in
       enable = true;
       mountOnMedia = true;
     };
+    upower.enable = true;
   };
   virtualisation = mergeAttrsList [
     {
