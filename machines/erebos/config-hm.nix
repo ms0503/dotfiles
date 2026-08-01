@@ -1,9 +1,12 @@
 { myLib, pkgs, ... }:
 {
   ms0503 = {
-    desktop.hyprland = {
-      enable = true;
-      startup-monitor = 0;
+    desktop = {
+      common.wayland.shell = null;
+      hyprland = {
+        enable = true;
+        startup-monitor = 0;
+      };
     };
     feature-set = myLib.const.feature-sets.full;
     gpu = "nvidia";
