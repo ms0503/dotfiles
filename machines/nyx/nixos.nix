@@ -49,7 +49,6 @@
         cmd = "load-module";
       }
     ];
-    power-profiles-daemon.enable = true;
     tailscale.useRoutingFeatures = "server";
     xserver.xkb = {
       layout = "jp";

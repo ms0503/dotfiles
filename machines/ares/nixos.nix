@@ -123,7 +123,6 @@ in
         };
       };
     };
-    power-profiles-daemon.enable = true;
     tailscale.useRoutingFeatures = "client";
     xremap.enable = false;
   };
