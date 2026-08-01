@@ -80,83 +80,103 @@
       {
         default = true;
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "1";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "2";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "3";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "4";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "5";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "6";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "7";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "8";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "9";
       }
       {
         monitor = "desc:Hewlett Packard HP ZR2440w CN42260H0R";
+        persistent = true;
         workspace = "10";
       }
       {
         default = true;
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "11";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "12";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "13";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "14";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "15";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "16";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "17";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "18";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "19";
       }
       {
         monitor = "desc:I-O Data Device Inc LCD-MF224ED GGF504807255";
+        persistent = true;
         workspace = "20";
       }
     ];

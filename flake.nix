@@ -32,6 +32,14 @@
       };
       url = "github:hyprwm/Hyprland";
     };
+    hyprqt6engine = {
+      inputs = {
+        hyprlang.follows = "hyprland/hyprlang";
+        hyprutils.follows = "hyprland/hyprutils";
+        nixpkgs.follows = "nixpkgs";
+      };
+      url = "github:hyprwm/hyprqt6engine";
+    };
     hyprsome = {
       inputs = {
         crane = {

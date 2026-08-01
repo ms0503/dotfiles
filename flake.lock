@@ -43,7 +43,7 @@
           "neovim-custom",
           "nixpkgs"
         ],
-        "systems": "systems_14"
+        "systems": "systems_15"
       },
       "locked": {
         "lastModified": 1779869573,
@@ -83,7 +83,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_4",
+        "systems": "systems_5",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -126,7 +126,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_5",
+        "systems": "systems_6",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -297,7 +297,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_6",
+        "systems": "systems_7",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -340,7 +340,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_7",
+        "systems": "systems_8",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -383,7 +383,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_8",
+        "systems": "systems_9",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -650,6 +650,35 @@
         "type": "github"
       }
     },
+    "hyprqt6engine": {
+      "inputs": {
+        "hyprlang": [
+          "hyprland",
+          "hyprlang"
+        ],
+        "hyprutils": [
+          "hyprland",
+          "hyprutils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1776428594,
+        "narHash": "sha256-faxCK4AsIY5uVETTiKT+scxIPH4YKrbnm99UZDZTYvM=",
+        "owner": "hyprwm",
+        "repo": "hyprqt6engine",
+        "rev": "0021cc218fc23862a5688b7b217adba09d44ef1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprqt6engine",
+        "type": "github"
+      }
+    },
     "hyprsome": {
       "inputs": {
         "crane": "crane_2",
@@ -873,7 +902,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_9",
+        "systems": "systems_10",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -902,7 +931,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_3",
+        "systems": "systems_4",
         "treefmt-nix": []
       },
       "locked": {
@@ -943,7 +972,7 @@
         ],
         "nixpkgs-blender3": [],
         "skel": "skel",
-        "systems": "systems_11",
+        "systems": "systems_12",
         "treefmt-nix": [],
         "unicodeescape": "unicodeescape",
         "urlencode": "urlencode"
@@ -977,7 +1006,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_15",
+        "systems": "systems_16",
         "treefmt-nix": [],
         "vscode-css-variables": "vscode-css-variables"
       },
@@ -1247,6 +1276,7 @@
         "git-hooks": "git-hooks",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprqt6engine": "hyprqt6engine",
         "hyprsome": "hyprsome",
         "lanzaboote": "lanzaboote",
         "ms0503-lib": "ms0503-lib",
@@ -1261,7 +1291,7 @@
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "rust-overlay": "rust-overlay",
-        "systems": "systems_17",
+        "systems": "systems_18",
         "treefmt-nix": "treefmt-nix",
         "wezterm": "wezterm",
         "xremap": "xremap"
@@ -1328,7 +1358,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_10",
+        "systems": "systems_11",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -1475,6 +1505,22 @@
       }
     },
     "systems_17": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_18": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
@@ -1505,18 +1551,17 @@
       }
     },
     "systems_3": {
-      "flake": false,
       "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
         "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
         "type": "github"
       },
       "original": {
         "owner": "nix-systems",
-        "repo": "default",
+        "repo": "default-linux",
         "type": "github"
       }
     },
@@ -1660,7 +1705,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_12",
+        "systems": "systems_13",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -1703,7 +1748,7 @@
           "ms0503-pkgs",
           "nixpkgs"
         ],
-        "systems": "systems_13",
+        "systems": "systems_14",
         "treefmt-nix": [
           "ms0503-pkgs"
         ]
@@ -1732,7 +1777,7 @@
           "neovim-custom",
           "nixpkgs"
         ],
-        "systems": "systems_16"
+        "systems": "systems_17"
       },
       "locked": {
         "lastModified": 1779869586,

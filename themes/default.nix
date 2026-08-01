@@ -6,6 +6,7 @@ rec {
   colors = builtins.mapAttrs (_: value: removeHash value) xcolors;
   fzf = import ./colors/${theme}/fzf.nix;
   ghostty = import ./colors/${theme}/ghostty.nix;
+  noctalia = import ./colors/${theme}/noctalia.nix;
   wezterm = builtins.readFile ./colors/${theme}/wezterm.toml;
   xcolors = import ./colors/${theme};
 }
