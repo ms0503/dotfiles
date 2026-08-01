@@ -125,10 +125,22 @@ in
       config = {
         decoration = {
           active_opacity = 0.9;
-          blur.enabled = false;
+          blur = {
+            enabled = true;
+            passes = 2;
+            size = 3;
+            vibrancy = 0.1696;
+          };
           fullscreen_opacity = 0.9;
           inactive_opacity = 0.95;
-          rounding = 10;
+          rounding = 20;
+          rounding_power = 2;
+          shadow = {
+            color = "rgba(${colors.bg}ee)";
+            enabled = true;
+            range = 4;
+            render_power = 3;
+          };
         };
         dwindle.preserve_split = true;
         ecosystem = {
@@ -140,7 +152,7 @@ in
           "col.inactive_border" = "rgb(${colors.bg})";
           border_size = 2;
           gaps_in = 5;
-          gaps_out = 5;
+          gaps_out = 10;
           resize_on_border = true;
         };
         input = {
@@ -178,6 +190,16 @@ in
           ];
         }
       ];
+      layer_rule = [
+        {
+          blur = true;
+          blur_popups = true;
+          ignore_alpha = 0.5;
+          match.namespace = "^noctalia-(attached-panel|bar-.+|dock|notification|osd|panel|window-switcher)$";
+          name = "noctalia";
+          no_anim = true;
+        }
+      ];
       window_rule = builtins.concatLists [
         [
           {
@@ -187,6 +209,14 @@ in
               title = "^$";
             };
             no_focus = true;
+          }
+          {
+            float = true;
+            match.class = "dev.noctalia.Noctalia";
+            size = [
+              1080
+              920
+            ];
           }
           {
             match.class = "fcitx";

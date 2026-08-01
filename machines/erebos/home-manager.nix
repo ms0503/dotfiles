@@ -107,42 +107,52 @@ in
       {
         default = true;
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "1";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "2";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "3";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "4";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "5";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "6";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "7";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "8";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "9";
       }
       {
         monitor = "desc:Chimei Innolux Corporation 0x1521";
+        persistent = true;
         workspace = "10";
       }
     ];
