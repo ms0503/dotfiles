@@ -5,9 +5,9 @@ let
   cfgHl = config.ms0503.desktop.hyprland;
 in
 {
-  config = mkIf (cfg.enable && cfg.shell == null) (
-    optionalAttrs cfgHl.enable {
-      wayland.windowManager.hyprland.settings.on = [
+  config = mkIf (cfg.enable && cfg.shell == null) {
+    wayland = optionalAttrs cfgHl.enable {
+      windowManager.hyprland.settings.on = [
         {
           _args = [
             "hyprland.start"
@@ -19,6 +19,6 @@ in
           ];
         }
       ];
-    }
-  );
+    };
+  };
 }
