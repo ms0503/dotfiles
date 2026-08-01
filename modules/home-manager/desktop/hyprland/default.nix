@@ -17,30 +17,30 @@ let
     ;
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
+  cfgWl = config.ms0503.wayland;
 in
 {
-  config = mkIf (cfgGui.enable && cfg.enable) {
-    home = {
-      packages = builtins.concatLists [
-        (with pkgs; [
-          awww
-          brightnessctl
-          grimblast
-          hyprcursor
-          hyprpicker
-          pamixer
-          playerctl
-          wev
-          wf-recorder
-          wl-clipboard
-          wlogout
-        ])
-        [
-          inputs'.hyprsome.packages.default
-        ]
-      ];
-      sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    };
+  config = mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfgGui.enable;
+        message = "ms0503.gui.enable must be true";
+      }
+      {
+        assertion = cfgWl.enable;
+        message = "ms0503.wayland.enable must be true";
+      }
+    ];
+    home.packages = builtins.concatLists [
+      (with pkgs; [
+        grimblast
+        hyprcursor
+        hyprpicker
+      ])
+      [
+        inputs'.hyprsome.packages.default
+      ]
+    ];
     wayland.windowManager.hyprland = mergeAttrsList [
       {
         configType = "lua";
@@ -60,10 +60,10 @@ in
     xdg.configFile = {
       "hypr/lib.lua".source = ./lib.lua;
       "hypr/tool.lua".source = ./tool.lua;
-      "uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
     };
   };
   imports = [
+    ../common/wayland
     ./autostart.nix
     ./dunst.nix
     ./gestures.nix

@@ -27,10 +27,13 @@ in
             rocmSupport = config.ms0503.gpu == "radeon";
           })
           aseprite
+          brightnessctl
           gimp3-with-plugins
           kicad
           libreoffice-fresh
           networkmanagerapplet
+          pamixer
+          playerctl
           realvnc-vnc-viewer
           thunderbird-latest
           wineWow64Packages.stagingFull
