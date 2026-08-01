@@ -10,7 +10,7 @@
     desktop = {
       common.wayland = {
         enable = true;
-        shell = null;
+        shell = "noctalia";
       };
       hyprland.enable = true;
     };

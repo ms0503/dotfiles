@@ -1,15 +1,28 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  theme,
+  ...
+}:
 let
   inherit (lib) mkIf mkLuaInline optionalAttrs;
+  inherit (pkgs) writeScriptBin;
+  inherit (theme) colors;
   cfg = config.ms0503.desktop.common.wayland;
   cfgHl = config.ms0503.desktop.hyprland;
+  sleep = writeScriptBin "sleep" ''
+    swayidle -w \
+      before-sleep 'swaylock -f -c ${colors.bg}' \
+      &
+  '';
 in
 {
-  config = mkIf cfg.enable (
+  config = mkIf (cfg.enable && cfg.shell == null) (
     {
-      home.file."${config.xdg.configHome}/libinput-gestures.conf".text = ''
-        gesture swipe up 3 wofi --show drun --width 512px
-      '';
+      home.packages = with pkgs; [
+        swayidle
+      ];
     }
     // optionalAttrs cfgHl.enable {
       wayland.windowManager.hyprland.settings.on = [
@@ -18,7 +31,7 @@ in
             "hyprland.start"
             (mkLuaInline ''
               function()
-                hl.exec_cmd('uwsm app -- libinput-gestures')
+                hl.exec_cmd('uwsm app -- ${sleep}/bin/sleep')
               end
             '')
           ];

@@ -19,7 +19,6 @@ in
     ];
     home = {
       packages = with pkgs; [
-        awww
         wev
         wf-recorder
         wl-clipboard
@@ -31,10 +30,7 @@ in
       "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
   };
   imports = [
-    ./dunst.nix
     ./gestures.nix
-    ./swaylock.nix
-    ./waybar.nix
-    ./wofi.nix
+    ./shell
   ];
 }

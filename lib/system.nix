@@ -9,6 +9,7 @@ let
     nix-hazkey
     nixos-wsl
     nixpkgs
+    noctalia
     self
     xremap
     ;
@@ -63,6 +64,7 @@ in
         modules = builtins.concatLists [
           [
             neovim-custom.homeManagerModules.default
+            noctalia.homeModules.default
             self.homeManagerModules.default
             {
               home = {
@@ -110,6 +112,7 @@ in
             neovim-custom.nixosModules.default
             nix-hazkey.nixosModules.hazkey
             nixos-wsl.nixosModules.default
+            noctalia.nixosModules.default
             xremap.nixosModules.default
             self.nixosModules.default
             {

@@ -11,7 +11,7 @@ let
   cfg = config.ms0503.dsktop.common.wayland;
 in
 {
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enable && cfg.shell == null) {
     home = {
       file."${config.xdg.configHome}/swaylock/config".text = with colors; ''
         bs-hl-color=${cyan}
