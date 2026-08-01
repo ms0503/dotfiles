@@ -97,7 +97,6 @@
         }
       ];
     };
-    power-profiles-daemon.enable = true;
     printing = {
       drivers = with pkgs; [
         (writeTextDir "share/cups/model/BR5350_2_GPL.ppd" (builtins.readFile ./BR5350_2_GPL.ppd))

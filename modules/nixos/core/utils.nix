@@ -89,6 +89,7 @@ in
       enable = true;
     };
     pcscd.enable = true;
+    power-profiles-daemon.enable = true;
     udev = {
       extraRules = ''
         ENV{UDISKS_AUTO}="1"

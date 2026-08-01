@@ -81,7 +81,6 @@ in
         };
       };
     };
-    power-profiles-daemon.enable = true;
     tailscale.useRoutingFeatures = "server";
     xremap.enable = false;
   };
