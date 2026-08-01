@@ -2,10 +2,9 @@
 let
   inherit (lib) mkIf;
   cfg = config.ms0503.desktop.hyprland;
-  cfgGui = config.ms0503.gui;
 in
 {
-  config = mkIf (cfgGui.enable && cfg.enable) {
+  config = mkIf cfg.enable {
     programs.waybar = {
       enable = true;
       settings = {

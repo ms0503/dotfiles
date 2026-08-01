@@ -10,7 +10,13 @@ let
   cfgGui = config.ms0503.gui;
 in
 {
-  config = mkIf (cfgGui.enable && cfg.enable) {
+  config = mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfgGui.enable;
+        message = "ms0503.gui.enable must be true";
+      }
+    ];
     programs.obs-studio = {
       enable = true;
       enableVirtualCamera = true;

@@ -9,7 +9,6 @@ let
   inherit (lib) mkIf mkLuaInline;
   inherit (lib.generators) toLua;
   cfg = config.ms0503.desktop.hyprland;
-  cfgGui = config.ms0503.gui;
   execCmd =
     cmd:
     "hl.dsp.exec_cmd(${
@@ -38,7 +37,7 @@ let
   };
 in
 {
-  config = mkIf (cfgGui.enable && cfg.enable) {
+  config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings =
       let
         mainMod = "SUPER";

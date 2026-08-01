@@ -11,7 +11,6 @@ let
   inherit (pkgs) writeScriptBin;
   inherit (theme) colors;
   cfg = config.ms0503.desktop.hyprland;
-  cfgGui = config.ms0503.gui;
   sleep = writeScriptBin "sleep" ''
     swayidle -w \
       before-sleep 'swaylock -f -c ${colors.bg}' \
@@ -25,7 +24,7 @@ let
   '';
 in
 {
-  config = mkIf (cfgGui.enable && cfg.enable) {
+  config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       on = [
         {

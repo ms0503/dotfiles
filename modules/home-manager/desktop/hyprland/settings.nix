@@ -8,7 +8,6 @@ let
   inherit (lib) mergeAttrsList mkDefault mkIf;
   inherit (theme) colors;
   cfg = config.ms0503.desktop.hyprland;
-  cfgGui = config.ms0503.gui;
   force-opaque-windows = [
     {
       match.class = ".*\\.x86_64";
@@ -87,7 +86,7 @@ let
     );
 in
 {
-  config = mkIf (cfgGui.enable && cfg.enable) {
+  config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       animation = [
         {
