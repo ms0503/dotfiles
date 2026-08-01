@@ -8,6 +8,5 @@
     ./rust.nix
     ./shell.nix
     ./steam.nix
-    ./wayland.nix
   ];
 }

@@ -8,6 +8,7 @@
 let
   inherit (lib) mkIf;
   cfg = config.ms0503.gui;
+  cfgWl = config.ms0503.desktop.common.wayland;
 in
 {
   config = mkIf cfg.enable {
@@ -20,7 +21,7 @@ in
         vmpk
       ])
       (
-        if config.ms0503.wayland.enable then
+        if cfgWl.enable then
           with myPkgs;
           [
             spotify-wayland

@@ -8,7 +8,10 @@
       type = "lanzaboote";
     };
     desktop = {
-      common.wayland.shell = null;
+      common.wayland = {
+        enable = false;
+        shell = null;
+      };
       hyprland.enable = false;
     };
     feature-set = myLib.const.feature-sets.tiny;
@@ -23,6 +26,5 @@
     };
     shell.type = "zsh";
     steam.enable = false;
-    wayland.enable = false;
   };
 }

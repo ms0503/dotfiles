@@ -7,7 +7,10 @@
       efi.enable = false;
       type = "grub";
     };
-    desktop.hyprland.enable = false;
+    desktop = {
+      common.wayland.enable = false;
+      hyprland.enable = false;
+    };
     feature-set = myLib.const.feature-sets.tiny;
     gpu = null;
     gui.enable = false;
@@ -20,6 +23,5 @@
     };
     shell.type = "zsh";
     steam.enable = false;
-    wayland.enable = false;
   };
 }

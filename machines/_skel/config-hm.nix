@@ -2,7 +2,10 @@
 {
   ms0503 = {
     desktop = {
-      common.wayland.shell = null;
+      common.wayland = {
+        enable = false;
+        shell = null;
+      };
       hyprland = {
         enable = false;
         startup-monitor = 0;
@@ -21,6 +24,5 @@
     steam.enable = false;
     terminal = null;
     unity.enable = false;
-    wayland.enable = false;
   };
 }

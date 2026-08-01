@@ -8,6 +8,7 @@
 let
   inherit (lib) mkIf;
   cfg = config.ms0503.gui;
+  cfgWl = config.ms0503.desktop.common.wayland;
   godotPackages = pkgs.godotPackages_4_4;
 in
 {
@@ -45,7 +46,7 @@ in
           godot-mono
         ])
         (
-          if config.ms0503.wayland.enable then
+          if cfgWl.enable then
             with myPkgs;
             [
               discord-canary-wayland
