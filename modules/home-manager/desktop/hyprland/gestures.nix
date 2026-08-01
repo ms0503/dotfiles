@@ -5,9 +5,6 @@ let
 in
 {
   config = mkIf cfg.enable {
-    home.file."${config.xdg.configHome}/libinput-gestures.conf".text = ''
-      gesture swipe up 3 wofi --show drun --width 512px
-    '';
     wayland.windowManager.hyprland.settings.gesture = [
       {
         action = "workspace";

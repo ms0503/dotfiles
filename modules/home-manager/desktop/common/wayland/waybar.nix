@@ -1,7 +1,7 @@
 { config, lib, ... }:
 let
   inherit (lib) mkIf;
-  cfg = config.ms0503.desktop.hyprland;
+  cfg = config.ms0503.wayland;
 in
 {
   config = mkIf cfg.enable {
