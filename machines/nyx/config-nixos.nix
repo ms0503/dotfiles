@@ -7,7 +7,10 @@
       efi.enable = true;
       type = "lanzaboote";
     };
-    desktop.hyprland.enable = true;
+    desktop = {
+      common.wayland.shell = null;
+      hyprland.enable = true;
+    };
     feature-set = myLib.const.feature-sets.full;
     gpu = "nvidia";
     gui.enable = true;

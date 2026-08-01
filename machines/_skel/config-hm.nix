@@ -1,9 +1,12 @@
 { myLib, ... }:
 {
   ms0503 = {
-    desktop.hyprland = {
-      enable = false;
-      startup-monitor = 0;
+    desktop = {
+      common.wayland.shell = null;
+      hyprland = {
+        enable = false;
+        startup-monitor = 0;
+      };
     };
     feature-set = myLib.const.feature-sets.tiny;
     gpu = null;
