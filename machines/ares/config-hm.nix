@@ -1,7 +1,10 @@
 { myLib, ... }:
 {
   ms0503 = {
-    desktop.hyprland.enable = false;
+    desktop = {
+      common.wayland.enable = false;
+      hyprland.enable = false;
+    };
     feature-set = myLib.const.feature-sets.tiny;
     gpu = null;
     gui.enable = false;
@@ -15,6 +18,5 @@
     steam.enable = false;
     terminal = null;
     unity.enable = false;
-    wayland.enable = false;
   };
 }

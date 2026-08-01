@@ -8,7 +8,7 @@
 let
   inherit (lib) mkIf;
   inherit (theme) colors;
-  cfg = config.ms0503.wayland;
+  cfg = config.ms0503.dsktop.common.wayland;
 in
 {
   config = mkIf cfg.enable {

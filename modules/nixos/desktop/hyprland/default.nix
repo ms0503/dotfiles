@@ -8,7 +8,7 @@ let
   inherit (lib) mkIf;
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
-  cfgWl = config.ms0503.wayland;
+  cfgWl = config.ms0503.desktop.common.wayland;
   hlPkgs = inputs'.hyprland.packages;
 in
 {
