@@ -28,12 +28,12 @@ in
         extraConfig.gtk-application-prefer-dark-theme = true;
       };
       iconTheme = {
-        name = "Yaru-dark";
-        package = pkgs.yaru-theme;
+        name = "Yaru-remix-dark";
+        package = pkgs.yaru-remix-theme;
       };
       theme = {
-        name = "Yaru-dark";
-        package = pkgs.yaru-theme;
+        name = "Yaru-remix-dark";
+        package = pkgs.yaru-remix-theme;
       };
     };
   };
