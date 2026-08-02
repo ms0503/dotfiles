@@ -10,8 +10,6 @@ in
       [
         "aarch64-linux"
         "armv7l-linux"
-        "wasm32-wasi"
-        "wasm64-wasi"
       ]
       (optionals (!cfgWsl.enable) [
         "i686-windows"
