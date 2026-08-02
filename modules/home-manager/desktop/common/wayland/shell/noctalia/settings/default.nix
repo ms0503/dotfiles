@@ -14,6 +14,7 @@ let
     "keybinds"
     "location"
     "lockscreen"
+    "lockscreen_widgets"
     "nightlight"
     "notification"
     "osd"
