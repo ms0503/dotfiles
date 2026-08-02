@@ -21,7 +21,7 @@ in
   config = mkIf (cfgWl.enable && cfgWl.shell == "noctalia") {
     assertions = [
       {
-        assertion = (cfg.monitors |> builtins.attrNames |> builtins.length) == 0;
+        assertion = (cfg.monitors |> builtins.attrNames |> builtins.length) != 0;
         message = "ms0503.desktop.common.wayland.noctalia.monitors must have at least one definition of monitor";
       }
     ];
