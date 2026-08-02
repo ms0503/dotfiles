@@ -4,6 +4,10 @@
     desktop = {
       common.wayland = {
         enable = true;
+        noctalia.monitors.eDP-1 = {
+          height = 1080;
+          width = 1920;
+        };
         shell = "noctalia";
       };
       hyprland = {
