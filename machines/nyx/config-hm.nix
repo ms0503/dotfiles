@@ -4,6 +4,16 @@
     desktop = {
       common.wayland = {
         enable = true;
+        noctalia.monitors = {
+          DVI-D-1 = {
+            height = 1200;
+            width = 1920;
+          };
+          HDMI-A-1 = {
+            height = 1080;
+            width = 1920;
+          };
+        };
         shell = "noctalia";
       };
       hyprland = {
