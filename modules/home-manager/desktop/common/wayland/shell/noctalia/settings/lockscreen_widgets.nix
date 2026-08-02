@@ -19,6 +19,7 @@ in
           box_width = 256.0;
           cx = mon.width / 2.0;
           cy = mon.height / 2.0;
+          output = name;
           rotation = 0.0;
           settings = {
             background_color = "surface_variant";
@@ -36,6 +37,7 @@ in
           box_width = 810.0;
           cx = mon.width / 2.0;
           cy = mon.height - 182.0;
+          output = name;
           rotation = 0.0;
           settings = {
             background_color = "surface_variant";
