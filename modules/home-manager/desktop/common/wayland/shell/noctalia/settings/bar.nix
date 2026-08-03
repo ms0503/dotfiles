@@ -21,7 +21,6 @@
     };
     enabled = true;
     end = [
-      "media"
       "volume"
       "brightness"
       "battery"
