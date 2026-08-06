@@ -5,7 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mergeAttrsList mkDefault mkIf;
+  inherit (lib)
+    mergeAttrsList
+    mkDefault
+    mkIf
+    mkLuaInline
+    ;
   inherit (theme) colors;
   cfg = config.ms0503.desktop.hyprland;
   force-opaque-windows = [
@@ -200,12 +205,44 @@ in
           no_anim = true;
         }
       ];
+      on = [
+        {
+          _args = [
+            "window.title"
+            (mkLuaInline ''
+              function(win_addr)
+                local win = hl.get_window(win_addr)
+                if win ~= nil then
+                  local w = win.size.x
+                  local c = win.class
+                  local t = win.title
+                  local ic = win.initial_class
+                  local it = win.initial_title
+                  if c == ''' and t == ''' and ic == ''' and it == ''' and w <= 360 then
+                    hl.dispatch(hl.dsp.window.tag({
+                      tag = '+brewser-notification',
+                      window = 'stableid:' .. win.stable_id
+                    }))
+                  end
+                end
+              end
+            '')
+          ];
+        }
+      ];
       window_rule = builtins.concatLists [
         [
           {
             float = true;
             match = {
               class = "^$";
+              title = "^$";
+            };
+          }
+          {
+            match = {
+              class = "^$";
+              tag = "negative:browser-notification";
               title = "^$";
             };
             no_focus = true;
