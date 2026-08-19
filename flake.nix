@@ -103,7 +103,7 @@
         flake-compat.follows = "";
         flake-parts.follows = "flake-parts";
         git-hooks-nix.follows = "";
-        nixpkgs.follows = "nixpkgs";
+        # nixpkgs.follows = "nixpkgs"; # DON'T OVERRIDE IT, OR IT'S BROKEN
       };
       url = "github:NixOS/nix";
     };
