@@ -101,7 +101,7 @@
     nix = {
       inputs = {
         flake-compat.follows = "";
-        flake-parts.follows = "flake-parts";
+        flake-parts.follows = "";
         git-hooks-nix.follows = "";
         # nixpkgs.follows = "nixpkgs"; # DON'T OVERRIDE IT, OR IT'S BROKEN
       };
