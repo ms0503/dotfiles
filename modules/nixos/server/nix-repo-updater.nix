@@ -62,7 +62,6 @@ in
         timerConfig = {
           AccuracySec = "1us";
           OnCalendar = "Sun *-*-* 00:00:00";
-          Persistent = true;
           RandomizedDelaySec = "1s";
         };
       };
