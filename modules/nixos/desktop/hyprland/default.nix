@@ -32,7 +32,4 @@ in
     };
     services.xremap.withHypr = true;
   };
-  imports = [
-    ../common/wayland
-  ];
 }
