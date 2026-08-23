@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   username,
@@ -59,7 +60,7 @@
     greetd = {
       enable = true;
       settings.default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-session --time";
+        command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-session --sessions ${config.system.path}/share/wayland-sessions:${config.system.path}/share/xsessions --time";
         user = username;
       };
     };
