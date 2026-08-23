@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   username,
@@ -35,15 +34,7 @@
     4713
     80
   ];
-  security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
-    greetd = {
-      enable = true;
-      settings.default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-session --sessions ${config.system.path}/share/wayland-sessions:${config.system.path}/share/xsessions --time";
-        user = username;
-      };
-    };
     pipewire.extraConfig.pipewire-pulse."99-listen"."pulse.cmd" = [
       {
         args = "module-native-protocol-tcp auth-anonymous=1 listen=0.0.0.0";

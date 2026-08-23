@@ -1,5 +1,4 @@
 {
-  config,
   inputs,
   pkgs,
   username,
@@ -44,7 +43,6 @@
     3000
     80
   ];
-  security.pam.services.greetd.enableGnomeKeyring = true;
   services = {
     asusd = {
       asusdConfig.source = ./asusd.ron;
@@ -56,13 +54,6 @@
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
-    };
-    greetd = {
-      enable = true;
-      settings.default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --remember-session --sessions ${config.system.path}/share/wayland-sessions:${config.system.path}/share/xsessions --time";
-        user = username;
-      };
     };
     hardware.openrgb.enable = true;
     logind.settings.Login.HandleLidSwitch = "ignore";

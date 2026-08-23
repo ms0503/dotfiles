@@ -8,9 +8,12 @@
       type = "lanzaboote";
     };
     desktop = {
-      common.wayland = {
-        enable = true;
-        shell = "noctalia";
+      common = {
+        greeter = "tuigreet";
+        wayland = {
+          enable = true;
+          shell = "noctalia";
+        };
       };
       hyprland.enable = true;
     };
