@@ -63,7 +63,6 @@ in
     };
   };
   imports = [
-    ../common/wayland
     ./autostart.nix
     ./gestures.nix
     ./key-binds.nix
