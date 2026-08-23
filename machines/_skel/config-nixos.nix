@@ -8,9 +8,12 @@
       type = "lanzaboote";
     };
     desktop = {
-      common.wayland = {
-        enable = false;
-        shell = null;
+      common = {
+        greeter = null;
+        wayland = {
+          enable = false;
+          shell = null;
+        };
       };
       hyprland.enable = false;
     };
