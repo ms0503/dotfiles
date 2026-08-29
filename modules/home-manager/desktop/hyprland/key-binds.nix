@@ -47,6 +47,13 @@ in
       {
         bind = builtins.concatLists [
           [
+            (mkBind "${mainMod} + ${subMod} + F" ''
+              hl.dsp.window.fullscreen({
+                action = 'toggle',
+                mode = 'maximized',
+                window = 'activewindow'
+              })
+            '')
             (mkBind "${mainMod} + CTRL + Left" ''
               hl.dsp.focus({
                 workspace = 'm-1'
