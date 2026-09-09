@@ -40,23 +40,15 @@ in
           Type = "simple";
         };
       };
-      targets =
-        let
-          getUnitNames =
-            type:
-            cfg.repos
-            |> builtins.map (
-              repo:
-              let
-                args = "${repo.owner}/${repo.repo},${repo.branch},${repo.delay |> builtins.toString}";
-              in
-              "nix-repo-updater@${args |> utils.escapeSystemdPath}.${type}"
-            );
-        in
-        {
-          multi-user.wants = getUnitNames "service";
-          timers.wants = getUnitNames "timer";
-        };
+      targets.timers.wants =
+        cfg.repos
+        |> builtins.map (
+          repo:
+          let
+            args = "${repo.owner}/${repo.repo},${repo.branch},${repo.delay |> builtins.toString}";
+          in
+          "nix-repo-updater@${args |> utils.escapeSystemdPath}.timer"
+        );
       timers."nix-repo-updater@" = {
         description = "Timer for nix-repo-updater";
         timerConfig = {
