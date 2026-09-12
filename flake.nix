@@ -96,7 +96,7 @@
     };
     nh = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:viperML/nh";
+      url = "github:nix-community/nh";
     };
     nix = {
       inputs = {
