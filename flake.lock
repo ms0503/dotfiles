@@ -978,11 +978,11 @@
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1789225583,
-        "narHash": "sha256-DCDJNIStEFb9dk7OsoLKtrZdiEhqXSae0iXHBnJ7xJA=",
+        "lastModified": 1789332739,
+        "narHash": "sha256-cWZZJ/KxXhtsWY+96rlyUu3dD9mR//2tN9xPCCP4JjE=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "138af51f476e4703ac22e8e7e109372af93b261f",
+        "rev": "2ee8782e5e49a7d481541efa1591024c039be1e0",
         "type": "github"
       },
       "original": {
