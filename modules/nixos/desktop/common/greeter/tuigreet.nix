@@ -16,7 +16,7 @@ in
     services.greetd = {
       enable = true;
       settings.default_session = {
-        command = "${getExe pkgs.tuigreet} --remember --remember-session --sessions ${config.system.path}/share/wayland-sessions:${config.system.path}/share/xsessions:${cfgInternal.shell-session}/share/sessions --time --time-format '%Y-%m-%d %H:%M:%S'";
+        command = "${getExe pkgs.tuigreet} --remember --remember-user-session --sessions ${config.system.path}/share/wayland-sessions:${config.system.path}/share/xsessions:${cfgInternal.shell-session}/share/sessions --time --time-format '%Y-%m-%d %H:%M:%S'";
         user = username;
       };
     };
