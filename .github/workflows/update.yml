@@ -23,10 +23,15 @@ jobs:
         run: |
           nix flake update
           git add flake.lock
-          git commit -m "chore: update flakes" || :
+          msg="chore: update flakes"
+          if [[ $(git log -n 1 --pretty=%s) = "$msg" ]]; then
+            git commit --amend -m "$msg" || :
+          else
+            git commit -m "$msg" || :
+          fi
       - name: "Push to repository"
         run: |
-          git push origin main
+          git push --force-with-lease origin main
 name: "Update Nix Flakes"
 on:
   workflow_dispatch:
