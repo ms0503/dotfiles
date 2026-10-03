@@ -37,7 +37,7 @@ in
         gl = "git log --all --decorate --graph --oneline";
         gm = "git merge";
         gp = "git push";
-        gpf = "git push -f";
+        gpf = "git push --force-with-lease";
         gpl = "git pull";
         gpuo = "git push -u origin";
         gpuoM = "git push -u origin master";
