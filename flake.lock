@@ -46,11 +46,11 @@
         "systems": "systems_15"
       },
       "locked": {
-        "lastModified": 1791033873,
-        "narHash": "sha256-XZpv4+7x2rz4L45orL7Y9nTDsA+iEq243WQaPDe0d84=",
+        "lastModified": 1791054417,
+        "narHash": "sha256-AZt0DG3dayCrHV3qrgI0g3VDK1GDNNNO90/VURFlTx0=",
         "owner": "ms0503",
         "repo": "awk-language-server",
-        "rev": "8bda668339374be3dcd26f97c4e06c2e03851ea4",
+        "rev": "0782929a02e70b6aef190c552b701ab977fe2d8a",
         "type": "github"
       },
       "original": {
@@ -1011,11 +1011,11 @@
         "vscode-css-variables": "vscode-css-variables"
       },
       "locked": {
-        "lastModified": 1791039650,
-        "narHash": "sha256-PEQC8LPITS/NRxEADY4/1OmldvuCpy2E8AQso+UHK0g=",
+        "lastModified": 1791054436,
+        "narHash": "sha256-YLem88nJSmWaKZXYRIEb2w/LK6QIos4D+98FIJmd/ys=",
         "owner": "ms0503",
         "repo": "neovim-custom",
-        "rev": "de12f4a3b2ecec1d51dcd886b7fab61bea021169",
+        "rev": "2b3f320a3e079dbc37d7c245ed178dc30dd9a884",
         "type": "github"
       },
       "original": {
