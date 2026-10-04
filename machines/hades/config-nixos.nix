@@ -37,7 +37,7 @@
         enable = true;
         repos = [
           {
-            delay = 15 * 60;
+            delay = 30 * 60;
             owner = "ms0503";
             repo = "dotfiles";
           }
