@@ -303,11 +303,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781003997,
-        "narHash": "sha256-aJyS7hUpI68a7vNpDs/ik/U1r2p8DeakgATBO+jCPEM=",
+        "lastModified": 1791017535,
+        "narHash": "sha256-gYlPQWmJqy015HO2TkmWkmYAjw1uwuz7b/TshFfv7aM=",
         "owner": "ms0503",
         "repo": "generatehex",
-        "rev": "d5e4b1f7d4274e3ec1d887b3b692c7db9d6c5803",
+        "rev": "f9b4951f98d153ba2cac20c841bec227a9054896",
         "type": "github"
       },
       "original": {
@@ -389,11 +389,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781003998,
-        "narHash": "sha256-g6ZFy5yGPslISQrxnJypiQXtPXEGoQ0o1z9tqaDR9YA=",
+        "lastModified": 1791017927,
+        "narHash": "sha256-gYZY7gMviLECKAyyb+v6C5tgE+E322DNUYO2x5QO0iQ=",
         "owner": "ms0503",
         "repo": "getemoji",
-        "rev": "36d6bf85af93688458a32a02a41cd76e64727038",
+        "rev": "60a6b97d0bd7b764c373e22f5272c7cd0692848f",
         "type": "github"
       },
       "original": {
@@ -908,11 +908,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781003998,
-        "narHash": "sha256-BnqJ0UH6wZMdFXmyDm9ZwoDBuWlcwCTPqny37+WHyQc=",
+        "lastModified": 1791018389,
+        "narHash": "sha256-N125yTb1FdqmCQ8cEdwV9pjIOZxh2a1KgEJ1VC37jcA=",
         "owner": "ms0503",
         "repo": "mc-mod-downloader",
-        "rev": "e646e6e223256275d7edbd0901a9b98bf772735f",
+        "rev": "99615fe5397f151dd7dc847da0fe13809edd7c5c",
         "type": "github"
       },
       "original": {
@@ -978,11 +978,11 @@
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1790975541,
-        "narHash": "sha256-7rK+Wsqos/m/rfy478poa/CIkc9Uoleu9oOwX2+2bkw=",
+        "lastModified": 1791040891,
+        "narHash": "sha256-vy3pfgdTjxz7ojN/7meWj0U6soEGeMDBTI7bhgZ/g7o=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "9a6c87f289b90f41c5b3e921e2e6b317dfe7880b",
+        "rev": "b8830ddd8cc731438f3790595358f4007f2df8ab",
         "type": "github"
       },
       "original": {
@@ -1373,11 +1373,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781003997,
-        "narHash": "sha256-jQogde2S5Odwp6d8FzVJVhXRkIP4/P++E66t0sBTKbY=",
+        "lastModified": 1791019470,
+        "narHash": "sha256-has3e4KHdqPiQ3VcrS+CjRxQfRYKPYWp+LT8MHOZy0s=",
         "owner": "ms0503",
         "repo": "skel",
-        "rev": "7d710aca3d964a422a84a5f56416affadf10fe31",
+        "rev": "deef9c2c50c0575414606ad9c398e0c2b7130e57",
         "type": "github"
       },
       "original": {
@@ -1763,11 +1763,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781003997,
-        "narHash": "sha256-DaqDcboqNcYVaFDZDduImVk07OBKnYgxdtq9Z4lYGPE=",
+        "lastModified": 1791019675,
+        "narHash": "sha256-u0hBlFZxkpu9L876LnfNrCBTdGgTA5RB1DQ1SzMAY7w=",
         "owner": "ms0503",
         "repo": "urlencode",
-        "rev": "6bd02aedaafcd347753e7b41d0492b62a7a60f14",
+        "rev": "a66a06f9a3291944a76107d0bbb25f419234ba4e",
         "type": "github"
       },
       "original": {
