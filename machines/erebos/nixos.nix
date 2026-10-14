@@ -6,6 +6,23 @@
 }:
 {
   boot = {
+    kernel.sysfs.devices = {
+      "pci0000:00"."0000:00:14.3"."PNP0B00:00" = {
+        power.wakeup = "disabled";
+        rtc.rtc0."alarmtimer.0.auto".power.wakeup = "disabled";
+      };
+      platform = {
+        "ACPI0003:00".power_supply.ACAD.power.wakeup = "disabled";
+        "AMDI0010:00".i2c-0."i2c-ITE5570:00".power.wakeup = "disabled";
+        "AMDI0010:01".i2c-1."i2c-ELAN1203:00".power.wakeup = "disabled";
+        "PNP0C0A:00".power.wakeup = "disabled";
+        "PNP0C0C:00".power.wakeup = "disabled";
+        "PNP0C0D:00".power.wakeup = "disabled";
+        "PNP0C0E:00".power.wakeup = "disabled";
+        "USBC000:00".power_supply."ucsi-source-psy-USBC000:001".power.wakeup = "disabled";
+        i8042.serio0.power.wakeup = "disabled";
+      };
+    };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     loader.efi.canTouchEfiVariables = true;
     resumeDevice = "/dev/disk/by-uuid/0a943e07-390e-4810-a528-d1845c862246";
