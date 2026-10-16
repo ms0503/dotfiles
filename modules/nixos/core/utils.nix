@@ -120,10 +120,10 @@ in
     }
     (optionalAttrs (!cfgWsl.enable && const.feature-sets.full <= feature-set) {
       virtualbox.host = {
-        addNetworkInterface = false;
+        addNetworkInterface = true;
         enable = true;
         enableExtensionPack = true;
-        enableKvm = true;
+        enableKvm = false;
       };
     })
   ];
