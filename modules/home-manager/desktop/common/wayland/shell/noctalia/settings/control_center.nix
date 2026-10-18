@@ -1,7 +1,5 @@
 _: {
   calendar = {
-    event_date_format = "%m-%d";
-    event_time_format = "%H:%M";
     show_events_card = true;
     show_week_numbers = true;
   };
