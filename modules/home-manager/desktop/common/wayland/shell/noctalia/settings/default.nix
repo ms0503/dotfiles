@@ -10,6 +10,7 @@ let
     "control_center"
     "dock"
     "hooks"
+    "hot_corners"
     "idle"
     "keybinds"
     "location"

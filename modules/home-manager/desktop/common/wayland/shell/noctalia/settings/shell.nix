@@ -19,7 +19,6 @@
   external_ip_enabled = false;
   font_family = "Noto Sans CJK JP,Noto Sans,Sans,Noto Color Emoji";
   greeter_sync.auto_sync = false;
-  hot_corners.enabled = false;
   input_borders = true;
   lang = "ja_JP.UTF-8";
   launch_apps_as_systemd_services = true;
