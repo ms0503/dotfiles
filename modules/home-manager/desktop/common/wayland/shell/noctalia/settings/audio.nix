@@ -1,7 +1,9 @@
 _: {
+  enable_notification_sounds = true;
   enable_overdrive = false;
+  enable_power_sounds = true;
+  enable_screenshot_sounds = true;
   enable_sounds = true;
-  notification_sound = "";
+  enable_volume_sounds = true;
   sound_volume = 0.5;
-  volume_change_sound = "";
 }
