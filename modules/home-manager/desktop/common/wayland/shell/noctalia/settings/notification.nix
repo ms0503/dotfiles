@@ -3,7 +3,7 @@ _: {
   border = true;
   collapse_on_dismiss = true;
   enable_daemon = true;
-  history_retension_hours = 0;
+  history_retention_hours = 0;
   layer = "overlay";
   monitors = [ ];
   offset_x = 20;

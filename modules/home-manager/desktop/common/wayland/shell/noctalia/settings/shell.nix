@@ -68,7 +68,7 @@
     borders = true;
     clipboard_placement = "floating";
     clipboard_position = "center";
-    control_center_placement = "attatched";
+    control_center_placement = "attached";
     floating_layer = "overlay";
     floating_offset = 8;
     launcher_placement = "floating";
