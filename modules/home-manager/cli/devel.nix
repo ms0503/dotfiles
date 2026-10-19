@@ -116,4 +116,9 @@ in
       };
     })
   ];
+  xdg.configFile."pnpm/config.yaml".text =
+    {
+      minimumReleaseAge = 10080;
+    }
+    |> lib.generators.toYAML { };
 }
