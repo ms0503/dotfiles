@@ -55,7 +55,7 @@ in
     (optionals (const.feature-sets.full <= feature-set) (
       with pkgs;
       [
-        gemini-cli
+        antigravity-cli
         lazydocker
         silicon
         zenn-cli
