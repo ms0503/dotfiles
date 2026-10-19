@@ -31,7 +31,7 @@ in
           brightnessctl
           gimp3-with-plugins
           kicad
-          libreoffice-fresh
+          libreoffice
           networkmanagerapplet
           pamixer
           playerctl
