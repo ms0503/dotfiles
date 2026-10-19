@@ -56,6 +56,7 @@ in
       with pkgs;
       [
         antigravity-cli
+        codex
         lazydocker
         silicon
         zenn-cli
