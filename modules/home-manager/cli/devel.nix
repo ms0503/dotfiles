@@ -53,6 +53,15 @@ in
     (with pkgs; [
       (hiPrio gcc)
       (hiPrio nodejs-slim_latest)
+      (python3.withPackages (
+        ps: with ps; [
+          build
+          matplotlib
+          numpy
+          setuptools
+          wheel
+        ]
+      ))
       clang
       cmake
       mold
@@ -61,12 +70,6 @@ in
       pnpm
       uv
       yarn-berry
-    ])
-    (with pkgs.python312Packages; [
-      build
-      python
-      setuptools
-      wheel
     ])
     (optionals (const.feature-sets.lite <= feature-set) (
       with pkgs;
