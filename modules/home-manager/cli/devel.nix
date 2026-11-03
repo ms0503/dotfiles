@@ -52,7 +52,6 @@ in
   home.packages = builtins.concatLists [
     (with pkgs; [
       (hiPrio gcc)
-      (hiPrio nodejs-slim_latest)
       (python3.withPackages (
         ps: with ps; [
           build
@@ -66,6 +65,7 @@ in
       cmake
       mold
       ninja
+      nodejs-slim_latest
       nodejs-slim_latest.npm
       pnpm
       uv
