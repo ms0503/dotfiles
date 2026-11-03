@@ -30,6 +30,7 @@ in
           aseprite
           brightnessctl
           gimp3-with-plugins
+          inkscape-with-extensions
           kicad
           libreoffice
           networkmanagerapplet
