@@ -7,6 +7,7 @@
     { pkgs, ... }:
     {
       treefmt.programs = {
+        actionlint.enable = true;
         mdformat = {
           enable = true;
           plugins =
