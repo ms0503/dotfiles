@@ -45,9 +45,14 @@ in
     };
     gh = {
       enable = true;
-      extensions = [
-        gh-q
-        pkgs.gh-markdown-preview
+      extensions = builtins.concatLists [
+        [
+          gh-q
+        ]
+        (with pkgs; [
+          gh-actions-lock
+          gh-markdown-preview
+        ])
       ];
     };
     git = {
