@@ -36,7 +36,7 @@
             yamlfmt.enable = false; # treefmt
             yamllint.enable = false; # treefmt
           };
-          src = ../.;
+          src = ../../.;
         };
       };
     };
