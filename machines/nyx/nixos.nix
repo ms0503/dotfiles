@@ -29,16 +29,31 @@
       common-pc-ssd
     ])
   ];
-  networking.firewall.allowedTCPPorts = [
-    3000
-    4713
-    80
-  ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      3000
+      80
+    ];
+    allowedUDPPorts = [
+      5004
+    ];
+  };
   services = {
-    pipewire.extraConfig.pipewire-pulse."99-listen"."pulse.cmd" = [
+    pipewire.extraConfig.pipewire."99-rtp-receiver"."context.modules" = [
       {
-        args = "module-native-protocol-tcp auth-anonymous=1 listen=0.0.0.0";
-        cmd = "load-module";
+        args = {
+          "audio.channels" = 2;
+          "audio.format" = "F32LE";
+          "audio.rate" = 48000;
+          "sess.media" = "opus";
+          "source.ip" = "0.0.0.0";
+          "source.port" = 5004;
+          "stream.props" = {
+            "node.name" = "rtp-receiver";
+            "target.object" = "alsa_output.pci-0000_2d_00.4.analog-stereo";
+          };
+        };
+        name = "libpipewire-module-rtp-source";
       }
     ];
     tailscale.useRoutingFeatures = "server";

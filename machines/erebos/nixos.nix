@@ -75,10 +75,19 @@
     hardware.openrgb.enable = true;
     logind.settings.Login.HandleLidSwitch = "ignore";
     pipewire = {
-      extraConfig.pipewire-pulse."99-tunnel"."pulse.cmd" = [
+      extraConfig.pipewire."99-rtp-sender"."context.modules" = [
         {
-          args = "module-tunnel-sink server=tcp:nyx:4713";
-          cmd = "load-module";
+          args = {
+            "audio.channels" = 2;
+            "audio.format" = "F32LE";
+            "audio.rate" = 48000;
+            "destination.ip" = "nyx";
+            "destination.port" = 5004;
+            "sess.media" = "opus";
+            "sess.name" = "nyx";
+            "stream.props"."node.name" = "rtp-sender";
+          };
+          name = "libpipewire-module-rtp-sink";
         }
       ];
       wireplumber.extraConfig."99-sink-priority"."monitor.alsa.rules" = [
@@ -89,7 +98,7 @@
           };
           matches = [
             {
-              "node.name" = "tunnel-sink.tcp:nyx:4713";
+              "node.name" = "rtp_session.nyx";
             }
           ];
         }
