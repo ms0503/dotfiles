@@ -29,6 +29,7 @@ in
           })
           aseprite
           brightnessctl
+          discord-canary
           gimp3-with-plugins
           inkscape-with-extensions
           kicad
@@ -50,13 +51,11 @@ in
           if cfgWl.enable then
             with myPkgs;
             [
-              discord-canary-wayland
               slack-wayland
             ]
           else
             with pkgs;
             [
-              discord-canary
               slack
             ]
         )
