@@ -12,7 +12,15 @@ in
 {
   config = mkIf cfg.enable {
     home.packages = with myPkgs; [
-      microsoft-edge-dev
+      (microsoft-edge-dev.overrideAttrs (
+        _: prev: {
+          preInstall = (prev.preInstall or "") + ''
+            wrapperArgs+=(
+              --set FONTCONFIG_FILE "${../../../lib/fontconfig-disable-windows-fonts.conf}"
+            )
+          '';
+        }
+      ))
     ];
     programs.firefox = {
       configPath = "${config.xdg.configHome}/mozilla/firefox";

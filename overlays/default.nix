@@ -28,7 +28,7 @@
           _: prev': {
             preInstall = (prev'.preInstall or "") + ''
               gappsWrapperArgs+=(
-                --set FONTCONFIG_FILE "${./discord-canary-fontconfig.conf}"
+                --set FONTCONFIG_FILE "${../lib/fontconfig-disable-windows-fonts.conf}"
               )
             '';
           }

@@ -975,11 +975,11 @@
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1793864080,
-        "narHash": "sha256-lJgghgYWOrtC3T9BW53HUBn5QGz28GORx8K9E6mIlcI=",
+        "lastModified": 1793962068,
+        "narHash": "sha256-88MBWWgP7PFpGgHihhFr7Dh6LEigtSOKmk/nAmba8n8=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "1d102b141f7dd524de23db15d99064f992087e2b",
+        "rev": "1af293aaf900776d8315661ddef9645c32df2e86",
         "type": "github"
       },
       "original": {
