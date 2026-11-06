@@ -40,8 +40,12 @@ in
       ];
     };
     "/data" = {
-      device = "/dev/disk/by-uuid/0fb68635-2536-4e61-9138-16eb3c4807ab";
-      fsType = "ext4";
+      device = "/dev/disk/by-uuid/883dcc72-bb12-483c-97d1-89ffcbe3b1cc";
+      fsType = "btrfs";
+      options = [
+        "compress=zstd"
+        "discard=async"
+      ];
     };
   };
   hardware.cpu.intel.updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
