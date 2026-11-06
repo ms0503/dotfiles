@@ -23,6 +23,17 @@
             '';
         }
       );
+      discord-canary = prev.discord-canary.override {
+        unwrappedDiscord = prev.discord-canary.unwrappedDiscord.overrideAttrs (
+          _: prev': {
+            preInstall = (prev'.preInstall or "") + ''
+              gappsWrapperArgs+=(
+                --set FONTCONFIG_FILE "${./discord-canary-fontconfig.conf}"
+              )
+            '';
+          }
+        );
+      };
       gimp = final.gimp3;
       gimp3 = prev.gimp.overrideAttrs (
         let
