@@ -56,6 +56,11 @@ in
       IdentityFile = "~/.ssh/hades";
       User = "ms0503";
     };
+    hades-drive = {
+      HostName = "hades";
+      IdentityFile = "~/.ssh/hades-drive";
+      User = "drive";
+    };
     hades-minecraft = {
       HostName = "hades";
       IdentityFile = "~/.ssh/hades-minecraft";
