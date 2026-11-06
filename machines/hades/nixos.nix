@@ -37,6 +37,7 @@ in
       common-pc-ssd
     ])
     [
+      ./server-drive.nix
       ./server-mcsrv.nix
     ]
   ];
