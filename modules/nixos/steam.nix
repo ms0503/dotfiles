@@ -44,6 +44,9 @@ in
           libxkbcommon
         ];
         localNetworkGameTransfers.openFirewall = true;
+        package = pkgs.steam.override {
+          extraEnv.FONTCONFIG_FILE = ../../lib/fontconfig-disable-windows-fonts.conf;
+        };
         protontricks.enable = true;
         remotePlay.openFirewall = true;
       };
