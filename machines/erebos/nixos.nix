@@ -98,7 +98,7 @@
           };
           matches = [
             {
-              "node.name" = "rtp_session.nyx";
+              "node.name" = "rtp-sender";
             }
           ];
         }
