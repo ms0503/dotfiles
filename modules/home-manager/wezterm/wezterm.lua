@@ -1,22 +1,22 @@
-local wezterm = require("wezterm")
+local wezterm = require('wezterm')
 
 return {
-    audible_bell = "Disabled",
+    audible_bell = 'Disabled',
     check_for_updates = false,
-    color_scheme = "myTheme",
+    color_scheme = 'myTheme',
     font = wezterm.font_with_fallback({
         {
-            family = "SauceCodePro Nerd Font",
-            weight = "Regular",
+            family = 'SauceCodePro Nerd Font',
+            weight = 'Regular',
         },
         {
             assume_emoji_presentation = true,
-            family = "SauceCodePro Nerd Font",
-            weight = "Regular",
+            family = 'SauceCodePro Nerd Font',
+            weight = 'Regular',
         },
         {
-            family = "Source Han Code JP",
-            weight = "Regular",
+            family = 'Source Han Code JP',
+            weight = 'Regular',
         },
     }),
     hide_tab_bar_if_only_one_tab = true,
