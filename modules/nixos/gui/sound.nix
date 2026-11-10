@@ -5,6 +5,9 @@ let
 in
 {
   config = mkIf cfg.enable {
+    environment.systemPackages = [
+      config.services.pipewire.package.jack
+    ];
     security.rtkit.enable = true;
     services = {
       pipewire = {
@@ -13,7 +16,6 @@ in
           support32Bit = true;
         };
         enable = true;
-        jack.enable = true;
         pulse.enable = true;
       };
       pulseaudio.enable = false;
