@@ -34,6 +34,20 @@
       nix-repo-updater.enable = false;
     };
     shell.type = "zsh";
+    sound.streaming = {
+      receiver.enable = false;
+      sender = {
+        destination = {
+          name = "nyx";
+          port = 5004;
+        };
+        enable = true;
+        input-sink = {
+          fl = "alsa_output.pci-0000_05_00.6.analog-stereo:monitor_FL";
+          fr = "alsa_output.pci-0000_05_00.6.analog-stereo:monitor_FR";
+        };
+      };
+    };
     steam.enable = true;
   };
 }

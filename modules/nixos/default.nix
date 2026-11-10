@@ -10,6 +10,7 @@
     ./gui
     ./media.nix
     ./server
+    ./sound
     ./steam.nix
     ./wsl.nix
   ];

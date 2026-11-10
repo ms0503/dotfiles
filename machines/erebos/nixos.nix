@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   username,
@@ -74,47 +75,30 @@
     };
     hardware.openrgb.enable = true;
     logind.settings.Login.HandleLidSwitch = "ignore";
-    pipewire = {
-      extraConfig.pipewire."99-rtp-sender"."context.modules" = [
-        {
-          args = {
-            "audio.channels" = 2;
-            "audio.format" = "F32LE";
-            "audio.rate" = 48000;
-            "destination.ip" = "nyx";
-            "destination.port" = 5004;
-            "sess.media" = "opus";
-            "sess.name" = "nyx";
-            "stream.props"."node.name" = "rtp-sender";
-          };
-          name = "libpipewire-module-rtp-sink";
-        }
-      ];
-      wireplumber.extraConfig."99-sink-priority"."monitor.alsa.rules" = [
-        {
-          actions.update-props = {
-            "priority.driver" = 1100;
-            "priority.session" = 1100;
-          };
-          matches = [
-            {
-              "node.name" = "rtp-sender";
-            }
-          ];
-        }
-        {
-          actions.update-props = {
-            "priority.driver" = 1200;
-            "priority.session" = 1200;
-          };
-          matches = [
-            {
-              "node.name" = "ALVR Audio";
-            }
-          ];
-        }
-      ];
-    };
+    pipewire.wireplumber.extraConfig."99-sink-priority"."monitor.alsa.rules" = [
+      {
+        actions.update-props = {
+          "priority.driver" = 1100;
+          "priority.session" = 1100;
+        };
+        matches = [
+          {
+            "node.name" = config.ms0503.sound.streaming.sender.stream-node-name;
+          }
+        ];
+      }
+      {
+        actions.update-props = {
+          "priority.driver" = 1200;
+          "priority.session" = 1200;
+        };
+        matches = [
+          {
+            "node.name" = "ALVR Audio";
+          }
+        ];
+      }
+    ];
     printing = {
       drivers = with pkgs; [
         (writeTextDir "share/cups/model/BR5350_2_GPL.ppd" (builtins.readFile ./BR5350_2_GPL.ppd))

@@ -53,6 +53,10 @@
       };
     };
     shell.type = "zsh";
+    sound.streaming = {
+      receiver.enable = false;
+      sender.enable = false;
+    };
     steam.enable = false;
   };
 }

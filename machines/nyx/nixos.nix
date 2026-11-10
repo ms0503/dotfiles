@@ -39,23 +39,6 @@
     ];
   };
   services = {
-    pipewire.extraConfig.pipewire."99-rtp-receiver"."context.modules" = [
-      {
-        args = {
-          "audio.channels" = 2;
-          "audio.format" = "F32LE";
-          "audio.rate" = 48000;
-          "sess.media" = "opus";
-          "source.ip" = "0.0.0.0";
-          "source.port" = 5004;
-          "stream.props" = {
-            "node.name" = "rtp-receiver";
-            "target.object" = "alsa_output.pci-0000_2d_00.4.analog-stereo";
-          };
-        };
-        name = "libpipewire-module-rtp-source";
-      }
-    ];
     tailscale.useRoutingFeatures = "server";
     xserver.xkb = {
       layout = "jp";

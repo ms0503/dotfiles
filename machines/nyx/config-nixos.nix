@@ -31,6 +31,13 @@
       nix-repo-updater.enable = false;
     };
     shell.type = "zsh";
+    sound.streaming = {
+      receiver = {
+        enable = true;
+        output-sink = "alsa_output.pci-0000_2d_00.4.analog-stereo";
+      };
+      sender.enable = false;
+    };
     steam.enable = true;
   };
 }
