@@ -13,7 +13,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
       url = "github:hercules-ci/flake-parts";
     };
-    flake-utils.url = "github:numtide/flake-utils";
     git-hooks = {
       inputs = {
         flake-compat.follows = "";
@@ -46,7 +45,6 @@
           inputs.nixpkgs.follows = "nixpkgs";
           url = "github:ipetkov/crane/95b42093e50ff889aab558682922251bb70c0f91";
         };
-        flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
       };
       url = "github:sopa0/hyprsome";
@@ -148,7 +146,6 @@
     };
     wezterm = {
       inputs = {
-        flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
       };
