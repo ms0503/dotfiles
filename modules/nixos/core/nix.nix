@@ -1,4 +1,4 @@
-{ inputs', ... }:
+{ inputs', pkgs, ... }:
 {
   nix = {
     extraOptions = ''
@@ -52,7 +52,22 @@
     nix-index = {
       enable = true;
       enableBashIntegration = true;
-      package = inputs'.nix-index.packages.default;
+      package = inputs'.nix-index.packages.default.overrideAttrs (
+        _: prev: {
+          buildInputs = builtins.concatLists [
+            (prev.buildInputs or [ ])
+            (with pkgs; [
+              zstd
+            ])
+          ];
+          nativeBuildInputs = builtins.concatLists [
+            (prev.nativeBuildInputs or [ ])
+            (with pkgs; [
+              pkg-config
+            ])
+          ];
+        }
+      );
     };
     nix-ld.enable = true;
   };
