@@ -973,11 +973,11 @@
         "urlencode": "urlencode"
       },
       "locked": {
-        "lastModified": 1794914757,
-        "narHash": "sha256-ja/J50rfNlJ1NvTJcrN6P0wJD/hhYeO0FbNxlBYsYdg=",
+        "lastModified": 1794932622,
+        "narHash": "sha256-A2SXP0soiQNVAOGUPkMYNTCRc2SIxAGJqb+ayfvVPn8=",
         "owner": "ms0503",
         "repo": "pkgs.nix",
-        "rev": "b85b8ea109e9f3a0050da40aa62b72fa07eab454",
+        "rev": "284b27ea6cfa60af1dac83beb0a9e21127d5dc6c",
         "type": "github"
       },
       "original": {
