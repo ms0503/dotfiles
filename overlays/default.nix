@@ -144,48 +144,6 @@
           ];
         }
       );
-      realvnc-vnc-viewer =
-        assert lib.versionOlder prev.realvnc-vnc-viewer.version "8.0.0";
-        prev.realvnc-vnc-viewer.overrideAttrs (
-          final': prev': {
-            buildInputs = with final; [
-              at-spi2-atk
-              cairo
-              fontconfig.lib
-              glib
-              gtk3
-              libepoxy
-              pango
-            ];
-            meta = prev'.meta // {
-              mainProgram = "rvncconnect";
-            };
-            name = "${final'.pname}-${final'.version}";
-            postPatch = ''
-              substituteInPlace ./usr/share/applications/com.realvnc.rvncconnect.desktop \
-                --replace /usr/lib/rvncconnect/rvncconnect rvncconnect \
-                --replace /usr/share/icons/hicolor/scalable/apps/com.realvnc.rvncconnect.svg com.realvnc.rvncconnect.svg
-              substituteInPlace ./usr/share/applications/com.realvnc.rvncconnect.connect.uri.desktop \
-                --replace /usr/lib/rvncconnect/rvncconnect rvncconnect
-            '';
-            preInstall = ''
-              install -dm755 ./usr/bin
-              ln -s ../lib/rvncconnect/rvncconnect ./usr/bin/rvncconnect
-              for data in $(find ./usr/lib/.build-id -type l -exec sh -c 'echo {},$(readlink {} | sed "s;^../../../../usr;../../..;")' \;); do
-                IFS=, read -a d <<<"$data"
-                rm "''${d[0]}"
-                ln -s "''${d[1]}" "''${d[0]}"
-              done
-              unset d
-            '';
-            src = final.fetchurl rec {
-              hash = "sha256-k0n6VuPwUEBpEQinCs+rabziMNqZR0At/4ONBHVnJSo=";
-              name = "RealVNC-Connect-Viewer-${final'.version}-Linux-x64.rpm";
-              url = "https://downloads.realvnc.com/download/file/realvnc-connect-viewer/${name}";
-            };
-            version = "8.4.2";
-          }
-        );
       yarn-berry = prev.yarn-berry.override {
         nodejs = final.nodejs_latest;
       };
