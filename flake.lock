@@ -1218,6 +1218,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-discord-canary": {
+      "locked": {
+        "lastModified": 1793837540,
+        "narHash": "sha256-ABuKW6Im4fhCJ16frQkz6SDrZo/4NacRrzvo0n1HaPI=",
+        "owner": "fdeitylink",
+        "repo": "nixpkgs",
+        "rev": "81dc1852b7efe84a17344c5ac85cf947cd915032",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fdeitylink",
+        "ref": "discord-pin-updates-darwin",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -1292,6 +1308,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-discord-canary": "nixpkgs-discord-canary",
         "noctalia": "noctalia",
         "rust-overlay": "rust-overlay",
         "systems": "systems_18",

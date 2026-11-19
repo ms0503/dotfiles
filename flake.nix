@@ -131,6 +131,7 @@
       url = "github:nix-community/NixOS-WSL";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-discord-canary.url = "github:fdeitylink/nixpkgs/discord-pin-updates-darwin";
     noctalia = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:noctalia-dev/noctalia";
@@ -213,7 +214,7 @@
             inherit inputs withSystem;
           };
           nixosModules = import ./modules/nixos;
-          overlays = import ./overlays;
+          overlays = import ./overlays inputs;
         };
         imports = [
           ./tools/shell

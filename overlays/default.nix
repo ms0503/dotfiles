@@ -1,8 +1,13 @@
+{ nixpkgs-discord-canary, ... }:
 {
   default =
     final: prev:
     let
       inherit (final) lib;
+      pkgsDiscordCanary = import nixpkgs-discord-canary {
+        inherit (final.stdenv.hostPlatform) system;
+        config.allowUnfree = true;
+      };
     in
     {
       alcom = prev.alcom.overrideAttrs (
@@ -23,8 +28,8 @@
             '';
         }
       );
-      discord-canary = prev.discord-canary.override {
-        unwrappedDiscord = prev.discord-canary.unwrappedDiscord.overrideAttrs (
+      discord-canary = pkgsDiscordCanary.discord-canary.override {
+        unwrappedDiscord = pkgsDiscordCanary.discord-canary.unwrappedDiscord.overrideAttrs (
           _: prev': {
             preInstall = (prev'.preInstall or "") + ''
               gappsWrapperArgs+=(
