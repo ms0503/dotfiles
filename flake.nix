@@ -26,6 +26,15 @@
     };
     hyprland = {
       inputs = {
+        aquamarine = {
+          inputs = {
+            hyprutils.follows = "hyprland/hyprutils";
+            hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";
+            nixpkgs.follows = "hyprland/nixpkgs";
+            systems.follows = "hyprland/systems";
+          };
+          url = "github:riccardo1512/aquamarine/fix-modeset-flip-race";
+        };
         nixpkgs.follows = "nixpkgs";
         pre-commit-hooks.follows = "";
       };

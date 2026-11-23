@@ -1,0 +1,13 @@
+--- a/src/backend/drm/impl/Atomic.cpp
++++ b/src/backend/drm/impl/Atomic.cpp
+@@ -599,6 +599,10 @@
+     request.addConnector(connector, data);
+
+     uint32_t flags = data.flags;
++    if (data.blocking) {
++        flags &= ~DRM_MODE_PAGE_FLIP_EVENT;
++        data.flags = flags;
++    }
+     if (data.test)
+         flags |= DRM_MODE_ATOMIC_TEST_ONLY;
+     if (data.modeset)

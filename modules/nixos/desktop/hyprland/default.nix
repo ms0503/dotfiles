@@ -1,7 +1,8 @@
 {
   config,
-  inputs',
+  inputs,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -9,7 +10,44 @@ let
   cfg = config.ms0503.desktop.hyprland;
   cfgGui = config.ms0503.gui;
   cfgWl = config.ms0503.desktop.common.wayland;
-  hlPkgs = inputs'.hyprland.packages;
+  hlPkgs = import inputs.nixpkgs {
+    inherit (pkgs) config;
+    inherit (pkgs.stdenv.hostPlatform) system;
+    overlays = [
+      inputs.hyprland.overlays.hyprland-packages
+      inputs.hyprland.overlays.hyprland-extras
+      (final: prev: {
+        aquamarine = prev.aquamarine.overrideAttrs (
+          _: prev': {
+            patches =
+              (prev'.patches or [ ])
+              ++ lib.optional (config.ms0503.gpu == "nvidia") ./hotfix-aquamarine-blocking-modeset-pageflip.patch;
+          }
+        );
+        hyprland-guiutils = prev.hyprland-guiutils.overrideAttrs (
+          _: prev': {
+            buildInputs = (prev'.buildInputs or [ ]) ++ [
+              final.libdrm
+            ];
+          }
+        );
+        hyprtoolkit = prev.hyprtoolkit.overrideAttrs (
+          _: prev': {
+            buildInputs = (prev'.buildInputs or [ ]) ++ [
+              final.wayland
+            ];
+          }
+        );
+        xdg-desktop-portal-hyprland = prev.xdg-desktop-portal-hyprland.overrideAttrs (
+          _: prev': {
+            buildInputs = (prev'.buildInputs or [ ]) ++ [
+              final.wayland
+            ];
+          }
+        );
+      })
+    ];
+  };
 in
 {
   config = mkIf cfg.enable {

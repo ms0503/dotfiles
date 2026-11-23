@@ -13,7 +13,7 @@ in
             "hyprland.start"
             (mkLuaInline ''
               function()
-                hl.exec_cmd('uwsm app -- dbus-update-activation-environment --systemd --all')
+                hl.exec_cmd('uwsm finalize')
                 hl.exec_cmd('uwsm app -- systemctl --user start hyprland-session.target')
                 hl.exec_cmd('uwsm app -- microsoft-edge-dev', {
                   workspace = '${cfg.startup-monitor * 10 + 1 |> builtins.toString} silent'

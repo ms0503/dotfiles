@@ -20,15 +20,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1794327430,
-        "narHash": "sha256-baUECdOyfpI7L97DfNb3vyEBsKb8fpNmZ8lOTO210N8=",
-        "owner": "hyprwm",
+        "lastModified": 1793752252,
+        "narHash": "sha256-5zCL5YwE0xJcWwXDBkMbYC6uX9GlM12upqIsPyGO5Qg=",
+        "owner": "riccardo1512",
         "repo": "aquamarine",
-        "rev": "7c1c55b2a76ddb9f6602f8c0886ecf1b899529f9",
+        "rev": "265981ad94561c99ecab4c25a5a20ce26c238192",
         "type": "github"
       },
       "original": {
-        "owner": "hyprwm",
+        "owner": "riccardo1512",
+        "ref": "fix-modeset-flip-race",
         "repo": "aquamarine",
         "type": "github"
       }
