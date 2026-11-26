@@ -23,7 +23,7 @@ let
       fetchurl
       ;
   };
-  userEmail = "ms0503@outlook.com";
+  userEmail = "admin@ms0503.dev";
   userName = "Sora Tonami";
 in
 {
